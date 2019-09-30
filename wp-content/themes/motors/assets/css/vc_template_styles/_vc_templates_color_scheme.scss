@@ -1,0 +1,112 @@
+@import '../colors';
+
+/* =======  INFO BLOCK ANIMATE  ===========  */
+.info-wrap {
+
+  span {
+
+    .stm_flipbox {
+      .stm_flipbox__front,
+      .stm_flipbox__back {
+
+        .inner {
+
+          .inner-flex {
+
+            .ib-title {
+              color: $white;
+            }
+
+            .ib-desc {
+              color: $white;
+            }
+          }
+        }
+      }
+
+      .stm_flipbox__front {
+        border: 1px solid rgba(255,255,255,0.35);
+      }
+
+      .stm_flipbox__back {
+        background: rgba(34, 158, 255, 0.9);
+
+        .inner {
+          .inner-flex {
+            .ib-title {
+              color: $white;
+            }
+
+            .ib-desc {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* =======  INFO BLOCK ANIMATE  ===========  */
+
+/* ======= Listing Two Search ===========*/
+.stm_dynamic_listing_two_filter {
+  .stm_dynamic_listing_filter_nav {
+
+    li {
+      background: $listing_blue_dk;
+      border-right: 1px solid #133340;
+
+      a {
+        color: $white;
+      }
+
+      &.active {
+        background-color: $listing_green_dk;
+        border-right-color: $listing_green_dk;
+      }
+    }
+  }
+
+  .tab-content {
+    background-color: $listing_green_dk;
+
+    .tab-pane {
+      .vmc-photos-list {
+        ul {
+
+          li {
+            background: $white;
+          }
+        }
+      }
+    }
+  }
+}
+/* ======= Listing Two Search ===========*/
+
+/* ======= Image Filter Body type ======= */
+.stm-image-filter-wrap {
+  border-top: 4px solid #153e4d;
+
+  .stm-img-filter-container {
+    .owl-controls {
+
+      .owl-nav {
+
+        .owl-prev, .owl-next {
+          &:hover {
+            background: $listing_green;
+          }
+        }
+
+        .owl-prev {
+          background: $gray-dd;
+        }
+        .owl-next {
+          background: $gray-dd;
+        }
+      }
+    }
+  }
+}
+/* ======= Image Filter Body type ======= */

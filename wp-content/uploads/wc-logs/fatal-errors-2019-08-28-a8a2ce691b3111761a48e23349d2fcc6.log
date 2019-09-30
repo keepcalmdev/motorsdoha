@@ -1,0 +1,130 @@
+2019-08-28T07:41:27+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 67
+
+2019-08-28T07:41:38+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 67
+
+2019-08-28T07:43:00+00:00 CRITICAL Uncaught Error: Call to undefined function get_user_role() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:67
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 67
+
+2019-08-28T07:43:06+00:00 CRITICAL Uncaught Error: Call to undefined function get_user_role() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:67
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 67
+
+2019-08-28T07:43:47+00:00 CRITICAL Uncaught Error: Call to undefined function get_user_role() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:67
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 67
+
+2019-08-28T07:43:51+00:00 CRITICAL Uncaught Error: Call to undefined function get_user_role() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:67
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 67
+
+2019-08-28T07:52:41+00:00 CRITICAL syntax error, unexpected 'print_r' (T_STRING), expecting ',' or ';' in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 70
+
+2019-08-28T07:52:49+00:00 CRITICAL syntax error, unexpected 'print_r' (T_STRING), expecting ',' or ';' in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 70
+
+2019-08-28T07:56:45+00:00 CRITICAL Uncaught Error: Call to undefined function get_user_data() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:70
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 70
+
+2019-08-28T07:56:52+00:00 CRITICAL Uncaught Error: Call to undefined function get_user_data() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:70
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 70
+
+2019-08-28T08:11:32+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_current_user_() in /www/qprcar01_517/public/wp-content/themes/motors/footer.php:70
+Stack trace:
+#0 /www/qprcar01_517/public/wp-includes/template.php(722): require_once()
+#1 /www/qprcar01_517/public/wp-includes/template.php(671): load_template('/www/qprcar01_5...', true)
+#2 /www/qprcar01_517/public/wp-includes/general-template.php(76): locate_template(Array, true)
+#3 /www/qprcar01_517/public/wp-content/themes/motors/page.php(62): get_footer()
+#4 /www/qprcar01_517/public/wp-includes/template-loader.php(78): include('/www/qprcar01_5...')
+#5 /www/qprcar01_517/public/wp-blog-header.php(19): require_once('/www/qprcar01_5...')
+#6 /www/qprcar01_517/public/index.php(17): require('/www/qprcar01_5...')
+#7 {main}
+  thrown in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 70
+
+2019-08-28T08:14:06+00:00 CRITICAL syntax error, unexpected '0' (T_LNUMBER), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 78
+
+2019-08-28T08:14:57+00:00 CRITICAL syntax error, unexpected '0' (T_LNUMBER), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 78
+
+2019-08-28T08:15:02+00:00 CRITICAL syntax error, unexpected '0' (T_LNUMBER), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 78
+
+2019-08-28T08:45:13+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 92
+
+2019-08-28T08:45:43+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 92
+
+2019-08-28T08:46:22+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 92
+
+2019-08-28T08:46:28+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/footer.php on line 92
+
+2019-08-28T08:54:20+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:54:23+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:55:11+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:56:23+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:56:25+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:57:01+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:57:03+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 106
+
+2019-08-28T08:57:10+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 64
+
+2019-08-28T08:57:11+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 64
+
+2019-08-28T08:57:12+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 64
+
+2019-08-28T08:57:13+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 64
+
+2019-08-28T08:57:16+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF) in /www/qprcar01_517/public/wp-content/themes/motors/header.php on line 64
+

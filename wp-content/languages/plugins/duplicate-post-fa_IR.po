@@ -1,0 +1,322 @@
+# Translation of Plugins - Duplicate Post - Stable (latest release) in Persian
+# This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-05-16 18:14:40+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fa\n"
+"Project-Id-Version: Plugins - Duplicate Post - Stable (latest release)\n"
+
+#: duplicate-post-admin.php:194
+msgid "Serving the WordPress community since November 2007."
+msgstr "از نوامبر 2007 تا کنون در خدمت جامعه وردپرس بوده ایم"
+
+#: duplicate-post-admin.php:195
+msgid "Check out the new documentation"
+msgstr "مستندات جدید را بررسی کنید"
+
+#: duplicate-post-admin.php:194
+msgid "Duplicate Post turns 10!"
+msgstr "تکثیرکننده نوشته 10 ساله شد!"
+
+#: duplicate-post-admin.php:280
+msgid "Current user is not allowed to copy posts."
+msgstr "این کاربر مجاز به کپی نوشته‌ها نیست."
+
+#. Plugin URI of the plugin/theme
+msgid "https://duplicate-post.lopo.it/"
+msgstr "https://duplicate-post.lopo.it/"
+
+#: duplicate-post-options.php:235
+msgid "you probably want this unchecked, unless you have very special requirements"
+msgstr "این گزینه پیشنهاد نمیشود،مگراینکه خواسته های خیلی خاص داشته باشید"
+
+#: duplicate-post-admin.php:652 duplicate-post-options.php:91
+msgid "Documentation"
+msgstr "مستندات"
+
+#: duplicate-post-admin.php:196
+msgid "Help me develop the plugin and provide support by <a href=\"%s\">donating even a small sum</a>."
+msgstr "به من برای پیشرفت دادن این افزونه کمک کنید و حمایتتان را از طریق <a href=\"%s\"> با حتی مقداری کوچک اعمال کنید</a>."
+
+#: duplicate-post-options.php:378
+msgid "Show update notice"
+msgstr "نشان دادن هشدار بروزرسانی"
+
+#: duplicate-post-options.php:285
+msgid "You can use * to match zero or more alphanumeric characters or underscores: e.g. field*"
+msgstr "میتوانید از * برای وصل کردن صفر حرف الفبا یا بیشتر یا خط کشیدن استفاده کنید:برای مثال field*"
+
+#: duplicate-post-options.php:93
+msgid "Support Forum"
+msgstr "فرم پشتیبانی"
+
+#: duplicate-post-options.php:220
+msgid "Featured Image"
+msgstr "تصویر شاخص"
+
+#: duplicate-post-options.php:223
+msgid "Template"
+msgstr "الگو"
+
+#: duplicate-post-options.php:226
+msgctxt "post format"
+msgid "Format"
+msgstr "فرمت"
+
+#: duplicate-post-options.php:229
+msgid "Author"
+msgstr "نویسنده"
+
+#: duplicate-post-options.php:244
+msgid "Menu order"
+msgstr "چیدمان فهرست"
+
+#: duplicate-post-options.php:367
+msgid "Bulk Actions"
+msgstr "کارهای دسته‌جمعی"
+
+#: duplicate-post-options.php:87
+msgid "Donate whatever sum you choose, even just 10¢."
+msgstr "هر مقداری به انتخاب خودتان کمک مالی کنید، حتی ¢10."
+
+#: duplicate-post-admin.php:195
+msgid "Please <a href=\"%s\">review the settings</a> to make sure it works as you expect."
+msgstr "لطفا <a href=\"%s\">تنظیمات را بررسی کنید</a> تا مطمئن شوید افزونه آنگونه که انتظار دارید کار میکند."
+
+#: duplicate-post-options.php:85
+msgid "Help me develop the plugin, add new features and improve support!"
+msgstr "به من برای پیشرفت افزونه، اضافه کردن قابلیت‌های جدید و بهترکردن پشتیبانی کمک کنید!"
+
+#: duplicate-post-admin.php:663
+msgid "%s item copied."
+msgid_plural "%s items copied."
+msgstr[0] "%s آیتم کپی شد."
+
+#: duplicate-post-admin.php:559
+msgid "Untitled"
+msgstr "بدون عنوان"
+
+#: duplicate-post-options.php:292
+msgid "Show/hide private taxonomies"
+msgstr "نشان دارن/پنهان کردن طبقه بندی ها"
+
+#: duplicate-post-options.php:330
+msgid "Passwords and contents of password-protected posts may become visible to undesired users and visitors"
+msgstr "رمزهای عبور و محتواهای نوشته های قفل شده با رمزعبور ممکن است برای کاربران دیگر و بازدیدکنندگان نمایش داده شود"
+
+#: duplicate-post-options.php:241
+msgid "except pingbacks and trackbacks"
+msgstr "به جز اعلانات"
+
+#: duplicate-post-options.php:190
+msgid "Display"
+msgstr "نمایش"
+
+#: duplicate-post-options.php:188
+msgid "Permissions"
+msgstr "دسترسی ها"
+
+#: duplicate-post-options.php:186
+msgid "What to copy"
+msgstr "چه چیزهایی کپی شود؟"
+
+#: duplicate-post-options.php:211
+msgid "Slug"
+msgstr "نامک"
+
+#: duplicate-post-options.php:274
+msgid "Add this number to the original menu order (blank or zero to retain the value)"
+msgstr "این عدد را در دسته اصلی وارد کنید.(خالی یا از صفر به بالا)"
+
+#: duplicate-post-options.php:269
+msgid "Increase menu order by"
+msgstr "دسته منو را زیاد کن با"
+
+#: duplicate-post-options.php:217
+msgid "Content"
+msgstr "محتوا"
+
+#: duplicate-post-options.php:198
+msgid "Post/page elements to copy"
+msgstr "محتواهای نوشته/برگه برای کپی"
+
+#: duplicate-post-options.php:214
+msgid "Excerpt"
+msgstr "برگزیدن"
+
+#: duplicate-post-options.php:202
+msgid "Title"
+msgstr "عنوان"
+
+#: duplicate-post-options.php:208
+msgid "Status"
+msgstr "وضعیت"
+
+#: duplicate-post-options.php:205
+msgid "Date"
+msgstr "تاریخ"
+
+#: duplicate-post-admin.php:199
+msgid "Dismiss this notice."
+msgstr "این اخطار را نادیده بگیر."
+
+#: duplicate-post-admin.php:540
+msgid "Copy features for this post type are not enabled in options page"
+msgstr "\"کپی کردن امکانات\" برای این نوع نوشته در صفحه گزینه ها فعال نشده است."
+
+#: duplicate-post-options.php:336
+msgid "Enable for these post types"
+msgstr "برای این نوع نوشته ها فعال کن"
+
+#: duplicate-post-options.php:345
+msgid "Select the post types you want the plugin to be enabled"
+msgstr "نوع نوشته هایی که میخواهید افزونه فعال کند را انتخاب کنید"
+
+#: duplicate-post-options.php:346 duplicate-post-options.php:372
+msgid "Whether the links are displayed for custom post types registered by themes or plugins depends on their use of standard WordPress UI elements"
+msgstr "این که آیا پیوندها در انواع نوشته سفارشی ثبت‌شده توسط پوسته‌ها یا افزونه‌ها نمایش داده می‌شوند، به استفاده آنها از عناصر استاندارد رابط کاربری وردپرس بستگی دارد."
+
+#: duplicate-post-options.php:238
+msgid "Children"
+msgstr "فرزندان"
+
+#: duplicate-post-options.php:235
+msgid "Attachments"
+msgstr "پیوست‌ها"
+
+#: duplicate-post-options.php:232
+msgid "Password"
+msgstr "رمز عبور"
+
+#: duplicate-post-options.php:241
+msgid "Comments"
+msgstr "دیدگاه‌ها"
+
+#: duplicate-post-options.php:373
+msgid "You can also use the template tag duplicate_post_clone_post_link( $link, $before, $after, $id ). More info <a href=\"%s\">here</a>"
+msgstr "همچنین میتوانید از تگ duplicate_post_clone_post_link( $link, $before, $after, $id ). اطلاعات بیشتر در <a href=\"%s\">اینجا</a>"
+
+#: duplicate-post.php:49
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: duplicate-post-options.php:388
+msgid "Save Changes"
+msgstr "ذخیره تغییرات"
+
+#. Author URI of the plugin/theme
+msgid "https://lopo.it"
+msgstr "https://lopo.it"
+
+#. Author of the plugin/theme
+msgid "Enrico Battocchi"
+msgstr "Enrico Battocchi"
+
+#: duplicate-post-options.php:363
+msgid "Admin bar"
+msgstr "نوار مدیر سایت"
+
+#: duplicate-post-options.php:361
+msgid "Edit screen"
+msgstr "ویرایش صفحه"
+
+#: duplicate-post-options.php:254
+msgid "Prefix to be added before the title, e.g. \"Copy of\" (blank for no prefix)"
+msgstr "پیشوند برای اضافه کردن به اول عنوان،برای مثال \"کپی از\" (خالی:بدون پیشوند)"
+
+#: duplicate-post-options.php:249
+msgid "Title prefix"
+msgstr "پیشوند عنوان"
+
+#: duplicate-post-options.php:309
+msgid "Select the taxonomies you don't want to be copied"
+msgstr "طبقه بندی هایی که نمیخواهید کپی شود را انتخاب کنید"
+
+#: duplicate-post-options.php:290
+msgid "Do not copy these taxonomies"
+msgstr "این طبقه بندی ها را کپی نکن"
+
+#: duplicate-post-options.php:284
+msgid "Comma-separated list of meta fields that must not be copied"
+msgstr "لیست فیلد های جدا شده با ویرگول که نباید کپی شود"
+
+#: duplicate-post-options.php:279
+msgid "Do not copy these fields"
+msgstr "این فیلد ها را کپی نکن"
+
+#. #-#-#-#-#  duplicate-post-code.pot (Duplicate Post 3.2.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: duplicate-post-options.php:46
+msgid "Duplicate Post"
+msgstr "تکثیر کننده پست"
+
+#: duplicate-post-options.php:46 duplicate-post-options.php:79
+msgid "Duplicate Post Options"
+msgstr "گزینه های تکثیر کننده پست"
+
+#: duplicate-post-options.php:92
+msgid "Translate"
+msgstr "ترجمه"
+
+#: duplicate-post-admin.php:653
+msgid "Donate"
+msgstr "کمک مالی"
+
+#: duplicate-post-admin.php:323
+msgid "Copy creation failed, could not find original:"
+msgstr "فیلد را کپی کن،نسخه اصلی یافت نشد:"
+
+#: duplicate-post-admin.php:284
+msgid "No post to duplicate has been supplied!"
+msgstr "هیچ پستی برای تکثیر کردن عرضه نشده است!"
+
+#: duplicate-post-options.php:259
+msgid "Title suffix"
+msgstr "پسوند عنوان"
+
+#: duplicate-post-admin.php:233
+msgid "Clone this item"
+msgstr "تکرار این مورد"
+
+#: duplicate-post-admin.php:234 duplicate-post-admin.php:687
+msgid "Clone"
+msgstr "تکرار"
+
+#: duplicate-post-admin.php:236 duplicate-post-admin.php:253
+#: duplicate-post-common.php:78 duplicate-post-common.php:81
+#: duplicate-post-common.php:116
+msgid "Copy to a new draft"
+msgstr "در یک پیش‌نویس تازه کپی کن"
+
+#: duplicate-post-admin.php:237
+msgid "New Draft"
+msgstr "پیش‌نویس تازه"
+
+#. Description of the plugin/theme
+msgid "Clone posts and pages."
+msgstr "تکرار نوشته‌ها و برگه‌ها."
+
+#: duplicate-post-options.php:359
+msgid "Post list"
+msgstr "فهرست نوشته‌ها"
+
+#: duplicate-post-options.php:355
+msgid "Show links in"
+msgstr "نمایش پیوند‌ها در"
+
+#: duplicate-post-options.php:329
+msgid "Warning: users will be able to copy all posts, even those of other users"
+msgstr "هشدار: همه اعضا قادر به کپی‌کردن همه نوشته‌ها و برگه‌ها هستند"
+
+#: duplicate-post-options.php:319
+msgid "Roles allowed to copy"
+msgstr "نقش‌های مجاز برای کپی"
+
+#: duplicate-post-options.php:264
+msgid "Suffix to be added after the title, e.g. \"(dup)\" (blank for no suffix)"
+msgstr "پسوند برای افزودن به انتهای عنوان، برای مثال «تکراری» (خالی برای بدون پسوند)"

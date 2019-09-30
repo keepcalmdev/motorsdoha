@@ -1,0 +1,22 @@
+2019-09-12T06:09:56+00:00 CRITICAL Uncaught Error: Class 'TRP_Settings' not found in /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php:103
+Stack trace:
+#0 /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php(54): TRP_Translate_Press->initialize_components()
+#1 /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php(35): TRP_Translate_Press->__construct()
+#2 /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/index.php(57): TRP_Translate_Press::get_trp_instance()
+#3 /www/qprcar01_517/public/wp-includes/class-wp-hook.php(286): trp_run_translatepress_hooks('')
+#4 /www/qprcar01_517/public/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#5 /www/qprcar01_517/public/wp-includes/plugin.php(465): WP_Hook->do_action(Array)
+#6 /www/qprcar01_517/public/wp-settings.php(394): do_action('plugins_loaded')
+#7 /www/qprcar01_517/public/wp-config.php(77): require_once('/www/qprcar01_5... in /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php on line 103
+
+2019-09-12T06:10:25+00:00 CRITICAL Uncaught Error: Class 'TRP_Settings' not found in /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php:103
+Stack trace:
+#0 /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php(54): TRP_Translate_Press->initialize_components()
+#1 /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php(35): TRP_Translate_Press->__construct()
+#2 /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/index.php(57): TRP_Translate_Press::get_trp_instance()
+#3 /www/qprcar01_517/public/wp-includes/class-wp-hook.php(286): trp_run_translatepress_hooks('')
+#4 /www/qprcar01_517/public/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#5 /www/qprcar01_517/public/wp-includes/plugin.php(465): WP_Hook->do_action(Array)
+#6 /www/qprcar01_517/public/wp-settings.php(394): do_action('plugins_loaded')
+#7 /www/qprcar01_517/public/wp-config.php(77): require_once('/www/qprcar01_5... in /www/qprcar01_517/public/wp-content/plugins/translatepress-multilingual/class-translate-press.php on line 103
+

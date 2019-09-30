@@ -1,0 +1,224 @@
+#advanced-sortables {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+#advanced-sortables #price_per_hour {
+    display: block;
+    width: 100%;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+}
+
+#advanced-sortables #rental_price_for_date_repitor {
+    width: 49%;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+}
+
+#advanced-sortables #discount_by_days_repitor {
+    width: 49%;
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
+    order: 3;
+}
+
+.rental-price-date-wrap .rental-price-date-list li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    border-top: 1px solid #ffffff;
+    padding: 10px 0;
+}
+
+.rental-price-date-wrap .rental-price-date-list li:first-child {
+    border-top: 0;
+}
+
+.rental-price-date-wrap .rental-price-date-list li:last-child {
+    padding-top: 10px;
+    border-top: 0;
+}
+
+.rental-price-date-wrap .rental-price-date-list li .repeat-number {
+    display: block;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.rental-price-date-wrap .rental-price-date-list li table {
+    margin: 0 10px;
+}
+
+.rental-price-date-wrap .rental-price-date-list li table tr:nth-child(1) td:last-child, .rental-price-date-wrap .rental-price-date-list li table tr:nth-child(2) td:last-child {
+    position: relative;
+}
+
+.rental-price-date-wrap .rental-price-date-list li table tr:nth-child(1) td:last-child:after, .rental-price-date-wrap .rental-price-date-list li table tr:nth-child(2) td:last-child:after {
+    content: '\f073';
+    display: block;
+    font-family: 'FontAwesome';
+    font-size: 14px;
+    color: #cccccc;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.rental-price-date-wrap .rental-price-date-list li .btn-wrap .remove-fields {
+    background: #ff3232;
+    border-color: #ff3232 #e50000 #cc0000;
+    box-shadow: 0 1px 0 #cc0000;
+    color: #fff;
+    text-decoration: none;
+}
+
+.rental-price-date-wrap .rental-price-date-list li .btn-wrap .remove-fields:hover, .rental-price-date-wrap .rental-price-date-list li .btn-wrap .remove-fields:focus {
+    background: #e50000;
+    border-color: #cc0000;
+    color: #fff;
+}
+
+.discount-by-days-wrap .discount-by-days-list li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    border-top: 1px solid #ffffff;
+    padding: 10px 0;
+}
+
+.discount-by-days-wrap .discount-by-days-list li:first-child {
+    border-top: 0;
+}
+
+.discount-by-days-wrap .discount-by-days-list li:last-child {
+    padding-top: 10px;
+    border-top: 0;
+}
+
+.discount-by-days-wrap .discount-by-days-list li .repeat-days-number {
+    display: block;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.discount-by-days-wrap .discount-by-days-list li table {
+    margin: 0 10px;
+}
+
+.discount-by-days-wrap .discount-by-days-list li .btn-wrap .remove-days-fields {
+    background: #ff3232;
+    border-color: #ff3232 #e50000 #cc0000;
+    box-shadow: 0 1px 0 #cc0000;
+    color: #fff;
+    text-decoration: none;
+}
+
+.discount-by-days-wrap .discount-by-days-list li .btn-wrap .remove-days-fields:hover, .discount-by-days-wrap .discount-by-days-list li .btn-wrap .remove-days-fields:focus {
+    background: #e50000;
+    border-color: #cc0000;
+    color: #fff;
+}
+
+.admin-rent-info-wrap {
+    display: block;
+}
+
+.stm-rent-nav-tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    height: auto;
+    margin: 20px 0 0;
+}
+
+.stm-rent-nav-tabs li {
+    display: block;
+    background-color: #f1f1f1;
+}
+
+.stm-rent-nav-tabs li:nth-child(2) a {
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}
+
+.stm-rent-nav-tabs li a {
+    padding: 10px 20px;
+    border-bottom: 2px solid #f3f3f3;
+    color: #184c4f;
+    font-weight: 600;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.stm-rent-nav-tabs li a.active {
+    border-bottom-color: #184c4f;
+}
+
+.stm-tabs-content {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding: 5px 0 0;
+}
+
+.stm-tabs-content .tab-pane {
+    display: none;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin-top: 0;
+}
+
+.stm-tabs-content .tab-pane.show {
+    display: block;
+}

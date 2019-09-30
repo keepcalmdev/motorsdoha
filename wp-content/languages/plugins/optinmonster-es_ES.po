@@ -1,0 +1,506 @@
+# Translation of Plugins - Popups by OptinMonster &#8211; Best WordPress Popup Plugin - Development (trunk) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Popups by OptinMonster &#8211; Best WordPress Popup Plugin - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-10-03 17:00:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Popups by OptinMonster &#8211; Best WordPress Popup Plugin - Development (trunk)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://thomasgriffin.io"
+msgstr "https://thomasgriffin.io"
+
+#. Author of the plugin/theme
+msgid "Thomas Griffin"
+msgstr "Thomas Griffin"
+
+#. Description of the plugin/theme
+msgid "OptinMonster API plugin to connect your WordPress site to your OptinMonster forms."
+msgstr "Plugin de la API de OptinMonster para conectar tu sitio WordPress a tus formularios OptinMonster."
+
+#. Plugin URI of the plugin/theme
+msgid "http://optinmonster.com"
+msgstr "http://optinmonster.com"
+
+#. Plugin Name of the plugin/theme
+msgid "OptinMonster API"
+msgstr "API de OptinMonster"
+
+#: optin-monster-wp-api.php:465
+msgid "Sorry, but your version of WordPress does not meet OptinMonster's required version of <strong>3.5.1</strong> to run properly. The plugin has been deactivated. <a href=\"%s\">Click here to return to the Dashboard</a>."
+msgstr "Lo sentimos, pero tu versión de WordPress no cumple con la versión requerida <strong>3.5.1</strong> de OptinMonster para ejecutarse correctamente. El plugin ha sido desactivado. <a href=\"%s\">Haz clic aquí para volver al escritorio</a>."
+
+#: OMAPI/Widget.php:190
+msgid "Not Enabled"
+msgstr "No Habilitado"
+
+#: OMAPI/Widget.php:174
+msgid "Optin"
+msgstr "Optin"
+
+#: OMAPI/Widget.php:169
+msgid "Title"
+msgstr "Título"
+
+#: OMAPI/Widget.php:52
+msgid "Place an OptinMonster optin into a widgetized area."
+msgstr "Coloque un optin de OptinMonster en un área de widgets."
+
+#: OMAPI/Validate.php:151
+msgid "The subscription to this OptinMonster account has expired. Please renew your subscription to use the OptinMonster API."
+msgstr "La suscripción a esta cuenta de OptinMonster ha caducado. Por favor renueva tu suscripción para utilizar la API de OptinMonster."
+
+#: OMAPI/Validate.php:149
+msgid "The subscription to this OptinMonsteraccount has been disabled, likely due to a refund or other administrator action. Please contact OptinMonster support to resolve this issue."
+msgstr "La suscripción a esta cuenta de OptinMonster ha sido desactivada, probablemente debido a un reembolso u otra acción del administrador. Por favor, contacta con el soporte de OptinMonster para resolver este problema."
+
+#: OMAPI/Validate.php:147
+msgid "There was an error verifying your OptinMonster API credentials. They are either missing or they are no longer valid. Please try updating your API credentials."
+msgstr "Hubo un error al verificar tus credenciales de la API de OptinMonster. No se encuentran o ya no son válidas. Por favor, intenta actualizar tus credenciales de la API."
+
+#: OMAPI/Type.php:88
+msgid "No Optins found in trash"
+msgstr "Optins no encontrados en la papelera"
+
+#: OMAPI/Type.php:87
+msgid "No Optins found"
+msgstr "Optins no encontrados"
+
+#: OMAPI/Type.php:86
+msgid "Search Optins"
+msgstr "Buscar optins"
+
+#: OMAPI/Type.php:85
+msgid "View Optin"
+msgstr "Ver optin"
+
+#: OMAPI/Type.php:83
+msgid "New Optin"
+msgstr "Nuevo optin"
+
+#: OMAPI/Type.php:82
+msgid "Edit Optin"
+msgstr "Editar Optin"
+
+#: OMAPI/Type.php:81
+msgid "Add New Optin"
+msgstr "Añadir nuevo Optin"
+
+#: OMAPI/Type.php:80
+msgid "Add New"
+msgstr "Añadir nuevo"
+
+#: OMAPI/Type.php:79
+msgctxt "post type singular name"
+msgid "Optin"
+msgstr "Optin"
+
+#: OMAPI/Type.php:78
+msgctxt "post type general name"
+msgid "Optins"
+msgstr "Optins"
+
+#: OMAPI/Save.php:330
+msgid "Your settings have been saved successfully."
+msgstr "Tus ajustes han sido guardados con éxito."
+
+#: OMAPI/Save.php:137
+msgid "You must provide a valid API Username and API Key to authenticate to OptinMonster."
+msgstr "Debes proporcionar un nombre de usuario y una clave de la API válidos para identificar OptinMonster."
+
+#: OMAPI/Refresh.php:147
+msgid "Your optins have been refreshed successfully."
+msgstr "Tus optins han sido actualizados con éxito."
+
+#: OMAPI/Menu.php:502
+msgid "Front Page, Archive and Search Pages"
+msgstr "Portada, archivo y búsqueda de páginas"
+
+#: OMAPI/Menu.php:472
+msgid "Select your MailPoet list..."
+msgstr "Selecciona tu lista de MailPoet..."
+
+#: OMAPI/Menu.php:448
+msgid "Show optin to only users (logged-in)"
+msgstr "Mostrar optin sólo a usuarios (registrados)"
+
+#: OMAPI/Menu.php:444
+msgid "Show optin to only visitors (not logged-in)"
+msgstr "Mostrar optin sólo a los visitantes (no registrado)"
+
+#: OMAPI/Menu.php:440
+msgid "Show optin to all visitors and users"
+msgstr "Mostrar optin a todos los visitantes y usuarios"
+
+#: OMAPI/Menu.php:417
+msgid "All successful leads for the optin will be added to this particular MailPoet list."
+msgstr "Todos los leads con éxito para el optin serán añadidos a esta lista de MailPoet en particular."
+
+#: OMAPI/Menu.php:417
+msgid "Add lead to this MailPoet list:"
+msgstr "Añadir lead a esta lista de MailPoet:"
+
+#: OMAPI/Menu.php:413
+msgid "If checked, successful optin leads will be saved to MailPoet."
+msgstr "Si está marcada, los leads del optin correctos se guardarán en MailPoet."
+
+#: OMAPI/Menu.php:413
+msgid "Save lead to MailPoet?"
+msgstr "¿Guardar lead en MailPoet?"
+
+#: OMAPI/Menu.php:409
+msgid "e.g. [gforms id=&quot;1&quot;], [gforms id=&quot;2&quot;]"
+msgstr "por ejemplo, [gforms id=&quot;1&quot;], [gforms id=&quot;2&quot;]"
+
+#: OMAPI/Menu.php:409
+msgid "In order to be executed properly, please list any shortcodes here that also appear in your optin in a comma-separated list. <a href=\"%s\" title=\"Click here to learn more about how this work\" target=\"_blank\">Click here to learn more about how this works.</a>"
+msgstr "Para que se ejecute correctamente, por favor, anota aquí cualquier shortcode que aparezca también en tu optin en una lista separado por comas. <a href=\"%s\" title=\"Haz clic aquí para obtener más información sobre cómo funciona esto\" target=\"_blank\">Haz clic aquí para obtener más información sobre cómo funciona.</a>"
+
+#: OMAPI/Menu.php:409
+msgid "List shortcodes in optin:"
+msgstr "Lista de shortcodes en optin:"
+
+#: OMAPI/Menu.php:405
+msgid "Optins support shortcodes. If you have added shortcodes to this optin campaign, check this option so they can be executed."
+msgstr "Optins son compatibles con los shortcodes. Si has añadido shortcodes a esta campaña de optin, marque esta opción para ellos puedan ejecutarlos."
+
+#: OMAPI/Menu.php:405
+msgid "Parse content for shortcodes?"
+msgstr "¿Analizar el contenido para los shortcodes?"
+
+#: OMAPI/Menu.php:401
+msgid "Load optin on post types and archives:"
+msgstr "Cargar optin en los tipos de entradas y archivos:"
+
+#: OMAPI/Menu.php:356
+msgid "Loads the optin only on the selected post tags."
+msgstr "Carga el optin sólo en las etiquetas de entradas seleccionadas."
+
+#: OMAPI/Menu.php:356
+msgid "Load optin on post tags:"
+msgstr "Cargar optin en las etiquetas de entradas:"
+
+#: OMAPI/Menu.php:356
+msgid "Type to search and select post tag(s)..."
+msgstr "Escriba para buscar y seleccionar la etiqueta(s) de la entrada..."
+
+#: OMAPI/Menu.php:343
+msgid "Load optin on post categories:"
+msgstr "Cargar optin en las categorias de entradas:"
+
+#: OMAPI/Menu.php:334
+msgid "Loads the optin only on the selected posts and/or pages."
+msgstr "Carga el optin sólo en las entradas y/o páginas seleccionadas."
+
+#: OMAPI/Menu.php:334
+msgid "Load optin exclusively on:"
+msgstr "Cargar Optin exclusivamente por la carga:"
+
+#: OMAPI/Menu.php:329
+msgid "Never loads the optin on the selected posts and/or pages."
+msgstr "Nunca cargar el optin en las entradas y/o páginas seleccionadas."
+
+#: OMAPI/Menu.php:329
+msgid "Never load optin on:"
+msgstr "Nunca cargar optin en:"
+
+#: OMAPI/Menu.php:329 OMAPI/Menu.php:334
+msgid "Type to search and select post(s)..."
+msgstr "Escriba para buscar y seleccionar entradas(s)..."
+
+#: OMAPI/Menu.php:324
+msgid "Determines who should be able to view this optin. Want to hide for newsletter subscribers? <a href=\"%s\" target=\"_blank\">Click here to learn how.</a>"
+msgstr "Determina que debe ser capaz de ver este optin. ¿Quiere ocultarlo para los suscriptores del boletín de correo electrónico? <a href=\"%s\" target=\"_blank\">Haz clic aquí para aprender cómo.</a>"
+
+#: OMAPI/Menu.php:324
+msgid "Who should see this optin?"
+msgstr "¿Quién debería ver este optin?"
+
+#: OMAPI/Menu.php:320
+msgid "Automatically adds the optin after each post. You can turn this off and add it manually to your posts by <a href=\"%s\" target=\"_blank\">clicking here and viewing the tutorial.</a>"
+msgstr "Agrega automáticamente el optin después de cada entrada. Puede desactivar esto y añadirla manualmente a tus entradas <a href=\"%s\" target=\"_blank\">haciendo clic aquí y leyendo el tutorial.</a>"
+
+#: OMAPI/Menu.php:320
+msgid "Automatically add after post?"
+msgstr "¿Añadir automáticamente después de la entrada?"
+
+#: OMAPI/Menu.php:316
+msgid "If checked, the optin code will be loaded on all pages of your site."
+msgstr "Si está marcada, se cargará el código optin en todas las páginas de su sitio."
+
+#: OMAPI/Menu.php:316
+msgid "Load optin globally?"
+msgstr "¿Cargar optin globalmente?"
+
+#: OMAPI/Menu.php:312
+msgid "The optin will not be displayed on this site unless this setting is checked."
+msgstr "El optin no se mostrará en este sitio a menos que ajuste esté marcado."
+
+#: OMAPI/Menu.php:312
+msgid "Enable optin on site?"
+msgstr "¿Habilitar el optin en el sitio?"
+
+#: OMAPI/Menu.php:304
+msgid "If checked, local cookies will be cleared for all optins after optin settings are adjusted and saved."
+msgstr "Si está marcada, las cookies locales se borrarán para todos los ajustes de optins ajustados y guardados."
+
+#: OMAPI/Menu.php:304
+msgid "Clear local cookies on optin update?"
+msgstr "¿Borrar cookies locales en la actualización del optin?"
+
+#: OMAPI/Menu.php:296
+msgid "Enter your API Key here..."
+msgstr "Ingrese su clave de API aquí"
+
+#: OMAPI/Menu.php:296
+msgid "The API Key found in your OptinMonster Settings area."
+msgstr "La clave de la API se encuentra en tu área de ajustes de OptinMonster."
+
+#: OMAPI/Menu.php:296
+msgid "API Key"
+msgstr "API Key"
+
+#: OMAPI/Menu.php:292
+msgid "Enter your API Username here..."
+msgstr "Ingrese su nombre de usuario."
+
+#: OMAPI/Menu.php:292
+msgid "The API Username found in your OptinMonster Settings area."
+msgstr "El nombre de usuario de la API se encuentra en el área de ajustes de OptinMonster."
+
+#: OMAPI/Menu.php:292
+msgid "API Username"
+msgstr "Nombre de usuario de API"
+
+#: OMAPI/Menu.php:264
+msgid "Migration"
+msgstr "Migración"
+
+#: OMAPI/Menu.php:259
+msgid "Settings"
+msgstr "Ajustes"
+
+#: OMAPI/Menu.php:255
+msgid "API Credentials"
+msgstr "Credenciales para la API"
+
+#: OMAPI/Menu.php:251 OMAPI/Type.php:84 OMAPI/Type.php:90
+msgid "Optins"
+msgstr "Optins"
+
+#: OMAPI/Menu.php:208
+msgid "Create New Optin"
+msgstr "Crear nuevo Optin"
+
+#: OMAPI/Menu.php:208
+msgid "v%s"
+msgstr "v%s"
+
+#: OMAPI/Menu.php:192
+msgid "Thank you for using <a href=\"%1$s\" target=\"_blank\">OptinMonster</a>!"
+msgstr "Gracias por usar <a href=\"%1$s\" target=\"_blank\">OptinMonster</a>!"
+
+#: OMAPI/Menu.php:172
+msgid "Are you sure you want to reset these settings?"
+msgstr "¿Estas seguro que quieres restablecer los ajustes predeterminados?"
+
+#: OMAPI/Menu.php:93 OMAPI/Menu.php:94 OMAPI/Widget.php:66
+msgid "OptinMonster"
+msgstr "OptinMonster"
+
+#: OMAPI/Content.php:363
+msgid "If your optin forms, site information or integrations did not migrate properly you can reset the migration and try again. Please note that this can cause some data duplication in your account."
+msgstr "Si tus formularios optin, información del sitio o integraciones no migran correctamente, puedes restablecer la migración e intentarlo de nuevo. Por favor, ten en cuenta qe esto puede causar la duplicación de algunos datos en tu cuenta."
+
+#: OMAPI/Content.php:361 OMAPI/Content.php:365
+msgid "Reset Migration"
+msgstr "Restablecer la migración"
+
+#: OMAPI/Content.php:348
+msgid "Optin Forms"
+msgstr "Formularios optin"
+
+#: OMAPI/Content.php:346
+msgid "%s has been registered."
+msgstr "%s se ha registrado."
+
+#: OMAPI/Content.php:345
+msgid "Site Information"
+msgstr "Información del sitio"
+
+#: OMAPI/Content.php:337
+msgid "Migration Errors"
+msgstr "Errores de migración"
+
+#: OMAPI/Content.php:334
+msgid "Migration Results"
+msgstr "Resultados de la migración"
+
+#: OMAPI/Content.php:329
+msgid "Migrate"
+msgstr "Migrar"
+
+#: OMAPI/Content.php:327
+msgid "You can migrate all of your existing OptinMonster data (optin forms, settings & integrations) to the new hosted platform. Just click the \"Migrate\" button below."
+msgstr "Puedes migrar todos los datos existentes de OptinMonster (formularios, ajustes e integraciones) a la nueva plataforma de alojamiento. Tan solo haz clic en el botón \"migrar\" a continuación."
+
+#: OMAPI/Content.php:316
+msgid "Delete this optin locally"
+msgstr "Eliminar este optin localmente"
+
+#: OMAPI/Content.php:313
+msgid "Edit the output settings for this optin"
+msgstr "Editar los ajustes de salida para este optin"
+
+#: OMAPI/Content.php:312
+msgid "Edit this optin on the OptinMonster App"
+msgstr "Editar este optin en el App OptinMonster"
+
+#: OMAPI/Content.php:310
+msgid "Go live with this optin"
+msgstr "Salir en vivo con este optin"
+
+#: OMAPI/Content.php:310
+msgid "Disable this optin"
+msgstr "Desactivar este optin"
+
+#: OMAPI/Content.php:309
+msgid "Go Live"
+msgstr "Go Live"
+
+#: OMAPI/Content.php:309
+msgid "Disable"
+msgstr "Desactivar"
+
+#: OMAPI/Content.php:307
+msgid "Enable test mode for this optin"
+msgstr "Activar el modo de prueba para este optin"
+
+#: OMAPI/Content.php:307
+msgid "Disable test mode for this optin"
+msgstr "Desactivar el modo de prueba para este optin"
+
+#: OMAPI/Content.php:306
+msgid "Enable Test Mode"
+msgstr "Activar modo de prueba"
+
+#: OMAPI/Content.php:306
+msgid "Disable Test Mode"
+msgstr "Desactivar el modo de prueba"
+
+#: OMAPI/Content.php:287
+msgid "No optin could be retrieved for the ID specified."
+msgstr "No se pudieron recuperar optins para el ID especificado."
+
+#: OMAPI/Content.php:230
+msgid "No optins could be retrieved for this site."
+msgstr "No se pudieron recuperar optins para este sitio."
+
+#: OMAPI/Content.php:222
+msgid "Test Mode"
+msgstr "Modo de prueba"
+
+#: OMAPI/Content.php:220
+msgid "Manage output settings for %s"
+msgstr "Gestionar los ajustes de salida para %s"
+
+#: OMAPI/Content.php:215
+msgid "Disabled"
+msgstr "Inactivo"
+
+#: OMAPI/Content.php:215
+msgid "Live"
+msgstr "En vivo"
+
+#: OMAPI/Content.php:174
+msgid "Need an OptinMonster account? <a href=\"%s\" title=\"Click here to view OptinMonster plans and pricing\" target=\"_blank\">Click here to view OptinMonster plans and pricing.</a>"
+msgstr "¿Necesita una cuenta de OptinMonster? <a href=\"%s\" title=\"Haga clic aquí para ver los planes y precios de OptinMonster\" target=\"_blank\">Haga clic aquí para ver los planes y precios de OptinMonster.</a>"
+
+#: OMAPI/Content.php:173
+msgid "You must authenticate your OptinMonster account before you can use OptinMonster on this site."
+msgstr "Debes identificar tu cuenta de OptinMonster antes de poder utilizar OptinMonster en este sitio."
+
+#: OMAPI/Content.php:142
+msgid "Clear Local Cookies"
+msgstr "Borrar las cookies locales"
+
+#: OMAPI/Content.php:141
+msgid "Refresh Optins"
+msgstr "Actualizar optins"
+
+#: OMAPI/Content.php:134 OMAPI/Content.php:154
+msgid "Save Settings"
+msgstr "Guardar los ajustes"
+
+#: OMAPI/Content.php:126
+msgid "Connect to OptinMonster"
+msgstr "Conectarse a OptinMonster"
+
+#: OMAPI/Content.php:103
+msgid "Back to Overview"
+msgstr "Regresar a visión general"
+
+#: OMAPI/Content.php:103
+msgid "Back to optin overview"
+msgstr "Volver al resumen de optan"
+
+#: OMAPI/Content.php:102
+msgid "Output Settings for %s"
+msgstr "Ajustes de salida para %s"
+
+#: OMAPI/Api.php:162
+msgid "The API returned a <strong>%s</strong> response with this message: <strong>%s</strong>"
+msgstr "La API devolvió una respuesta <strong>%s</strong> con este mensaje: <strong>%s</strong>"
+
+#: OMAPI/Actions.php:141
+msgid "Something happened while resetting your data. Please try again."
+msgstr "Algo ocurrió al restablecer tus datos. Por favor, vuelve a intentarlo."
+
+#: OMAPI/Actions.php:139
+msgid "Migration data has been reset."
+msgstr "Los datos de la migración ha sido restablecida."
+
+#: OMAPI/Actions.php:133
+msgid "Something happened while migrating your data. Please try again."
+msgstr "Algo ocurrió durante la migración de tus datos. Por favor, vuelve a intentarlo."
+
+#: OMAPI/Actions.php:131
+msgid "Your data has been migrated."
+msgstr "Tus datos han sido migrados."
+
+#: OMAPI/Actions.php:125
+msgid "There was an error clearing the local cookies. Please try again."
+msgstr "Hubo un error al limpiar las cookies locales. Por favor, vuelve a intentarlo."
+
+#: OMAPI/Actions.php:123
+msgid "The local cookies have been cleared successfully."
+msgstr "Las cookies locales han sido limpiadas con éxito."
+
+#: OMAPI/Actions.php:117
+msgid "There was an error deleting the local optin. Please try again."
+msgstr "Hubo un error al eliminar el optin local. Por favor, vuelve a intentarlo."
+
+#: OMAPI/Actions.php:115
+msgid "The local optin was deleted successfully."
+msgstr "El optin local fue eliminado con éxito."
+
+#: OMAPI/Actions.php:109
+msgid "There was an error updating test mode for the optin. Please try again."
+msgstr "Hubo un error al actualizar el modo de prueba para el optin. Por favor, vuelve a intentarlo."
+
+#: OMAPI/Actions.php:107
+msgid "You have updated test mode for the optin successfully."
+msgstr "Has actualizado el modo de prueba para el optin con éxito."
+
+#: OMAPI/Actions.php:101
+msgid "There was an error updating the optin status. Please try again."
+msgstr "Hubo un error actualizando el estado del optin. Por favor, vuelve a intentarlo."
+
+#: OMAPI/Actions.php:99
+msgid "The optin status was updated successfully. You can configure more specific loading requirements by <a href=\"%s\" title=\"Click here to edit the output settings for the updated optin.\">editing the output settings</a> for the optin."
+msgstr "El estado del optin se actualizó con éxito. Puedes configurar requisitos de carga más específicos mediante <a href=\"%s\" title=\"Haz clic aquí para editar los ajustes de salida para los optin actualizados.\">editando ajustes de salida</a> para el optin."
