@@ -10,13 +10,13 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 //     echo 'true';
 // }
 
-if(strpos($actual_link , ''.get_bloginfo('url').'/ar/qprlogin/?action=logout') !== false){
+if(strpos($actual_link , ''.get_bloginfo('url').'qprlogin/?action=logout') !== false){
 
 
 
 
 
-   header('Location: '.get_bloginfo('url').'/qprlogin/?action=logout&_wpnonce='.wp_create_nonce( 'log-out').'&redirect_to='.get_bloginfo('url').'/ar' , true, 301); 
+   header('Location: '.str_replace('/ar/', '/', get_bloginfo('url')).'/qprlogin/?action=logout&_wpnonce='.wp_create_nonce( 'log-out').'&redirect_to='.get_bloginfo('url').'' , true, 301); 
    exit();
 
 }
