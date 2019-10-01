@@ -1,5 +1,25 @@
 <?php 
 
+
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  //echo $actual_link;
+
+// $a = 'How are you?';
+
+// if (strpos($a, 'are') !== false) {
+//     echo 'true';
+// }
+
+if(strpos($actual_link , ''.get_bloginfo('url').'/ar/qprlogin/?action=logout') !== false){
+
+
+
+
+
+   header('Location: '.get_bloginfo('url').'/qprlogin/?action=logout&_wpnonce='.wp_create_nonce( 'log-out').'&redirect_to='.get_bloginfo('url').'/ar' , true, 301); 
+   exit();
+
+}
 if (is_page('add-a-car-page')) {
     if (!is_user_logged_in()) {
         wp_redirect(get_bloginfo('url').'/login-register');

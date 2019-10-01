@@ -1,15 +1,16 @@
 <?php
 
 $user_fields = stm_get_user_custom_fields(get_the_author_id());
-
-
-
 get_template_part('partials/single-car/car', 'buttons');
+
+ if(!empty($user_fields['phone'])){  
   ?>
 <div class="stm-car_dealer-buttons heading-font">
-    <a href="tel:<?php echo esc_attr($user_fields['phone']); ?>">Contact Whatsapp </a>
+    <a href="https://wa.me/<?php echo esc_attr($user_fields['phone']); ?>">Contact Whatsapp <i class="fa fa-whatsapp" aria-hidden="true"></i>
+ </a>
 </div>
   <?php
+ }
 $data = apply_filters( 'stm_single_car_data', stm_get_single_car_listings() );
 $post_id = get_the_ID();
 $vin_num = get_post_meta(get_the_id(), 'vin_number', true);
