@@ -528,8 +528,8 @@ function validNewSelectedOpt($arr, $param, $value, $type = null)
 					<th scope="row">Example Ad if empty Ad Space</th>
 					<td>
 						<fieldset>
-							<label title="no"><input type="radio" <?php if(get_option('bsa_pro_plugin_'.'example_ad') == 'no') { echo 'checked="checked"'; } ?> value="no" name="example_ad"><strong>no</strong></label><br>
-							<label title="yes"><input type="radio" <?php if(get_option('bsa_pro_plugin_'.'example_ad') == 'yes') { echo 'checked="checked"'; } ?> value="yes" name="example_ad"><strong>yes</strong></label>
+							<label title="no"><input type="radio" <?php if(get_site_option('bsa_pro_plugin_'.'example_ad') == 'no') { echo 'checked="checked"'; } ?> value="no" name="example_ad"><strong>no</strong></label><br>
+							<label title="yes"><input type="radio" <?php if(get_site_option('bsa_pro_plugin_'.'example_ad') == 'yes') { echo 'checked="checked"'; } ?> value="yes" name="example_ad"><strong>yes</strong></label>
 						</fieldset>
 					</td>
 				</tr>

@@ -1004,12 +1004,7 @@ class BSA_PRO_Model {
 					ORDER BY id DESC LIMIT {$limit}";
 		} else { // ADMIN - MARKETING AGENCY
 			$sql = "SELECT * FROM {$table_name}
-					WHERE 	(ad_model = 'cpc' AND ad_limit > 0 AND paid = 1 AND status = 'active') AND
-							space_id NOT IN ({$this->getUserSpaces()}) OR
-							(ad_model = 'cpm' AND ad_limit > 0 AND paid = 1 AND status = 'active') AND
-							space_id NOT IN ({$this->getUserSpaces()}) OR
-							(ad_model = 'cpd' AND ad_limit >= {$currently_time} AND paid = 1 AND status = 'active') AND
-							space_id NOT IN ({$this->getUserSpaces()})
+					WHERE 	paid = 1 AND status = 'active'
 					ORDER BY id DESC LIMIT {$limit}";
 		}
 		$results = $this->wpdb->get_results($sql, ARRAY_A);
@@ -1017,7 +1012,7 @@ class BSA_PRO_Model {
 		return $results;
 	}
 
-	public function getActiveAds($id, $limit = 25, $list_type = null, $skip_ads = null, $show_ads = null)
+	public function getActiveAds($id, $limit = 96, $list_type = null, $skip_ads = null, $show_ads = null)
 	{
 		$table_name 		= $this->getTableName('ads');
 		$currently_time 	= time();
@@ -2509,41 +2504,44 @@ class BSA_PRO_Model {
 	public function doCronTasks()
 	{
 		if ( (wp_next_scheduled( 'bsa_cron_jobs' ) > time() + 10 * 60) === false ) {
-			wp_schedule_single_event( (ceil(time() / 600 ) * 600 ) + 5, 'bsa_cron_jobs' );
-		}
-		$tasks = $this->getCronTasks('ready_to_perform');
 
-		if ( is_array($tasks) ) {
-			if ( count($tasks) ) {
-				foreach ( $tasks as $task ) {
-					$ad = $this->getAd($task['item_id']);
-					if ( $task['item_type'] == 'ad' and $ad['paid'] != 0 or $task['item_type'] != 'ad' ) { // check if ad has been paid or space
-						$table_name = (($task['item_type'] == 'ad') ? 'ads' : 'spaces');
-						$this->wpdb->update(
-								$this->getTableName($table_name),
-								array(
-										'status' => (($task['action_type'] == 'active') ? 'active' : (($task['item_type'] == 'ad') ? 'blocked' : 'inactive'))
-								),
-								array('id' => $task['item_id'])
-						);
-						if ( $task['when_repeat'] > 0 && $task['when_repeat'] <= 30 ) { // if task run few times
+			wp_schedule_single_event( (ceil(time() / 600 ) * 600 ) + 5, 'bsa_cron_jobs' );
+			$tasks = $this->getCronTasks('ready_to_perform');
+
+			if ( is_array($tasks) ) {
+				if ( count($tasks) ) {
+					foreach ( $tasks as $task ) {
+						$ad = $this->getAd($task['item_id']);
+						if ( $task['item_type'] == 'ad' and $ad['paid'] != 0 or $task['item_type'] != 'ad' ) { // check if ad has been paid or space
+							$table_name = (($task['item_type'] == 'ad') ? 'ads' : 'spaces');
 							$this->wpdb->update(
-									$this->getTableName('cron'),
+									$this->getTableName($table_name),
 									array(
-											'start_time' => ($task['start_time'] + ( (($task['when_repeat'] > 1) ? $task['when_repeat'] : 1) * 24 * 60 * 60 ))
+											'status' => (($task['action_type'] == 'active') ? 'active' : (($task['item_type'] == 'ad') ? 'blocked' : 'inactive'))
 									),
-									array('id' => $task['id'])
+									array('id' => $task['item_id'])
 							);
-						} else { // if task run only once
-							$this->wpdb->update(
-									$this->getTableName('cron'),
-									array(
-											'status' => 'done'
-									),
-									array('id' => $task['id'])
-							);
+							if ( $task['when_repeat'] > 0 && $task['when_repeat'] <= 30 ) { // if task run few times
+								$this->wpdb->update(
+										$this->getTableName('cron'),
+										array(
+												'start_time' => ($task['start_time'] + ( (($task['when_repeat'] > 1) ? $task['when_repeat'] : 1) * 24 * 60 * 60 ))
+										),
+										array('id' => $task['id'])
+								);
+							} else { // if task run only once
+								$this->wpdb->update(
+										$this->getTableName('cron'),
+										array(
+												'status' => 'done'
+										),
+										array('id' => $task['id'])
+								);
+							}
 						}
 					}
+				} else {
+					return null;
 				}
 			} else {
 				return null;
@@ -2694,7 +2692,8 @@ class BSA_PRO_Model {
 		$time = time() - ( $days * 24 * 60 * 60 );
 		$toTime = time() - ( ($days - 7) * 24 * 60 * 60 );
 		$table_name = $this->getTableName('stats');
-		$sql = "SELECT * FROM {$table_name} WHERE ad_id = {$id} AND action_type = 'click' AND action_time >= {$time} AND action_time < {$toTime} ORDER BY `id` DESC";
+		$id = ($id > 0) ? $id : 0;
+		$sql = "SELECT `id`, `space_id`, `ad_id`, `action_type`, `action_time`, `user_ip`, `status`, `browser`, `custom` FROM {$table_name} WHERE ad_id = {$id} AND action_type = 'click' AND action_time >= {$time} AND action_time < {$toTime} ORDER BY `id` DESC";
 
 		return $this->wpdb->get_results($sql, ARRAY_A);
 	}
@@ -2705,7 +2704,8 @@ class BSA_PRO_Model {
 		$time = time() - ( $days * 24 * 60 * 60 );
 		$toTime = time();
 		$table_name = $this->getTableName('stats');
-		$sql = "SELECT * FROM {$table_name} WHERE ad_id = {$id} AND action_time >= {$time} AND action_time < {$toTime} AND status = 'correct'";
+		$id = ($id > 0) ? $id : 0;
+		$sql = "SELECT `id`, `space_id`, `ad_id`, `action_type`, `action_time`, `user_ip`, `status`, `browser`, `custom` FROM {$table_name} WHERE ad_id = {$id} AND action_time >= {$time} AND action_time < {$toTime} AND status = 'correct'";
 		$results = $this->wpdb->get_results($sql, ARRAY_A);
 
 		if ( isset($results) ) {

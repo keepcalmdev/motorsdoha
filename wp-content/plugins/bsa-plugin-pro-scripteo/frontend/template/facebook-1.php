@@ -90,7 +90,7 @@ if ( isset($_POST['bsa_get_required_inputs']) ) {
 				if ( isset($type) && $type == 'agency' ) {
 					echo '<a class="bsaProItem__url"'.(isset($rel) ? $rel : null).' href="'.$agency_form.( (strpos($agency_form, '?')) ? '&' : '?' ).'bsa_pro_id='.$ad['id'].'&bsa_pro_url=1" '.(isset($link) && $link == 'same' ? '' : 'target="_blank"').'>';
 				} else {
-					echo '<a class="bsaProItem__url"'.(isset($rel) ? $rel : null).' href="'.get_site_url().( (strpos(get_site_url(), '?')) ? '&' : '?' ).'bsa_pro_id='.$ad['id'].'&bsa_pro_url=1" '.(isset($link) && $link == 'same' ? '' : 'target="_blank"').'>';
+					echo '<a class="bsaProItem__url"'.(isset($rel) ? $rel : null).' href="'.$form_url.( (strpos($form_url, '?')) ? '&' : '?' ).'bsa_pro_id='.$ad['id'].'&bsa_pro_url=1" '.(isset($link) && $link == 'same' ? '' : 'target="_blank"').'>';
 				}
 			}
 

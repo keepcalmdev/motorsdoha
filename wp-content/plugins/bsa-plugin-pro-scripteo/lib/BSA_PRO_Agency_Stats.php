@@ -116,7 +116,7 @@ echo '<span class="bsaStatsClose"></span>
 			bsaListDirect.addClass("animated zoomOut");
 			bsaLoader.fadeIn(400);
 			$.post("<?php echo admin_url("admin-ajax.php") ?>", {action:"bsa_stats_clicks_callback",ad_id:bsaStatsWrapper.attr("data-ad-id"),days:bsaStatsWrapper.attr("data-days")}, function(result) {
-				if ( result != 0 ) {
+				if ( result !== 0 ) {
 					bsaHeaderClicks.fadeIn();
 					bsaListDirect.html(result).removeClass("zoomOut").addClass("animated zoomIn");
 				} else {

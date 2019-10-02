@@ -40,9 +40,9 @@ if ( isset($_GET['space_id']) && $_GET['space_id'] != NULL && $_GET['space_id'] 
 
 $getActiveAds = $model->getActiveAds($space_id, bsa_space($space_id, 'max_items'), 'admin');
 $getPendingAds = $model->getPendingAds('pending_ads', $space_id);
-$getNotPaidAds = $model->getNotPaidAds($space_id);
-$getBlockedAds = $model->getBlockedAds($space_id);
-$getArchiveAds = $model->getArchiveAds($space_id);
+$getNotPaidAds = $model->getNotPaidAds($space_id, 96);
+$getBlockedAds = $model->getBlockedAds($space_id, 96);
+$getArchiveAds = $model->getArchiveAds($space_id, 96);
 ?>
 
 <div class="bsaActionNotice bsaSortableNotice" style="display:none">

@@ -1,0 +1,148 @@
+v1.9.2 - (08/02/2019)
+- improved: added height parameter for iframe option
+- improved: create_function used for older versions only
+
+- - - - - - -
+
+v1.9.11 - (30/08/2018)
+- improved: simple changes in the admin panel
+
+- - - - - - -
+
+v1.9.1 - (07/06/2018)
+- improved: ad preview section
+
+- - - - - - -
+
+v1.9 - (08/03/2018)
+- improved: image generator (cache and static images)
+- added: option to use full url and external images instead of upload module
+
+- - - - - - -
+
+v1.8.4 - (07/02/2018)
+- improved: parser plugin update
+
+- - - - - - -
+
+v1.8.33 - (15/12/2017)
+- fixed: ad space cache
+
+- - - - - - -
+
+v1.8.32 - (20/06/2017)
+- improved: ad space status fixes
+- improved: minor admin panel improvements
+
+- - - - - - -
+
+v 1.8.31 - (12/04/2017)
+- improved: admin panel ui
+- improved: random option in the ad space settings
+
+- - - - - - -
+
+v 1.8.3 - (03/11/2016)
+- added: new "ad name" field (listing ads)
+- added: option to show optional field in the order form
+
+- - - - - - -
+
+v 1.8.24 - (27/05/2016)
+- improved: iframe option
+
+- - - - - - -
+
+v 1.8.22 - (17/04/2016)
+- improved: minor admin panel changes
+
+- - - - - - -
+
+
+v 1.8.21 - (16/12/2015)
+- improved: new ad space module
+
+- - - - - - -
+
+v 1.8.2 - (28/11/2015)
+- improved: decrease display limit
+
+- - - - - - -
+
+v 1.8.1 - (16/11/2015)
+- improved: billing models in admin panel
+- improved: user privileges
+
+- - - - - - -
+
+v 1.8.0 - (28/10/2015)
+- improved: option to use 100% discount for contracts
+- added: CAPPING option - option to show ads only X times per user / session
+- added: option to show Ad Space after X seconds
+- added: option to show Close Button after X seconds
+- added: option to hide Ad Spaces after X seconds
+- added: option to add unavailable dates of Ad Space in the Calendar
+
+- - - - - - -
+
+v 1.7.0 - (02/10/2015)
+- added: option to show ads via iframe for non-wordpress sites
+- added: drag & drop option to easy setup of the order of ads
+- improved: ads pro api
+- improved: minor changes in admin panel
+
+- - - - - - -
+
+v 1.1.0 - (29/08/2015)
+- improved: ad space settings (ui changed)
+
+- - - - - - -
+
+v 1.0.6 - (20/06/2015)
+- improvement: pending ads list
+- improvement: links in ads
+
+- - - - - - -
+
+v 1.0.57 - (15/05/2015)
+- added: option to show / hide an ad space
+
+- - - - - - -
+
+v 1.0.5 - (12/04/2015)
+- added: option to disable auto-crop function
+
+- - - - - - -
+
+v 1.0.42 - (12/04/2015)
+- improvement: agency api
+- added: private use of marketing agency
+
+- - - - - - -
+
+v 1.0.4 - (05/04/2015)
+- added: 4 new display ways (layer, background, exit popup, link)
+
+- - - - - - -
+
+v 1.0.3 - (17/03/2015)
+- improvement: form to adding a new site
+
+- - - - - - -
+
+v 1.0.2 - (12/03/2015)
+- improvement: thumbnails
+- added: 3 new paper ad templates
+- added: corner display type
+- improvement: agency ordering form
+
+- - - - - - -
+
+v 1.0.1
+- improvement: agency ordering form
+- improvement: agency dashboard in admin panel
+
+- - - - - - -
+
+v 1.0.0
+- first release

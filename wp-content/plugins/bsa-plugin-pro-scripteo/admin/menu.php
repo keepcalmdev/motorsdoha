@@ -608,20 +608,21 @@ function bsaCreateAdTemplate($width = null, $height = null)
 	background-repeat: no-repeat;
 }
 /* -- END -- TEMPLATE */';
-			file_put_contents(plugin_dir_path( __DIR__ ) . 'frontend/css/block-'.$ad_width.'--'.$ad_height.'.css', $css_styles);
+			if ( $width == null && $height == null &&
+				 is_writable(plugin_dir_path( __DIR__ ) . 'frontend/css/') && is_writable(plugin_dir_path( __DIR__ ) . 'frontend/template/') ) {
 
-			$template_code 			= file_get_contents(plugin_dir_path( __DIR__ ) . 'frontend/template/block-300--250.php');
-			$template_overwrite 	= str_replace('300', 11111, str_replace('250', 22222, $template_code));
-			$template_php 			= str_replace(11111, $ad_width, str_replace(22222, $ad_height, $template_overwrite));
-			file_put_contents(plugin_dir_path( __DIR__ ) . 'frontend/template/block-'.$ad_width.'--'.$ad_height.'.php', $template_php);
+				file_put_contents(plugin_dir_path( __DIR__ ) . 'frontend/css/block-'.$ad_width.'--'.$ad_height.'.css', $css_styles);
 
-			$custom_templates = get_option('bsa_pro_plugin_custom_templates');
-			$exists = array_search($ad_width.'--'.$ad_height, explode(',', $custom_templates));
-			if ($exists === false) {
-				update_option('bsa_pro_plugin_custom_templates', $custom_templates.','.$ad_width.'--'.$ad_height);
-			}
+				$template_code 			= file_get_contents(plugin_dir_path( __DIR__ ) . 'frontend/template/block-300--250.php');
+				$template_overwrite 	= str_replace('300', 11111, str_replace('250', 22222, $template_code));
+				$template_php 			= str_replace(11111, $ad_width, str_replace(22222, $ad_height, $template_overwrite));
+				file_put_contents(plugin_dir_path( __DIR__ ) . 'frontend/template/block-'.$ad_width.'--'.$ad_height.'.php', $template_php);
 
-			if ( $width == null && $height == null && file_exists(plugin_dir_path( __DIR__ ) . 'frontend/css/block-'.$ad_width.'--'.$ad_height.'.css') ) {
+				$custom_templates = get_option('bsa_pro_plugin_custom_templates');
+				$exists = array_search($ad_width.'--'.$ad_height, explode(',', $custom_templates));
+				if ($exists === false) {
+					update_option('bsa_pro_plugin_custom_templates', $custom_templates.','.$ad_width.'--'.$ad_height);
+				}
 
 				// re-generate css
 				bsa_pro_generate_css( (get_option('bsa_pro_plugin_rtl_support') == 'yes' ? true : null) );
@@ -801,7 +802,7 @@ function bsaUpdateSettings()
 		update_option($opt.'agency_minimum_withdrawal', $_POST['agency_minimum_withdrawal']);
 		// thumbnail settings
 		update_option($opt.'carousel_script', $_POST['carousel_script']);
-		update_option($opt.'example_ad', $_POST['example_ad']);
+		update_site_option($opt.'example_ad', $_POST['example_ad']);
 		update_option($opt.'thumb_size', $_POST['thumb_size']);
 		update_option($opt.'thumb_w', $_POST['thumb_w']);
 		update_option($opt.'thumb_h', $_POST['thumb_h']);

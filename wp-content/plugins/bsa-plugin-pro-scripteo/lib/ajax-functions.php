@@ -358,11 +358,14 @@ function bsa_stats_chart_callback()
 	} else {
 		echo 'Stats can not be download.';
 	}
-	die();
+	wp_die();
 }
 add_action('wp_ajax_bsa_stats_chart_callback', 'bsa_stats_chart_callback');
 add_action( 'wp_ajax_nopriv_bsa_stats_chart_callback', 'bsa_stats_chart_callback' );
 
+
+add_action('wp_ajax_bsa_stats_clicks_callback', 'bsa_stats_clicks_callback');
+add_action( 'wp_ajax_nopriv_bsa_stats_clicks_callback', 'bsa_stats_clicks_callback' );
 function bsa_stats_clicks_callback()
 {
 	if( isset($_POST) && isset($_POST['ad_id']) ) {
@@ -393,10 +396,8 @@ function bsa_stats_clicks_callback()
 	} else {
 		echo 'Stats can not be download.';
 	}
-	die();
+	wp_die();
 }
-add_action('wp_ajax_bsa_stats_clicks_callback', 'bsa_stats_clicks_callback');
-add_action( 'wp_ajax_nopriv_bsa_stats_clicks_callback', 'bsa_stats_clicks_callback' );
 
 // Ads Sortable Function
 function bsa_sortable_callback()
@@ -408,7 +409,7 @@ function bsa_sortable_callback()
 		foreach ( $ads as $key => $ad )
 			$model->changeAdPriority($ad, count($ads) - $key);
 	}
-	die();
+	wp_die();
 }
 add_action('wp_ajax_bsa_sortable_callback', 'bsa_sortable_callback');
 add_action( 'wp_ajax_nopriv_bsa_sortable_callback', 'bsa_sortable_callback' );

@@ -395,7 +395,8 @@ $getUnavailableDates 	= $model->getUnavailableDates();
 			var bsaProCalendar = $(".bsa_pro_calendar");
 			var sid = $("#bsa_pro_space_id");
 			var dates = <?php echo ($getUnavailableDates != null && $getUnavailableDates != '') ? $getUnavailableDates : '' ?>;
-			if ( dates ) {
+			var bsaCalendar = '<?php echo get_option('bsa_pro_plugin_calendar') ?>';
+			if ( dates && bsaCalendar === 'yes' ) {
 				if ( dates !== '' ) {
 					if ( dates !== null ) {
 						sid.bind("change",function() {
@@ -414,22 +415,22 @@ $getUnavailableDates 	= $model->getUnavailableDates();
 							});
 						});
 					}
+				} else {
+					var d = new Date();
+					bsaProCalendar.datepicker({
+						dateFormat : "yy-mm-dd",
+						<?php echo (get_option('bsa_pro_plugin_advanced_calendar') != '' ? get_option('bsa_pro_plugin_advanced_calendar') : null) ?>
+						isRTL: <?php echo (get_option('bsa_pro_plugin_rtl_support') == 'yes' ? 'true' : 'false' ) ?>,
+						minDate: 0,
+						beforeShowDay: function(date){
+							var string = jQuery.datepicker.formatDate("yy-mm-dd", date);
+							return [ (d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + (d.getDay() - 1) ).indexOf(string) === -1, "bsaProUnavailableDate" ]
+						},
+						beforeShow: function(input, inst) {
+							$('#ui-datepicker-div').addClass('bsaProCalendar');
+						}
+					});
 				}
-			} else {
-				var d = new Date();
-				bsaProCalendar.datepicker({
-					dateFormat : "yy-mm-dd",
-					<?php echo (get_option('bsa_pro_plugin_advanced_calendar') != '' ? get_option('bsa_pro_plugin_advanced_calendar') : null) ?>
-					isRTL: <?php echo (get_option('bsa_pro_plugin_rtl_support') == 'yes' ? 'true' : 'false' ) ?>,
-					minDate: 0,
-					beforeShowDay: function(date){
-						var string = jQuery.datepicker.formatDate("yy-mm-dd", date);
-						return [ (d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + (d.getDay() - 1) ).indexOf(string) === -1, "bsaProUnavailableDate" ]
-					},
-					beforeShow: function(input, inst) {
-						$('#ui-datepicker-div').addClass('bsaProCalendar');
-					}
-				});
 			}
 			var inputTitle = $("#bsa_pro_title");
 			var inputDesc = $("#bsa_pro_desc");

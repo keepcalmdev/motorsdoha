@@ -340,10 +340,10 @@ function checkedSpaceOpt($optName, $optValue)
 				<td>
 					<select id="bsa_pro_max_items" name="max_items">
 						<?php
-						for ($i = 1; $i <= 24; $i++) {
+						for ($i = 1; $i <= 96; $i++) {
 							echo $i;
 							?>
-							<option value="<?php echo $i; ?>" <?php selectedSpaceOpt('max_items', $i); ?>> <?php echo $i; ?> item<?php if($i != 1) { echo 's'; } ?></option>
+							<option value="<?php echo $i; ?>" <?php selectedSpaceOpt('max_items', $i); ?>> <?php echo $i; ?> ad<?php if($i != 1) { echo 's'; } ?></option>
 						<?php
 						}
 						?>

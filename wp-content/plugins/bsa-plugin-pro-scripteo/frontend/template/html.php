@@ -87,7 +87,7 @@ if ( isset($_POST['bsa_get_required_inputs']) ) {
 		echo '<div class="bsaProItemInner__html">'; // -- START -- ITEM HTML
 
 		if ( isset($ad['id']) && $ad['id'] != 0 && isset($ad['url']) && $ad['url'] != '' && filter_var($ad['url'], FILTER_VALIDATE_URL) ) {
-			echo '<a class="bsaProItem__url"'.(isset($rel) ? $rel : null).' href="'.get_site_url().( (strpos(get_site_url(), '?')) ? '&' : '?' ).'bsa_pro_id='.$ad['id'].'&bsa_pro_url='.$ad['url'].'" '.(isset($link) && $link == 'same' ? '' : 'target="_blank"').'>'; // -- START -- LINK
+			echo '<a class="bsaProItem__url"'.(isset($rel) ? $rel : null).' href="'.$form_url.( (strpos($form_url, '?')) ? '&' : '?' ).'bsa_pro_id='.$ad['id'].'&bsa_pro_url='.$ad['url'].'" '.(isset($link) && $link == 'same' ? '' : 'target="_blank"').'>'; // -- START -- LINK
 		}
 
 		$html = $ad['html'];

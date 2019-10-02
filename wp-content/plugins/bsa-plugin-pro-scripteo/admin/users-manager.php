@@ -11,7 +11,7 @@ if (get_option('bsa_pro_plugin_symbol_position') != 'before') {
 }
 
 $getUsers 			= $model->getUsersList();
-$getUserActiveAds 	= $model->getUserAds(get_current_user_id());
+$getUserActiveAds 	= (is_array($model->getUserAds(get_current_user_id())) ? $model->getUserAds(get_current_user_id()) : array());
 $getUserPendingAds 	= $model->getUserAds(get_current_user_id(), 'pending');
 $get_free_ads 		= $model->getUserCol(get_current_user_id(), 'free_ads');
 

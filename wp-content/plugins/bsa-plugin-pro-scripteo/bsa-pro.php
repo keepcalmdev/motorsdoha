@@ -6,7 +6,7 @@ Plugin URI: http://adspro.scripteo.info
 Description: Premium Multi-Purpose WordPress Ad Plugin - Create Incredible Good Ad Spaces!
 Author: Scripteo
 Author URI: http://codecanyon.net/user/scripteo
-Version: 4.3.1
+Version: 4.3.2
 License: GPL2
 */
 
@@ -28,7 +28,7 @@ require_once('lib/MobileDetect/Mobile_Detect.php');
 class BuySellAdsPro
 {
 	private $plugin_id = 'bsa_pro_plugin';
-	private $plugin_version = '4.3.1';
+	private $plugin_version = '4.3.2';
 	private $model;
 
 	function __construct() {
@@ -596,8 +596,14 @@ function BSA_PRO_add_admin_stylesheet_and_script() {
 	}
 	if ( is_array($getScripts->in_footer) && array_search('jquery-ui-datepicker', $getScripts->in_footer) === false ) {
 		wp_register_style('jquery-ui', plugins_url('frontend/css/asset/ui-datapicker.css', __FILE__));
-		wp_enqueue_style( 'jquery-ui' );
-		wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+		wp_enqueue_style('jquery-ui');
+		wp_enqueue_script('jquery-ui-datepicker', array('jquery'));
+	}
+	$screen = get_current_screen();
+	if ( in_array( $screen->id, array( 'ads-pro_page_bsa-pro-sub-menu-opts', 'ads-pro_page_bsa-pro-sub-menu-add-new-space' ) ) )
+	{
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
 	}
 	wp_register_script('buy_sell_ads_pro_admin_jquery_ui_js_script', plugins_url('frontend/js/jquery-ui.js', __FILE__));
 	wp_enqueue_script('buy_sell_ads_pro_admin_jquery_ui_js_script');
@@ -607,6 +613,7 @@ function BSA_PRO_add_admin_stylesheet_and_script() {
 	wp_enqueue_script('buy_sell_ads_pro_admin_switch_button_js_script');
 	wp_register_script('buy_sell_ads_pro_tagsinput_js_script', plugins_url('frontend/js/jquery.tagsinput.min.js', __FILE__));
 	wp_enqueue_script('buy_sell_ads_pro_tagsinput_js_script');
+	add_filter( 'https_local_ssl_verify', '__return_true' );
 }
 
 function bsaProGetOpt($name, $type) {
@@ -703,12 +710,6 @@ echo "<style>
 	echo "</style>";
 }
 add_action('wp_enqueue_scripts', 'BSA_PRO_add_custom_stylesheet');
-
-function BSA_PRO_load_color_picker() {
-	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_script( 'wp-color-picker' );
-}
-add_action( 'admin_enqueue_scripts', 'BSA_PRO_load_color_picker' );
 
 // disable wp rocket
 //add_filter( 'do_rocket_generate_caching_files', '__return_false' );

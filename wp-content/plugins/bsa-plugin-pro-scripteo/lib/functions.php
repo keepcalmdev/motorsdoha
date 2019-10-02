@@ -498,8 +498,13 @@ function bsa_load_ads_after_paragraphs( $content ) {
 //					if ( trim( $paragraph ) ) {
 //						$paragraphs[$key] .= $p_tag;
 //					}
-						if ($after_paragraph == $key + 1) {
-							$paragraphs[$key] .= do_shortcode($after);
+						$getParagraphNumber = explode('|', $after);
+						$paragraphNumber = str_replace(' ', '', $getParagraphNumber[0]);
+
+						if ( $paragraphNumber > 0 && $paragraphNumber == $key + 1 ) {
+							$paragraphs[$paragraphNumber] .= do_shortcode($getParagraphNumber[1]);
+						} elseif ( !is_numeric($paragraphNumber) && $after_paragraph == $key + 1 ) {
+							$paragraphs[$key + 1] .= do_shortcode($after);
 						}
 					}
 				}
@@ -975,7 +980,7 @@ function bsa_pro_ad_space($space_id = null, $max_width = null, $delay = null, $p
 				<?php endif;
 
 				$example = null;
-				if ( !isset($if_empty) && get_option('bsa_pro_plugin_example_ad') == 'yes' && count($ads) <= 0 ) { // example ads if empty ad space
+				if ( !isset($if_empty) && get_site_option('bsa_pro_plugin_example_ad') == 'yes' && count($ads) <= 0 ) { // example ads if empty ad space
 					$example = true;
 				}
 
@@ -1258,7 +1263,8 @@ function bsa_pro_ad_space($space_id = null, $max_width = null, $delay = null, $p
 										pager: false,
 										pause: <?php echo (($delay > 0 && $delay != NULL) ? $delay : 5) * 1000 ?>,
 										controls: false,
-										auto: true
+										auto: true,
+										touchEnabled: false
 									});
 									<?php else: ?>
 									owl.owlCarousel({
@@ -1608,7 +1614,8 @@ function bsaProResize($sid, $width, $height) {
 			(function($){
 				function bsaProResize() {
 					var sid = "'.$sid.'";
-					var object = $(".bsaProContainer-" + sid + " .bsaProItemInner__img");
+					var object = $(".bsaProContainer-" + sid);
+					var imageThumb = $(".bsaProContainer-" + sid + " .bsaProItemInner__img");
 					var animateThumb = $(".bsaProContainer-" + sid + " .bsaProAnimateThumb");
 					var innerThumb = $(".bsaProContainer-" + sid + " .bsaProItemInner__thumb");
 					var parentWidth = "'.$width.'";
@@ -1620,16 +1627,19 @@ function bsaProResize($sid, $width, $height) {
 						if ( objectWidth > 0 && objectWidth !== 100 && scale > 0 ) {
 							animateThumb.height(parentHeight * scale);
 							innerThumb.height(parentHeight * scale);
-							object.height(parentHeight * scale);
+							imageThumb.height(parentHeight * scale);
+//							object.height(parentHeight * scale);
 						} else {
 							animateThumb.height(parentHeight);
 							innerThumb.height(parentHeight);
-							object.height(parentHeight);
+							imageThumb.height(parentHeight);
+//							object.height(parentHeight);
 						}
 					} else {
 						animateThumb.height(parentHeight);
 						innerThumb.height(parentHeight);
-						object.height(parentHeight);
+						imageThumb.height(parentHeight);
+//						object.height(parentHeight);
 					}
 				}
 				$(document).ready(function(){
@@ -1820,7 +1830,7 @@ function bsa_crop_tool($crop = null, $img_url = null, $width = null, $height = n
 	if ( $img_url != null ) {
 		$defineProtocol = (strpos($img_url, 'https://') !== false ? 'https://' : 'http://');
 		$getUrl = explode($defineProtocol, $img_url);
-		if ( $crop == 'yes' && $width != null && $height != null && bsa_get_opt('other', 'crop_tool') != 'no' ) {
+		if ( function_exists('bfi_thumb') && $crop == 'yes' && $width != null && $height != null && bsa_get_opt('other', 'crop_tool') != 'no' ) {
 			return bfi_thumb($img_url, array('width' => $width, 'height' => $height, 'crop' => true));
 		} else if ( $crop == 'ajax' ) {
 			return ( isset($getUrl[2]) && $getUrl[2] != '' ? $defineProtocol.$getUrl[2] : ( isset($getUrl[1]) && $getUrl[1] != '' ? $defineProtocol.$getUrl[1] : $img_url ) );
@@ -1910,7 +1920,7 @@ function bsaProCheckUpdate()
 			echo '<div class="updated notice error">';
 			echo '	<h3>Update Notice</h3>';
 			echo '<p>';
-			echo '<strong>Ads Pro</strong> Update Notice can not be shown because <strong>Purchase Code</strong> seems invalid or has been used on the other site also. 
+			echo '<strong>Ads Pro</strong> Update Notice can not be shown because <strong>Purchase Code</strong> seems invalid or has been used on the other site also.
 					  <a target="_blank" href="https://codecanyon.net/item/ads-pro-plugin-multipurpose-wordpress-advertising-manager/10275010/support/contact?ref=scripteo">Contact us</a> for more information.';
 			echo '</p></div>';
 		} else if ( isset($response['body']) && $response['body'] == 'to_update' || $status == 'to_update' ) {
@@ -1933,7 +1943,7 @@ function bsaProCheckUpdate()
 			echo '<div class="updated notice error">';
 			echo '	<h3>Update Notice</h3>';
 			echo '<p>';
-			echo '<strong>Ads Pro</strong> Update Notice can not be shown because <strong>Purchase Code</strong> seems invalid or has been used on the other site also. 
+			echo '<strong>Ads Pro</strong> Update Notice can not be shown because <strong>Purchase Code</strong> seems invalid or has been used on the other site also.
 					  <a target="_blank" href="https://codecanyon.net/item/ads-pro-plugin-multipurpose-wordpress-advertising-manager/10275010/support/contact?ref=scripteo">Contact us</a> for more information.';
 			echo '</p></div>';
 		} else if ( $status == 'to_update' ) {
@@ -2016,8 +2026,11 @@ function create_bsa_pro_short_code_space( $atts, $content = null )
 add_shortcode( 'bsa_pro_ajax_ad_space', 'create_bsa_pro_ajax_short_code_space' );
 function create_bsa_pro_ajax_short_code_space( $atts, $content = null )
 {
+	$space_ids = explode(',', $atts['id']);
+	$space_rand_id = array_rand($space_ids, 1);
+	$sid = $space_ids[$space_rand_id];
 	$a = shortcode_atts( array(
-			'id' 			=> $atts['id'],
+			'id' 			=> $sid,
 			'max_width' 	=> ( isset($atts['max_width']) && $atts['max_width'] != '' ) ? $atts['max_width'] : null,
 			'delay' 		=> ( isset($atts['delay']) && $atts['delay'] != '' ) ? $atts['delay'] : null,
 			'padding_top' 	=> ( isset($atts['padding_top']) && $atts['padding_top'] != '' ) ? $atts['padding_top'] : null,
@@ -2028,11 +2041,11 @@ function create_bsa_pro_ajax_short_code_space( $atts, $content = null )
 			'show_ids' 		=> ( isset($atts['show_ids']) ) ? $atts['show_ids'] : null
 	), $atts );
 
-	$advanced_opt = json_decode(bsa_space($a["id"], 'advanced_opt'));
+	$advanced_opt = json_decode(bsa_space($sid, 'advanced_opt'));
 	$get_blog_id = ( get_current_blog_id() >= 1 ? get_current_blog_id() : 0 );
 
 	ob_start();
-	echo '<div class="bsa_pro_ajax_load bsa_pro_ajax_load-'.$a["id"].'" style="display:'.(strpos(bsa_space($a['id'], 'display_type'), 'carousel') !== false ? 'none' : 'block').'">';
+	echo '<div class="bsa_pro_ajax_load bsa_pro_ajax_load-'.$sid.'" style="display:'.(strpos(bsa_space($sid, 'display_type'), 'carousel') !== false ? 'none' : 'block').'">';
 
 	echo '</div>';
 	echo '
@@ -2041,7 +2054,7 @@ function create_bsa_pro_ajax_short_code_space( $atts, $content = null )
 		$.post("'.admin_url("admin-ajax.php").'", {
 			action:"bsa_pro_ajax_load_ad_space",
 			pid:"'.$get_blog_id.get_the_ID().'",
-			id:"'.$a["id"].'",
+			id:"'.$sid.'",
 			max_width:"'.$a["max_width"].'",
 			delay:"'.$a["delay"].'",
 			padding_top:"'.$a["padding_top"].'",
@@ -2052,7 +2065,7 @@ function create_bsa_pro_ajax_short_code_space( $atts, $content = null )
 			show_ids:"'.$a["show_ids"].'",
 			hide_for_id:"'.$advanced_opt->hide_for_id.'"
 		}, function(result) {
-			$(".bsa_pro_ajax_load-'.$a["id"].'").html(result);
+			$(".bsa_pro_ajax_load-'.$sid.'").html(result);
 		});
 	})(jQuery);
 	</script>
@@ -2322,8 +2335,12 @@ function bsa_pro_adblock_notice_function( $atts )
 
 // user panel shortcode
 add_shortcode( 'bsa_pro_user_panel', 'create_bsa_pro_user_panel' );
-function create_bsa_pro_user_panel()
+function create_bsa_pro_user_panel( $atts )
 {
+	$atts = shortcode_atts( array(
+			'type' => isset($atts['type']) ? $atts['type'] : null
+	), $atts, 'bsa_pro_user_panel' );
+
 	if (get_option('bsa_pro_plugin_symbol_position') == 'before') {
 		$before = get_option('bsa_pro_plugin_currency_symbol');
 	} else {
@@ -2340,6 +2357,11 @@ function create_bsa_pro_user_panel()
 		$getUserAds 	= $model->getUserAds(get_current_user_id(), 'all', $user_info->user_email);
 	} else {
 		$getUserAds = array();
+	}
+	if ( isset($atts['type']) && $atts['type'] == 'agency' ) {
+		$type_link = 'agency';
+	} else {
+		$type_link = null;
 	}
 	ob_start();
 	echo '<div class="bsaProPanelContainer">'; // start container ?>
@@ -2479,20 +2501,20 @@ function create_bsa_pro_user_panel()
 			<?php endforeach; ?>
 			<tr>
 				<td class="bsaCenter" colspan="6">
-					<a class="buyButton" href="<?php echo bsaFormURL(); ?>"><?php echo bsa_get_trans('user_panel', 'buy_ads'); ?></a>
+					<a class="buyButton" href="<?php echo bsaFormURL(null, $type_link); ?>"><?php echo bsa_get_trans('user_panel', 'buy_ads'); ?></a>
 				</td>
 			</tr>
 		<?php else: ?>
 			<?php if ( is_user_logged_in() ): ?>
 				<tr>
 					<td class="bsaCenter" colspan="6">
-						<a href="<?php echo bsaFormURL(); ?>"><?php echo bsa_get_trans('user_panel', 'first_purchase'); ?></a>
+						<a href="<?php echo bsaFormURL(null, $type_link); ?>"><?php echo bsa_get_trans('user_panel', 'first_purchase'); ?></a>
 					</td>
 				</tr>
 			<?php else: ?>
 				<tr>
 					<td class="bsaCenter" colspan="6">
-						<a href="<?php echo wp_login_url( bsaFormURL() ); ?>"><?php echo bsa_get_trans('user_panel', 'login_here'); ?></a>
+						<a href="<?php echo wp_login_url( bsaFormURL(null, $type_link) ); ?>"><?php echo bsa_get_trans('user_panel', 'login_here'); ?></a>
 					</td>
 				</tr>
 			<?php endif; ?>

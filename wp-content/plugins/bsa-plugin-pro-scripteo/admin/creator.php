@@ -66,7 +66,7 @@ if ( $custom_templates && $custom_templates != '' ) {
 			var customItem = $('.bsaCustomItem-' + id);
 			customItem.css('opacity', 0.5);
 			$.post("<?php echo admin_url("admin-ajax.php") ?>", {action:"bsa_admin_action_callback",type:'remove_template',id:id,data:$(this).data('data')}, function(result) {
-				if ( result == 'removed' ) {
+				if ( result === 'removed' ) {
 					var notice = $('.bsaTemplateRemoved');
 					notice.fadeIn();
 					customItem.fadeOut();
