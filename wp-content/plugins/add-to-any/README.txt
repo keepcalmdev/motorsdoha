@@ -4,7 +4,7 @@ Tags: buttons, share, icons, social media, share buttons, sharing, share button,
 Requires at least: 3.7
 Tested up to: 5.2
 Requires PHP: 5.2
-Stable tag: 1.7.36
+Stable tag: 1.7.37
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, WhatsApp, Pinterest, Reddit, many more, and follow icons too.
 
@@ -345,6 +345,9 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.7.37 =
+* Harden option to toggle standard sharing placement on pages and the "page" post type
 
 = 1.7.36 =
 * Apply the "Show sharing buttons" option to the floating vertical bar when Placement is set to "Attach to content"

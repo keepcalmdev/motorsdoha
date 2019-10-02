@@ -1564,3 +1564,11 @@ span.select2.select2-container.select2-container--default.abcd , input.heading-f
 
     border: 3px solid #f30505fc !important;
 }
+
+
+ 
+/*Banner content alignment left*/
+
+.entry-header.center .entry-title * {
+    text-align: left !important;
+}
