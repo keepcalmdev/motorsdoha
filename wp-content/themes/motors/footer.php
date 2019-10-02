@@ -269,6 +269,31 @@ $(".my-city").val(current_city);
 $(document).ready(function(){  
 
 
+  $('.add-car-btns-wrap button').click(function(){
+      $('.stm-form1-intro-unit .select2-hidden-accessible option:selected').each(function() {
+          if($(this).val() == '') {
+           
+             $(this).parent().siblings().addClass('abcd');
+          }
+          else{
+              $(this).parent().siblings().removeClass('abcd');
+          }
+      });
+
+      $("input[name='stm_car_price']").each(function() {
+            if($(this).val() == '') {
+             
+               $(this).addClass('abcd');
+        }
+        else{
+              $(this).removeClass('abcd');
+          }
+
+      });
+
+  });
+
+
       $('.add-car-btns-wrap li.btn-add-edit button').html('<i class="stm-service-icon-add_check"></i> Save');
 
 

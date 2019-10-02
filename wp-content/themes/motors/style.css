@@ -1557,3 +1557,10 @@ button.pswp__button--zoom:hover {
 
 .car-listing-tabs-unit img {height: 150px; width: auto;}
 .listing-list-loop .image, .listing-list-loop .image img {width: 100%;}
+
+/*required field style*/
+
+span.select2.select2-container.select2-container--default.abcd , input.heading-font.abcd{
+
+    border: 3px solid #f30505fc !important;
+}
