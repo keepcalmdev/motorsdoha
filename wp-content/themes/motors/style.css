@@ -1639,3 +1639,10 @@ span.wpcf7-form-control-wrap.checkbox-919 {
     width: 20px;
     z-index: 99999999999999;
 }
+
+
+.rtl .entry-header.center .entry-title * {
+    text-align: right !important;
+}
+
+

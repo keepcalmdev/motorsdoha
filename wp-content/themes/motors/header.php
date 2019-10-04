@@ -10,22 +10,22 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 //     echo 'true';
 // }
 
-if(strpos($actual_link , ''.get_bloginfo('url').'qprlogin/?action=logout') !== false){
+    if(strpos($actual_link , ''.get_bloginfo('url').'qprlogin/?action=logout') !== false){
 
 
 
 
 
-   header('Location: '.str_replace('/ar/', '/', get_bloginfo('url')).'/qprlogin/?action=logout&_wpnonce='.wp_create_nonce( 'log-out').'&redirect_to='.get_bloginfo('url').'' , true, 301); 
-   exit();
+       header('Location: '.str_replace('/ar/', '/', get_bloginfo('url')).'/qprlogin/?action=logout&_wpnonce='.wp_create_nonce( 'log-out').'&redirect_to='.get_bloginfo('url').'' , true, 301); 
+       exit();
 
-}
-if (is_page('add-a-car-page')) {
-    if (!is_user_logged_in()) {
-        wp_redirect(get_bloginfo('url').'/login-register');
-        exit();
     }
-}
+    if (is_page('add-a-car-page')) {
+        if (!is_user_logged_in()) {
+            wp_redirect(get_bloginfo('url').'/login-register');
+            exit();
+        }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -55,6 +55,15 @@ if (is_page('add-a-car-page')) {
 		echo "</style>";
 	}
 	?>
+
+<style type="text/css">
+    
+.rtl .entry-header{
+    background-image: url(<?php echo str_replace('/ar/', '/', get_bloginfo('url')); ?>wp-content/themes/motors/assets/images/title-box-default-bg-2.jpg);
+}
+
+</style>
+
 </head>
 
 <?php
@@ -126,4 +135,6 @@ if (is_page('add-a-car-page')) {
             do_action('stm_hb', array('header' => 'stm_hb_settings'));
         } ?>
 		<div id="main" <?php if(stm_is_magazine()) echo 'style="margin-top: -80px;"'; ?>>
+
+
 
