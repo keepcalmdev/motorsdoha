@@ -1558,6 +1558,9 @@ button.pswp__button--zoom:hover {
 .car-listing-tabs-unit img {height: 150px; width: auto;}
 .listing-list-loop .image, .listing-list-loop .image img {width: 100%;}
 
+
+
+
 /*required field style*/
 
 span.select2.select2-container.select2-container--default.abcd , input.heading-font.abcd{
@@ -1571,4 +1574,68 @@ span.select2.select2-container.select2-container--default.abcd , input.heading-f
 
 .entry-header.center .entry-title * {
     text-align: left !important;
+}
+
+
+/*navbar nav nav-menu*/
+
+body.stm-template-listing_four>#wrapper>#header {
+    z-index: 999999999999999999999 !important;
+}
+
+
+.social-media-checkboxes p {
+    position: absolute;
+    top: 81px;
+}
+
+.snapchat-icon{
+left: 0;
+    } 
+.instagram-icon{
+left: 150px;
+    }
+.twitter-icon{
+left: 290px;
+}
+p.facebook-icon {
+    left: 400px;
+}
+
+
+span.wpcf7-form-control-wrap.checkbox-917 {
+    position: absolute;
+    left: 148px;
+    top: -5px;
+}
+
+span.wpcf7-form-control-wrap.checkbox-918 {
+    position: absolute;
+    left: 285px;
+    top: -5px;
+}
+
+span.wpcf7-form-control-wrap.checkbox-914{
+
+    position: absolute;
+        top: 3px;
+
+}
+
+span.wpcf7-form-control-wrap.checkbox-920 {
+    position: absolute;
+    top: 84px;
+}
+
+span.wpcf7-form-control-wrap.checkbox-919 {
+
+
+    left: 354px;
+    top: -5px;
+}
+
+#wpcf7-f1979-p1735-o1 .wpcf7-list-item input {
+    padding: 13px 21px;
+    width: 20px;
+    z-index: 99999999999999;
 }

@@ -268,6 +268,15 @@ $(".my-city").val(current_city);
 
 $(document).ready(function(){  
 
+var str =  $(".whatsapp-link a").attr("href");
+
+str = str.replace(/\s+/g, '');
+
+str = str.replace('+', '');
+
+$(".whatsapp-link a").attr("href", str);
+
+
 
   $('.add-car-btns-wrap button').click(function(){
       $('.stm-form1-intro-unit .select2-hidden-accessible option:selected').each(function() {
@@ -306,6 +315,10 @@ $(document).ready(function(){
 });  
 
 
+
+
+
+
  </script>
 
 <script type="text/javascript">
@@ -324,7 +337,6 @@ $('#stm-add-car-location').val(response.postal);
 $('.text_stm_lat').val(nameArr[0]);
 $('.text_stm_lng').val(nameArr[1]);
 }, "jsonp");
-F
 </script>
 
 
@@ -454,8 +466,10 @@ if(isset($_GET['edit_car'])) {
 </script>
 <?php
 }
-?>
 
+?>
 
 </body>
 </html>
+
+

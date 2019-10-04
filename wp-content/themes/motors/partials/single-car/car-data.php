@@ -5,7 +5,7 @@ get_template_part('partials/single-car/car', 'buttons');
 
  if(!empty($user_fields['phone'])){  
   ?>
-<div class="stm-car_dealer-buttons heading-font">
+<div class="stm-car_dealer-buttons heading-font whatsapp-link">
     <a href="https://wa.me/<?php echo esc_attr($user_fields['phone']); ?>">Contact Whatsapp <i class="fa fa-whatsapp" aria-hidden="true"></i>
  </a>
 </div>
