@@ -267,6 +267,34 @@ $(".my-city").val(current_city);
 
 
 $(document).ready(function(){  
+  
+  
+$('.btn-add-edit button').click(function(){
+   
+      $('.stm-form1-intro-unit .select2-hidden-accessible option:selected').each(function() {
+          if($(this).val() =='') {
+           
+             $(this).parent().siblings().addClass('abcd');
+        
+          }
+          else{
+              $(this).parent().siblings().removeClass('abcd');
+          }
+      });
+
+      $("input[name='stm_car_price']").each(function() {
+            if($(this).val() =='') {
+             
+               $(this).addClass('abcd');
+        }
+        else{
+              $(this).removeClass('abcd');
+          }
+
+      }); 
+  
+  
+  
 
 var str =  $(".whatsapp-link a").attr("href");
 
@@ -278,27 +306,7 @@ $(".whatsapp-link a").attr("href", str);
 
 
 
-  $('.add-car-btns-wrap button').click(function(){
-      $('.stm-form1-intro-unit .select2-hidden-accessible option:selected').each(function() {
-          if($(this).val() == '') {
-           
-             $(this).parent().siblings().addClass('abcd');
-          }
-          else{
-              $(this).parent().siblings().removeClass('abcd');
-          }
-      });
-
-      $("input[name='stm_car_price']").each(function() {
-            if($(this).val() == '') {
-             
-               $(this).addClass('abcd');
-        }
-        else{
-              $(this).removeClass('abcd');
-          }
-
-      });
+  
 
   });
 
@@ -385,7 +393,7 @@ if(is_user_logged_in()){
 
 #addcar_page, #addcar2_page{
 
-	display: none;
+  display: none;
 }
 
 
