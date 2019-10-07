@@ -1,0 +1,303 @@
+
+
+/*Global Style start here*/
+section.themeDev-aws-body form{
+	padding: 10px;
+    background: #fff;
+    display: block;
+    position: relative;
+}
+section.themeDev-aws-body .themedev-input-text {
+    width: 100%;
+    max-width: 450px;
+    padding: 8px;
+	
+}
+section.themeDev-aws-body .themeDev-aws-formall {
+	display: flex;
+    position: relative;
+}
+section.themeDev-aws-body .themeDev-left-div{
+	width: 49%;
+	float:left;
+}
+section.themeDev-aws-body .themeDev-right-div{
+	width: 49%;
+	float:left;
+}
+
+
+section.themeDev-aws-body .themeDev-aws-form label {
+	font-weight: bold;
+	display: block;
+	line-height: 29px;
+	width: 100%;
+	clear: both;
+}
+section.themeDev-aws-body .themeDev-aws-form input,
+section.themeDev-aws-body .themeDev-aws-form textarea,
+section.themeDev-aws-body .themeDev-aws-form select{
+	font-weight: 400;
+}
+section.themeDev-aws-body .themedev-aws-submit{
+	cursor: pointer;
+	border: 0px;
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	border-radius: .25rem;
+	-webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+	-o-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+	color: #fff;
+	background-color: #0073aa;
+	text-decoration: none;
+}
+
+/*Admin Settins Page */
+section.themeDev-aws-body{
+	display:block;
+}
+section.themeDev-aws-body > h2{
+	color:#333;
+	font-size: 20px;
+}
+
+/*Files Upload Page */
+.nx-step3_property {
+	display: block;
+	clear: both;
+	position: relative;
+	width: 100%;
+}
+div.theme_devp_for_image {
+	position: relative;
+	width: 114px;
+}
+img.themedev-shadow_image {
+	width: 100px;
+	height: 100px;
+	border: 1px dashed #37A000;
+	padding: 4px;
+}
+.nx-step3_property div.theme_devp_for_image .select_image{
+	opacity: 0;
+}
+.nx-step3_property div.theme_devp_for_image .select_image {
+	padding: 0px;
+	border: 0px;
+	position: absolute;
+	top: 3px;
+	width: 100px;
+	height: 100px;
+	left: 0px;
+}
+.theme-dev-ul-left{
+	display:block;
+	margin-left: 20px;
+    margin-top: 0px;
+}
+.theme-dev-ul-left > li{
+	float:none;
+}
+.copy-link-item-section p input{
+	padding: 6px;
+	border-radius: 0px;
+}
+.copy-link-item-section p button{
+	padding: 5px;
+}
+.copy-link-item-section p{
+	margin:10px auto;
+}
+.copy-link-item-section p > input {
+	display: inline-block;
+	width: 90%;
+	cursor: copy;
+	opacity: .4;
+}
+.copy-link-item-section button {
+	background: unset;
+	padding: 9px 0px;
+	border: 1px solid #ccc;
+	/* left: -1px; */
+	margin-left: -5px;
+	display: inline-block;
+}
+/* switch button*/
+
+input.themedev_switch_button {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    display: none;
+}
+
+label.themedev_switch_button_label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 54px;
+    height: 28px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+input.themedev_switch_button:checked + label.themedev_switch_button_label {
+    background: #0073aa;
+}
+label.themedev_switch_button_label:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+input.themedev_switch_button:checked + label.themedev_switch_button_label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label.themedev_switch_button_label.small {
+    width: 36px !important;
+    height: 20px;
+}
+label.themedev_switch_button_label.small:after {
+    width: 12px;
+    height: 12px;
+}
+
+.disable_themeDev_div{
+	display:none;
+}
+.enable_themeDev_div{
+	display:block;
+}
+/* end switch button*/
+@media screen and (max-width: 935px) {
+	
+}
+
+@media screen and (max-width: 668px) {
+	
+	section.themeDev-aws-body .themeDev-left-div{
+		width: 100%;
+		float:none;
+	}
+	section.themeDev-aws-body .themeDev-right-div{
+		width: 100%;
+		float:none;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	
+}
+
+
+/*manage upload files*/
+
+.manage-aws-themeDev{
+	display: block;
+	list-style: none;
+}
+.manage-aws-themeDev li{
+	display: inline-block;
+	padding: 18px 8px;
+	margin: 0;
+	position:relative;
+    text-align: center;
+	max-width: 128px;
+	overflow: hidden;
+	vertical-align: top;
+}
+.manage-aws-themeDev li span{
+	color: #333;
+}
+.manage-aws-themeDev li.active-store{
+	border: 1px solid #ccc;
+}
+.manage-aws-themeDev li.active-store span{
+	color: #0073aa;
+}
+.manage-aws-themeDev li.bottom_content{
+	vertical-align: bottom;
+}
+.manage-aws-themeDev li a{
+	text-decoration:none;
+}
+.manage-aws-themeDev li span.dashicons, .manage-aws-themeDev li img{
+	display: block;
+    height: auto;
+    font-size: 45px;
+    width: 100%;
+}
+.manage-aws-themeDev li span.dashicons:before{
+	font-size: 2em;
+}
+.manage-aws-themeDev li:hover{
+    border: 1px solid #ccc;
+}
+
+.manage-aws-themeDev li.bottom_content:hover:before{
+    content: '';
+    position: absolute;
+	width: 100%;
+    height: 100%;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    opacity: .2;
+	z-index: 1;
+}
+
+.manage-aws-themeDev li.bottom_content .over-info-link{
+	position: absolute;
+    bottom: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #fff;
+	opacity: 0;
+    visibility: hidden;
+	-webkit-transition: all .4s ease;
+	transition: all .4s ease;
+	z-index: 999;
+	cursor: pointer;
+}
+
+.bottom_content .over-info-link{
+	display: -webkit-box;
+	display: flex;
+	justify-content: center;
+}
+.manage-aws-themeDev li.bottom_content .over-info-link span:before{
+	font-size: 13px;
+    margin: 0px 3px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.manage-aws-themeDev li.bottom_content:hover .over-info-link{
+	visibility: visible;
+	opacity: 1;
+}
+
+
+/*end manage upload files*/
