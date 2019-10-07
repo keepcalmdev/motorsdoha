@@ -293,8 +293,11 @@ $('.btn-add-edit button').click(function(){
 
       }); 
   
+
   
-  
+
+  });
+
 
 var str =  $(".whatsapp-link a").attr("href");
 
@@ -302,13 +305,10 @@ str = str.replace(/\s+/g, '');
 
 str = str.replace('+', '');
 
-$(".whatsapp-link a").attr("href", str);
+$(".whatsapp-link a").attr("href", str+'?text='+$('.stm-single-car-content .title.h2').html());
 
 
 
-  
-
-  });
 
 
       $('.add-car-btns-wrap li.btn-add-edit button').html('<i class="stm-service-icon-add_check"></i> Save');
