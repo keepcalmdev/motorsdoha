@@ -20,7 +20,7 @@ $bind_tax = stm_data_binding();
                 }
             });
 
-        });
+        }); 
 
     })(jQuery);
 </script>

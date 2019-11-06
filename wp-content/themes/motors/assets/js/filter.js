@@ -328,3 +328,6 @@ function stm_get_price_view(price, currency, currencyPos, priceDel) {
     }
     return stmText;
 }
+
+
+ 

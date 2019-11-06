@@ -18,16 +18,29 @@
 					) );
 				else: ?>
                     <?php if(isset($filter['options'][ $attribute ])) : ?>
-					<div class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
-						<div class="form-group">
-							<?php
-                            stm_listings_load_template('filter/types/select', array(
-                                'options' => $filter['options'][$attribute],
-                                'name' => $attribute
-                            ));
-                            ?>
+                    	<?php if ($attribute == "condition"){  ?>
+						<div style="display: none;" class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
+							<div class="form-group">
+								<?php
+	                            stm_listings_load_template('filter/types/select', array(
+	                                'options' => $filter['options'][$attribute],
+	                                'name' => $attribute
+	                            ));
+	                            ?>
+							</div>
 						</div>
-					</div>
+						<?php  } else {?>
+							<div class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
+							<div class="form-group">
+								<?php
+	                            stm_listings_load_template('filter/types/select', array(
+	                                'options' => $filter['options'][$attribute],
+	                                'name' => $attribute
+	                            ));
+	                            ?>
+							</div>
+						</div>
+						<?php } ?>	
 				    <?php endif; ?>
 				<?php endif; ?>
 			<?php endforeach; ?>

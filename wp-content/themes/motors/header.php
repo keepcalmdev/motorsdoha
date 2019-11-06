@@ -1,6 +1,4 @@
 <?php 
-
-
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   //echo $actual_link;
 
@@ -35,7 +33,48 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, <?php echo (stm_is_rental()) ? 'user-scalable=no' : ''; ?>">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+<?php
+if( is_page( 639 ) ) {
+    remove_action( 'wp_head', '_wp_render_title_tag', 1 );
+
+    $make="";
+    $model="";
+    $year="";
+
+    if( isset($_GET['make']) ){
+        $make = ucfirst($_GET['make']);
+    }
+    if( isset($_GET['serie']) ){
+        $model = " | " . ucfirst($_GET['serie']);
+    }
+    
+    if( isset($_GET['ca-year']) ){
+        $year = " | ". ucfirst($_GET['ca-year']);
+    }
+    
+    $content = $make.$model .$year ;
+
+    if($content == "") {
+        $content = "Inventory | MotorsDoha";
+    }
+
+
+    echo "<title>".$content."</title>";
+
+
+}
+
+?>
+
+
 	    <?php wp_head(); ?>
+
+
+
+
+
+
 	<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/style1.css"> -->
 	<?php
 
@@ -62,7 +101,11 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
     background-image: url(<?php echo str_replace('/ar/', '/', get_bloginfo('url')); ?>wp-content/themes/motors/assets/images/title-box-default-bg-2.jpg);
 }
 
+
+
 </style>
+
+
 
 </head>
 

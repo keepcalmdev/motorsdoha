@@ -1,4 +1,6 @@
 <?php
+
+
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -137,6 +139,7 @@ $filter = stm_listings_filter();
                                 if($attribute == 'price') {
                                     continue;
                                 }
+
                                 if ( ! empty( $config['slider'] ) && $config['slider'] ):
                                     stm_listings_load_template( 'filter/types/slider', array(
                                         'taxonomy' => $config,
@@ -544,6 +547,34 @@ function invMapScript() {
            $(document).on('change', '.ajax-filter select, .stm-sort-by-options select, .stm-slider-filter-type-unit', function (event) {
                $("form[data-trigger=filter-map]").submit(function (e) { e.preventDefault(); });
                buildUrl();
+
+               setTimeout(function(){
+                   if($('.ajax-filter select[name=make]').val() !== ''){
+                        $(".ajax-filter select[name=serie]").prop("disabled", false);
+
+                   }
+                   else {
+                        $(".ajax-filter select[name=serie]").prop("disabled", true);
+                   }
+               }, 1000)
+
+               var model=capitalizeFL($("select[name=make]").val());
+               var serie=$("select[name=serie]").val();
+               var seriItem="";
+               if(serie != "") seriItem = " | " + capitalizeFL(serie);
+               var year=$("select[name=ca-year]").val();
+               var yearItem="";
+               if(year != "")  yearItem = " | " +year;
+
+               var title = model+seriItem+yearItem;
+               $("title").html(title);
+
+
+               function capitalizeFL(name){
+                return name.charAt(0).toUpperCase() + name.slice(1)
+               }
+
+
            });
 
            $(document).on('slidestop', '.ajax-filter .stm-filter-type-slider', function (event, ui) {
