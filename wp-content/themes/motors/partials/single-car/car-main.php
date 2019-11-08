@@ -3,7 +3,7 @@ $post_id = get_the_ID();
 $car_title = get_post_meta($post_id, 'car_title', true);
 $car_condition = get_post_meta($post_id, 'condition', true);
 $car_title_prefix = "";
-if($car_title != ""){ //custom title prefix
+if($car_title === ""){ //custom title prefix
    if($car_condition === "new-cars"){
         $car_title_prefix = "New";
     } else if ($car_condition === "used-cars") {
