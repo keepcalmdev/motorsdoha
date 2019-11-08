@@ -1,5 +1,4 @@
 <?php
-
 $user_fields = stm_get_user_custom_fields(get_the_author_id());
 get_template_part('partials/single-car/car', 'buttons');
 
@@ -14,6 +13,7 @@ get_template_part('partials/single-car/car', 'buttons');
 $data = apply_filters( 'stm_single_car_data', stm_get_single_car_listings() );
 $post_id = get_the_ID();
 $vin_num = get_post_meta(get_the_id(), 'vin_number', true);
+$data_meta = get_post_meta($post_id, 'car_title', true);
 ?>
 
 <?php if (!empty($data)): ?>
@@ -53,6 +53,7 @@ $vin_num = get_post_meta(get_the_id(), 'vin_number', true);
 		            $affix = $data_value['number_field_affix'];
 	            }
 	            ?>
+
 	            
                 <?php if ($data_value['slug'] != 'price'): ?>
                     <?php $data_meta = get_post_meta($post_id, $data_value['slug'], true); ?>
@@ -60,6 +61,7 @@ $vin_num = get_post_meta(get_the_id(), 'vin_number', true);
                         <tr>
                             <td class="t-label"><?php esc_html_e($data_value['single_name'], 'motors'); ?></td>
                             <?php if (!empty($data_value['numeric']) and $data_value['numeric']): ?>
+
                                 <td class="t-value h6"><?php echo esc_attr(ucfirst($data_meta .' '. $affix)); ?></td>
                             <?php else: ?>
                                 <?php
@@ -74,7 +76,10 @@ $vin_num = get_post_meta(get_the_id(), 'vin_number', true);
                                         }
                                     }
                                 }
+
+
                                 ?>
+
                                 <td class="t-value h6"><?php echo implode(', ', $datas); ?></td>
                             <?php endif; ?>
                         </tr>

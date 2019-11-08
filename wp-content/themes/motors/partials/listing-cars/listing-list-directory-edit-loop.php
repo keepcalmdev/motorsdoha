@@ -26,10 +26,15 @@ $asSold = get_post_meta(get_the_ID(), 'car_mark_as_sold', true);
 if (!empty($asSold)) {
 	$classes[] = 'as_sold';
 }
-
-stm_listings_load_template('loop/start', array('modern' => true, 'listing_classes' => $classes));
 ?>
 
+
+
+
+<?php stm_listings_load_template('loop/start', array('modern' => true, 'listing_classes' => $classes));
+?>
+	
+	<!--New badge with videos-->
 		<div class="image">
 
 			<!--Hover blocks-->
@@ -103,7 +108,12 @@ stm_listings_load_template('loop/start', array('modern' => true, 'listing_classe
 					<i class="stm-service-icon-staricon"></i>
 				</div>
 			<?php endif; ?>
-
+			<!-- 360deg icon -->
+			<div class="stm-car-360">
+				<!-- <i class="fas fa-sync-alt"></i> -->
+				360&#176;
+				<?php //echo esc_attr($car_views); ?>
+			</div>
 			<div class="stm-car-views">
 				<i class="fa fa-eye"></i>
 				<?php echo esc_attr($car_views); ?>
@@ -278,3 +288,5 @@ stm_listings_load_template('loop/start', array('modern' => true, 'listing_classe
 		</div>
 
 </div>
+
+

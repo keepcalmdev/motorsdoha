@@ -1,4 +1,5 @@
 <?php
+
     if(is_admin()) {
         require_once get_template_directory() . '/admin/admin.php';
 		/* Phone Number Patch */
@@ -141,6 +142,40 @@ if(strpos($actual_link , 'http://qprcar01.kinsta.cloud/ar/qprlogin/?action=logou
 
 
 }
+
+//SEO snippets
+function get_car_make() {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+	$data_meta = get_post_meta($post_id, 'make', true);
+    return ucfirst($data_meta);
+}
+
+function get_car_model() {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+	$data_meta = get_post_meta($post_id, 'serie', true);
+    return ucfirst($data_meta);
+}
+function get_car_year() {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+	$data_meta = get_post_meta($post_id, 'ca-year', true);
+    return ucfirst($data_meta);
+}
+// define the action for register yoast_variable replacments
+function register_custom_yoast_variables() {
+    wpseo_register_var_replacement( '%%make%%', 'get_car_make', 'advanced', 'some help text' );
+    wpseo_register_var_replacement( '%%model%%', 'get_car_model', 'advanced', 'some help text' );
+    wpseo_register_var_replacement( '%%year%%', 'get_car_year', 'advanced', 'some help text' );
+}
+
+// Add action
+add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables');
+
+
+
+
 
 
 

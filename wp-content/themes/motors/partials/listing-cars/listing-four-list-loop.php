@@ -1,5 +1,4 @@
 <?php
-
 if(empty($modern_filter)){
     $modern_filter = false;
 }

@@ -10,10 +10,6 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 
     if(strpos($actual_link , ''.get_bloginfo('url').'qprlogin/?action=logout') !== false){
 
-
-
-
-
        header('Location: '.str_replace('/ar/', '/', get_bloginfo('url')).'/qprlogin/?action=logout&_wpnonce='.wp_create_nonce( 'log-out').'&redirect_to='.get_bloginfo('url').'' , true, 301); 
        exit();
 
@@ -35,45 +31,85 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php
+global $post;
+$post_type = get_post_type( $post->ID );
 if( is_page( 639 ) ) {
     remove_action( 'wp_head', '_wp_render_title_tag', 1 );
 
-    $make="";
-    $model="";
-    $year="";
+    $filter = stm_listings_filter();
+    $condition ="";
+    $car_make ="";
+    $car_model ="";
+    $car_year ="";
+    $title ="";
+    $desc = "";
 
-    if( isset($_GET['make']) ){
-        $make = ucfirst($_GET['make']);
+    while(list($key, $value) = each($filter["options"]["condition"])){
+
+        if($value["selected"] && $value["label"]){
+            $condition = $value["label"];
+            break;
+        }
     }
-    if( isset($_GET['serie']) ){
-        $model = " | " . ucfirst($_GET['serie']);
+
+    while(list($key, $value) = each($filter["options"]["make"])){
+
+        if($value["selected"] && $value["label"] !== "Make"){
+            $car_make = $value["label"];
+            break;
+        }
+    }
+
+    while(list($key, $value) = each($filter["options"]["serie"])){
+
+        if($value["selected"] && $value["label"] !== "Model"){
+            $car_model = $value["label"];
+            break;
+        }
+    }
+
+    while(list($key, $value) = each($filter["options"]["ca-year"])){
+
+        if($value["selected"] && $value["label"] !== "Year"){
+            $car_year = $value["label"];
+            break;
+        }
+    }
+
+
+    if($condition == "New"){
+        //Car Make (New)
+        if($car_model === ""){
+        $title = "New " . $car_make . " Cars for Sale in Qatar | MotorsDoha";
+        $desc = '<meta name="description" content="Shop new '. $car_make.' vehicles for sale in Qatar. Find great deal on new '.$car_make.'. Inspected & Certified brand new cars on motorsdoha.com." />';
+        } else { //Car Model (New)
+            $title = $car_year." " . $car_make." ". $car_model. " Prices, Cars for Sale in Qatar | MotorsDoha";
+            $desc = '<meta name="description" content="New '.$car_make.' '.$car_model.' for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on '.$car_make.' '.$car_model.' in Qatar." />';
+        }
+    } elseif($condition == "Used") {
+        //Car Make (Used) 
+        if($car_model === ""){
+            $title = $car_make ." Used Cars for Sale in Qatar | MotorsDoha";
+            $desc = '<meta name="description" content="Shop used '.$car_make.' vehicles for sale in Qatar. Find great deal on used '.$car_make.'. Inspected & Certified second hand cars on motorsdoha.com." />';
+
+        } else { //Car Model (Used)
+            $title = "Used ".$car_make." ".$car_model." Cars for Sale in Qatar | MotorsDoha";
+            $desc = '<meta name="description" content="Used '.$car_make.' '.$car_model .' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on used '.$car_make.' '.$car_model.' in Qatar." />';
+        }
+
+    } else {
+        $title = "Inventory | MotorsDoha";
+        $desc = '<meta name="description" content="inventory,  MotorsDoha" />';
     }
     
-    if( isset($_GET['ca-year']) ){
-        $year = " | ". ucfirst($_GET['ca-year']);
-    }
-    
-    $content = $make.$model .$year ;
-
-    if($content == "") {
-        $content = "Inventory | MotorsDoha";
-    }
-
-
-    echo "<title>".$content."</title>";
-
+    echo "<title>".$title."</title>";
+    echo $desc;
 
 }
 
 ?>
 
-
 	    <?php wp_head(); ?>
-
-
-
-
-
 
 	<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/style1.css"> -->
 	<?php
@@ -136,6 +172,8 @@ if( is_page( 639 ) ) {
 
 
 <body <?php body_class('stm-template-listing_four'); ?> <?php if(!empty($body_custom_image)): ?> style="background-image: url('<?php echo esc_url($body_custom_image); ?>')" <?php endif; ?> ontouchstart="">
+
+
 	<?php do_action('motors_before_header'); ?>
 	<div id="wrapper">
         <?php if(!stm_is_auto_parts()) { ?>

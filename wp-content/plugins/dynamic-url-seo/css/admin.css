@@ -1,0 +1,156 @@
+.dyanmic-url-seo.form-table tr td:first-child {
+    width: 100px;
+}
+
+.dyanmic-url-seo.form-table tr td input[type='text'], .dyanmic-url-seo.form-table tr td input[type='password'], .dyanmic-url-seo.form-table tr td select {
+    width: 100% !important;
+    padding: 8px !important;
+}
+
+.dyanmic-url-seo.form-table tr td select {
+    height: 40px;
+}
+
+.dyanmic-url-seo.form-table tr th span {
+    display: block;
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+
+
+
+.wp-list-table tbody tr:hover {
+    background: #EEE;
+}
+
+div.tagsinput {
+    width: 100% !important;;
+    height: 50px !important;;
+    min-height: 50px !important;
+}
+
+#Categories_tag {
+    width: 90px !important;
+}
+
+.btn {
+  font-size: 12px;
+  padding: 0.25em 1em;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  color: #333;
+  text-decoration: none;
+  display: inline;
+  border-radius: 4px;
+  -webkit-transition: background-color 1s ease;
+  -moz-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+
+.btn:hover {
+  background-color: #ddd;
+  -webkit-transition: background-color 1s ease;
+  -moz-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+
+.btn-small {
+  padding: .75em 1em;
+  font-size: 0.8em;
+}
+
+.modal-box {
+background: white none repeat scroll 0 0 padding-box;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 4px;
+box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+display: none;
+font-size: 14px;
+left: 0 !important;
+padding: 20px;
+position: absolute;
+top: 5%;
+width: 100%;
+z-index: 100000;
+}
+@media (min-width: 32em) {
+
+.modal-box { width: 95%; }
+}
+
+.modal-box header,
+.modal-box .modal-header {
+  padding: 1.25em 1.5em;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-box header h3,
+.modal-box header h4,
+.modal-box .modal-header h3,
+.modal-box .modal-header h4 { margin: 0; }
+
+.modal-box .modal-body {padding: 0;
+margin: 20px 0 0; }
+
+.modal-box footer,
+.modal-box .modal-footer {
+  padding: 1em;
+  border-top: 1px solid #ddd;
+  background: rgba(0, 0, 0, 0.02);
+  text-align: right;
+}
+
+.modal-overlay {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+a.close {
+  line-height: 1;
+  font-size: 1.5em;
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  text-decoration: none;
+  color: #bbb;
+}
+
+a.close:hover {
+  color: #222;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  transition: color 1s ease;
+}
+
+
+.form-tables tr td:first-child {
+    width: 100px;
+}
+
+.form-tables tr td input[type='text'], .form-tables tr td input[type='password'], .form-tables tr td select {
+    width: 100% !important;
+    padding: 8px !important;
+}
+
+.form-tables tr td select {
+    height: 40px;
+}
+
+.form-tables tr th span {
+    display: block;
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.dyanmic-url-seo {table-layout:fixed}
+.dyanmic-url-seo textarea {width:100%}

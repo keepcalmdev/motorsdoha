@@ -9062,3 +9062,40 @@
     }
 }
 
+/*360deg*/
+.stm-car-360 {
+    position: absolute;
+    right: 65px;
+    top: 15px;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+    font-size: 13px;
+    padding: 1px 8px 1px;
+    border-radius: 3px;
+    z-index: 20;
+    cursor: pointer;
+}
+.stm-car-360:hover {
+    background: rgba(0,0,0,.6);
+}
+@media (max-width: 992px){
+    .stm-car-360 {
+        display: none;
+    }
+}
+
+.popup-360 {
+    display: none;
+    position: fixed;
+    left: 20%;
+    right: 20%;
+    top: 0;
+    bottom: 20%;
+    z-index: 200;
+}
+
+.popup-360 object {
+    width: 100%;
+    height: 100%;
+}
+
