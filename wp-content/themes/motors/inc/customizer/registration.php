@@ -1584,6 +1584,11 @@ $single_car_settings = array(
         'type' => 'checkbox',
         'default' => true
     ),
+    'enable_favorite_items' => array(
+        'label' => esc_html__('Enable favorites', 'motors'),
+        'type' => 'checkbox',
+        'default' => true
+    ),
     'show_share' => array(
         'label' => esc_html__('Show share block', 'motors'),
         'type' => 'checkbox',

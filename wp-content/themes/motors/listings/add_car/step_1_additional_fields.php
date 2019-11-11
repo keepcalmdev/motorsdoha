@@ -1,3 +1,53 @@
+
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_countryOfOrigin" value="<?php echo get_post_meta($_GET['item_id'], 'countryOforigin', true); ?>" placeholder="Country of Origin">
+		<div class="stm-label">Country of Origin</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_class" value="<?php echo get_post_meta($_GET['item_id'], 'class', true); ?>" placeholder="Car Class">
+		<div class="stm-label">Car Class</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_bodyStyle" value="<?php echo get_post_meta($_GET['item_id'], 'bodystyle', true); ?>" placeholder="Body Style">
+		<div class="stm-label">Body Style</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_weight" value="<?php echo get_post_meta($_GET['item_id'], 'weight', true); ?>" placeholder="Car Weight (KG)">
+		<div class="stm-label">Car Weight (KG)</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_engine_type" value="<?php echo get_post_meta($_GET['item_id'], 'engine_type', true); ?>" placeholder="Engine Type">
+		<div class="stm-label"><i class="stm-icon-engine_fill"></i> Engine Type</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_gearBox" value="<?php echo get_post_meta($_GET['item_id'], 'gearbox', true); ?>" placeholder="Gear Box">
+		<div class="stm-label">Gear Box</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_power" value="<?php echo get_post_meta($_GET['item_id'], 'power', true); ?>" placeholder="Horsepower">
+		<div class="stm-label">Horsepower</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_torque" value="<?php echo get_post_meta($_GET['item_id'], 'torque', true); ?>" placeholder="Engine Torque">
+		<div class="stm-label">Engine Torque</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_fuelEconomy100KMPL" value="<?php echo get_post_meta($_GET['item_id'], 'fueleconomy100kmpl', true); ?>" placeholder="Fuel Consumption (100 KM/L)">
+		<div class="stm-label">Fuel Consumption (100 KM/L)</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_fuelEconomyKMPL" value="<?php echo get_post_meta($_GET['item_id'], 'fueleconomykmpl', true); ?>" placeholder="Fuel Consumption (KM/L)">
+		<div class="stm-label">Fuel Consumption (KM/L)</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_zeroToHundred" value="<?php echo get_post_meta($_GET['item_id'], 'zerotohundred', true); ?>" placeholder="0-100 KM/Sec">
+		<div class="stm-label">0-100 KM/Sec</div>
+	</div>
+	<div class="stm-form-1-quarter">
+		<input type="text" name="stm_s_s_topSpeed" value="<?php echo get_post_meta($_GET['item_id'], 'topspeed', true); ?>" placeholder="Max Speed">
+		<div class="stm-label">Max Speed</div>
+	</div>
+
 <?php
 
 if ( get_theme_mod('show_registered', true) ) {
@@ -136,3 +186,4 @@ if ( get_theme_mod('enable_location', true) ) {
 		</div>
 	</div>
 <?php }
+?>

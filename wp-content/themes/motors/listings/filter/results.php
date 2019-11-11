@@ -18,15 +18,17 @@
 
             $template = 'partials/listing-cars/listing-' . $view_type . '-loop';
 
-            if (is_listing(array('listing', 'listing_two', 'listing_three')) || stm_is_dealer_two()) {
+            // if (is_listing(array('listing', 'listing_two', 'listing_three')) || stm_is_dealer_two()) {
                 $template = 'partials/listing-cars/listing-' . $view_type . '-directory-loop';
-            } elseif (stm_is_listing_four()) {
-                $template = 'partials/listing-cars/listing-four-' . $view_type . '-loop';
-            } elseif (stm_is_boats() and $view_type == 'list') {
-                $template = 'partials/listing-cars/listing-' . $view_type . '-loop-boats';
-            } elseif (stm_is_motorcycle()) {
-                $template = 'partials/listing-cars/motos/' . $view_type;
-            }
+            // } elseif (stm_is_listing_four()) {
+                // $template = 'partials/listing-cars/listing-four-' . $view_type . '-loop';
+            // } elseif (stm_is_boats() and $view_type == 'list') {
+                // $template = 'partials/listing-cars/listing-' . $view_type . '-loop-boats';
+            // } elseif (stm_is_motorcycle()) {
+                // $template = 'partials/listing-cars/motos/' . $view_type;
+            // }
+
+            // echo $template;
 
             while (have_posts()): the_post();
 

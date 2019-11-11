@@ -606,11 +606,14 @@ function stm_mra_get_listings_list()
             $infosListTwo = stm_ma_get_tax_info( get_the_ID(), $listInfoTwo );
             $infosListThree = stm_ma_get_tax_info( get_the_ID(), $listInfoThree );
             $infosListFour = stm_ma_get_tax_info( get_the_ID(), $listInfoFour );
+            $carViews = get_post_meta( get_the_ID(), 'stm_car_views', true );
 
             $newListings[] = array(
                 'ID' => get_the_ID(),
                 'imgUrl' => $featureImg,
                 'gallery' => $gallery,
+                'views' => $carViews,
+                'sold_status' => (get_post_meta( get_the_ID(), 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
                 'imgCount' => count( $gallery ),
                 'price' => ( !empty( $price ) ) ? str_replace( '   ', ' ', stm_listing_price_view( trim( $price ) ) ) : 'No Price',
                 'grid' => array(
@@ -772,6 +775,8 @@ function stm_mra_get_listing_by_id()
         $carLat = get_post_meta( $id, 'stm_lat_car_admin', true );
         $carLng = get_post_meta( $id, 'stm_lng_car_admin', true );
         $carLocation = get_post_meta( $id, 'stm_car_location', true );
+        $carVideos = get_post_meta( $id, 'gallery_video' );
+        $carViews = get_post_meta( $id, 'stm_car_views', true );
 
         $genTitle = stm_ma_generate_title_from_slugs( $id, $title );
         $genSubTitle = stm_ma_generate_title_from_slugs( $id, $subTitle );
@@ -792,6 +797,9 @@ function stm_mra_get_listing_by_id()
             'car_lat' => $carLat,
             'car_lng' => $carLng,
             'info' => array(),
+            'videos' => $carVideos,
+            'sold_status' => (get_post_meta( $id, 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
+            'views' => $carViews
         );
 
         foreach ( $info as $inf ) {
@@ -947,6 +955,8 @@ function stm_mra_get_filtered_listings_list()
             $newListings[] = array(
                 'ID' => get_the_ID(),
                 'imgUrl' => $featureImg,
+                'views' => get_post_meta( get_the_ID(), 'stm_car_views', true ),
+                'sold_status' => (get_post_meta( get_the_ID(), 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
                 'gallery' => $gallery,
                 'imgCount' => count( $gallery ),
                 'price' => ( !empty( $price ) ) ? str_replace( '   ', ' ', stm_listing_price_view( trim( $price ) ) ) : 'No Price',

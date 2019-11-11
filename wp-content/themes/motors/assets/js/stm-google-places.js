@@ -1,10 +1,10 @@
 (function($) {
     "use strict";
-
+    
     var Places = STMListings.Places = {};
 
     Places.autocompleteConfig = function () {
-    	return {types: ['geocode']};
+    	return {types: ['geocode'], componentRestrictions: {country: "qa"} };
 	};
 
 	Places.addGoogleAutocomplete = function (location_id) {

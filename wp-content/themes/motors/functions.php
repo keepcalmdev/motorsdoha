@@ -106,41 +106,72 @@ function change_menu($items){
 add_filter('wp_nav_menu_objects', 'change_menu');
 
 
-if(strpos($actual_link , 'http://qprcar01.kinsta.cloud/ar/qprlogin/?action=logout') !== false){
 
+add_action('check_admin_referer', 'logout_without_confirm', 10, 2);
+function logout_without_confirm($action, $result) {
+    /**
+     * Allow logout without confirmation
+     */
+    if ($action == "log-out" && !isset($_GET['_wpnonce'])) {
+        $redirect_to = isset($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : '';
+        $location = str_replace('&amp;', '&', wp_logout_url($redirect_to));;
+        header("Location: $location");
+        die;
+    }
+}
 
-		add_action('check_admin_referer', 'logout_without_confirm', 10, 2);
-		function logout_without_confirm($action, $result)
-		{
-		    /**
-		     * Allow logout without confirmation
-		     */
-		    if ($action == "log-out" && !isset($_GET['_wpnonce'])) {
-		        $redirect_to = isset($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : '';
-		        $location = str_replace('&amp;', '&', wp_logout_url($redirect_to));;
-		        header("Location: $location");
-		        die;
-		    }
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'car/v1', '/marksold/(?P<id>\d+)', array(
+		'methods' => 'GET',
+		'callback' => 'mark_car_sold_api',
+	));
+});
 
-		function change_menu($items){
-		  foreach($items as $item){
-		    if( $item->title == "Logout"){
-		         $item->url = $item->url . "&_wpnonce=" . wp_create_nonce( 'log-out' );
-		    }
-		  }
-		  return $items;
+function mark_car_sold_api(WP_REST_Request $request) {
+	return update_post_meta($request->get_param('id'), 'car_mark_as_sold', 'on');
+}
 
-		}
-		add_filter('wp_nav_menu_objects', 'change_menu');
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'car/v1', '/unmarksold/(?P<id>\d+)', array(
+		'methods' => 'GET',
+		'callback' => 'mark_car_sold_api',
+	));
+});
 
-
-
-		    
-		}
-
-
-
+function unmark_car_sold_api(WP_REST_Request $request) {
+	return delete_post_meta($request->get_param('id'), 'car_mark_as_sold', 'on');
 }
 
 
+
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'car/v1', '/getcardetails', array(
+		'methods' => 'GET',
+		'callback' => 'getCarDetailsParams',
+	));
+});
+
+function getCarDetailsParams(WP_REST_Request $request) {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmodelinfo?make='.$request->get_param('make').'&year='.$request->get_param('year').'&model='.$request->get_param('model'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+
+    $headers = array();
+    $headers[] = 'Accept: */*';
+    $headers[] = 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAiLCJuYmYiOjE1NzE5MDcxODYsImV4cCI6MTU3MjA3OTk4NiwiaWF0IjoxNTcxOTA3MTg2fQ.d6elIUJ0pfzHhuQcnyigoAVqxOqLDAXDxy-vvuZ10Uc';
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result = curl_exec($ch);
+    if (curl_errno($ch)) {
+        // echo 'Error:' . curl_error($ch);
+    }
+    curl_close($ch);
+    return json_decode($result);
+    // $contentcar = json_decode($result);
+	// print_r($request);
+	// die;
+}
 
