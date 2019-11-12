@@ -1,4 +1,5 @@
 <?php
+
 if(!empty($modern) and $modern) {
     $classes = array();
     $taxonomies = stm_get_taxonomies();
@@ -68,4 +69,10 @@ if(!empty($modern) and $modern) {
 
     <div class="listing-list-loop stm-listing-directory-list-loop stm-isotope-listing-item <?php if(!empty($asSold)) echo esc_attr('car-as-sold');?>">
 
-<?php }
+<?php } 
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 <?php $filter = stm_listings_filter();?>
-<form action="<?php echo stm_listings_current_url() ?>" method="get" data-trigger="filter">
+
+<form action="<?php echo stm_listings_current_url() ?>" method="GET" data-trigger="filter">
 	<div class="filter filter-sidebar ajax-filter">
 
 		<?php do_action( 'stm_listings_filter_before' ); ?>
@@ -18,16 +19,29 @@
 					) );
 				else: ?>
                     <?php if(isset($filter['options'][ $attribute ])) : ?>
-					<div class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
-						<div class="form-group">
-							<?php
-                            stm_listings_load_template('filter/types/select', array(
-                                'options' => $filter['options'][$attribute],
-                                'name' => $attribute
-                            ));
-                            ?>
+                    	<?php if ($attribute == "condition"){  ?>
+						<div style="display: block;" class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
+							<div class="form-group">
+								<?php
+	                            stm_listings_load_template('filter/types/select', array(
+	                                'options' => $filter['options'][$attribute],
+	                                'name' => $attribute
+	                            ));
+	                            ?>
+							</div>
 						</div>
-					</div>
+						<?php  } else {?>
+							<div class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
+							<div class="form-group">
+								<?php
+	                            stm_listings_load_template('filter/types/select', array(
+	                                'options' => $filter['options'][$attribute],
+	                                'name' => $attribute
+	                            ));
+	                            ?>
+							</div>
+						</div>
+						<?php } ?>	
 				    <?php endif; ?>
 				<?php endif; ?>
 			<?php endforeach; ?>

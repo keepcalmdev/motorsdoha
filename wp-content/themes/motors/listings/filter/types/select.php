@@ -1,4 +1,13 @@
-<select name="<?php echo esc_attr($name) ?>" class="form-control">
+<?php
+    $disabled;
+
+    if( $name === "serie") $disabled = "disabled";
+    else $disabled = ""; 
+?>
+<?php 
+//if($name === "condition") return false;
+?> 
+<select name="<?php echo esc_attr($name) ?>" class="form-control" <?php echo $disabled; ?>>
     <?php if (!empty($options)): ?>
         <?php foreach ($options as $value => $option) : ?>
             <option

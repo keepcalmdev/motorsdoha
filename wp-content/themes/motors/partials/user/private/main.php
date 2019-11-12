@@ -42,6 +42,7 @@ $current = stm_account_current_page();
 					</ul>
 				<?php endif; ?>
 
+
 				<?php if ( $tabsActive ) : ?>
 				<div class="tab-content">
 					<div class="tab-pane active" id="pp" role="tabpanel" aria-labelledby="pp-tab">

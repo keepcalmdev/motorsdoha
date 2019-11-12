@@ -1,4 +1,5 @@
 <?php
+
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -114,6 +115,7 @@ if (!empty($image)) {
 $filter = stm_listings_filter();
 ?>
 
+
 <div class="stm-inventory-map-wrap">
     <div<?php echo( ( $map_style ) ? ' style="' . esc_attr( implode( ' ', $map_style ) ) . ' margin: 0 auto; "' : '' ); ?> id="stm_map-<?php echo esc_attr( $id ); ?>" class="stm_gmap"></div>
     <div class="stm-inventory-map-filter-arrow-wrap">
@@ -137,6 +139,7 @@ $filter = stm_listings_filter();
                                 if($attribute == 'price') {
                                     continue;
                                 }
+
                                 if ( ! empty( $config['slider'] ) && $config['slider'] ):
                                     stm_listings_load_template( 'filter/types/slider', array(
                                         'taxonomy' => $config,
@@ -213,6 +216,7 @@ $filter = stm_listings_filter();
 
 
     <script>
+
         jQuery("body").addClass("stm-inventory-map-body");
         jQuery(document).ready(function ($) {
 
@@ -387,6 +391,7 @@ $filter = stm_listings_filter();
                 $(".stm_gmap").addClass("stm-loading");
 
                 $("form[data-trigger=filter-map]").submit(function (e) { e.preventDefault(); });
+
                 var data = [];
 
                 $.each($("form[data-trigger=filter-map]").serializeArray(), function (i, field) {
@@ -515,14 +520,24 @@ $filter = stm_listings_filter();
                 url = $("form[data-trigger=filter-map]").attr('action'),
                 sign = url.indexOf('?') < 0 ? '?' : '&';
 
-            $.each($("form[data-trigger=filter-map]").serializeArray(), function (i, field) {
-                if (field.value != '') {
-                    data.push(field.name + '=' + field.value)
-                }
-            });
+             var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order" ]  
+             
 
-            url = url + sign + data.join('&');
-            window.history.pushState('', '', decodeURI(url));
+            $.each($("form[data-trigger=filter-map]").serializeArray(), function (i, field) {
+                //if(filterUrl.indexOf(field.name) === -1){
+                    
+                     if (field.value != '') {
+                        data.push(field.name + '=' + field.value)
+                     }
+               // }
+                
+            });
+           
+
+             url = url + sign + data.join('&');
+             //window.history.pushState('', '', decodeURI(url));
+            
+
         }
     </script>
 <?php
@@ -544,15 +559,98 @@ function invMapScript() {
            $(document).on('change', '.ajax-filter select, .stm-sort-by-options select, .stm-slider-filter-type-unit', function (event) {
                $("form[data-trigger=filter-map]").submit(function (e) { e.preventDefault(); });
                buildUrl();
+               setTimeout(function(){
+                   if($('.ajax-filter select[name=make]').val() !== ''){
+                        $(".ajax-filter select[name=serie]").prop("disabled", false);
+
+                   }
+                   else {
+                        $(".ajax-filter select[name=serie]").prop("disabled", true);
+                   }
+               }, 1000)
+              changeSeo()
+
+
            });
 
            $(document).on('slidestop', '.ajax-filter .stm-filter-type-slider', function (event, ui) {
                $("form[data-trigger=filter-map]").submit(function (e) { e.preventDefault(); });
                buildUrl();
            });
+
+
+             jQuery(document).on("click", "#listings-result .stm-clear-listing-one-unit", function(){
+               changeSeo()
+             })
+
+
        });
+      function chngTtl(titleObj){
+            //top title
+            var top_title = "";
+            if(titleObj["condition"] == "new-cars"){
+                top_title = "New "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";
+            } else if(titleObj["condition"] == "used-cars") {
+                top_title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";  
+            } 
+
+            $("h1.title").html(top_title);
+        }
+
+       function capitalizeFL(name){
+        return name.charAt(0).toUpperCase() + name.slice(1)
+       }
+       function changeSeo(){
+         var title = "";
+               var desc = "";
+               var make=capitalizeFL($("select[name=make]").val());
+               var model=$("select[name=serie]").val();
+               var year=$("select[name=ca-year]").val();
+               var condition = $("select[name=condition]").val()
+
+               var titleObj = {"make": make, "model": model, "year": year, "condition": condition }
+           //console.table(titleObj)    
+           if(titleObj["condition"] == "new-cars"){
+                //Car Make (New)
+                if(titleObj["model"] == ""){
+                title = "New " + titleObj["make"] + " Cars for Sale in Qatar | MotorsDoha";
+                desc = '<meta name="description" content="Shop new '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on new '+titleObj["make"]+'. Inspected & Certified brand new cars on motorsdoha.com." />';
+                } else { //Car Model (New)
+                    title = titleObj["year"] +" "+titleObj['make']+" "+titleObj['model']+ " Prices, Cars for Sale in Qatar | MotorsDoha";
+                    desc = '<meta name="description" content="New '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
+                }
+            } else if(titleObj["condition"] == "used-cars") {
+                //Car Make (Used) 
+                if(titleObj["model"]  ==""){
+                    title = titleObj["make"]+" Used Cars for Sale in Qatar | MotorsDoha";
+                    desc = '<meta name="description" content="Shop used '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on used '+titleObj["make"]+'. Inspected & Certified second hand cars on motorsdoha.com." />';
+
+                } else { //Car Model (Used)
+                    title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars for Sale in Qatar | MotorsDoha";
+                    desc = '<meta name="description" content="Used '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on used '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
+                }
+
+            } else {
+                title = "Inventory | MotorsDoha";
+                desc = '<meta name="description" content="inventory,  MotorsDoha" />';
+            }
+
+           $("title").html(title);
+           $("meta[name=description]").remove();
+           $("head").append(desc);
+
+            chngTtl(titleObj)
+
+      
+       }
+
+
    </script>
 <?php
 }
 add_action('wp_footer', 'invMapScript');
 ?>
+
+
+
+

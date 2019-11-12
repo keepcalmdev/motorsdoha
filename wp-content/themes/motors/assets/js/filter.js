@@ -243,7 +243,6 @@
     });
 
     function stm_disable_rest_filters($_this, action) {
-        //console.log(action);
         var $_form = $_this.closest('form');
 
         var data = [],
@@ -328,3 +327,6 @@ function stm_get_price_view(price, currency, currencyPos, priceDel) {
     }
     return stmText;
 }
+
+
+ 

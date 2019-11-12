@@ -1,10 +1,10 @@
 (function($) {
     "use strict";
-
+    //hello world
     function addGoogleAutocomplete(location_id) {
         var input = document.getElementById(location_id);
 
-        var autocomplete = new google.maps.places.Autocomplete(input,{types: ['geocode']});
+        var autocomplete = new google.maps.places.Autocomplete(input,{ types: ['geocode'] });
 
         //Place changed hook
         google.maps.event.addListener(autocomplete, 'place_changed', function () {

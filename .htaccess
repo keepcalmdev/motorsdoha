@@ -1,12 +1,17 @@
-
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /motorsdoha/
+RewriteRule ^condition/([^/]+)/?$ /wordpress/inventory/?condition=$1&min_price=2000&max_price=200000&stm_lat=0&stm_lng=0&max_search_radius=100 [L,R=301]
+RewriteRule ^inventory/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ /wordpress/inventory/?condition=$1&make=$2&serie=$3&ca-year=$4&min_price=2000&max_price=$5&stm_lat=0&stm_lng=0&max_search_radius=100 [L,R=301]
+RewriteRule ^inventory/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$ /wordpress/inventory/?condition=$1&make=$2&serie=$3&ca-year=$4&min_price=2000&max_price=200000&stm_lat=0&stm_lng=0&max_search_radius=100 [L,R=301]
+RewriteRule ^inventory/([^/]+)/([^/]+)/([^/]+)/?$ /wordpress/inventory/?condition=$1&make=$2&serie=$3&min_price=2000&max_price=200000&stm_lat=0&stm_lng=0&max_search_radius=100 [L,R=301]
+RewriteRule ^inventory/([^/]+)/([^/]+)/?$ /wordpress/inventory/?condition=$1&make=$2&min_price=2000&max_price=200000&stm_lat=0&stm_lng=0&max_search_radius=100 [L,R=301]
+RewriteRule ^car/([^/]+)/?$ /wordpress/listings/$1 [L,R=301]
+RewriteBase /wordpress/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /motorsdoha/index.php [L]
+RewriteRule . /wordpress/index.php [L]
 </IfModule>
 
 # END WordPress

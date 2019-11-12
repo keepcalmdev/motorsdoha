@@ -5,6 +5,7 @@ if (typeof (STMListings) == 'undefined') {
 (function ($) {
     "use strict";
 
+
     function Filter(form) {
         this.form = form;
 		this.ajax_action = ($(this.form).data('action')) ? $(this.form).data('action'): 'listings-result';
@@ -18,6 +19,7 @@ if (typeof (STMListings) == 'undefined') {
 
     Filter.prototype.submit = function (event) {
         event.preventDefault();
+
 
         var data = [],
             url = $(this.form).attr('action'),
@@ -41,7 +43,19 @@ if (typeof (STMListings) == 'undefined') {
     };
 
     Filter.prototype.pushState = function (url) {
-		window.history.pushState('', '', decodeURI(url));
+		//window.history.pushState('', '', decodeURI(url));
+        var data = []
+        var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order" ]  
+        var urlObj = URLToArray(url);
+        for(var prop in urlObj){
+            //console.log(prop)
+            if(filterUrl.indexOf(prop) == -1)
+            data.push(prop + '=' + urlObj[prop])
+        }
+        url = $("form[data-trigger=filter-map]").attr('action')
+        var sign = url.indexOf('?') < 0 ? '?' : '&';
+        url = url + sign + data.join('&');
+        window.history.pushState('', '', decodeURI(url));
 	};
 
     Filter.prototype.performAjax = function (url) {
@@ -53,11 +67,12 @@ if (typeof (STMListings) == 'undefined') {
             beforeSend: this.ajaxBefore,
             success: this.ajaxSuccess,
             complete: this.ajaxComplete
-        });
+        });        
     };
 
     Filter.prototype.ajaxBefore = function () {
         this.getTarget().addClass('stm-loading');
+        //buildUrl();
     };
 
     Filter.prototype.ajaxSuccess = function (res) {
@@ -102,4 +117,18 @@ if (typeof (STMListings) == 'undefined') {
     });
 
 
+
 })(jQuery);
+
+
+function URLToArray(url) {
+    var request = {};
+    var pairs = url.substring(url.indexOf('?') + 1).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        if(!pairs[i])
+            continue;
+        var pair = pairs[i].split('=');
+        request[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+     }
+     return request;
+}

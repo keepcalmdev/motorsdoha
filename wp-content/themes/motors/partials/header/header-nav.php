@@ -71,7 +71,7 @@ if ( !empty( $fixed_header ) and $fixed_header ) {
 
                     <?php //if ( stm_is_listing_four() ) : ?>
                         <?php
-                        $header_listing_btn_link = get_theme_mod('header_listing_btn_link', '/add-a-car');
+                        $header_listing_btn_link = get_theme_mod('header_listing_btn_link', 'http://localhost:8888/wordpress/add-a-car');
                         $header_listing_btn_text = get_theme_mod('header_listing_btn_text', esc_html__('Add your item', 'motors'));
                         ?>
                         <?php if(!empty($header_listing_btn_link) and !empty($header_listing_btn_text)): ?>

@@ -14,7 +14,7 @@ if($car_title === ""){ //custom title prefix
 <div class="row">
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="stm-single-car-content">
-            <h1 class="title h2"><?php the_title(); ?></h1>
+            <h1 class="title h2"><?php echo $car_title_prefix . " ";?><?php echo ($car_title === "")? the_title() :  $car_title; ?></h1>
 
             <!--Actions-->
             <?php get_template_part( 'partials/single-car/car', 'actions' ); ?>

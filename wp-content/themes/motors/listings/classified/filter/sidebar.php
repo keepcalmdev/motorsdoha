@@ -1,3 +1,4 @@
+
 <?php
 	$filter_bg = get_theme_mod('sidebar_filter_bg', get_template_directory_uri() . '/assets/images/listing-directory-filter-bg.jpg');
 	if(!empty($filter_bg)){ ?>
@@ -38,13 +39,16 @@
 				if($attribute == 'price') {
 					continue;
 				}
+
 				if ( ! empty( $config['slider'] ) && $config['slider'] ):
 					stm_listings_load_template( 'filter/types/slider', array(
 						'taxonomy' => $config,
 						'options'  => $filter['options'][ $attribute ]
 					) );
 				else: ?>
+
                     <?php if(isset($filter['options'][ $attribute ])) : ?>
+
 					<div class="col-md-12 col-sm-6 stm-filter_<?php echo esc_attr( $attribute ) ?>">
 						<div class="form-group">
 							<?php stm_listings_load_template('filter/types/select', array(

@@ -10,6 +10,19 @@ $special_car = get_post_meta($post_id,'special_car', true);
 $badge_text = get_post_meta($post_id,'badge_text',true);
 $badge_bg_color = get_post_meta($post_id,'badge_bg_color',true);
 
+//car name
+$condition = get_post_meta($post_id,'condition',true);
+$car_make = ucfirst(get_post_meta($post_id,'make',true));
+$car_model = ucfirst(get_post_meta($post_id,'serie',true));
+$car_year = get_post_meta($post_id,'ca-year',true);
+$img_alt = "";
+$img_alt_prefix = "";
+if($condition == "used-cars"){
+	$img_alt_prefix = "Used";
+} 
+$img_alt = $img_alt_prefix . " ". $car_make . " ". $car_model ." ". $car_year;
+
+
 if(empty($badge_text)) {
     $badge_text = 'Special';
 }
@@ -75,7 +88,7 @@ if(!empty($badge_bg_color)) {
 			//Post thumbnail first ?>
 			<div class="stm-single-image" data-id="big-image-<?php echo esc_attr(get_post_thumbnail_id($post_id)); ?>">
 				<a href="<?php echo esc_url($full_src[0]); ?>" class="stm_fancybox" rel="stm-car-gallery">
-					<?php the_post_thumbnail('stm-img-796-466', array('class'=>'img-responsive')); ?>
+					<?php the_post_thumbnail('stm-img-796-466', array('class'=>'img-responsive', 'alt'=>$img_alt)); ?>
 				</a>
 			</div>
 		<?php endif; ?>
@@ -85,7 +98,7 @@ if(!empty($badge_bg_color)) {
 			<?php if(!empty($src[0])): ?>
 				<div class="stm-single-image video-preview" data-id="big-image-<?php echo esc_attr($video_preview); ?>">
 					<a class="fancy-iframe" data-url="<?php echo esc_url($gallery_video); ?>">
-						<img src="<?php echo esc_url($src[0]); ?>" class="img-responsive" alt="<?php esc_attr_e('Video preview', 'motors'); ?>"/>
+						<img src="<?php echo esc_url($src[0]); ?>" class="img-responsive" alt="<?php echo $img_alt; //esc_attr_e('Video preview', 'motors'); ?>"/>
 					</a>
 				</div>
 			<?php endif; ?>
@@ -98,7 +111,7 @@ if(!empty($badge_bg_color)) {
 				<?php if(!empty($src[0]) && $gallery_image != get_post_thumbnail_id(get_the_ID())): ?>
 					<div class="stm-single-image" data-id="big-image-<?php echo esc_attr($gallery_image); ?>">
 						<a href="<?php echo esc_url($full_src[0]); ?>" class="stm_fancybox" rel="stm-car-gallery">
-							<img src="<?php echo esc_url($src[0]); ?>" alt="<?php printf(esc_attr__('%s full','motors'), get_the_title($post_id)); ?>"/>
+							<img src="<?php echo esc_url($src[0]); ?>" alt="<?php echo $img_alt;//printf(esc_attr__('%s full','motors'), get_the_title($post_id)); ?>"/>
 						</a>
 					</div>
 				<?php endif; ?>
@@ -112,7 +125,7 @@ if(!empty($badge_bg_color)) {
                 if(!empty($src[0])): ?>
                     <div class="stm-single-image video-preview" data-id="big-image-<?php echo esc_attr($val); ?>">
                         <a class="fancy-iframe" data-url="<?php echo esc_url($videoSrc); ?>">
-                            <img src="<?php echo esc_url($src[0]); ?>" class="img-responsive" alt="<?php esc_attr_e('Video preview', 'motors'); ?>"/>
+                            <img src="<?php echo esc_url($src[0]); ?>" class="img-responsive" alt="<?php echo $img_alt;//esc_attr_e('Video preview', 'motors'); ?>"/>
                         </a>
                     </div>
                 <?php endif; ?>
@@ -127,7 +140,7 @@ if(!empty($badge_bg_color)) {
 			<?php if(has_post_thumbnail()):
 				//Post thumbnail first ?>
 				<div class="stm-single-image" id="big-image-<?php echo esc_attr(get_post_thumbnail_id($post_id)); ?>">
-					<?php the_post_thumbnail('stm-img-350-205', array('class'=>'img-responsive')); ?>
+					<?php the_post_thumbnail('stm-img-350-205', array('class'=>'img-responsive', 'alt'=>$img_alt)); ?>
 				</div>
 			<?php endif; ?>
 
@@ -136,7 +149,7 @@ if(!empty($badge_bg_color)) {
 				<?php if(!empty($src[0])): ?>
 					<div class="stm-single-image video-preview" data-id="big-image-<?php echo esc_attr($video_preview); ?>">
 						<a class="fancy-iframe" data-url="<?php echo esc_url($gallery_video); ?>">
-							<img src="<?php echo esc_url($src[0]); ?>" alt="<?php esc_attr_e('Video preview', 'motors'); ?>"/>
+							<img src="<?php echo esc_url($src[0]); ?>" alt="<?php echo $img_alt;//esc_attr_e('Video preview', 'motors'); ?>"/>
 						</a>
 					</div>
 				<?php endif; ?>
@@ -147,7 +160,7 @@ if(!empty($badge_bg_color)) {
 					<?php $src = wp_get_attachment_image_src($gallery_image, 'stm-img-350-205'); ?>
 					<?php if(!empty($src[0]) && $gallery_image != get_post_thumbnail_id(get_the_ID())): ?>
 						<div class="stm-single-image" id="big-image-<?php echo esc_attr($gallery_image); ?>">
-							<img src="<?php echo esc_url($src[0]); ?>" alt="<?php printf(esc_attr__('%s full','motors'), get_the_title($post_id)); ?>"/>
+							<img src="<?php echo esc_url($src[0]); ?>" alt="<?php echo $img_alt;//printf(esc_attr__('%s full','motors'), get_the_title($post_id)); ?>"/>
 						</div>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -160,7 +173,7 @@ if(!empty($badge_bg_color)) {
                     if(!empty($src[0])): ?>
                         <div class="stm-single-image video-preview" data-id="big-image-<?php echo esc_attr($video_preview); ?>">
                             <a class="fancy-iframe" data-url="<?php echo esc_url($videoSrc); ?>">
-                                <img src="<?php echo esc_url($src[0]); ?>" alt="<?php esc_attr_e('Video preview', 'motors'); ?>"/>
+                                <img src="<?php echo esc_url($src[0]); ?>" alt="<?php echo $img_alt;//esc_attr_e('Video preview', 'motors'); ?>"/>
                             </a>
                         </div>
                     <?php endif; ?>

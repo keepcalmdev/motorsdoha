@@ -587,10 +587,8 @@ if (count($abc) && !is_page('car-limit') && is_page('add-a-car-page')) {
 // }
 
 // die;
-
-
-
-// echo "<pre>";
-// foreach (json_decode($result) as $key => $value) {
-// }
 ?>
+
+</body>
+</html>
+

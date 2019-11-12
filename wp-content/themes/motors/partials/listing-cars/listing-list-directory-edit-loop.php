@@ -26,9 +26,15 @@ $asSold = get_post_meta(get_the_ID(), 'car_mark_as_sold', true);
 if (!empty($asSold)) {
 	$classes[] = 'as_sold';
 }
-
-stm_listings_load_template('loop/start', array('modern' => true, 'listing_classes' => $classes));
 ?>
+
+
+
+
+<?php stm_listings_load_template('loop/start', array('modern' => true, 'listing_classes' => $classes));
+?>
+	
+	<!--New badge with videos-->
 		<div class="image">
 
 			<!--Hover blocks-->
@@ -102,7 +108,12 @@ stm_listings_load_template('loop/start', array('modern' => true, 'listing_classe
 					<i class="stm-service-icon-staricon"></i>
 				</div>
 			<?php endif; ?>
-
+			<!-- 360deg icon -->
+			<div class="stm-car-360">
+				<!-- <i class="fas fa-sync-alt"></i> -->
+				360&#176;
+				<?php //echo esc_attr($car_views); ?>
+			</div>
 			<div class="stm-car-views">
 				<i class="fa fa-eye"></i>
 				<?php echo esc_attr($car_views); ?>
@@ -202,6 +213,73 @@ stm_listings_load_template('loop/start', array('modern' => true, 'listing_classe
 
 			<?php stm_listings_load_template('loop/classified/list/options'); ?>
 
+			<!-- for mobile only -->
+			<div class="main-mob-btn-wrapper">
+				<div class="button-row clearfix">
+				<?php if(get_post_status(get_the_id()) == 'draft'): ?>
+				<div class="delete-btn-wrap">
+					<a class="btn-icon btn-delete-item btn-with-icon btn-left-icon" href="<?php echo esc_url(add_query_arg(array('stm_move_trash_car' => get_the_ID()), stm_get_author_link(''))); ?>" data-title="<?php the_title(); ?>">
+						<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/delete-icon.png'); ?>" alt="" />
+						DELETE
+					</a>
+				</div>
+				<?php endif; ?>	
+				<?php if(get_post_status(get_the_id()) != 'pending'): ?>
+					<!-- Mark sold/unsold-->
+					<?php if($asSold == 'on'): ?>
+						<a href="<?php echo esc_url(add_query_arg(array('stm_unmark_as_sold_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-success btn-with-icon btn-success-active">
+									<?php esc_html_e('Unmark as sold', 'motors'); ?>
+									<span class="icon"></span>
+						</a>
+					<?php else : ?>						
+						<a href="<?php echo esc_url(add_query_arg(array('stm_mark_as_sold_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-success btn-with-icon">
+									<?php esc_html_e('Mark as sold', 'motors'); ?>
+									<span class="icon"></span>
+						</a>
+					<?php endif; ?>
+					<!-- Enable/Disable btn-->
+					<?php if(get_post_status(get_the_id()) == 'draft'): ?>
+					<a href="<?php echo esc_url(add_query_arg(array('stm_enable_user_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-disabled btn-with-icon btn-left-icon btn-disabled-active">
+								<?php esc_html_e('Enable', 'motors'); ?>
+								<span class="icon"></span>
+					</a>
+					<?php else: ?>
+					<a href="<?php echo esc_url(add_query_arg(array('stm_disable_user_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-disabled btn-with-icon btn-left-icon" data-id="<?php esc_attr(get_the_ID()); ?>">
+								<?php esc_html_e('Disable', 'motors'); ?>
+								<span class="icon"></span>
+					</a>	
+					<?php endif; ?>
+					<!-- Edit btn-->
+					<a href="<?php echo get_permalink(1735).'?edit_car=1&item_id='.get_the_ID(); ?>" class="btn-icon btn-edit btn-with-icon btn-left-icon">
+						<?php esc_html_e('Edit', 'motors'); ?>
+						<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/btn-edit-icon.png'); ?>" alt="" />
+					</a>
+				<?php else: ?>
+					<!-- Edit btn -->
+					<a href="<?php echo get_permalink(1735).'?edit_car=1&item_id='.get_the_ID(); ?>" class="btn-icon btn-edit btn-with-icon btn-left-icon">
+						<?php esc_html_e('Edit', 'motors'); ?>
+						<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/btn-edit-icon.png'); ?>" alt="" />
+					</a>
+					<!-- Delete btn -->
+					<div class="delete-btn-wrap">
+						<a class="btn-icon btn-delete-item btn-with-icon btn-left-icon" href="<?php echo esc_url(add_query_arg(array('stm_move_trash_car' => get_the_ID()), stm_get_author_link(''))); ?>" data-title="<?php the_title(); ?>">
+							<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/delete-icon.png'); ?>" alt="" />
+							<?php esc_html_e('Delete', 'motors'); ?>
+						</a>
+					</div>
+				<?php endif; ?>
+				<!--Favorite-->
+				<?php if(!empty($show_favorite) and $show_favorite): ?>
+					<div class="btn-fav-wrap">
+						<a href="javascript:void(0);" class="stm-listing-favorite btn-icon btn-favor btn-with-icon btn-left-icon" data-id="<?php echo esc_attr(get_the_id()); ?>">
+								<span class="icon"></span>	
+						</a>
+					</div>
+				<?php endif; ?>
+
+				</div>
+			</div>
+
 			<div class="meta-bottom">
 				<?php get_template_part('partials/listing-cars/listing-directive-list-loop', 'actions'); ?>
 			</div>
@@ -210,3 +288,5 @@ stm_listings_load_template('loop/start', array('modern' => true, 'listing_classe
 		</div>
 
 </div>
+
+

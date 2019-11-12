@@ -47,3 +47,4 @@
 <?php endif; ?>
 
 <?php stm_listings_load_pagination() ?>
+
