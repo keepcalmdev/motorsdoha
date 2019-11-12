@@ -464,7 +464,7 @@ if (is_user_logged_in()) {
         )
     )
 ));
-if (count($abc) && !is_page('car-limit') && is_page('add-a-car-page')) {
+if (count($abc) > 0 && !is_page('car-limit') && is_page('add-a-car-page')) {
     ?>
     <script type="text/javascript">
         window.location.replace("<?php bloginfo('url') ?>/car-limit/");
@@ -487,6 +487,7 @@ if (count($abc) && !is_page('car-limit') && is_page('add-a-car-page')) {
 </html>
 <?php 
 
+//GET MAKES
 // $ch = curl_init();
 
 // curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmakes');
@@ -506,6 +507,118 @@ if (count($abc) && !is_page('car-limit') && is_page('add-a-car-page')) {
 // curl_close($ch);
 
 // $ch = curl_init();
+
+
+// if ($error == '') {
+//     $results = json_decode($result);
+//     if (count($results)) {
+//         foreach ($results as $key => $make) {
+//             if (term_exists($make, 'make')) {
+//                 echo "Exists<br>";
+//             } else {
+//                 echo "Created<br>";
+//                 var_dump(wp_insert_term($make, 'make'));
+//             }
+//         }
+//     } else {
+//         echo "No make<br>";
+//     }
+// } else {
+//     echo $error;
+// }
+
+
+//GET YEARS
+// $ch = curl_init();
+
+// curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getyears');
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+// $headers = array();
+// $headers[] = 'Accept: */*';
+// $headers[] = 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAiLCJuYmYiOjE1NzE5MDcxODYsImV4cCI6MTU3MjA3OTk4NiwiaWF0IjoxNTcxOTA3MTg2fQ.d6elIUJ0pfzHhuQcnyigoAVqxOqLDAXDxy-vvuZ10Uc';
+// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+// $result = curl_exec($ch);
+// if (curl_errno($ch)) {
+//     echo 'Error:' . curl_error($ch);
+// }
+// curl_close($ch);
+
+// if ($error == '') {
+//     $results = json_decode($result);
+//     if (count($results)) {
+//         foreach ($results as $key => $year) {
+//             if (term_exists($year, 'ca-year')) {
+//                 echo "Exists<br>";
+//             } else {
+//                 echo "Created<br>";
+//                 var_dump(wp_insert_term($year, 'ca-year'));
+//             }
+//         }
+//     } else {
+//         echo "No year<br>";
+//     }
+// } else {
+//     echo $error;
+// }
+
+
+//GET MODELS
+// $makes = get_terms(array('taxonomy' => 'make', 'hide_empty' => false ));
+// $years = get_terms(array('taxonomy' => 'ca-year', 'hide_empty' => false ));
+
+// foreach ($makes as $key => $make) {
+//     foreach ($years as $key => $year) {
+//         echo $key.':'.$make->name.' '.$year->name.'<br>';
+
+//         $ch = curl_init();
+//         $url = 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmodel?make='.str_replace(' ', '%20', $make->name).'&year='.$year->name;
+//         curl_setopt($ch, CURLOPT_URL, $url);
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+
+//         $headers = array();
+//         $headers[] = 'Accept: */*';
+//         $headers[] = 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAiLCJuYmYiOjE1NzE5MDcxODYsImV4cCI6MTU3MjA3OTk4NiwiaWF0IjoxNTcxOTA3MTg2fQ.d6elIUJ0pfzHhuQcnyigoAVqxOqLDAXDxy-vvuZ10Uc';
+//         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+//         $error = '';
+//         $result = curl_exec($ch);
+//         if (curl_errno($ch)) {
+//             $error = 'Error:' . curl_error($ch);
+//         }
+//         curl_close($ch);
+
+//         if ($error == '') {
+//             $results = json_decode($result);
+//             if (count($results)) {
+//                 foreach ($results as $key => $model) {
+//                     $parent = term_exists($make->name, 'make');
+//                     $term = term_exists($model, 'serie');
+//                     if ($term) {
+//                         echo "Exists<br>";
+//                         add_term_meta( $term['term_id'], 'stm_parent', $make->slug );
+//                     } else {
+//                         echo "Created<br>";
+//                         var_dump(wp_insert_term($model, 'serie', [
+//                             'parent' => $parent['term_id']
+//                         ]));
+//                     }
+//                 }
+//             } else {
+//                 echo "No model<br>";
+//             }
+//         } else {
+//             echo $error;
+//         }
+//     }
+// }
+
+
+
+
 
 // curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getyears');
 // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

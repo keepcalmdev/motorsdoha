@@ -1830,7 +1830,7 @@ if(!stm_is_auto_parts()) {
         )
     ) );
 
-    if ( is_listing() ) {
+    // if ( is_listing() ) {
         STM_Customizer::setSection( 'user_dealer', array(
             'title' => esc_html__( 'User/Dealer options', 'motors' ),
             'panel' => 'listing',
@@ -2021,7 +2021,7 @@ if(!stm_is_auto_parts()) {
                 ),
             )
         ) );
-    }
+    // }
 }
     STM_Customizer::setSection( 'shop', array(
         'title' => esc_html__( 'Shop', 'motors' ),
