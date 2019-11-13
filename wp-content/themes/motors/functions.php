@@ -1,5 +1,6 @@
 <?php
 
+
     if(is_admin()) {
         require_once get_template_directory() . '/admin/admin.php';
 		/* Phone Number Patch */
@@ -12,6 +13,11 @@
 	define( 'STM_INC_PATH', get_template_directory() . '/inc' );
 	define( 'STM_CUSTOMIZER_PATH', get_template_directory() . '/inc/customizer' );
 	define( 'STM_CUSTOMIZER_URI', get_template_directory_uri() . '/inc/customizer' );
+
+
+	wp_enqueue_style( 'phonevalid', get_template_directory_uri() . '/assets/css/intlTelInput.css', array(), '1.1', 'all');
+	wp_enqueue_style( 'phonevalid2', get_template_directory_uri() . '/assets/css/demo.css', array(), '1.1', 'all');
+	wp_enqueue_script( 'phonevalidscript', get_template_directory_uri() . '/assets/js/intlTelInput-jquery.min.js', array ( 'jquery' ), 1.1, true);
 
 
 	//	Include path

@@ -97,6 +97,7 @@ function wpcf7_recaptcha_onload_script() {
 		},
 
 		executeOnHomepage: function() {
+
 			wpcf7recaptcha.execute( actions[ 'homepage' ] );
 		},
 
