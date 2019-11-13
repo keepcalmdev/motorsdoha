@@ -134,12 +134,68 @@ function mark_car_sold_api(WP_REST_Request $request) {
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'car/v1', '/unmarksold/(?P<id>\d+)', array(
 		'methods' => 'GET',
-		'callback' => 'mark_car_sold_api',
+		'callback' => 'unmark_car_sold_api',
 	));
 });
 
 function unmark_car_sold_api(WP_REST_Request $request) {
 	return delete_post_meta($request->get_param('id'), 'car_mark_as_sold', 'on');
+}
+
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'car/v1', '/enable/(?P<id>\d+)', array(
+		'methods' => 'GET',
+		'callback' => 'car_enable_api',
+	));
+});
+
+function car_enable_api(WP_REST_Request $request) {
+	$car = $request->get_param('id');
+    $status = get_post_status( $car );
+    if ( $status == 'draft' ) {
+        $enabled_car = array(
+            'ID' => $car,
+            'post_status' => 'publish'
+        );
+
+        wp_update_post( $enabled_car );
+    }
+	return true;
+}
+
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'car/v1', '/disable/(?P<id>\d+)', array(
+		'methods' => 'GET',
+		'callback' => 'car_disable_api',
+	));
+});
+
+function car_disable_api(WP_REST_Request $request) {
+	$car = $request->get_param('id');
+    $status = get_post_status( $car );
+    if ( $status == 'publish' ) {
+        $disabled_car = array(
+            'ID' => $car,
+            'post_status' => 'draft'
+        );
+
+        wp_update_post( $disabled_car );
+    }
+	return true;
+}
+
+
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'car/v1', '/details/(?P<id>\d+)', array(
+		'methods' => 'GET',
+		'callback' => 'car_details_api',
+	));
+});
+
+function car_details_api(WP_REST_Request $request) {
+	$allDetails = get_post_meta($request->get_param('id'));
+	unset($allDetails['gallery']);
+	return $allDetails;
 }
 
 
