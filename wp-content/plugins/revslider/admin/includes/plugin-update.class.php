@@ -92,7 +92,7 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 	 * @since 5.0
 	 */
 	public function __construct(){
-		$this->revision = get_option('revslider_update_revision', '6.0.0');
+		$this->revision = get_option('revslider_update_version', '6.0.0');
 		
 		if(empty($this->googlefonts)){
 			//direct inclusion for direct searching of google font
@@ -225,6 +225,15 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 			
 			$upd->set_version($version);
 		}
+		
+		//with 6.1.4, we check the animations again for custom animations
+		if(version_compare($version, '6.1.4', '<')){
+			$version = '6.1.4';
+			
+			$upd->change_animations_settings_to_6_0();
+			
+			$upd->set_version($version);
+		}
 
 	}
 	
@@ -233,8 +242,8 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 	 * @since: 6.0
 	 **/
 	public static function upgrade_slider_to_latest($slider){
+		$upd = new RevSliderPluginUpdate();
 		if(version_compare($slider->get_setting('version', '1.0.0'), '6.0.0', '<')){
-			$upd = new RevSliderPluginUpdate();
 			//$upd->update_css_styles(); //set to version 5
 			$upd->add_animation_settings_to_layer($slider); //set to version 5
 			$upd->add_style_settings_to_layer($slider); //set to version 5
@@ -244,6 +253,10 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 			$upd->change_layers_svg_5_2_5_5($slider); //set to version 5.2.5.5
 			$upd->change_animations_settings_to_6_0(); //check if new navigations are added through import
 			$upd->upgrade_slider_to_6_0($slider);
+		}
+		
+		if(version_compare($slider->get_setting('version', '1.0.0'), '6.1.4', '<')){
+			$upd->upgrade_slider_to_6_1_4($slider);
 		}
 	}
 	
@@ -306,6 +319,31 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 		$upd->change_layer_settings_to_6_0($slider); //set to version 6.0
 		
 		$upd->remove_unneeded_slider_settings($slider);
+	}
+	
+	/**
+	 * check to convert the given Slider to latest versions
+	 * @since: 6.1.4
+	 * reverse the carousel.scaleDown value. If it was 85, change it to 15 and vice versa
+	 **/
+	public function upgrade_slider_to_6_1_4($sliders = false){
+		$sr = new RevSliderSlider();
+		
+		$sliders = ($sliders === false) ? $sr->get_sliders() : array($sliders); //do it on all Sliders if false
+
+		if(!empty($sliders) && is_array($sliders)){
+			foreach($sliders as $slider){
+				$carousel = $slider->get_param('carousel', array());
+				$scale_down = $this->get_val($carousel, 'scaleDown');
+				
+				if($scale_down !== false){
+					$carousel['scaleDown'] = 100 - intval($scale_down);
+					$slider->update_params(array('carousel' => $carousel));
+				}
+				
+				$slider->update_settings(array('version' => '6.1.4'));
+			}
+		}
 	}
 
 	/**
@@ -4349,13 +4387,7 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 	 **/
 	public function change_animations_settings_to_6_0($anims = false){
 		//do on all navigations ?
-		if($anims === false){
-			$anims1 = $this->get_animations();
-			$anims2 = $this->get_end_animations();
-			$anims = array_merge($anims1, $anims2);
-		}else{
-			$anims = (array)$anims;
-		}
+		$anims = ($anims === false) ? $this->get_animations_v5() : (array)$anims;
 		
 		if(!empty($anims)){
 			global $wpdb;
@@ -4506,7 +4538,7 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 
 		$rs_nav = new RevSliderNavigation();
 		//do on all navigations ?
-		$navs = ($navs === false) ? $rs_nav->get_all_navigations(false) : (array) $navs;
+		$navs = ($navs === false) ? $rs_nav->get_all_navigations(false, false, true) : (array) $navs;
 
 		$new_navs = array();
 		if(!empty($navs)){
@@ -4515,12 +4547,14 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 
 			//now push all again back in with new IDs
 			foreach($navs as $nav){
+				$nav['css'] = (!is_array($nav['css'])) ? json_decode($nav['css'], true) : $nav['css'];
+				$nav['markup'] = (!is_array($nav['markup'])) ? json_decode($nav['markup'], true) : $nav['markup'];
+				
 				foreach($this->navtypes as $navtype){
 					if(isset($nav['css'][$navtype]) && !empty($nav['css'][$navtype])){
 						//otherwise we are already on 6.0
 						$new_nav = $this->create_new_navigation_6_0($nav, $navtype);
-
-						$wpdb->update($wpdb->prefix . RevSliderFront::TABLE_NAVIGATIONS,
+						$wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_NAVIGATIONS,
 							array(
 								'name' => $this->get_val($new_nav, 'name'),
 								'handle' => $this->get_val($new_nav, 'handle'),
@@ -6310,6 +6344,27 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 		}
 		
 		return 100;
+	}
+	
+	
+	/**
+	 * change rgba to hex
+	 * @since: 5.0
+	 * @moved: 6.1.3
+	 */
+	public function rgba2hex($rgba){
+		if(strtolower($rgba) == 'transparent') return $rgba;
+		
+		$temp = explode(',', $rgba);
+		$rgb = array();
+		if(count($temp) == 4) unset($temp[3]);
+		foreach($temp as $val){
+			$t = dechex(preg_replace('/[^\d.]/', '', $val));
+			if(strlen($t) < 2) $t = '0'.$t;
+			$rgb[] = $t;
+		}
+		
+		return '#'.implode('', $rgb);
 	}
 }
 

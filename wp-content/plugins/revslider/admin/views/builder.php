@@ -203,8 +203,7 @@ require_once(RS_PLUGIN_PATH . 'admin/views/modals-copyright.php');
 								<div id="screen_selecotr_ss_m" class="screen_selector ss_m no_rm callEvent" data-evt="screenSelectorChanged"  data-screenicon="phone_android" data-triggerinp="#screenselector" data-triggerinpval="m"><i class="material-icons">phone_android</i><?php _e('Mobile', 'revslider');?><input type="checkbox" id="sr_custom_m_opt" class="sliderinput" data-evt="device_area_availibity" data-r="size.custom.m"></div>
 							</div>
 						</div><!--
-						--><div class="toolbar_btn help_wrap"><i class="toptoolbaricon material-icons">help_outline</i></div><!--
-						--><div class="toolbar_btn tooltip_wrap"><i class="toptoolbaricon material-icons">comment</i></div><!--
+						--><div class="toolbar_btn help_wrap"><i class="toptoolbaricon material-icons">help_outline</i></div><!--<div class="toolbar_btn tooltip_wrap"><i class="toptoolbaricon material-icons">comment</i></div>--><!--
 						--><div id="quick_style_trigger" class="toolbar_btn quick_style_wrap"><i class="toptoolbaricon material-icons">invert_colors</i></div>		<!--<span class="toolbar_btn_txt"><?php _e('Quick Style', 'revslider');?></span>-->
 					</div>
 				</div><!-- END OF MAIN HORIZONTAL TOOLBAR -->
@@ -221,6 +220,7 @@ require_once(RS_PLUGIN_PATH . 'admin/views/modals-copyright.php');
 
 								<!-- SLIDER "UL" -->
 								<div id="rev_slider_ul" data-multiplemark="false" data-forms='["#form_sliderlayout"]'>
+									<canvas id="gridcanvas"></canvas>
 									<div id="rev_slider_ul_inner">
 
 										<!-- SLIDER OVERLAY -->
@@ -246,19 +246,19 @@ require_once(RS_PLUGIN_PATH . 'admin/views/modals-copyright.php');
 										<!-- END OF CAROUSEL FAKES -->
 
 										<!-- PROGRESS BAR -->
-										<div id="rev_progress_bar_wrap" class="aable markable" data-multiplemark="false" data-forms='["*navlayout*#gst_nav_1"]'></div><!-- END OF PROGRESS BAR-->
+										<div id="rev_progress_bar_wrap" class="aable markable" data-multiplemark="false" data-collapse="true" data-forms='["*navlayout*#orm_nav_pbara"]'></div><!-- END OF PROGRESS BAR-->
 
 										<!-- NAVIGATION ARROWS -->
-										<div id="tp-rightarrow" class="aable markable tp-rightarrow tparrows" data-forms='["*navlayout*#gst_nav_2"]'></div>
-										<div id="tp-leftarrow" class="aable markable tp-leftarrow tparrows" data-forms='["*navlayout*#gst_nav_2"]'></div>
+										<div id="tp-rightarrow" class="aable markable tp-rightarrow tparrows" data-collapse="true" data-forms='["*navlayout*#form_nav_arrows"]'></div>
+										<div id="tp-leftarrow" class="aable markable tp-leftarrow tparrows" data-collapse="true" data-forms='["*navlayout*#form_nav_arrows"]'></div>
 										<!-- END OF NAVGATION ARROWS-->
 
 										<!-- NAVIGATION BULLETS -->
-										<div id="tp-bullets" class="aable markable tp-bullets" data-forms='["*navlayout*#gst_nav_3"]'></div>
+										<div id="tp-bullets" class="aable markable tp-bullets" data-collapse="true" data-forms='["*navlayout*#form_nav_bullets"]'></div>
 										<!-- END OF NAVIGATION BULLETS-->
 
 										<!-- NAVIGATION TABS -->
-										<div id="tp-tabs" class="aable markable tp-tabs" data-forms='["*navlayout*#gst_nav_4"]'>
+										<div id="tp-tabs" class="aable markable tp-tabs" data-collapse="true" data-forms='["*navlayout*#form_nav_tabs"]'>
 											<div id="tp-tabs-mask" class="tp-tabs-mask">
 												<div id="tp-tabs-inner-wrapper" class="tp-tabs-inner-wrapper"></div>
 											</div>
@@ -266,7 +266,7 @@ require_once(RS_PLUGIN_PATH . 'admin/views/modals-copyright.php');
 										<!-- END OF NAVIGATION TABS-->
 
 										<!-- NAVIGATION THUMBS -->
-										<div id="tp-thumbs" class="aable markable tp-thumbs" data-forms='["*navlayout*#gst_nav_5"]'>
+										<div id="tp-thumbs" class="aable markable tp-thumbs" data-collapse="true" data-forms='["*navlayout*#form_nav_thumbs"]'>
 											<div id="tp-thumbs-mask" class="tp-thumbs-mask">
 												<div id="tp-thumbs-inner-wrapper" class="tp-thumbs-inner-wrapper"></div>
 											</div>
@@ -298,6 +298,7 @@ require_once(RS_PLUGIN_PATH . 'admin/views/modals-copyright.php');
 					<div id="settings_sticky_left" class="main_mode_submode left blue">Editor View</div>
 					<div id="settings_sticky_right" class="main_mode_submode right">Layer options</div>
 				</div>
+				<div id="optimizeslider" class="rs-save-preview"><i class="material-icons">flash_on</i><?php _e('Optimize File Sizes', 'revslider');?></div>
 				<div id="save_slider" class="rs-save-preview"><i class="material-icons">save</i><?php _e('Save', 'revslider');?></div>
 				<div id="preview_slider" data-mode="editor" class="rs-save-preview" ><i class="material-icons">search</i><?php _e('Preview', 'revslider');?></div>
 			</div>

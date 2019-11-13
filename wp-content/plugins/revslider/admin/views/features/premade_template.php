@@ -5,7 +5,7 @@ if(!defined('ABSPATH')) exit();
 							<rs-module id="rev_slider_734_1" class="feature_slider" style="display:none;" data-version="6.0.0">
 								<rs-slides>
 									<rs-slide data-key="rs-2448" data-title="Slide" data-anim="ei:d;eo:d;s:300;r:0;t:fade;sl:d;">
-										<img src="<?php echo RS_PLUGIN_URL;?>admin/views/features/assets/dummy.png" title="kriki" data-lazyload="<?php echo RS_PLUGIN_URL;?>admin/views/features/assets/transparent.png" data-bg="p:center center;c:#2a2c2f;" class="rev-slidebg" data-no-retina>
+										<img src="<?php echo RS_PLUGIN_URL;?>admin/views/features/assets/dummy.png" data-lazyload="<?php echo RS_PLUGIN_URL;?>admin/views/features/assets/transparent.png" data-bg="p:center center;c:#2a2c2f;" class="rev-slidebg" data-no-retina>
 						<!--
 										--><rs-layer
 											id="slide-2448-layer-1" 

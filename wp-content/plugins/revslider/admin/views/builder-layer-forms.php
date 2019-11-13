@@ -170,20 +170,18 @@ if(!defined('ABSPATH')) exit();
 					<row class="direktrow">
 						<oneshort><div id="minilayerprevimage_wrap" class="miniprevimage_wrap"><i class="material-icons">filter_hdr</i><div id="layer_image_src"></div></div></oneshort>
 						<oneshort>
-							<div id="image_layer_media_library_button" data-evt="updatelayerimagesrc" data-r="media.imageUrl" data-rid="media.imageId" class="getImageFromMediaLibrary basic_action_button longbutton layerinput"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
-							<div id="image_layer_object_library_button" data-evt="updatelayerimagesrc" data-r="media.imageUrl" data-rid="media.imageId" class="getImageFromObjectLibrary basic_action_button longbutton layerinput"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
+							<div id="image_layer_media_library_button" data-evt="updatelayerimagesrc" data-r="media.imageUrl" data-rid="media.imageId" data-sty="behavior.imageSourceType" data-lib="media.imageLib" class="getImageFromMediaLibrary basic_action_button longbutton layerinput"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
+							<div id="image_layer_object_library_button" data-evt="updatelayerimagesrc" data-r="media.imageUrl" data-rid="media.imageId" data-sty="behavior.imageSourceType" data-lib="media.imageLib" class="getImageFromObjectLibrary basic_action_button longbutton layerinput"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
 						</oneshort>
 					</row>
-
 					<div class="div15"></div>
 					<label_a class="singlerow"><?php _e('Lazy Loading', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-r="behavior.lazyLoad"><option value="auto" selected="selected"><?php _e("Default Setting", 'revslider');?></option><option value="force"><?php _e("Force Lazy Loading", 'revslider');?></option><option value="ignore"><?php _e("Ignore Lazy Loading", 'revslider');?></option></select>
-					<label_a class="singlerow"><?php _e('Source Type', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-r="behavior.imageSourceType">
-					<option value="auto" selected="selected"><?php _e("Default Setting", 'revslider');?></option>
-						<?php
-foreach ($img_sizes as $imghandle => $imgSize) {
-	echo '<option value="' . $imghandle . '">' . $imgSize . '</option>';
-}
-?></select>
+					
+					<!-- USED LIBRARY TYPE-->
+					<div style="display:none"><label_a class="singlerow"><?php _e('Used Library', 'revslider');?></label_a><select class="layerinput easyinit" data-r="media.imageLib" data-show="#imagelayer_srctype_*val*" data-hide=".imagelayer_srctype_all" data-showprio="show"><option value="">Nothing</option><option value="objectlibrary">Objectlibrary</option><option value="medialibrary">MediaLibrary</option></select></div>					
+					<!-- SIZE / SRC PICKER FOR CURRENT USED LIBRARY TYPE-->
+					<div style="display:none" id="imagelayer_srctype_objectlibrary" class="imagelayer_srctype_all"><label_a class="singlerow"><?php _e('Image Size', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="image.object" data-r="behavior.imageSourceType"><option value="100" selected="selected"><?php _e("Original", 'revslider');?></option><option value="75" selected="selected"><?php _e("Large", 'revslider');?></option><option value="50" selected="selected"><?php _e("Medium", 'revslider');?></option><option value="25" selected="selected"><?php _e("Small", 'revslider');?></option><option value="10" selected="selected"><?php _e("Extra Small", 'revslider');?></option></select></div>
+					<div style="display:none" id="imagelayer_srctype_medialibrary" class="imagelayer_srctype_all"><label_a class="singlerow"><?php _e('Source Type', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="image.media" data-r="behavior.imageSourceType"><option value="auto" selected="selected"><?php _e("Default Setting", 'revslider');?></option><?php foreach ($img_sizes as $imghandle => $imgSize) { echo '<option value="' . $imghandle . '">' . $imgSize . '</option>';}?></select></div>
 				</div>
 			</div>
 
@@ -191,7 +189,7 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 			<div id="form_layercontent_content_video" class="form_inner open _shfv_ _shfa_">
 				<div class="form_inner_header"><i class="material-icons">create</i><?php _e('Media Content', 'revslider');?></div>
 				<div class="collapsable">
-					<input class="dontseeme layerinput easyinit callEvent" data-evt="resetVideoPlaceholder" id="layer_video_poster" data-r="media.posterUrl"/>
+					<input class="dontseeme layerinput easyinit callEvent" data-evt="resetVideoPlaceholder" data-triggerinp="#layerpostersrctype" data-triggerinpval="nothing" id="layer_video_poster" data-r="media.posterUrl"/>
 					<div class="_nsfa_">
 						<longoption><i class="material-icons">language</i><label_a ><?php _e('Video from Stream if exist', 'revslider');?></label_a><input type="checkbox" class="easyinit layerinput" data-r="media.videoFromStream"></longoption>
 						<div class="div10"></div>
@@ -257,10 +255,18 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-r="media.posterUrl" class="getLayerImageFromVimeo basic_action_button longbutton"><i class="material-icons">ondemand_video</i><?php _e('Vimeo Thumb', 'revslider');?></div>
 					</div>
 
-					<label_a class="layerbg_html5_settings layer_bg_settings"><?php _e('Poster Image', 'revslider');?></label_a><label_a class="layerbg_youtube_settings layerbg_vimeo_settings layer_bg_settings"></label_a><div data-evt="updatelayerimagesrc" data-r="media.posterUrl" data-rid="media.posterId" class="getImageFromMediaLibrary layerinput basic_action_button longbutton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
-					<label_a></label_a><div id="image_videoposter_object_library_button" data-evt="updatelayerimagesrc" data-r="media.posterUrl" data-rid="media.posterId" class="getImageFromObjectLibrary basic_action_button longbutton layerinput"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
+					<label_a class="layerbg_html5_settings layer_bg_settings"><?php _e('Poster Image', 'revslider');?></label_a><label_a class="layerbg_youtube_settings layerbg_vimeo_settings layer_bg_settings"></label_a><div data-evt="updatelayerimagesrc" data-r="media.posterUrl" data-rid="media.posterId" data-sty="behavior.imageSourceType" data-lib="media.imageLib" class="getImageFromMediaLibrary layerinput basic_action_button longbutton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
+					<label_a></label_a><div id="image_videoposter_object_library_button" data-evt="updatelayerimagesrc" data-r="media.posterUrl" data-rid="media.posterId" data-sty="behavior.imageSourceType" data-lib="media.imageLib" class="getImageFromObjectLibrary basic_action_button longbutton layerinput"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
 					<!--<label_a></label_a><div id="image_videoposter_stream_button" data-evt="updatelayerimagesrc" data-r="media.posterUrl" data-rid="media.posterId" class="getImageFromStream basic_action_button longbutton layerinput"><i class="material-icons">language</i><?php _e("From Stream", 'revslider');?></div>-->
-					<label_a></label_a><div data-r="media.posterUrl" class="removeLayerPoster basic_action_button layerinput longbutton callEventButton"><i class="material-icons">delete</i><?php _e('Remove Poster', 'revslider');?></div>
+					<label_a></label_a><div data-r="media.posterUrl" data-rid="media.posterId" data-sty="behavior.imageSourceType" data-lib="media.imageLib"  class="removeLayerPoster basic_action_button layerinput longbutton callEventButton"><i class="material-icons">delete</i><?php _e('Remove Poster', 'revslider');?></div>
+					<div class="div10"></div>
+					
+					<!-- USED LIBRARY TYPE-->
+					<div style="display:none"><label_a class="singlerow"><?php _e('Used Library', 'revslider');?></label_a><select class="layerinput easyinit" id="layerpostersrctype" data-r="media.imageLib" data-show="#posterlayer_srctype_*val*" data-hide=".posterlayer_srctype_all" data-showprio="show"><option value="nothing">Nothing</option><option value="">Nothing</option><option value="objectlibrary">Objectlibrary</option><option value="medialibrary">MediaLibrary</option></select></div>					
+					<!-- SIZE / SRC PICKER FOR CURRENT USED LIBRARY TYPE-->
+					<div id="posterlayer_srctype_objectlibrary" class="posterlayer_srctype_all"><label_a class="singlerow"><?php _e('Image Size', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="poster.object" data-r="behavior.imageSourceType"><option value="100" selected="selected"><?php _e("Original", 'revslider');?></option><option value="75" selected="selected"><?php _e("Large", 'revslider');?></option><option value="50" selected="selected"><?php _e("Medium", 'revslider');?></option><option value="25" selected="selected"><?php _e("Small", 'revslider');?></option><option value="10" selected="selected"><?php _e("Extra Small", 'revslider');?></option></select></div>
+					<div id="posterlayer_srctype_medialibrary" class="posterlayer_srctype_all"><label_a class="singlerow"><?php _e('Source Type', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="poster.media" data-r="behavior.imageSourceType"><option value="auto" selected="selected"><?php _e("Default Setting", 'revslider');?></option><?php foreach ($img_sizes as $imghandle => $imgSize) { echo '<option value="' . $imghandle . '">' . $imgSize . '</option>';}?></select></div>
+					
 					<div class="div10"></div>
 					<longoption><i class="material-icons">pause</i><label_a><?php _e('Poster in Pause', 'revslider');?></label_a><input type="checkbox" class="easyinit layerinput" data-r="media.posterOnPause"></longoption>
 					<longoption><i class="material-icons">phonelink_erase</i><label_a><?php _e('No Poster on Mobile', 'revslider');?></label_a><input type="checkbox" class="easyinit layerinput" data-r="media.disableOnMobile"></longoption>
@@ -338,8 +344,17 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 				</div>
 			</div>
 
-
-
+			<!-- LAYER CONTENT CONVERT -->
+			<div id="form_layercontent_convert" class="form_inner open _nsfr_ _nsfc_ _nsfs_ _nsfa_">
+				<div class="form_inner_header"><i class="material-icons">swap_horizontal_circle</i><?php _e('Convert Layer Type', 'revslider');?></div>
+				<div class="collapsable">					
+					<div data-into="button" class="_shoft_ convert_layer_into basic_action_button layerinput longbutton rightbutton"><i class="material-icons">swap_horizontal_circle</i>Convert to Button</div>
+					<div data-into="text" class="_shofb_ convert_layer_into basic_action_button layerinput longbutton rightbutton"><i class="material-icons">swap_horizontal_circle</i>Convert to Text</div>
+					<div data-into="video" class="_shfi_ convert_layer_into basic_action_button layerinput longbutton rightbutton"><i class="material-icons">swap_horizontal_circle</i>Convert to Video</div>
+					<div data-into="image" class="_shfv_ convert_layer_into basic_action_button layerinput longbutton rightbutton"><i class="material-icons">swap_horizontal_circle</i>Convert to Image</div>
+				</div>
+				<div class="div50"></div>
+			</div>
 
 		</div>
 	</div><!-- END OF LAYER CONTENT CONTAINER -->
@@ -504,6 +519,16 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 				<li data-target="#form_layerstyle_font" class="form_menu_level_1_li selected" id="lstyle_l1_1"><?php _e('Font', 'revslider');?></li>
 				<li data-target="#form_layerstyle_bg" class="form_menu_level_1_li" id="lstyle_l1_2"><?php _e('Background', 'revslider');?></li>
 			</ul>
+
+			<div id="form_layerstyle_lineheight" class="form_inner open _shfc_">
+				<div class="form_inner_header"><i class="material-icons">title</i><?php _e('Line Height', 'revslider');?></div>
+				<div class="collapsable">
+					<row class="directrow __idle__">
+						<onelong><label_icon class="ui_lineheight"></label_icon><input data-evt="updateLayerPosition" class="layerinput valueduekeyboard smallinput easyinit callEvent" data-allowed="px"  data-numeric="true" data-responsive="true" data-r="idle.lineHeight.#size#.v" data-max="500" type="text" id="layer_line_height_idle_all"></onelong>
+						<oneshort></oneshort>
+					</row>
+				</div>
+			</div>
 			<!-- LAYER STYLE FONT -->
 			<div id="form_layerstyle_font" class="form_inner open _shft_">
 				<div class="form_inner_header"><i class="material-icons">title</i><?php _e('Font & Icon', 'revslider');?></div>
@@ -558,19 +583,27 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 			</div>
 
 			<!-- LAYER STYLE BACKGROUND -->
-			<div id="form_layerstyle_bg" class="form_inner open">
+			<div id="form_layerstyle_bg" class="form_inner open _nsfv_">
 				<div class="form_inner_header"><i class="material-icons">color_lens</i><?php _e('Background', 'revslider');?></div>
 				<div class="collapsable">
 					<div class="__idle__"><label_a><?php _e('BG Color', 'revslider');?></label_a><input type="text" data-editing="Layer BG Color" name="layerBGColor" id="layerBGColor" class="my-color-field layerinput easyinit" data-visible="true" data-r="idle.backgroundColor" value="transparent"></div>
 					<div class="_ltsel_bgcolor"><label_a><?php _e('BG in Frame', 'revslider');?></label_a><input type="text" data-editing="Frame BG Color Animation" name="frameBGColorAnimationDouble" id="frameBGColorAnimationDouble" class="my-color-field layerinput easyinit" data-visible="true" data-r="#frame#.bgcolor.backgroundColor" value="transparent"></div>
 					<div class="div15"></div>
-					<row class="direktrow __idle__ _nsfi_">
-						<onelong><label_a><?php _e('BG Image', 'revslider');?></label_a><div class="miniprevimage_wrap"><i class="material-icons">filter_hdr</i><div id="layer_bg_image" data-showadvbg="#layer_bg_adv_settings"></div></div></onelong>
+					<row class="direktrow __idle__ _nsfi_ _nsfv_">
+						<onelong><label_a><?php _e('BG Image', 'revslider');?></label_a><div class="miniprevimage_wrap"><i class="material-icons">filter_hdr</i><div id="layer_bg_image" data-showadvbg="#layer_bg_adv_settings"></div><div data-evt="updatelayerbgimage" data-r="idle.backgroundImage" data-rid="idle.backgroundImageId" data-lib="idle.bgimagelib" data-default="" class="resettodefault basic_action_button callEventButton layerinput onlyicon"><i class="material-icons">close</i></div></div></onelong>
 						<oneshort>
-							<div data-evt="updatelayerbgimage" data-r="idle.backgroundImage" data-rid="idle.backgroundImageId" class="getImageFromMediaLibrary basic_action_button callEventButton layerinput"><i class="material-icons">folder</i><?php _e('Select', 'revslider');?></div>
-							<div data-evt="updatelayerbgimage" data-r="idle.backgroundImage" data-rid="idle.backgroundImageId" data-default="" class="resettodefault basic_action_button callEventButton layerinput"><i class="material-icons">delete</i><?php _e('Remove', 'revslider');?></div>
+							<div data-evt="updatelayerbgimage" data-r="idle.backgroundImage" data-rid="idle.backgroundImageId" data-lib="idle.bgimagelib" data-sty="behavior.imageSourceType" class="getImageFromMediaLibrary basic_action_button callEventButton layerinput"><i class="material-icons">style</i><?php _e('Media', 'revslider');?></div>
+							<div data-evt="updatelayerbgimage" data-r="idle.backgroundImage" data-rid="idle.backgroundImageId" data-lib="idle.bgimagelib" data-sty="behavior.imageSourceType" class="getImageFromObjectLibrary basic_action_button callEventButton layerinput"><i class="material-icons">camera_enhance</i><?php _e('Object', 'revslider');?></div>							
 						</oneshort>
 					</row>
+
+					<!-- USED LIBRARY TYPE-->
+					<div style="display:none"><label_a class="singlerow"><?php _e('Used Library', 'revslider');?></label_a><select class="layerinput easyinit" data-r="idle.bgimagelib" data-show="#layerbg_srctype_*val*" data-hide=".layerbg_srctype_all" data-showprio="show"><option value="">Nothing</option><option value="objectlibrary">Objectlibrary</option><option value="medialibrary">MediaLibrary</option></select></div>
+					<!-- SIZE / SRC PICKER FOR CURRENT USED LIBRARY TYPE-->
+					<div id="layerbg_srctype_objectlibrary" class="layerbg_srctype_all"><label_a class="singlerow"><?php _e('Image Size', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="bg.object" data-r="behavior.imageSourceType"><option value="100" selected="selected"><?php _e("Original", 'revslider');?></option><option value="75" selected="selected"><?php _e("Large", 'revslider');?></option><option value="50" selected="selected"><?php _e("Medium", 'revslider');?></option><option value="25" selected="selected"><?php _e("Small", 'revslider');?></option><option value="10" selected="selected"><?php _e("Extra Small", 'revslider');?></option></select></div>
+					<div id="layerbg_srctype_medialibrary" class="layerbg_srctype_all"><label_a class="singlerow"><?php _e('Source Type', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="bg.media" data-r="behavior.imageSourceType"><option value="auto" selected="selected"><?php _e("Default Setting", 'revslider');?></option><?php foreach ($img_sizes as $imghandle => $imgSize) { echo '<option value="' . $imghandle . '">' . $imgSize . '</option>';}?></select></div>
+
+
 					<div id="layer_bg_adv_settings">
 						<div class="div15"></div>
 						<select style="display:none !important" id="layer_bgimage_pos" data-unselect=".layer_bg_position_selector" data-select="#layer_bg_position_*val*"  class="layerinput easyinit"  data-r="idle.backgroundPosition"><option value="left center"><?php _e('left center', 'revslider');?></option><option value="left bottom"><?php _e('left bottom', 'revslider');?></option><option value="left top"><?php _e('left top', 'revslider');?></option><option value="center top"><?php _e('center top', 'revslider');?></option><option value="center center"><?php _e('center center', 'revslider');?></option><option value="center bottom"><?php _e('center bottom', 'revslider');?></option>																				<option value="right top"><?php _e('right top', 'revslider');?></option><option value="right center"><?php _e('right center', 'revslider');?></option><option value="right bottom"><?php _e('right bottom', 'revslider');?></option></select>
@@ -596,10 +629,13 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 									</div>
 							</onelong>
 							<oneshort>
-								<label_icon class="ui_fit"></label_icon><select id="layer_bgimage_fit" data-theme="minl120" class="layerinput tos2 nosearchbox easyinit" data-r="idle.backgroundSize" ><option value="cover">cover</option><option value="contain">contain</option><option value="auto">auto</option></select>
+								<label_icon class="ui_fit"></label_icon><select id="layer_bgimage_fit" data-theme="minl120" class="layerinput tos2 nosearchbox easyinit" data-r="idle.backgroundSize" data-show=".bgIdleSize_*val*" data-hide=".bgIdleSize_perpix"><option value="cover">cover</option><option value="contain">contain</option><option value="auto">auto</option><option value="percentage">%</option><option value="pixel">px</option></select>
 								<label_icon class="ui_repeat"></label_icon><select id="layer_bgimage_repeat" data-theme="minl120" class="layerinput tos2 nosearchbox easyinit" data-r="idle.backgroundRepeat" ><option value="no-repeat">no-repeat</option><option value="repeat">repeat</option><option value="repeat-x">repeat-x</option><option value="repeat-y">repeat-y</option></select>
+								<div class="bgIdleSize_percentage bgIdleSize_perpix"><label_a>%</label_a><input class="layerinput valueduekeyboard smallinput easyinit" data-allowed=""  data-responsive="false" data-numeric="true" data-r="idle.backgroundSizePerc" data-min="0" data-max="2000" type="text"></div>
+								<div class="bgIdleSize_pixel bgIdleSize_perpix"><label_a>PX</label_a><input class="layerinput valueduekeyboard smallinput easyinit" data-allowed=""  data-responsive="false" data-numeric="true" data-r="idle.backgroundSizePix" data-min="0" data-max="2000" type="text"></div>
 							</oneshort>
 						</row>
+
 					</div>
 				</div>
 			</div>
@@ -744,6 +780,22 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 				</div>
 			</div><!-- END OF TEXT SHADOW SETTING -->
 
+			<!-- TEXT STROKE SETTINGS-->
+			<div id="form_text_stoke" class="form_inner open _shft_ _shfb_">
+				<div class="form_inner_header"><i class="material-icons">format_size</i><?php _e('Text Stroke', 'revslider');?></div>
+				<div class="collapsable">
+					<row class="direktrow">
+						<onelong><label_a><?php _e('Effect', 'revslider');?></label_a><input class="layerinput smallinput easyinit" type="checkbox" data-r="idle.textStroke.inuse"/></onelong>
+						<oneshort></oneshort>
+					</row>
+					<row class="direktrow">
+						<onelong><label_icon class="ui_border_right"></label_icon><input class="layerinput valueduekeyboard smallinput easyinit" data-numeric="true" data-allowed="px" data-min="0" data-max="500" data-responsive="true" data-r="idle.textStroke.width" type="text"></onelong>
+						<oneshort></oneshort>
+					</row>					
+					<label_a><?php _e('Stroke Color', 'revslider');?></label_a><input type="text" data-mode="single" data-editing="Text Shadow Color" name="textStrokeColor" id="textStrokeColor" class="my-color-field layerinput easyinit" data-visible="true" data-r="idle.textStroke.color" value="transparent"><div class="linebreak"></div>
+				</div>
+			</div><!-- END OF TEXT SHADOW SETTING -->
+
 			<!-- LAYER FILTERS-->
 			<div id="form_layerstyle_css" class="form_inner open">
 				<div class="form_inner_header"><i class="material-icons">blur_linear</i><?php _e('Blend Mode', 'revslider');?></div>
@@ -883,9 +935,9 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 					 <div class="div15"></div>
 					 <label_a><?php _e('Wrapper ID', 'revslider');?></label_a><input class="layerinput easyinit " id="layer_wrapper_id"  data-r="attributes.wrapperId" type="text">
 					 <label_a><?php _e('Classes', 'revslider');?></label_a><input class="layerinput easyinit " id="layer_wrapper_classes"  data-r="attributes.wrapperClasses" type="text">
-				</div>
+				</div>				
 			</div>
-		</div>
+		</div>			
 	</div>
 
 	<!-- LAYER ATTRIBUTES CONTAINER -->
@@ -1131,7 +1183,9 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 						<label_a><?php _e('Frame Alias', 'revslider');?></label_a><input  id="layerframename" class="layerinput smallinput easyinit callEvent" data-evt="updateKeyFramesList"  data-r="#frame#.alias" type="text">
 						<div class="hide_on_frame_0">							
 							<div id="layerframespeed_wrap"><!--<label_icon class="ui_duration singlerow"></label_icon>-->
-							<label_a><?php _e('Duration', 'revslider');?></label_a><input  id="layerframespeed" class="layerinput valueduekeyboard smallinput easyinit callEvent" data-evt="updateLayerFrame" data-numeric="true" data-allowed="" data-r="#frame#.timeline.speed" data-min="0" data-max="99999" data-steps="10" type="text"><div id="layerframespeed_sub"></div></div>
+								<label_a><?php _e('Duration', 'revslider');?></label_a><input  id="layerframespeed" class="layerinput valueduekeyboard smallinput easyinit callEvent" data-evt="updateLayerFrame" data-numeric="true" data-allowed="" data-r="#frame#.timeline.speed" data-min="0" data-max="99999" data-steps="10" type="text"><div id="layerframespeed_sub"></div>
+							</div>
+							<label_a><?php _e('Start', 'revslider');?></label_a><input  id="layerframestart" class="layerinput valueduekeyboard smallinput easyinit callEvent" data-evt="updateLayerFrameStart" data-updateviaevt="true" data-numeric="true" data-allowed="" data-r="#frame#.timeline.start" data-min="0" data-max="99999999" data-steps="10" type="text">
 							<!--<label_icon class="ui_easing singlerow"></label_icon>-->
 							<label_a><?php _e('Easing', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit easingSelect" data-r="#frame#.timeline.ease"></select>
 							<row class="direktrow">
@@ -1187,8 +1241,8 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 							</row>
 							<div class="div10"></div>
 							<row class="direktrow">
-								<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.transform.scaleX"  data-steps="0.05" type="text"></onelong>
-								<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.transform.scaleY"  data-steps="0.05" type="text"></oneshort>
+								<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.transform.scaleX"  data-steps="0.05" type="text"></onelong>
+								<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.transform.scaleY"  data-steps="0.05" type="text"></oneshort>
 							</row>
 							<row class="direktrow">
 								<onelong><label_icon class="ui_skewx"></label_icon><input id="le_frame_skew_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="px,random,cycle,inherit" data-presets_text="$C$px!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="50px!inherit!{0,2}![-50|50]" data-r="#frame#.transform.skewX"  data-steps="0.05" type="text"></onelong>
@@ -1357,8 +1411,8 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 								</row>
 								<div class="div10"></div>
 								<row class="direktrow">
-									<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_chars_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.chars.scaleX"  data-steps="0.05" type="text"></onelong>
-									<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_chars_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.chars.scaleY"  data-steps="0.05" type="text"></oneshort>
+									<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_chars_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.chars.scaleX"  data-steps="0.05" type="text"></onelong>
+									<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_chars_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.chars.scaleY"  data-steps="0.05" type="text"></oneshort>
 								</row>
 								<row class="direktrow">
 									<onelong><label_icon class="ui_skewx"></label_icon><input id="le_frame_chars_skew_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="px,random,cycle,inherit" data-presets_text="$C$px!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="50px!inherit!{0,2}![-50|50]" data-r="#frame#.chars.skewX"  data-steps="0.05" type="text"></onelong>
@@ -1427,8 +1481,8 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 								</row>
 								<div class="div10"></div>
 								<row class="direktrow">
-									<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_words_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.words.scaleX"  data-steps="0.05" type="text"></onelong>
-									<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_words_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.words.scaleY"  data-steps="0.05" type="text"></oneshort>
+									<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_words_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.words.scaleX"  data-steps="0.05" type="text"></onelong>
+									<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_words_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.words.scaleY"  data-steps="0.05" type="text"></oneshort>
 								</row>
 								<row class="direktrow">
 									<onelong><label_icon class="ui_skewx"></label_icon><input id="le_frame_words_skew_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="px,random,cycle,inherit" data-presets_text="$C$px!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="50px!inherit!{0,2}![-50|50]" data-r="#frame#.words.skewX" data-steps="0.05"  type="text"></onelong>
@@ -1497,8 +1551,8 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 								</row>
 								<div class="div10"></div>
 								<row class="direktrow">
-									<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_lines_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.lines.scaleX" data-steps="0.05" type="text"></onelong>
-									<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_lines_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![-50|50]" data-r="#frame#.lines.scaleY" data-steps="0.05" type="text"></oneshort>
+									<onelong><label_icon class="ui_scalex"></label_icon><input id="le_frame_lines_scale_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.lines.scaleX" data-steps="0.05" type="text"></onelong>
+									<oneshort><label_icon class="ui_scaley"></label_icon><input id="le_frame_lines_scale_y" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="random,cycle,inherit" data-presets_text="$C$!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="1!inherit!{0,2}![0.5|1]" data-r="#frame#.lines.scaleY" data-steps="0.05" type="text"></oneshort>
 								</row>
 								<row class="direktrow">
 									<onelong><label_icon class="ui_skewx"></label_icon><input id="le_frame_lines_skew_x" class="layerinput valueduekeyboard smallinput easyinit input_with_presets" data-numeric="true" data-allowed="px,random,cycle,inherit" data-presets_text="$C$px!$I$Inherit!$R$Random {min,max}!$CY$Cycles [val|val|val]" data-presets_val="50px!inherit!{0,2}![-50|50]" data-r="#frame#.lines.skewX" data-steps="0.05" type="text"></onelong>

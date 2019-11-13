@@ -4,7 +4,7 @@ Plugin Name: Slider Revolution
 Plugin URI: https://revolution.themepunch.com/
 Description: Slider Revolution - Premium responsive slider
 Author: ThemePunch
-Version: 6.1.0
+Version: 6.1.4
 Author URI: https://themepunch.com/
 */
 
@@ -15,7 +15,7 @@ if(class_exists('RevSliderFront')){
 	die('ERROR: It looks like you have more than one instance of Slider Revolution installed. Please remove additional instances for this plugin to work again.');
 }
 
-define('RS_REVISION',			'6.1.0');
+define('RS_REVISION',			'6.1.4');
 define('RS_PLUGIN_PATH',		plugin_dir_path(__FILE__));
 define('RS_PLUGIN_SLUG_PATH',	plugin_basename(__FILE__));
 define('RS_PLUGIN_FILE_PATH',	__FILE__);
@@ -62,6 +62,7 @@ try{
 		extract(shortcode_atts(array('settings' => ''), $args, 'rev_slider'));
 		extract(shortcode_atts(array('order'	=> ''), $args, 'rev_slider'));
 		extract(shortcode_atts(array('usage'	=> ''), $args, 'rev_slider'));
+		extract(shortcode_atts(array('skin'	=> ''), $args, 'rev_slider'));
 		
 		$output = new RevSliderOutput();
 		
@@ -74,6 +75,7 @@ try{
 		
 		$output->set_custom_order($order);
 		$output->set_custom_settings($settings);
+		$output->set_custom_skin($skin);
 
 		$gallery_ids = $output->check_for_shortcodes($mid_content); //check for example on gallery shortcode and do stuff
 		if($gallery_ids !== false) $output->set_gallery_ids($gallery_ids);
@@ -170,6 +172,7 @@ try{
 	add_action('plugins_loaded', array('RevSliderPageTemplate', 'get_instance'));
 	add_action('plugins_loaded', array('RevSliderFront', 'add_post_editor'));
 	
+	add_filter('wpseo_sitemap_entry', array('RevSliderFront', 'get_images_for_seo'), 10, 3);
 }catch(Exception $e){
 	$message = $e->getMessage();
 	//$trace = $e->getTraceAsString();

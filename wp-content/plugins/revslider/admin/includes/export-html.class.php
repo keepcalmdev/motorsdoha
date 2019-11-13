@@ -58,7 +58,7 @@ class RevSliderSliderExportHtml extends RevSliderSliderExport {
 		$slider->init_by_id($slider_id);
 		
 		//check if an update is needed
-		if(version_compare($slider->get_param(array('settings', 'version')), get_option('revslider_update_revision', '6.0.0'), '<')){
+		if(version_compare($slider->get_param(array('settings', 'version')), get_option('revslider_update_version', '6.0.0'), '<')){
 			$upd = new RevSliderPluginUpdate();
 			$upd->upgrade_slider_to_latest($slider);
 			$slider->init_by_id($slider_id);

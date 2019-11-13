@@ -153,8 +153,14 @@ add_action( 'rest_api_init', function () {
 
 function getCarDetailsParams(WP_REST_Request $request) {
     $ch = curl_init();
+	
+	$model = str_replace('-', '%20', str_replace(' ', '%20', $request->get_param('model')));
+	$make = str_replace('-', '%20', str_replace(' ', '%20', $request->get_param('make')));
+	if ($request->get_param('make') == 'mercedes-benz') {
+		$make = str_replace(' ', '%20', $request->get_param('make'));
+	}
 
-    curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmodelinfo?make='.$request->get_param('make').'&year='.$request->get_param('year').'&model='.$request->get_param('model'));
+    curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmodelinfo?make='.$make.'&year='.$request->get_param('year').'&model='.$model);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
@@ -241,3 +247,50 @@ function register_custom_yoast_variables() {
 
 // Add action
 add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables');
+
+
+
+
+
+// override core function
+if ( !function_exists('wp_authenticate') ) :
+function wp_authenticate($username, $password) {
+    $username = sanitize_user($username);
+    $password = trim($password);
+
+    $user = apply_filters('authenticate', null, $username, $password);
+
+    if ( $user == null ) {
+        // TODO what should the error message be? (Or would these even happen?)
+        // Only needed if all authentication handlers fail to return anything.
+        $user = new WP_Error('authentication_failed', __('<strong>ERROR</strong>: Invalid username or incorrect password.'));
+    } elseif ( get_user_meta( $user->ID, 'has_to_be_activated', true ) != false ) {
+        $user = new WP_Error('activation_failed', __('<strong>ERROR</strong>: User is not activated.'));
+    }
+
+    $ignore_codes = array('empty_username', 'empty_password');
+
+    if (is_wp_error($user) && !in_array($user->get_error_code(), $ignore_codes) ) {
+        do_action('wp_login_failed', $username);
+    }
+
+    return $user;
+}
+endif;
+
+
+
+
+add_action( 'template_redirect', 'wpse8170_activate_user' );
+function wpse8170_activate_user() {
+    if ( is_page() && get_the_ID() == 3533 ) {
+        $user_id = filter_input( INPUT_GET, 'user', FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 1 ) ) );
+        if ( $user_id ) {
+            // get user meta activation hash field
+            $code = get_user_meta( $user_id, 'has_to_be_activated', true );
+            if ( $code == filter_input( INPUT_GET, 'key' ) ) {
+                delete_user_meta( $user_id, 'has_to_be_activated' );
+            }
+        }
+    }
+}

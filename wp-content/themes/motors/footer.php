@@ -300,7 +300,8 @@ if ( !stm_is_auto_parts() ) :
         if ($(".premium-package" ).hasClass( "active-package" ) ) {
             var text =0
             if ($('.car-first-form .social-media-checkboxes .checked').length) {
-                $('.car-first-form .social-media-checkboxes .checked').each(function() {  
+                $('.car-first-form .social-media-checkboxes .checked').each(function() { 
+                console.log($('.car-first-form .checked').length); 
                     text += (parseInt(50));
                     $('span.social-icon').text(text);
                 });
@@ -333,6 +334,8 @@ if ( !stm_is_auto_parts() ) :
             // setTimeout(function(){ $('.car-first-form .social-media-main span div span input').click() }, 700);
         }
     });
+
+
 
     $('.car-first-form .social-media-main input[type="checkbox"]').click(function(){
         if ($(".premium-package" ).hasClass( "active-package" ) ) {
@@ -454,16 +457,16 @@ if ( !stm_is_auto_parts() ) :
     <?php
 if (is_user_logged_in()) {
     $abc = get_posts(array(
-    'post_type' => 'listings',
-    'orderby' => 'date',
-    'post_author' => get_current_user_id(),
-    'order' => 'DESC',
-    'date_query' => array(
-        array(
-            'after' => '1 month ago'
+        'post_type' => 'listings',
+        'orderby' => 'date',
+        'author' => get_current_user_id(),
+        'order' => 'DESC',
+        'date_query' => array(
+            array(
+                'after' => '1 month ago'
+            )
         )
-    )
-));
+    ));
 if (count($abc) > 0 && !is_page('car-limit') && is_page('add-a-car-page')) {
     ?>
     <script type="text/javascript">
