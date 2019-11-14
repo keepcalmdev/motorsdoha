@@ -500,7 +500,7 @@ $(".wpcf7-tel").intlTelInput({
       // placeholderNumberType: "MOBILE",
       // preferredCountries: ['cn', 'jp'],
       separateDialCode: true,
-      utilsScript: "http://localhost:8888/wordpress/wp-content/themes/motors/assets/js/utils.js",
+      utilsScript: "<?php bloginfo('url'); ?>/wp-content/themes/motors/assets/js/utils.js",
 
 });
 $(document).on("focus", ".wpcf7-tel", function(){
