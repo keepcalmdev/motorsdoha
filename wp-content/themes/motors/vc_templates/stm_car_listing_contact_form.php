@@ -5,6 +5,8 @@ $css_class = (!empty($css)) ? apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 
 
 ?>
 
+
+
 <div class="stm_listing_car_form <?php echo esc_attr($css_class); ?>">
 	<div class="stm-single-car-contact">
 
@@ -17,7 +19,7 @@ $css_class = (!empty($css)) ? apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 
 
 		<?php if($form != '' and $form != 'none'): ?>
 			<?php $cf7 = get_post($form); ?>
-			<?php echo(do_shortcode('[contact-form-7 id="'.$cf7->ID.'" title="'.($cf7->post_title).'"]')); ?>
+			<?php  echo(do_shortcode('[contact-form-7 id="'.$cf7->ID.'" title="'.($cf7->post_title).'"]')); ?>
 		<?php endif; ?>
 
 

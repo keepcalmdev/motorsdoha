@@ -1,3 +1,5 @@
 /wp-config.php
 /wp-content/wflogs
 /wp-content/wflogs/*
+/.htaccess
+/wp-content/uploads

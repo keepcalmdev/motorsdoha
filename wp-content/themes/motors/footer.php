@@ -756,7 +756,55 @@ if (count($abc) > 0 && !is_page('car-limit') && is_page('add-a-car-page')) {
 
 // die;
 ?>
+<!-- phone validation -->
+<script>
+(function($){
+$(".wpcf7-tel").intlTelInput({
+       allowDropdown: true,
+       autoHideDialCode: true,
+       autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+       //formatOnDisplay: false,
+      geoIpLookup: function(callback) {
+        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "";
+          callback(countryCode);
+        });
+      },
+       hiddenInput: "full_number",
+       initialCountry: "qa", 
+      // localizedCountries: { 'de': 'Deutschland' },
+       nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true,
+      utilsScript: "<?php bloginfo('url'); ?>/wp-content/themes/motors/assets/js/utils.js",
 
+});
+$(document).on("focus", ".wpcf7-tel", function(){
+  $(this).removeClass('wpcf7-not-valid');
+})
+$(document).on("blur", ".wpcf7-tel", function(){
+
+  if(!$(this).intlTelInput("isValidNumber")){
+    $(this).addClass('wpcf7-not-valid');
+  }
+})
+
+jQuery('.wpcf7-submit').on('click',function(){
+  $('.wpcf7 input').removeClass('wpcf7-not-valid')
+  var tel = $('.wpcf7-tel');
+  if(!tel.intlTelInput("isValidNumber")){
+    tel.addClass('wpcf7-not-valid');
+      return false
+  }
+});
+
+
+})(jQuery)
+</script>
 </body>
 </html>
 
