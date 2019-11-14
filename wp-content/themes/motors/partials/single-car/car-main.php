@@ -51,8 +51,14 @@ if($car_title === ""){ //custom title prefix
                             <div class="wpb_wrapper">
                                 <?php 
                                     $ch = curl_init();
+    
+                                    $model = str_replace('-', '%20', str_replace(' ', '%20', get_post_meta(get_the_ID(), 'serie', true)));
+                                    $make = str_replace('-', '%20', str_replace(' ', '%20', get_post_meta(get_the_ID(), 'make', true)));
+                                    if (get_post_meta(get_the_ID(), 'make', true) == 'mercedes-benz') {
+                                        $make = str_replace(' ', '%20', get_post_meta(get_the_ID(), 'make', true));
+                                    }
 
-                                    curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmodelinfo?make='.get_post_meta(get_the_ID(), 'make', true).'&year='.get_post_meta(get_the_ID(), 'ca-year', true).'&model='.get_post_meta(get_the_ID(), 'serie', true));
+                                    curl_setopt($ch, CURLOPT_URL, 'https://dohamotorsapi.azurewebsites.net/api/vehicles/getmodelinfo?make='.$make.'&year='.get_post_meta(get_the_ID(), 'ca-year', true).'&model='.$model);
                                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
@@ -195,7 +201,7 @@ if($car_title === ""){ //custom title prefix
                                             <span class="text-transform ">Country of Origin</span>
                                         </td>
                                         <td class="text-right">
-                                            <span class="h6"><?php echo get_post_meta(get_the_ID(), 'countryoforigin', true) ?></span>
+                                            <span class="h6"><?php echo ucwords(str_replace('-', ' ', get_post_meta(get_the_ID(), 'countryoforigin', true))) ?></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -203,7 +209,7 @@ if($car_title === ""){ //custom title prefix
                                             <span class="text-transform ">Car Class</span>
                                         </td>
                                         <td class="text-right">
-                                            <span class="h6"><?php echo get_post_meta(get_the_ID(), 'class', true) ?></span>
+                                            <span class="h6"><?php echo ucwords(str_replace('-', ' ', get_post_meta(get_the_ID(), 'class', true))) ?></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -211,7 +217,7 @@ if($car_title === ""){ //custom title prefix
                                             <span class="text-transform ">Body Style</span>
                                         </td>
                                         <td class="text-right">
-                                            <span class="h6"><?php echo get_post_meta(get_the_ID(), 'bodystyle', true) ?></span>
+                                            <span class="h6"><?php echo ucwords(str_replace('-', ' ', get_post_meta(get_the_ID(), 'bodystyle', true))) ?></span>
                                         </td>
                                     </tr>
                                     <tr>

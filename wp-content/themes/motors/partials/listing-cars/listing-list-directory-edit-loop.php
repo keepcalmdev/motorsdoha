@@ -108,12 +108,6 @@ if (!empty($asSold)) {
 					<i class="stm-service-icon-staricon"></i>
 				</div>
 			<?php endif; ?>
-			<!-- 360deg icon -->
-			<div class="stm-car-360">
-				<!-- <i class="fas fa-sync-alt"></i> -->
-				360&#176;
-				<?php //echo esc_attr($car_views); ?>
-			</div>
 			<div class="stm-car-views">
 				<i class="fa fa-eye"></i>
 				<?php echo esc_attr($car_views); ?>

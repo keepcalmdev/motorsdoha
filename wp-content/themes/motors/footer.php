@@ -289,6 +289,16 @@ if ( !stm_is_auto_parts() ) :
             var number = 0;
             $(".checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
             $('.update-prices .col-lg-6.text-right.text-dark p span').each(function(){
+
+                    // $('#wpcf7-f1979-p1735-o1 input[type="checkbox"]').each(function() {
+                        
+                    // if ($('#wpcf7-f1979-p1735-o1 :checkbox:checked').length > 0){
+                    //         console.log('bb');
+                    //     }
+                    // });
+
+                     console.log($('.update-prices .col-lg-6.text-right.text-dark p span').length);
+                  
                 number += (parseInt($(this).text(), 10));
                 $('.col-lg-12 h2 i').text(number);
             });
@@ -443,6 +453,48 @@ if ( !stm_is_auto_parts() ) :
 <?php } else { ?>
 <?php } ?>
 
+
+<?php if (is_page('add-a-car-page')): ?>
+    <script type="text/javascript">
+        $(".page-id-1735 .stm_add_car_form_1 .stm-form1-intro-unit .row .stm-form-1-selects:nth-child(2)").insertAfter(".page-id-1735 .stm_add_car_form_1 .stm-form1-intro-unit .row .stm-form-1-selects:nth-child(4)");
+        $(".page-id-1735 .stm_add_car_form_1 .stm-form1-intro-unit .row .stm-form-1-selects:nth-child(2)").insertAfter(".page-id-1735 .stm_add_car_form_1 .stm-form1-intro-unit .row .stm-form-1-selects:nth-child(4)");
+        
+        setTimeout(function(){
+            $('span').removeAttr('tabindex');
+            $('input').removeAttr('tabindex');
+            $('select').removeAttr('tabindex');
+            // $('input[name="stm_car_main_title"]').attr('tabindex', 0);
+            // // console.log($('select[name="stm_f_s[condition]"]').parent().html());
+            // // console.log($('select[name="stm_f_s[condition]"]').parent().find('.select2-selection').attr('tabindex'));
+            // $('select[name="stm_f_s[condition]"]').parent().find('.select2-selection').attr('tabindex', 1)
+            // $('select[name="stm_f_s[make]"]').parent().find('.select2-selection').attr('tabindex', 2)
+            // $('select[name="stm_f_s[serie]"]').parent().find('.select2-selection').attr('tabindex', 3)
+            // $('select[name="stm_f_s[ca_pre_year]"]').parent().find('.select2-selection').attr('tabindex', 4)
+            // $('select[name="stm_f_s[body]"]').parent().find('.select2-selection').attr('tabindex', 5)
+            // $('input[name="stm_s_s_mileage"]').attr('tabindex', 6);
+            // $('select[name="stm_s_s_fuel"]').parent().find('.select2-selection').attr('tabindex', 7)
+            // $('select[name="stm_s_s_drive"]').parent().find('.select2-selection').attr('tabindex', 8)
+            // $('select[name="stm_s_s_exterior-color"]').parent().find('.select2-selection').attr('tabindex', 9)
+            // $('select[name="stm_s_s_interior-color"]').parent().find('.select2-selection').attr('tabindex', 10)
+            // $('input[name="stm_s_s_countryOfOrigin"]').attr('tabindex', 11);
+            // $('input[name="stm_s_s_class"]').attr('tabindex', 12);
+            // $('input[name="stm_s_s_bodyStyle"]').attr('tabindex', 13);
+
+            // $('.select2-selection[aria-labelledby="select2-stm_f_scondition-s8-container"]').attr('tabindex', 1);
+            // $('.select2-selection[aria-labelledby="select2-stm_f_smake-m8-container"]').attr('tabindex', 2);
+            // $('.select2-selection[aria-labelledby="select2-stm_f_sserie-6n-container"]').attr('tabindex', 3);
+            // $('.select2-selection[aria-labelledby="select2-stm_f_sca_pre_year-5d-container"]').attr('tabindex', 4);
+            // $('.select2-selection[aria-labelledby="select2-stm_f_sbody-k5-container"]').attr('tabindex', 5);
+            // $('.select2-selection[aria-labelledby="select2-stm_s_s_fuel-zl-container"]').attr('tabindex', 7);
+            // $('.select2-selection[aria-labelledby="select2-stm_s_s_transmission-s5-container"]').attr('tabindex', 8);
+            // $('.select2-selection[aria-labelledby="select2-stm_s_s_drive-v8-container"]').attr('tabindex', 9);
+            // $('.select2-selection[aria-labelledby="select2-stm_s_s_exterior-color-we-container"]').attr('tabindex', 10);
+            // $('.select2-selection[aria-labelledby="select2-stm_s_s_interior-color-ef-container"]').attr('tabindex', 11);
+            // $('.select2-selection[aria-labelledby="select2-stm_s_s_interior-color-ef-container"]').attr('tabindex', 12);
+        }, 1500);
+    </script>
+<?php endif ?>
+
 <?php if (get_user_meta(get_current_user_id(), 'stm_dealer_location', true) == '') { ?>
     <script type="text/javascript">
         $(".wpcf7-submit" ).click(function() {
@@ -457,16 +509,16 @@ if ( !stm_is_auto_parts() ) :
     <?php
 if (is_user_logged_in()) {
     $abc = get_posts(array(
-        'post_type' => 'listings',
-        'orderby' => 'date',
-        'author' => get_current_user_id(),
-        'order' => 'DESC',
-        'date_query' => array(
-            array(
-                'after' => '1 month ago'
-            )
+    'post_type' => 'listings',
+    'orderby' => 'date',
+    'author' => get_current_user_id(),
+    'order' => 'DESC',
+    'date_query' => array(
+        array(
+            'after' => '1 month ago'
         )
-    ));
+    )
+));
 if (count($abc) > 0 && !is_page('car-limit') && is_page('add-a-car-page')) {
     ?>
     <script type="text/javascript">
