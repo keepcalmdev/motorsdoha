@@ -282,12 +282,12 @@
         $('.stm-customize-page .wpb_tabs').remove();
 
         //Default plugins
-        $("select:not(.hide)").each(function () {
-            $(this).select2({
-                width: '100%',
-                minimumResultsForSearch: Infinity
-            });
-        });
+        // $("select:not(.hide)").each(function () {
+        //     $(this).select2({
+        //         width: '100%',
+        //         minimumResultsForSearch: Infinity
+        //     });
+        // });
 
         $("select:not(.hide)").on("select2:open", function() {
             var stmClass = $(this).data('class');
