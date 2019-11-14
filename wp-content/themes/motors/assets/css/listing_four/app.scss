@@ -9119,11 +9119,6 @@
 }
 
 
-.rtl .list-unstyled li a {
-  display: flex !important;
-  justify-content: flex-start !important;
-}
-
 .rtl .list-unstyled  .stock-num {
   display: flex;
 }
@@ -9145,7 +9140,7 @@
 .rtl  .car-action-unit > i {
     position: relative;
     transform: none;
-    top: 10px;
+    top: 1px;
 }
 
 .stm-template-listing_four .stm-single-car-page > .container > .row > .col-md-9 {
@@ -9181,6 +9176,32 @@
 .iti__country-list {
     z-index: 10 !important;
 } 
+
+
+@media(max-width: 992px){
+    .archive-listing-page .listing-list-loop .content .meta-top .price:before {
+        z-index: 0;
+    }
+
+    .rtl .meta-top .price {
+        margin-top: -2px !important;
+    }
+    .rtl #listings-result .meta-top .price {
+        margin-top: -19px !important;
+    }
+
+    .rtl .listing-list-loop .main-mob-btn-wrapper a.btn-icon > img {
+        margin-left: 10px;
+    }
+    .rtl .main-mob-btn-wrapper .btn-icon span {
+        margin-left: 10px;
+    }
+    .header-menu li .arrow {
+        width: 100% !important;
+    }
+
+}
+
 
 
 
