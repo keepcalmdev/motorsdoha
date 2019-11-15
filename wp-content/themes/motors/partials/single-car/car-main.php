@@ -634,7 +634,7 @@ if($car_title === ""){ //custom title prefix
                                             color: #232628;
                                         }
                                         </style>
-                                        <div role="form" class="wpcf7" id="wpcf7-f500-p1607-o1" lang="en-US" dir="ltr">
+                                        <!-- <div role="form" class="wpcf7" id="wpcf7-f500-p1607-o1" lang="en-US" dir="ltr">
                                             <div class="screen-reader-response"></div>
                                             <form action="/listings/bmw-570i-navi-leather-turbo/#wpcf7-f500-p1607-o1" method="post" class="wpcf7-form" novalidate="novalidate">
                                                 <div style="display: none;">
@@ -675,7 +675,8 @@ if($car_title === ""){ //custom title prefix
                                                 </div>
                                                 <div class="wpcf7-response-output wpcf7-display-none"></div>
                                             </form>
-                                        </div>
+                                        </div> -->
+                                        <?php echo do_shortcode('[contact-form-7 id="1789" title="Send message to dealer"]') ?>
                                     </div>
                                 </div>
                             </div>
