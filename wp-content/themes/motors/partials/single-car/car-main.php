@@ -312,7 +312,7 @@ if($car_title === ""){ //custom title prefix
                                                         <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div>
                                                     </div>
                                                 </div>
-                                                <div style="width: 48px; height: 59px; overflow: hidden; position: absolute; left: -24px; top: -59px; z-index: 0;"><img alt="" src="http://staging-qprcar01.kinsta.cloud/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 48px; height: 59px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                                <div style="width: 48px; height: 59px; overflow: hidden; position: absolute; left: -24px; top: -59px; z-index: 0;"><img alt="" src="<?php bloginfo("url") ?>/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 48px; height: 59px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
                                             </div>
                                             <div style="position: absolute; left: 0px; top: 0px; z-index: 0;"></div>
                                         </div>
@@ -324,7 +324,7 @@ if($car_title === ""){ //custom title prefix
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;">
-                                                    <div title="" style="width: 64px; height: 75px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: -32px; top: -67px; z-index: 0;"><img alt="" src="http://staging-qprcar01.kinsta.cloud/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 64px; height: 75px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                                    <div title="" style="width: 64px; height: 75px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: -32px; top: -67px; z-index: 0;"><img alt="" src="<?php bloginfo("url") ?>/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 64px; height: 75px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
                                                 </div>
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
                                             </div>
@@ -352,7 +352,7 @@ if($car_title === ""){ //custom title prefix
                                     map = new google.maps.Map(mapElement, mapOptions);
                                     var marker = new google.maps.Marker({
                                         position: center,
-                                        icon: 'http://staging-qprcar01.kinsta.cloud/wp-content/themes/motors/assets/images/map-marker.png',
+                                        icon: '<?php bloginfo("url") ?>/wp-content/themes/motors/assets/images/map-marker.png',
                                         map: map
                                     });
 
@@ -517,7 +517,17 @@ if($car_title === ""){ //custom title prefix
                                             <div class="icon-text">
                                                 <div class="content">
                                                     <h5>
-                                                        <?php echo get_user_meta(get_current_user_id(), stm_dealer_location ,true); ?></h5>
+                                                        <?php 
+
+                                                            if(empty(get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true))){
+
+                                                                echo "Hello my name is Muhammad";
+                                                            }
+
+
+                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
+
+                                                         ?></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -676,7 +686,7 @@ if($car_title === ""){ //custom title prefix
                                                 <div class="wpcf7-response-output wpcf7-display-none"></div>
                                             </form>
                                         </div> -->
-                                        <?php echo do_shortcode('[contact-form-7 id="1789" title="Send message to dealer"]') ?>
+                                        <?php echo do_shortcode('[contact-form-7 id="3742" title="Send message to dealer_copy"]') ?>
                                     </div>
                                 </div>
                             </div>
