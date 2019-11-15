@@ -252,7 +252,7 @@ function getDefaultTemplate($templateName) {
     $welcome = '<table>
         <tr>
             <td>Congratulations! You have been registered in our website with a username: </td>
-            <td>[user_login]</td>
+            <td>[user_login]. Your activation link: [activation_link]</td>
         </tr>
     </table>';
 

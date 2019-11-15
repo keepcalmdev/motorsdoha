@@ -9025,6 +9025,23 @@
     margin-right: 20px !important;
 }
 
+.btn-icon p { margin-bottom: 0; }
+
+.btn-delete-item img {
+    position: relative;
+    top: -1px;
+}
+
+@media (max-width: 470px) {
+    .btn-icon p {
+        display: none;
+    }
+    .btn-icon img, .btn-icon span {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
 @media (min-width: 992px) {
     .main-mob-btn-wrapper .button-row {
         display: none;
@@ -9191,15 +9208,29 @@
     }
 
     .rtl .listing-list-loop .main-mob-btn-wrapper a.btn-icon > img {
-        margin-left: 10px;
+        margin-left: 5px;
     }
     .rtl .main-mob-btn-wrapper .btn-icon span {
-        margin-left: 10px;
+        margin-left: 5px;
     }
     .header-menu li .arrow {
         width: 100% !important;
     }
+    .header-menu ul.sub-menu {
+        list-style-type: none !important;
+        padding-right: 0;
+    }
+    .rtl .main-mob-btn-wrapper .btn-left-icon img {
+        margin-right: 0;
+    }
+    .rtl .main-mob-btn-wrapper .btn-success span, .rtl .main-mob-btn-wrapper .btn-disabled span {
+        margin-right: 0;
+    }
 
+}
+
+.rtl .stm-dealer-phone .phone {
+    direction: ltr;
 }
 
 
