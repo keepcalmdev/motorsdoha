@@ -11,8 +11,34 @@
 if(!defined('ABSPATH')) exit();
 ?>
 
+<!--OPTIMIZER DETAILS-->
+<div style="display:none" class="rb-modal-wrapper" data-modal="rbm_optimizer_infos" id="rbm_optimizer_infos_wrap" >
+	<div class="rb-modal-inner">
+		<div class="rb-modal-content">
+			<div id="rbm_optimizer_infos" class="rb_modal form_inner">
+				<div class="rbm_header">
+					<span class="rbm_title">
+						<i class="rbm_symbol material-icons">flash_on</i>
+						<?php _e('File Size Optimizer Dimensions');?>
+					</span>
+					<i class="rbm_close material-icons">close</i>
+				</div>
+				<div class="rbm_content">
+					<div style="padding:50px">											
+						<div class="decmod_maintxt"><?php _e('Where do the available Dimensions come from?', 'revslider');?></div>
+						<div class="decmod_subtxt"><?php _e('Those are all sizes that are already generated for the used image in the WordPress Media Library AND have the same aspect ratio.', 'revslider');?></div>
+						<div class="div40"></div>
+						<div class="decmod_maintxt"><?php _e('Why are my choices not exactly 1X or 2X?', 'revslider');?></div>
+						<div class="decmod_subtxt"><?php _e('The File Size Optimizer looks at the required media size throughout all device layouts and in that way evaluates the available Dimensions.<br>If available, there is always a choice shown that is the closest to 1X or 2X.<br>If no fitting size is available, you can hover the standard (1X) or retina (2X) lines to get an info on the currently optimal size for your media.', 'revslider');?></div>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!--COPYRIGHT MODAL-->
-<div class="rb-modal-wrapper" data-modal="rbm_copyright" style="display:none">
+<div style="display:none" class="rb-modal-wrapper" data-modal="rbm_copyright">
 	<div class="rb-modal-inner">
 		<div class="rb-modal-content">
 			<div id="rbm_copyright" class="rb_modal form_inner">
@@ -30,7 +56,7 @@ if(!defined('ABSPATH')) exit();
 					<div class="rbm_content_right">
 						<div class="crm_content_wrap" id="crm_templates">
 							<div class="crm_title"><?php _e('Terms of using Layer Group Objects from the Library');?></div>
-							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Templates from the Slider Revolution Library <b>must only</b> be used with a');?></br><a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>							
+							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Templates from the Slider Revolution Library <b>must only</b> be used with a');?><br><a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>							
 							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Media assets used in the respective templates, are licensed according to the here mentioned license terms (see list on the left).');?></div></div>
 							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Slider Revolution Add-Ons <b>must only</b> be used with a');?> <a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>
 							<div class="div30"></div>
@@ -47,7 +73,7 @@ if(!defined('ABSPATH')) exit();
 						</div>
 						<div class="crm_content_wrap" id="crm_objects">
 							<div class="crm_title"><?php _e('Terms of using PNG Objects from the Library');?></div>
-							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('PNG Objects from the Slider Revolution Library <b>must only</b> be used with a');?></br><a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>							
+							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('PNG Objects from the Slider Revolution Library <b>must only</b> be used with a');?><br><a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>							
 							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Licenses via extended license and cooperation with author ');?> <a target="_blank" href="https://creativemarket.com/ceacle"><?php _e('Ceacle');?></a></div></div>
 							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('If you need .psd files for objects, you can purchase it from the original author');?> <a target="_blank" href="https://creativemarket.com/ceacle"><?php _e('here');?></a></div></div>
 							<div class="div30"></div>
@@ -75,11 +101,11 @@ if(!defined('ABSPATH')) exit();
 							<div class="div25"></div>
 							<div class="crm_title"><?php _e('Further License Information');?></div>
 							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('<b>Font Awesome 4.6.3</b> by @davegandy - http://fontawesome.io - @fontawesome <br>License -');?> <a target="_blank" href="http://fontawesome.io/license"><?php _e('http://fontawesome.io/license');?></a><?php _e('(Font: SIL OFL 1.1, CSS: MIT License)');?></div></div>
-							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('<b>Stroke 7 Icon Font Set</b> by www.pixeden.com </br>Get your Freebie Iconset at');?> <a target="_blank" href="http://www.pixeden.com/icon-fonts/stroke-7-icon-font-set"><?php _e('http://www.pixeden.com/icon-fonts/stroke-7-icon-font-set');?></a></div></div>
+							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('<b>Stroke 7 Icon Font Set</b> by www.pixeden.com <br>Get your Freebie Iconset at');?> <a target="_blank" href="http://www.pixeden.com/icon-fonts/stroke-7-icon-font-set"><?php _e('http://www.pixeden.com/icon-fonts/stroke-7-icon-font-set');?></a></div></div>
 						</div>
 						<div class="crm_content_wrap selected" id="crm_layers">
 							<div class="crm_title"><?php _e('Terms of using Layer Group Objects from the Library');?></div>
-							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Layer Group Objects from the Slider Revolution Library <b>must only</b> be used with a');?></br><a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>							
+							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Layer Group Objects from the Slider Revolution Library <b>must only</b> be used with a');?><br><a target="_blank" href="https://themepunch.com/faq/where-to-find-purchase-code/"><?php _e('registered purchase code');?></a> <?php _e('on that particular website.');?></div></div>							
 							<div class="crm_content"><div class="crm_arrow material-icons">arrow_forward</div><div class="crm_text"><?php _e('Media assets used in the respective Layer Group Objects, are licensed according to the here mentioned license terms (see list on the left).');?></div></div>							
 							<div class="div30"></div>
 							<a target="_blank" href="https://getsliderrevolution.com" class="crm_basic_button basic_action_button autosize basic_action_coloredbutton" style="padding:0px 30px"><?php _e('Buy another License');?> <span style="line-height:28px" class="crm_infostar">*</span></a>

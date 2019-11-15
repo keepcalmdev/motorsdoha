@@ -1,5 +1,7 @@
 <?php 
 
+
+
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   //echo $actual_link;
 
@@ -143,11 +145,9 @@ if( is_page( 639 ) ) {
 </style>
 
 
-
 <style>
     .listing-list-loop .main-mob-btn-wrapper a.btn-icon > img {width: auto !important;}
 </style>
-
 </head>
 
 <?php

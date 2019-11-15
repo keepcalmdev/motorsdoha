@@ -239,6 +239,8 @@ function stm_ma_get_featured_listings( $ppp = 10 )
             $featured[] = array(
                 'ID' => $id,
                 'title' => get_the_title(),
+                'views' => get_post_meta( get_the_ID(), 'stm_car_views', true ),
+                'sold_status' => (get_post_meta( get_the_ID(), 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
                 'price' => ( !empty( $price ) ) ? str_replace( '   ', ' ', stm_listing_price_view( trim( $price ) ) ) : 'No Price',
                 'img' => $featureImg
             );
@@ -325,6 +327,8 @@ function stm_ma_get_last_listings( $offset, $limit )
             $newListings[] = array(
                 'ID' => get_the_ID(),
                 'imgUrl' => $featureImg,
+                'sold_status' => (get_post_meta( get_the_ID(), 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
+                'views' => get_post_meta( get_the_ID(), 'stm_car_views', true ),
                 'gallery' => $gallery,
                 'imgCount' => count( $gallery ),
                 'price' => ( !empty( $price ) ) ? str_replace( '   ', ' ', stm_listing_price_view( trim( $price ) ) ) : 'No Price',
@@ -430,6 +434,8 @@ function stm_ma_get_listing_obj( $query )
             $newListings[] = array(
                 'ID' => get_the_ID(),
                 'imgUrl' => $featureImg,
+                'sold_status' => (get_post_meta( get_the_ID(), 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
+                'views' => get_post_meta( get_the_ID(), 'stm_car_views', true ),
                 'gallery' => $gallery,
                 'imgCount' => count( $gallery ),
                 'price' => ( !empty( $price ) ) ? str_replace( '   ', ' ', stm_listing_price_view( trim( $price ) ) ) : 'No Price',

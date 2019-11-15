@@ -84,3 +84,27 @@
         </div>
     </div>
 <?php endif; ?>
+
+    <div class="stm-form-1-quarter">
+    </div>
+
+    <div class="stm-form-4-videos clearfix">
+        <div class="stm-car-listing-data-single stm-border-top-unit " style="border: 0px;">
+            <div class="title heading-font">360 Link</div>
+        </div>
+        <div class="stm-add-videos-unit">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="stm-video-units">
+                        <div class="stm-video-link-unit-wrap">
+                            <div class="heading-font">
+                                <span class="video-label">360 link</span></div>
+                            <div class="stm-video-link-unit">
+                                <input type="text" name="stm_s_s_image_360" value="<?php echo base64_decode(get_post_meta($_GET['item_id'], 'image_360', true)); ?>" placeholder="360 Link">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

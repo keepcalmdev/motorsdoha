@@ -55,8 +55,8 @@ if ($wpml->wpml_exists()) {
 						</div>
 					</div><!--
 					--><div class="slidebg_image_settings slide_bg_settings">
-						<label_a></label_a><div id="slide_bg_image_btn" data-evt="updateslidebasic" data-evtparam="kenburnupdate" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="getImageFromMediaLibrary basic_action_button longbutton callEventButton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
-						<label_a></label_a><div id="slide_object_library_btn" data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="getImageFromObjectLibrary basic_action_button longbutton callEventButton"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
+						<label_a></label_a><div id="slide_bg_image_btn" data-evt="updateslidebasic" data-evtparam="kenburnupdate" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="getImageFromMediaLibrary basic_action_button longbutton callEventButton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
+						<label_a></label_a><div id="slide_object_library_btn" data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="getImageFromObjectLibrary basic_action_button longbutton callEventButton"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
 					</div><!--
 					--><div class="slidebg_external_settings slide_bg_settings">
 						<label_a><?php _e('Source', 'revslider');?></label_a><input id="s_ext_src" data-evt="updateslidebasic" data-evtparam="kenburnupdate" class="slideinput easyinit" type="text" data-r="bg.externalSrc" placeholder="<?php _e('Enter Image URL', 'revslider');?>">
@@ -66,19 +66,22 @@ if ($wpml->wpml_exists()) {
 						<label_a><?php _e('BG Color', 'revslider');?></label_a><input type="text" data-evt="updateslidebasic" data-editing="<?php _e('Background Color', 'revslider');?>" name="slide_bg_color" id="s_bg_color" data-visible="true" class="my-color-field slideinput easyinit" data-r="bg.color" value="#fff">
 						<div class="div500"></div>												
 					</div><!--
+					--><div class="slidebg_trans_settings slide_bg_settings">						
+						<div class="div500"></div>												
+					</div><!--
 					--><div class="slidebg_youtube_settings slide_bg_settings">
 						<label_a><?php _e('YouTube ID', 'revslider');?></label_a><input id="s_bg_youtube_src" data-evt="updateslidebasic" class="slideinput easyinit" type="text" data-r="bg.youtube" placeholder="<?php _e('Enter YouTube ID', 'revslider');?>">
 						<div class="div25"></div>
-						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-r="#slide#.slide.bg.image" data-f="#slide#.slide.bg.youtube" data-evtparam="double" data-evt="updateslidebasic" class="getImageFromYouTube basic_action_button longbutton "><i class="material-icons">style</i><?php _e('YouTube Poster', 'revslider');?></div>
+						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-r="#slide#.slide.bg.image" data-f="#slide#.slide.bg.youtube" data-evtparam="double" data-evt="updateslidebasic" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType"  class="getImageFromYouTube basic_action_button longbutton "><i class="material-icons">style</i><?php _e('YouTube Poster', 'revslider');?></div>
 						<label_a></label_a><div data-evt="updateslidebasic" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="getImageFromMediaLibrary basic_action_button longbutton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
-						<!--<label_a></label_a><div data-evt="updateslidebasic" class="basic_action_button longbutton"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>-->
+						<label_a></label_a><div data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="getImageFromObjectLibrary basic_action_button longbutton callEventButton"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
 						<label_a></label_a><div data-evt="updateslidebasic" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="removePosterImage basic_action_button longbutton"><i class="material-icons">delete</i><?php _e('Remove', 'revslider');?></div><span class="linebreak"></span>
 					</div><!--
 					--><div class="slidebg_vimeo_settings slide_bg_settings">
 						<label_a><?php _e('Vimeo ID', 'revslider');?></label_a><input id="s_bg_vimeo_src" data-evt="updateslidebasic" class="slideinput easyinit" type="text" data-r="bg.vimeo" placeholder="<?php _e('Enter Vimeo ID', 'revslider');?>">
 						<div class="div25"></div>
-						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="getImageFromMediaLibrary basic_action_button  longbutton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
-						<!--<label_a></label_a><div data-evt="updateslidebasic" class="basic_action_button longbutton "><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div><span class="linebreak"></span>-->
+						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType"  class="getImageFromMediaLibrary basic_action_button  longbutton"><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
+						<label_a></label_a><div data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="getImageFromObjectLibrary basic_action_button longbutton callEventButton"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>						
 						<label_a></label_a><div data-evt="updateslidebasic" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="removePosterImage basic_action_button longbutton"><i class="material-icons">delete</i><?php _e('Remove', 'revslider');?></div><span class="linebreak"></span>
 					</div><!--
 					--><div class="slidebg_html5_settings slide_bg_settings">
@@ -88,9 +91,15 @@ if ($wpml->wpml_exists()) {
 						<!--<label_a><?php _e('WEBM', 'revslider');?></label_a><div class="input_with_buttonextenstion"><input id="s_bg_webm_src" data-evt="updateslidebasic" class="slideinput easyinit nmarg" type="text" data-r="bg.mpeg" placeholder="<?php _e('Optional WEBM Source', 'revslider');?>"><div data-evt="updateslidebasic" data-target="#s_bg_webm_src" class="getVideoFromMediaLibrary basic_action_button onlyicon dark_action_button callEventButton"><i class="material-icons">style</i></div></div>-->
 						<!--<label_a><?php _e('OGV', 'revslider');?></label_a><div class="input_with_buttonextenstion"><input id="s_bg_ogv_src" data-evt="updateslidebasic" class="slideinput easyinit nmarg" type="text" data-r="bg.ogv" placeholder="<?php _e('Optional OGV Source', 'revslider');?>"><div data-evt="updateslidebasic" data-target="#s_bg_ogv_src" class="getVideoFromMediaLibrary basic_action_button  onlyicon dark_action_button callEventButton"><i class="material-icons">style</i></div></div>-->
 						<div class="div25"></div>
-						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="getImageFromMediaLibrary basic_action_button longbutton "><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
+						<label_a><?php _e('Poster Image', 'revslider');?></label_a><div data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="getImageFromMediaLibrary basic_action_button longbutton "><i class="material-icons">style</i><?php _e('Media Library', 'revslider');?></div>
+						<label_a></label_a><div  data-evt="updateslidebasic" data-evtparam="double" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="getImageFromObjectLibrary basic_action_button longbutton callEventButton"><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>
 						<!--<label_a></label_a><div data-evt="updateslidebasic" class="basic_action_button longbutton "><i class="material-icons">camera_enhance</i><?php _e('Object Library', 'revslider');?></div>-->
-						<label_a></label_a><div data-evt="updateslidebasic" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" class="removePosterImage basic_action_button longbutton"><i class="material-icons">delete</i><?php _e('Remove', 'revslider');?></div><span class="linebreak"></span>
+						<label_a></label_a><div data-evt="updateslidebasic" data-r="#slide#.slide.bg.image" data-rid="#slide#.slide.bg.imageId" data-lib="#slide#.slide.bg.imageLib" data-sty="#slide#.slide.bg.imageSourceType" class="removePosterImage basic_action_button longbutton"><i class="material-icons">delete</i><?php _e('Remove', 'revslider');?></div><span class="linebreak"></span>
+					</div><!--					
+					--><div class="slidebg_image_settings slidebg_vimeo_settings slidebg_html5_settings slidebg_youtube_settings slide_bg_settings">
+						<div style="display:none"><label_a class="singlerow"><?php _e('Used Library', 'revslider');?></label_a><select class="slideinput easyinit" data-r="bg.imageLib" data-show="#slidebg_srctype_*val*" data-hide=".slidebg_srctype_all" data-showprio="show"><option value="">Nothing</option><option value="objectlibrary">Objectlibrary</option><option value="medialibrary">MediaLibrary</option></select></div>
+						<div id="slidebg_srctype_objectlibrary" class="slidebg_srctype_all"><label_a class="singlerow"><?php _e('Source Type', 'revslider');?></label_a><select data-theme="dark" id="slide_bg_img_ssize_a" class="slideinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="slidebg.object" data-r="bg.imageSourceType"><option value="100" selected="selected"><?php _e("Original", 'revslider');?></option><option value="75" selected="selected"><?php _e("Large", 'revslider');?></option><option value="50" selected="selected"><?php _e("Medium", 'revslider');?></option><option value="25" selected="selected"><?php _e("Small", 'revslider');?></option><option value="10" selected="selected"><?php _e("Extra Small", 'revslider');?></option></select></div>
+						<div id="slidebg_srctype_medialibrary" class="slidebg_srctype_all"><label_a class="singlerow"><?php _e('Source Type', 'revslider');?></label_a><select data-theme="dark" id="slide_bg_img_ssize_b" class="slideinput tos2 nosearchbox easyinit" data-evt="getNewImageSize" data-evtparam="slidebg.media"  data-r="bg.imageSourceType"><option value="auto" selected="selected"><?php _e("Default Setting", 'revslider');?></option><?php foreach ($img_sizes as $imghandle => $imgSize) { echo '<option value="' . $imghandle . '">' . $imgSize . '</option>';}?></select></div>
 					</div><!--
 					--><div class="slidebg_html5_settings slide_bg_settings slidebg_vimeo_settings slidebg_youtube_settings slidebg_image_settings slidebg_external_settings"><!--
 						--><div class="div25"></div><!--
@@ -107,13 +116,6 @@ if ($wpml->wpml_exists()) {
 				<div class="form_inner_header"><i class="material-icons">chrome_reader_mode</i><span id="selected_slide_source"></span><?php _e('Settings', 'revslider');?></div>
 				<!--<div class="form_intoaccordion" data-trigger="#sl_fbg_l1_2"><i class="material-icons">arrow_drop_down</i></div>-->
 				<div class="collapsable">
-
-					<!-- BG IMAGE SIZE -->
-					<div class="slidebg_image_settings slide_bg_settings">
-						<label_a><?php _e('Source Size', 'revslider');?></label_a><select data-theme="dark" id="slide_bg_img_ssize"  class="slideinput tos2 searchbox easyinit "  data-r="bg.imageSourceType">
-							<option value="full">Original Size</option><option value="thumbnail">Thumbnail</option><option value="medium">Medium</option><option value="large">Large</option><option value="medium_large">Medium Large</option><option value="twentyseventeen-featured-image">Twentyseventeen-featured-image</option><option value="twentyseventeen-thumbnail-avatar">Twentyseventeen-thumbnail-avatar</option>
-						</select><span class="linebreak"></span>
-					</div>
 
 					<!-- BACKGROUND / COVER IMAGE SETTINGS -->
 					<div class="slidebg_image_settings slidebg_external_settings slide_bg_settings">
@@ -539,12 +541,18 @@ if ($wpml->wpml_exists()) {
 						</select><span class="linebreak"></span>
 						<div class="slidelink_seo_subs" id="slidelink_regular_seo">
 							<label_a><?php _e('URL', 'revslider');?></label_a><input placeholder="Enter URL to link to" id="slide_ls_link" class="slideinput easyinit" type="text" data-r="seo.link"><span class="linebreak"></span>
+							<label_a><?php _e('URL Help', 'revslider');?></label_a><select data-theme="dark" id="slide_ls_url_help" class="slideinput tos2 nosearchbox easyinit"  data-r="seo.linkHelp">
+								<option value="http"><?php _e('http://', 'revslider');?></option>
+								<option value="https"><?php _e('https://', 'revslider');?></option>
+								<option value="auto"><?php _e('Auto http / https', 'revslider');?></option>
+								<option value="keep"><?php _e('Keep as it is', 'revslider');?></option>	
+							</select>
 							<label_a><?php _e('Target', 'revslider');?></label_a><select data-theme="dark" id="slide_ls_link_target" class="slideinput tos2 nosearchbox easyinit"  data-r="seo.target">
-							<option value="_self"><?php _e('_self', 'revslider');?></option>
-							<option value="_blank"><?php _e('_blank', 'revslider');?></option>
-							<option value="_top"><?php _e('_top', 'revslider');?></option>
-							<option value="_parent"><?php _e('_parent', 'revslider');?></option>														
-						</select>							
+								<option value="_self"><?php _e('_self', 'revslider');?></option>
+								<option value="_blank"><?php _e('_blank', 'revslider');?></option>
+								<option value="_top"><?php _e('_top', 'revslider');?></option>
+								<option value="_parent"><?php _e('_parent', 'revslider');?></option>														
+						<	/select>							
 						</div>
 						<div class="slidelink_seo_subs" id="slidelink_slide_seo">
 							<label_a><?php _e('Link to Slide', 'revslider');?></label_a><select data-theme="dark" id="slide_seo_linktoslide" class="slideinput tos2 nosearchbox easyinit"  data-r="seo.slideLink"></select><span class="linebreak"></span>
