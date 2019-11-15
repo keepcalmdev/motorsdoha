@@ -1,0 +1,638 @@
+html , body{
+	margin:0px;
+}
+
+div, span, h1, h2, h3, h4, h5, h6, input, .bold-heading1{
+
+font-family: 'Montserrat', sans-serif !important;
+
+} 
+
+
+.site-background{
+    min-height: 100vh;
+	/*background: url('img/tourism.png') center;
+*/	background-size:cover !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+
+}
+
+
+.mx-auto{
+	margin-left: auto!important;
+	margin-right: auto!important;
+}
+
+.logo{
+    margin-bottom: 50px;
+	text-align: center!important;
+	width: 100%;
+}
+
+.bg10 .bold-heading1, .bg10 .heading1,
+.first-day .bold-heading1, .first-day .heading1 , .fourth-day .bold-heading1, .fifth-day .bold-heading1, .bg6 .bold-heading1, .bg7 .bold-heading1 , .fourth-day .heading1, .fifth-day .heading1, .bg6 .heading1, .bg7 .heading1
+{
+
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+
+.bold-heading1{
+	color: #000;
+	font-weight: 600;
+    text-align: center;
+    font-size: 46px;
+    line-height: 57px;
+    font-family: 'Montserrat', sans-serif !important;
+    text-shadow: 1px 1px 1px #fff;
+
+}
+
+.heading1{
+    margin-bottom: 80px;
+	color: #000;
+    text-align: center;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 59px;
+     font-family: 'Montserrat', sans-serif !important;
+     text-shadow: 1px 1px 1px #fff;
+}
+
+form {
+	text-align: center!important;
+	max-width: 751px;
+    margin: auto;
+}
+
+form input {
+    height: 38px;
+    border: 0;
+    padding: 0;
+    border-radius: 50px;
+    margin: 25px 5px;
+
+}
+
+input.email-field {
+    width: 100%;
+    max-width: 400px;
+    padding-left:26px;
+    box-sizing: border-box;
+}
+
+input.send-button-field {
+    width: 100%;
+    max-width: 135px;
+    background: #ca0000;
+    color: #fff;
+    font-weight: 700 !important;
+    -webkit-appearance: none;
+}
+
+form ::placeholder   {
+
+font-weight: 700 !important;
+
+}
+
+.first-day .sec-half{
+	padding-top: 85px;
+
+}
+
+.first-day{
+background: url('img/tourism.png') no-repeat;
+}
+
+.second-day{
+background: url('img/layer9.jpg') no-repeat;
+
+}
+
+.third-day{
+	background: url('img/third-bg.jpg') no-repeat;
+
+}
+.fourth-day{
+	background: url('img/fourth-bg.jpg') no-repeat;
+}
+
+.fifth-day{
+	background: url('img/fifth-bg.jpg') no-repeat;
+}
+.bg6{
+	background: url('img/6bg.jpg') no-repeat;
+}
+.bg7{
+	background: url('img/7bg.jpg') no-repeat;
+}
+.bg8{
+	background: url('img/8bg.jpg') no-repeat;
+}
+.bg9{
+	background: url('img/9bg.jpg') no-repeat;
+}
+.bg10{
+	background: url('img/10bg.jpg') no-repeat;
+}
+
+
+
+
+
+
+.logo img{
+	width: 100%;
+    max-width: 510px;
+}
+
+.second-day .sec-half, .third-day .sec-half, .fourth-day .sec-half ,.fifth-day .sec-half, .bg6 .sec-half, .bg7 .sec-half, .bg8 .sec-half, .bg9 .sec-half, .bg10 .sec-half{
+ 
+    padding-top: 12vh;
+}
+
+ 
+.pull-right{
+	float: right!important;
+}
+
+
+
+
+/*page1 css*/
+
+
+
+#demo {
+  text-align: center;
+  font-size: 60px;
+  top: 87px;
+  color: #fff;
+  position: relative;
+ /* background: url('assets/img/vector-smart-object.png');*/
+  background-size: 500px;
+  height: 168px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background: #333333;
+  width: 590px;
+  height: 100px;
+  padding: 35px;
+  border-bottom: 4px solid #bdbdbd;
+  border-radius: 20px;
+  margin: auto;
+
+
+}
+.days-lable, .hour-lable, .minutes-lable, .second-lable{
+      background: url(img/vector-smart-object1.png) no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    padding: 5px 15px;
+}
+
+#demo span.days-lable{
+  width: 120px !important;
+
+}
+
+.days, .hrs, .mins, .secs{
+  position: absolute;
+  font-size: 28px !important;
+  font-weight: 600;
+  bottom: 19px;
+}
+
+p#demo .days{
+   left: 64px !important;
+}
+
+
+p#demo .hrs {
+    left: 250px !important;
+}
+
+p#demo .mins {
+    left: 390px !important;
+}
+
+p#demo .secs{
+   left: 540px !important;
+}
+
+
+.social-wrapper {
+    margin-top: 25vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+.social-wrapper a {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    text-decoration: none;
+}
+.social-wrapper i {
+    margin-right: 10px;
+    font-size: 23px;
+    color: #CA0000;
+}
+
+@media screen and (max-width: 1600px){
+    .first-day .sec-half {
+        padding-top: 30px;
+    }
+    .logo{
+        margin-bottom: 30px;
+    }
+    .logo img{
+        max-width: 400px;
+
+    }
+    .bold-heading1 {
+        font-size: 38px;
+        line-height: 49px;
+    }
+    .heading1 {
+        margin-bottom: 10px;
+        font-size: 40px;
+        line-height: 51px;
+    }
+    #demo {
+        top: 15px;
+    }
+}
+@media screen and (width: 1366px) {
+    .logo {
+        margin-bottom: 23vh;
+    }
+}
+@media screen and (min-width: 767px) and (max-width: 1024px) and (orientation: portrait) {
+    .logo {
+        margin-bottom: 25vh;
+    }
+    .social-wrapper {
+        margin-top: 30vh;
+    }
+}
+
+@media(min-width: 890px){
+  
+  p#demo span {
+    width: 72px !important;
+    display: inline-block;
+}
+
+
+
+}
+
+
+
+@media(max-width: 800px){
+.logo img {
+    max-width: 220px;
+}
+.bold-heading1 {
+    font-weight: 800;
+}
+.bold-heading1,
+.heading1 {
+    font-size: 35px;
+    line-height: 46px;
+}
+.sec-half #demo {
+  text-align: center;
+  font-size: 25px !important;
+  height: 55px;
+  width: 320px;
+  padding-top: 35px;
+  padding-bottom: 20px;
+  padding-right: 5px; 
+  padding-left: 5px; 
+}
+}
+
+.days, .hrs, .mins, .secs{
+  position: absolute;
+  font-size: 14px;
+  font-weight: 600;
+  bottom: 0;
+}
+
+.days-lable, .hour-lable, .minutes-lable, .second-lable{
+      background: url(img/vector-smart-object1.png) no-repeat;
+
+    background-size: 100% 100%;
+    display: inline;
+    padding: 5px 15px;
+}
+
+p#demo .days {
+    left: 20px;
+    bottom:  18px;
+
+}
+p#demo .hrs {
+    left: 150px;
+    bottom:  18px;
+}
+
+
+p#demo .mins {
+    left: 220px ;
+    bottom:  18px;
+
+}
+
+p#demo .secs{
+   left: 290px;
+   bottom:  18px;
+
+}
+
+}
+
+
+@media (max-width: 415px){
+.bold-heading1{
+  color: #000;
+  font-weight: 800;
+    text-align: center;
+    font-size: 25px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    text-shadow: 1px 1px 1px #fff;
+
+}
+.heading1{
+  color: #000;
+    text-align: center;
+    font-size: 25px !important;
+     font-family: 'Montserrat', sans-serif !important;
+     text-shadow: 1px 1px 1px #fff;
+}
+
+
+.sec-half #demo {
+   text-align: center;
+    font-size: 10px !important;
+    height: 38px;
+    width: 150px;
+    padding: 20px;
+ 
+}
+.days, .hrs, .mins, .secs{
+  position: absolute;
+  font-size: 10px !important;
+  font-weight: 400;
+  bottom: 0;
+}
+.days-lable, .hour-lable, .minutes-lable, .second-lable{
+      background: url(img/vector-smart-object1.png) no-repeat;
+    
+    background-size: 100% 100%;
+    display: inline;
+    padding: 5px 15px;
+}
+
+p#demo .days {
+    left: 35px !important;
+}
+p#demo .hrs {
+    left: 100px !important;
+}
+p#demo .mins {
+    left: 150px !important;
+}
+
+p#demo .secs{
+   left: 220px !important;
+}
+}
+@media screen and (max-width: 414px) {
+    .bold-heading1 {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .heading1 {
+        margin-bottom: 10px;
+        font-size: 27px;
+        line-height: 37px;
+    }
+    .site-background {
+        height: 100vh;
+    }
+    .sec-half {
+        height: 100vh;
+    }
+    .social-wrapper {
+        margin-top: 25px!important;
+    }
+    .social-wrapper a {
+        line-height: 34px;
+    }
+}
+
+@media screen and (width: 375px) and (height: 812px) {
+    .logo {
+        margin-bottom: 20vh;
+    }
+    .social-wrapper {
+        margin-top: 105px!important;
+    }
+}
+@media (max-width: 375px) {
+.bold-heading1{
+  color: #000;
+  font-weight: 800;
+    text-align: center;
+    font-size: 25px !important;
+    line-height: normal;
+    font-family: 'Montserrat', sans-serif !important;
+    text-shadow: 1px 1px 1px #fff;
+
+}
+.heading1{
+  color: #000;
+    text-align: center;
+    font-size: 21px !important;
+    line-height: normal;
+     font-family: 'Montserrat', sans-serif !important;
+     text-shadow: 1px 1px 1px #fff;
+}
+input.email-field,
+input.send-button-field {
+    max-width: 265px;
+    width: 265px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.sec-half #demo {
+    text-align: center;
+    font-size: 17px !important;
+    height: 55px;
+    width: 255px;
+      padding-top: 22px;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.days, .hrs, .mins, .secs{
+  position: absolute;
+  font-size: 13px !important;
+  font-weight: 400;
+  bottom: 0;
+}
+ p#demo .days {
+    left: 30px !important;
+    bottom: 10px !important;
+}
+.sec-half p#demo .hrs {
+    left: 85px !important;
+    bottom: 10px !important;
+
+}
+.sec-half p#demo .mins { 
+    left: 140px !important;
+    bottom: 10px !important;
+}
+
+.sec-half p#demo .secs{
+   left: 200px !important;
+   bottom: 10px !important;
+}
+.social-wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    width: 265px;
+}
+.social-wrapper a {
+    margin: 0;
+}
+}
+
+@media (max-width: 320px) {
+.bold-heading1{
+  color: #000;
+  font-weight: 800;
+    text-align: center;
+    font-size: 25px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    text-shadow: 1px 1px 1px #fff;
+
+}
+
+.heading1{
+  color: #000;
+    text-align: center;
+    font-size: 21px !important;
+     font-family: 'Montserrat', sans-serif !important;
+     text-shadow: 1px 1px 1px #fff;
+}
+input.email-field,
+input.send-button-field {
+    max-width: 280px;
+    width: 280px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.sec-half #demo {
+    text-align: center;
+    font-size: 18px !important;
+    height: 45px;
+    width: 270px;
+    padding-top: 35px;
+    padding-bottom: 20px;
+}
+ .days, .hrs, .mins, .secs{
+  position: absolute;
+  font-size: 10px !important;
+  font-weight: 400;
+  bottom: 0;
+}
+.sec-half p#demo .days {
+    left: 27px !important;
+      bottom: 20px !important;
+}
+.sec-half p#demo .hrs {
+    left: 100px !important;
+     bottom: 20px !important;
+
+}
+.sec-half p#demo .mins {
+    left: 160px !important;
+       bottom: 20px !important;
+}
+
+.sec-half p#demo .secs{
+   left: 225px !important;
+  bottom: 20px !important;
+}
+.social-wrapper {
+    width: 280px;
+    margin-top: 25px!important;
+    height: auto!important;
+}
+.social-wrapper a {
+    font-size: 12px;
+    line-height: 34px;
+}
+}
+
+@media (max-width: 768px) {
+.sec-half {
+    width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+}
+input.send-button-field { margin-top: 0px !important }
+input.email-field {margin-bottom: 5px !important
+}
+.days, .hrs, .mins, .secs{
+  position: absolute;
+  font-size: 14px !important;
+  font-weight: 600;
+  bottom: 0;
+}
+
+.days-lable, .hour-lable, .minutes-lable, .second-lable{
+      background: url(img/vector-smart-object1.png) no-repeat;
+    
+    background-size: 100% 100%;
+    display: inline;
+    padding: 5px 15px;
+}
+
+p#demo .days {
+    left: 30px !important;
+    bottom:  18px;
+   
+}
+p#demo .hrs {
+    left: 120px !important;
+    bottom:  18px;
+}
+
+
+p#demo .mins {
+    left: 200px !important;
+    bottom:  18px;
+    
+}
+
+p#demo .secs{
+   left: 270px !important;
+   bottom:  18px;
+  
+}
+}

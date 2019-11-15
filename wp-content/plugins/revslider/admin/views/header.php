@@ -20,6 +20,9 @@ $rs_added_image_sizes	 = $rsaf->get_all_image_sizes();
 $rs_image_meta_todo		 = get_option('rs_image_meta_todo', array());
 $rs_slider_update_needed = $rsupd->slider_need_update_checks();
 $rs_global_settings		 = $rsaf->get_global_settings();
+$rs_notices				 = $rsaf->add_notices();
+$rs_color_picker_presets = RSColorpicker::get_color_presets();
+$rs_compression			 = $rsaf->compression_settings();
 $rs_global_sizes		 = array(
 	'd' => $rsaf->get_val($rs_global_settings, array('size', 'desktop'), '1240'),
 	'n' => $rsaf->get_val($rs_global_settings, array('size', 'notebook'), '1024'),
@@ -30,22 +33,21 @@ $rs_show_updated = get_option('rs_cache_overlay', RS_REVISION);
 if(version_compare(RS_REVISION, $rs_show_updated, '>')){
     update_option('rs_cache_overlay', RS_REVISION);
 }
-$rs_notices = $rsaf->add_notices();
-$rs_color_picker_presets = RSColorpicker::get_color_presets();
+
 ?>
 <!-- GLOBAL VARIABLES -->
 <script type="text/javascript">
 	window.RVS = window.RVS === undefined ? {F:{}, C:{}, ENV:{}, LIB:{}, V:{}, S:{}, DOC:jQuery(document), WIN:jQuery(window)} : window.RVS;
 	
-	RVS.LIB.ADDONS = RVS.LIB.ADDONS === undefined ? {} : RVS.LIB.ADDONS;	
+	RVS.LIB.ADDONS			= RVS.LIB.ADDONS === undefined ? {} : RVS.LIB.ADDONS;	
 	RVS.LIB.ADDONS			= jQuery.extend(true,RVS.LIB.ADDONS,<?php echo (!empty($rs_addons)) ? 'jQuery.parseJSON('.$rsaf->json_encode_client_side($rs_addons).')' : '{}'; ?>);	
 	RVS.LIB.OBJ 			= {types: jQuery.parseJSON(<?php echo $rsaf->json_encode_client_side($rsa); ?>)};
 	RVS.LIB.SLIDERS			= <?php echo json_encode(RevSliderSlider::get_sliders_short_list()); ?>;
-	RVS.LIB.COLOR_PRESETS	= <?php echo (!empty($rs_color_picker_presets)) ? 'jQuery.parseJSON('. $rsaf->json_encode_client_side($rs_color_picker_presets) .')' : '[]'; ?>;
+	RVS.LIB.COLOR_PRESETS	= <?php echo (!empty($rs_color_picker_presets)) ? 'jQuery.parseJSON('. $rsaf->json_encode_client_side($rs_color_picker_presets) .')' : '{}'; ?>;
 
-	RVS.ENV.addOns_to_update = <?php echo (!empty($rs_addon_update)) ? 'jQuery.parseJSON('.$rsaf->json_encode_client_side($rs_addon_update).');' : '{};'; ?>
+	RVS.ENV.addOns_to_update = <?php echo (!empty($rs_addon_update)) ? 'jQuery.parseJSON('.$rsaf->json_encode_client_side($rs_addon_update).')' : '{}'; ?>;
 	RVS.ENV.activated		= '<?php echo (get_option('revslider-valid', 'false')) == 'true' ? 'true' : 'false'; ?>';
-	RVS.ENV.activated = RVS.ENV.activated=='true'  || RVS.ENV.activated==true ? true : false;
+	RVS.ENV.activated		= RVS.ENV.activated == 'true' || RVS.ENV.activated == true ? true : false;
 	RVS.ENV.nonce			= '<?php echo wp_create_nonce('revslider_actions'); ?>';
 	RVS.ENV.plugin_dir		= 'revslider';
 	RVS.ENV.slug_path		= '<?php echo RS_PLUGIN_SLUG_PATH; ?>';
@@ -56,13 +58,15 @@ $rs_color_picker_presets = RSColorpicker::get_color_presets();
 	RVS.ENV.revision		= '<?php echo RS_REVISION; ?>';
 	RVS.ENV.updated			= <?php echo (version_compare(RS_REVISION, $rs_show_updated, '>')) ? 'true' : 'false'; ?>;
 	RVS.ENV.latest_version	= '<?php echo get_option('revslider-latest-version', RS_REVISION); ?>';	
+	RVS.ENV.php_version		= '<?php echo phpversion(); ?>';
+	RVS.ENV.output_compress	= <?php echo (!empty($rs_compression)) ? 'jQuery.parseJSON('. $rsaf->json_encode_client_side($rs_compression) .')' : '[]'; ?>;
 	RVS.ENV.placeholder		= {
-		date_format: '<?php echo $rs_wp_date_format; ?>',
-		time_format: '<?php echo $rs_wp_time_format; ?>',
-		date_today:	 '<?php echo date($rs_wp_date_format); ?>',
-		time:		 '<?php echo date($rs_wp_time_format); ?>',
-		tomorrow:	 '<?php echo date($rs_wp_date_format, strtotime(date($rs_wp_date_format) . ' +1 day')); ?>',
-		last_week:	 '<?php echo date($rs_wp_date_format, strtotime(date($rs_wp_date_format) . ' -7 day')); ?>',
+		date_format:		'<?php echo $rs_wp_date_format; ?>',
+		time_format:		'<?php echo $rs_wp_time_format; ?>',
+		date_today:			'<?php echo date($rs_wp_date_format); ?>',
+		time:				'<?php echo date($rs_wp_time_format); ?>',
+		tomorrow:			'<?php echo date($rs_wp_date_format, strtotime(date($rs_wp_date_format) . ' +1 day')); ?>',
+		last_week:			'<?php echo date($rs_wp_date_format, strtotime(date($rs_wp_date_format) . ' -7 day')); ?>',
 		<?php
 		if(RevSliderWooCommerce::woo_exists()){
 			$wc = new WC_Product(0);

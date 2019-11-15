@@ -1584,6 +1584,11 @@ $single_car_settings = array(
         'type' => 'checkbox',
         'default' => true
     ),
+    'enable_favorite_items' => array(
+        'label' => esc_html__('Enable favorites', 'motors'),
+        'type' => 'checkbox',
+        'default' => true
+    ),
     'show_share' => array(
         'label' => esc_html__('Show share block', 'motors'),
         'type' => 'checkbox',
@@ -1825,7 +1830,7 @@ if(!stm_is_auto_parts()) {
         )
     ) );
 
-    if ( is_listing() ) {
+    // if ( is_listing() ) {
         STM_Customizer::setSection( 'user_dealer', array(
             'title' => esc_html__( 'User/Dealer options', 'motors' ),
             'panel' => 'listing',
@@ -2016,7 +2021,7 @@ if(!stm_is_auto_parts()) {
                 ),
             )
         ) );
-    }
+    // }
 }
     STM_Customizer::setSection( 'shop', array(
         'title' => esc_html__( 'Shop', 'motors' ),

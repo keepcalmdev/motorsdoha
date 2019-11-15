@@ -469,35 +469,42 @@ if (!function_exists('stm_custom_login')) {
             $creds['remember'] = $remember;
             $secure_cookie = is_ssl() ? true : false;
 
-
-            $user = wp_signon($creds, $secure_cookie);
-            if (is_wp_error($user)) {
-                $response['message'] = esc_html__('Wrong Username or Password', 'stm_vehicles_listing');
+            //activation failed
+            $user = apply_filters('authenticate', null, $username, $password);
+            if ( get_user_meta( $user->ID, 'has_to_be_activated', true ) != false ) {
+                $response['message'] = esc_html__('Please activate your account', 'stm_vehicles_listing');
+                
             } else {
-                if ($redirect) {
-                    $response['message'] = esc_html__('Successfully logged in. Redirecting...', 'stm_vehicles_listing');
-
-                    $wpmlUrl = (!empty($redirect_path)) ? $redirect_path : get_author_posts_url($user->ID);
-
-                    if (class_exists('PMXI_Plugin') && isset($_POST['current_lang'])) {
-                        $wpmlUrl = apply_filters( 'wpml_permalink', $wpmlUrl, $_POST['current_lang'], true );
-                    }
-
-					$response['redirect_url'] = $wpmlUrl;
+            //activation success
+                $user = wp_signon($creds, $secure_cookie);
+                if (is_wp_error($user)) {
+                    $response['message'] = esc_html__('Wrong Username or Password', 'stm_vehicles_listing');
                 } else {
-                    ob_start();
-                    stm_add_a_car_user_info('', '', '', $user->ID);
-                    $restricted = false;
-                    $restrictions = stm_get_post_limits($user->ID);
+                    if ($redirect) {
+                        $response['message'] = esc_html__('Successfully logged in. Redirecting...', 'stm_vehicles_listing');
 
-                    if ($restrictions['posts'] < 1) {
-                        $restricted = true;
+                        $wpmlUrl = (!empty($redirect_path)) ? $redirect_path : get_author_posts_url($user->ID);
+
+                        if (class_exists('PMXI_Plugin') && isset($_POST['current_lang'])) {
+                            $wpmlUrl = apply_filters( 'wpml_permalink', $wpmlUrl, $_POST['current_lang'], true );
+                        }
+
+    					$response['redirect_url'] = $wpmlUrl;
+                    } else {
+                        ob_start();
+                        stm_add_a_car_user_info('', '', '', $user->ID);
+                        $restricted = false;
+                        $restrictions = stm_get_post_limits($user->ID);
+
+                        if ($restrictions['posts'] < 1) {
+                            $restricted = true;
+                        }
+
+                        $response['restricted'] = $restricted;
+                        $response['user_html'] = ob_get_clean();
                     }
-
-                    $response['restricted'] = $restricted;
-                    $response['user_html'] = ob_get_clean();
                 }
-            }
+            }    
         } else {
             $response['message'] = esc_html__('Please fill required fields', 'stm_vehicles_listing');
         }
@@ -589,60 +596,70 @@ if (!function_exists('stm_custom_register')) {
 
             $user_id = wp_insert_user($user_data);
 
+
+
             if (!is_wp_error($user_id)) {
                 update_user_meta($user_id, 'stm_phone', $user_phone);
                 update_user_meta($user_id, 'stm_show_email', 'show');
 
+
+                 //start act
+                $code = sha1( $user_id . time() ); //code activation
+                $activation_link = add_query_arg( array( 'key' => $code, 'user' => $user_id ), get_permalink( 3533 ));
+                add_user_meta( $user_id, 'has_to_be_activated', $code, true );
+                //end act
 	            // When using caching plugins user sessions are not working properly
 	            // deleting user meta cache should solve this issue
 	            wp_cache_delete( $user_id, 'user_meta');
-
                 wp_set_current_user($user_id, $user_login);
                 wp_set_auth_cookie($user_id);
-                do_action('wp_login', $user_login, new WP_User($user_id));
+                //success register message
+                $response['message'] = esc_html__('Congratulations! You have been successfully registered. Please confirm your email.', 'stm_vehicles_listing');
 
-                if ($redirect) {
-                    $response['message'] = esc_html__('Congratulations! You have been successfully registered. Redirecting to your account profile page.', 'stm_vehicles_listing');
-                    $response['redirect_url'] = get_author_posts_url($user_id);
-                } else {
-                    ob_start();
-                    stm_add_a_car_user_info($user_login, $user_name, $user_lastname, $user_id);
-                    $restricted = false;
-                    $restrictions = stm_get_post_limits($user_id);
+             //    do_action('wp_login', $user_login, new WP_User($user_id));
 
-                    if ($restrictions['posts'] < 1 && stm_enablePPL()) {
-                        $restricted = true;
-                    }
+             //    if ($redirect) {
+             //        $response['message'] = esc_html__('Congratulations! You have been successfully registered. Redirecting to your account profile page.', 'stm_vehicles_listing');
+             //        $response['redirect_url'] = get_author_posts_url($user_id);
+             //    } else {
+             //        ob_start();
+             //        stm_add_a_car_user_info($user_login, $user_name, $user_lastname, $user_id);
+             //        $restricted = false;
+             //        $restrictions = stm_get_post_limits($user_id);
 
-                    $response['restricted'] = $restricted;
-                    $response['user_html'] = ob_get_clean();
-                }
+             //        if ($restrictions['posts'] < 1 && stm_enablePPL()) {
+             //            $restricted = true;
+             //        }
 
-                //AUTH
-	            do_action( 'stm_register_new_user', $user_id );
-	            if((int)get_option('users_can_register')){
-		            $response['message'] = esc_html__('Congratulations! You have been successfully registered. Please, activate your account', 'stm_vehicles_listing');
-	            }else{
-		            wp_set_current_user($user_id, $user_login);
-		            wp_set_auth_cookie($user_id);
-		            do_action('wp_login', $user_login, new WP_User($user_id));
-		            if ($redirect) {
-			            $response['message'] = esc_html__('Congratulations! You have been successfully registered. Redirecting to your account profile page.', 'stm_vehicles_listing');
-			            $response['redirect_url'] = get_author_posts_url($user_id);
-		            } else {
-			            ob_start();
-			            stm_add_a_car_user_info($user_login, $user_name, $user_lastname, $user_id);
-                        $restricted = false;
-                        $restrictions = stm_get_post_limits($user_id);
+             //        $response['restricted'] = $restricted;
+             //        $response['user_html'] = ob_get_clean();
+             //    }
 
-                        if ($restrictions['posts'] < 1 && stm_enablePPL()) {
-                            $restricted = true;
-                        }
+             //    //AUTH
+	            // do_action( 'stm_register_new_user', $user_id );
+	            // if((int)get_option('users_can_register')){
+		           //  $response['message'] = esc_html__('Congratulations! You have been successfully registered. Please, activate your account', 'stm_vehicles_listing');
+	            // }else{
+		           //  wp_set_current_user($user_id, $user_login);
+		           //  wp_set_auth_cookie($user_id);
+		           //  do_action('wp_login', $user_login, new WP_User($user_id));
+		           //  if ($redirect) {
+			          //   $response['message'] = esc_html__('Congratulations! You have been successfully registered. Redirecting to your account profile page.', 'stm_vehicles_listing');
+			          //   $response['redirect_url'] = get_author_posts_url($user_id);
+		           //  } else {
+			          //   ob_start();
+			          //   stm_add_a_car_user_info($user_login, $user_name, $user_lastname, $user_id);
+             //            $restricted = false;
+             //            $restrictions = stm_get_post_limits($user_id);
 
-                        $response['restricted'] = $restricted;
-			            $response['user_html'] = ob_get_clean();
-		            }
-	            }
+             //            if ($restrictions['posts'] < 1 && stm_enablePPL()) {
+             //                $restricted = true;
+             //            }
+
+             //            $response['restricted'] = $restricted;
+			          //   $response['user_html'] = ob_get_clean();
+		           //  }
+	            // }
 
                 add_filter('wp_mail_content_type', 'stm_set_html_content_type_mail');
 
@@ -655,7 +672,7 @@ if (!function_exists('stm_custom_register')) {
 
 				/*Mail user*/
 				$subjectUser = generateSubjectView('welcome', array('user_login' => $user_login));
-				$bodyUser = generateTemplateView('welcome', array('user_login' => $user_login));
+				$bodyUser = generateTemplateView('welcome', array('user_login' => $user_login, 'activation_link'=>$activation_link));
 				wp_mail($user_mail, $subjectUser, $bodyUser);
 
                 remove_filter('wp_mail_content_type', 'stm_set_html_content_type_mail');
