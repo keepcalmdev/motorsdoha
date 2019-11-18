@@ -126,6 +126,22 @@ $link = add_query_arg(array('page_admin' => 'settings'), stm_get_author_link('')
 						</div>
 					<?php endif; ?>
 
+                    <div class="show-motorsdoha-contacts">
+                        <h4 class="company-contacts"><?php esc_html_e('Contact Motors Doha', 'motors'); ?></h4>
+                        <div class="socials-links">
+                            <?php
+                            $social = get_theme_mod('socials_link');
+                            $all_social_links = explode( '&', $social );;
+                            foreach ($all_social_links as $social_link) :
+                                $social_link = explode( '=', $social_link);
+                                if($social_link[1]) : ?>
+                                    <a href="<?php echo esc_url( urldecode( $social_link[1] ) ); ?>" target="_blank"><i class="fa fa-<?php echo esc_attr( $social_link[0] ); ?>" aria-hidden="true"></i></a>
+                                <?php endif;
+                            endforeach;
+                            ?>
+                        </div>
+                    </div>
+
 				</div>
 			</div>
 

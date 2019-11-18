@@ -3117,11 +3117,17 @@
                     color: rgba(255, 255, 255, 0.5);
                 }
 
-                .mail a {
-                    font-size: 15px;
-                    font-weight: 400;
-                    color: #fff !important;
+                .mail {
+                    margin-top: 15px;
+                    margin-left: -33px;
+                    text-align: center;
+                    a {
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #fff !important;
+                    }
                 }
+
             }
 
             .show-my-profile {
@@ -3151,6 +3157,39 @@
                     color: #fff;
                 }
             }
+
+            .show-motorsdoha-contacts {
+
+                .company-contacts {
+                    margin: 40px 0 20px;
+                    color: #fff;
+                }
+
+                .socials-links {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    a {
+                        display: inline-block;
+                        width: 30px;
+
+                        i {
+                            font-size: 20px;
+                            color: #fff;
+                            transition: all 0.3s ease;
+                        }
+                        &:hover {
+                            i {
+                                color: #4e90cc;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
         }
 
         .stm-user-private-main {

@@ -233,8 +233,6 @@ if ( !stm_is_auto_parts() ) :
             $(".stm-a2a-popup" ).toggleClass( "stm-a2a-popup-active" );
         });
 
-        $(".stm-user-private-sidebar" ).append(  "<h4 style='color:#fff; margin: 40px 13px;'>Contact Motors Doha</h4>"  );
-
         $(window).resize(function(){
             if ($(window).width() <= 500) {  
                 $(  ".stm_edit_disable_car" ).css("opacity", "1");
