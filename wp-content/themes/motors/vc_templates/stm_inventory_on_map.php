@@ -604,7 +604,9 @@ function invMapScript() {
          var title = "";
                var desc = "";
                var make=capitalizeFL($("select[name=make]").val());
-               var model=$("select[name=serie]").val();
+               //var model=$("select[name=serie]").val();
+               var model = $("select[name=serie] option:selected").html()
+               console.log("model: " + model);
                var year=$("select[name=ca-year]").val();
                var condition = $("select[name=condition]").val()
 
