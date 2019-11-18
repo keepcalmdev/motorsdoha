@@ -917,11 +917,7 @@ function stm_add_a_car()
         if (strpos($second_step_key, 'stm_s_s_') !== false) {
             if ($_POST[$second_step_key] != "") {
                 $original_key = str_replace('stm_s_s_', '', $second_step_key);
-                if ($original_key == 'image_360') {
-                    $second_step[sanitize_title($original_key)] = $_POST[$second_step_key];
-                } else {
-                    $second_step[sanitize_title($original_key)] = sanitize_text_field($_POST[$second_step_key]);
-                }
+                $second_step[sanitize_title($original_key)] = sanitize_text_field($_POST[$second_step_key]);
             }
         }
     }
@@ -1045,10 +1041,6 @@ function stm_add_a_car()
         }
 
         if($_POST['btn-type'] == 'pay') {
-            $status = 'pending';
-        }
-
-        if (get_user_meta(get_current_user_id(), 'stm_dealer_location', true) == '') {
             $status = 'pending';
         }
 
@@ -1185,7 +1177,6 @@ function stm_add_a_car()
             } else {
                 $response['message'] = esc_html__('Car Added, uploading photos', 'motors');
             }
-            update_post_meta($post_id, 'image_360', base64_encode($_POST['stm_s_s_image_360']));
 
             if(!$update) {
                 $title_from = get_theme_mod('listing_directory_title_frontend', '');

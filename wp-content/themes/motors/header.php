@@ -143,9 +143,11 @@ if( is_page( 639 ) ) {
 </style>
 
 
+
 <style>
     .listing-list-loop .main-mob-btn-wrapper a.btn-icon > img {width: auto !important;}
 </style>
+
 </head>
 
 <?php

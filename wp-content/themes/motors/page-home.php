@@ -2,22 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/assets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/wordpress/assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
   <style type="text/css">
     input.email-field {
       margin-bottom: 0;
     }
     @media (max-width: 480px) {
     input.email-field {
-        margin-bottom: 15px!important;
-      width: 320px !important;
+      width: 239px !important;
     }
     input.send-button-field {
-      max-width: 320px;
+      width: 265px !important;
+        max-width: 239px;
     }
     #demo > span {
       width: 120px !important;
@@ -25,8 +25,9 @@
     #demo > div {
     }
     .social-wrapper {
-        margin-top: 110px;
+        margin-top: 50px;
         padding-bottom: 0;
+        height: 10vh;
         justify-content: space-between;
     }
 
@@ -36,13 +37,13 @@
 <body>
 <div class="site-background first-day">
 <div class="sec-half mx-auto">
-  <div class="logo mx-auto"><img src="/assets/img/logo.png"></div>
-  <div class="bold-heading1">WEBSITE IS UNDER CONSTRUCTION</div>
-  <div class="heading1">PLEASE SEND US EMAIL DIRECTLY</div>
-  <!-- <form>
-    <input class="email-field" type="email" placeholder="YOUR EMAIL">
-    <input class="send-button-field" type="submit"  value="SEND">
-  </form> -->
+	<div class="logo mx-auto"><img src="http://localhost:8888/wordpress/assets/img/logo.png"></div>
+	<div class="bold-heading1">WEBSITE IS UNDER CONSTRUCTION</div>
+	<div class="heading1">PLEASE SEND US EMAIL DIRECTLY</div>
+	<!-- <form>
+		<input class="email-field" type="email" placeholder="YOUR EMAIL">
+		<input class="send-button-field" type="submit"  value="SEND">
+	</form> -->
 
 
     <!-- Begin Mailchimp Signup Form -->
@@ -70,7 +71,7 @@
 
 
 
-  <center>  <p id="demo"></p></center>
+	<center>	<p id="demo"></p></center>
     <div class="social-wrapper">
         <a href="https://www.snapchat.com/add/motors.doha" target="_blank"><i class="fa fa-snapchat-square" aria-hidden="true"></i>Doha.cars</a>
         <a href="https://www.facebook.com/MotorsDo7a/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i>MotorsDoha</a>
@@ -80,7 +81,7 @@
         <a href="" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i>goexplorecity</a>-->
     </div>
 </div>
-  
+	
 </div>
 
 <style>

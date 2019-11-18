@@ -24,6 +24,7 @@ if($car_title === ""){ //custom title prefix
 
             <!--Car Gurus if is style BANNER-->
             <?php if ( strpos( get_theme_mod( "carguru_style", "STYLE1" ), "BANNER" ) !== false ) get_template_part( 'partials/single-car/car', 'gurus' ); ?>
+
             <?php //the_content(); ?>
 
             <?php //echo "<pre>"; print_r(get_post_meta(get_the_ID())); echo "</pre>"; ?>
@@ -312,7 +313,7 @@ if($car_title === ""){ //custom title prefix
                                                         <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div>
                                                     </div>
                                                 </div>
-                                                <div style="width: 48px; height: 59px; overflow: hidden; position: absolute; left: -24px; top: -59px; z-index: 0;"><img alt="" src="http://staging-qprcar01.kinsta.cloud/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 48px; height: 59px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                                <div style="width: 48px; height: 59px; overflow: hidden; position: absolute; left: -24px; top: -59px; z-index: 0;"><img alt="" src="<?php bloginfo("url") ?>/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 48px; height: 59px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
                                             </div>
                                             <div style="position: absolute; left: 0px; top: 0px; z-index: 0;"></div>
                                         </div>
@@ -324,7 +325,7 @@ if($car_title === ""){ //custom title prefix
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;">
-                                                    <div title="" style="width: 64px; height: 75px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: -32px; top: -67px; z-index: 0;"><img alt="" src="http://staging-qprcar01.kinsta.cloud/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 64px; height: 75px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                                    <div title="" style="width: 64px; height: 75px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: -32px; top: -67px; z-index: 0;"><img alt="" src="<?php bloginfo("url") ?>/wp-content/themes/motors/assets/images/map-marker.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 64px; height: 75px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
                                                 </div>
                                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
                                             </div>
@@ -352,7 +353,7 @@ if($car_title === ""){ //custom title prefix
                                     map = new google.maps.Map(mapElement, mapOptions);
                                     var marker = new google.maps.Marker({
                                         position: center,
-                                        icon: 'http://staging-qprcar01.kinsta.cloud/wp-content/themes/motors/assets/images/map-marker.png',
+                                        icon: '<?php bloginfo("url") ?>/wp-content/themes/motors/assets/images/map-marker.png',
                                         map: map
                                     });
 
@@ -459,9 +460,18 @@ if($car_title === ""){ //custom title prefix
 
                     </div>
 
+                   
+
+
+                <!-- <pre>
+                    <!-- <?php //print_r(get_userdata(get_current_user_id())); ?> -->
+                        <!-- <?php// print_r(get_user_meta(get_current_user_id())); ?> 
+                </pre> -->
+
+
                     <div id="tab-1446536320841-4-6" class="wpb_tab ui-tabs-panel wpb_ui-tabs-hide vc_clearfix ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-5" role="tabpanel" aria-hidden="true" style="display: none;">
                         <div class="vc_row wpb_row vc_inner vc_row-fluid single-car-form">
-                            <div class="stm-border-right wpb_column vc_column_container vc_col-sm-4">
+                            <div class="stm-border-right wpb_column vc_column_container vc_col-sm-4 col-md-4">
                                 <div class="vc_column-inner">
                                     <div class="wpb_wrapper">
 
@@ -493,19 +503,38 @@ if($car_title === ""){ //custom title prefix
                                         </style>
                                         <div class="wpb_text_column wpb_content_element  vc_custom_1445945228480">
                                             <div class="wpb_wrapper">
-                                                <p style="line-height: 18px;"><span style="color: #888888; font-size: 13px;">This vehicle has been inspected by an authorized Mercedes-Benz dealer or service partner and includes additional services.</span></p>
+                                                <p style="line-height: 18px;"><span style="color: #888888; font-size: 13px;">
+                                                     <?php echo get_user_meta(get_current_user_id(), stm_seller_notes ,true); ?>
+                                                </span></p>
 
                                             </div>
                                         </div>
 
-                                        <div class="icon-box vc_custom_1448604655830 icon_box_54380 stm-layout-box-car_dealer  " style="color:#232628">
+                                        <div class="icon-box vc_custom_1448604655830 icon_box_54380 stm-layout-box-car_dealer location_dealer " style="color:#232628">
                                             <div class="boat-line"></div>
                                             <div class="icon vc_custom_1448604655827 boat-third-color" style="font-size:30px;color:#cc621a; ">
                                                 <i class="stm-icon-pin"></i>
                                             </div>
                                             <div class="icon-text">
                                                 <div class="content">
-                                                    <h5>1840 E Garvey Ave South West Covina, CA 91791</h5>
+                                                    <h5>
+                                                        <?php 
+
+                                                            if(empty(get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true))){
+
+                                                                echo "Hello my name is Muhammad"; 
+                                                        ?>
+                                                        <style type="text/css">
+                                                            .location_dealer{
+                                                                display:none;
+                                                            }
+                                                        </style>
+                                                        <?php
+                                                        }
+                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
+                                                        ?>
+
+                                                         </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -525,15 +554,36 @@ if($car_title === ""){ //custom title prefix
                                         }
                                         </style>
 
-                                        <div class="icon-box vc_custom_1448604661449 icon_box_73050 stm-layout-box-car_dealer  " style="color:#232628">
+                                        <div class="icon-box vc_custom_1448604661449 icon_box_73050 stm-layout-box-car_dealer phone_dealer" style="color:#232628">
                                             <div class="boat-line"></div>
                                             <div class="icon vc_custom_1448604661446 boat-third-color" style="font-size:30px;color:#cc621a; ">
                                                 <i class="stm-icon-phone"></i>
                                             </div>
                                             <div class="icon-text">
                                                 <div class="content">
+
+                                                     <?php
+
+                                                     if(empty(get_user_meta(get_current_user_id(), 'stm_phone' ,true))){
+
+                                                                echo "Hello my name is Muhammad"; 
+                                                        ?>
+                                                        <style type="text/css">
+                                                            .phone_dealer{
+                                                                display: none;
+                                                            }
+                                                        </style>
+                                                       <?php } ?>
+
+                                                        
+
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">PHONE:</span></h6>
-                                                    <h5>878-9674-4455</h5>
+                                                    <a href="tel:<?php echo get_user_meta(get_current_user_id(), 'stm_phone' ,true); ?>">
+                                                        <h5>
+                                                            <?php echo get_user_meta(get_current_user_id(), 'stm_phone' ,true); ?>
+                                                        </h5>
+                                                    </a> 
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -553,15 +603,33 @@ if($car_title === ""){ //custom title prefix
                                         }
                                         </style>
 
-                                        <div class="icon-box vc_custom_1448604718190 icon_box_93931 stm-layout-box-car_dealer  " style="color:#232628">
+                                        <div class="icon-box vc_custom_1448604718190 icon_box_93931 stm-layout-box-car_dealer email_dealer" style="color:#232628">
                                             <div class="boat-line"></div>
                                             <div class="icon vc_custom_1448604718188 boat-third-color" style="font-size:30px;color:#cc621a; ">
                                                 <i class="stm-icon-mail"></i>
                                             </div>
                                             <div class="icon-text">
                                                 <div class="content">
+
+                                                        <?php
+
+                                                     if(empty(get_user_meta(get_current_user_id(), 'billing_email' ,true))){
+
+                                                                echo "Hello my name is Muhammad"; 
+                                                        ?>
+                                                        <style type="text/css">
+                                                            .email_dealer{
+                                                                display: none;
+                                                            }
+                                                        </style>
+                                                       <?php } ?>
+
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">EMAIL:</span></h6>
-                                                    <h5><a href="mailto:Sales@cardealer.com">Sales@cardealer.com</a></h5>
+                                                    <h5><a href="mailto:<?php echo get_user_meta(get_current_user_id(), 'billing_email' ,true); ?>">
+                                                            <?php echo get_user_meta(get_current_user_id(), 'billing_email' ,true); ?>
+                                                        </a>
+                                                    </h5>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -583,7 +651,7 @@ if($car_title === ""){ //custom title prefix
                                     </div>
                                 </div>
                             </div>
-                            <div class="stm-col-pad-left wpb_column vc_column_container vc_col-sm-8">
+                            <div class="stm-col-pad-left wpb_column vc_column_container vc_col-sm-8 col-md-8">
                                 <div class="vc_column-inner">
                                     <div class="wpb_wrapper">
 
@@ -613,7 +681,7 @@ if($car_title === ""){ //custom title prefix
                                             color: #232628;
                                         }
                                         </style>
-                                        <div role="form" class="wpcf7" id="wpcf7-f500-p1607-o1" lang="en-US" dir="ltr">
+                                        <!-- <div role="form" class="wpcf7" id="wpcf7-f500-p1607-o1" lang="en-US" dir="ltr">
                                             <div class="screen-reader-response"></div>
                                             <form action="/listings/bmw-570i-navi-leather-turbo/#wpcf7-f500-p1607-o1" method="post" class="wpcf7-form" novalidate="novalidate">
                                                 <div style="display: none;">
@@ -654,7 +722,8 @@ if($car_title === ""){ //custom title prefix
                                                 </div>
                                                 <div class="wpcf7-response-output wpcf7-display-none"></div>
                                             </form>
-                                        </div>
+                                        </div> -->
+                                        <?php echo do_shortcode('[contact-form-7 id="3742" title="Send message to dealer_copy"]') ?>
                                     </div>
                                 </div>
                             </div>
