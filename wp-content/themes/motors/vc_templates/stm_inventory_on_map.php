@@ -619,24 +619,29 @@ function invMapScript() {
                var titleObj = {"make": make, "model": model, "year": year, "condition": condition }
            //console.table(titleObj)    
            if(titleObj["condition"] == "new-cars"){
-                //Car Make (New)
-                if(titleObj["model"] == ""){
-                title = "New " + titleObj["make"] + " Cars for Sale in Qatar | MotorsDoha";
-                desc = '<meta name="description" content="Shop new '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on new '+titleObj["make"]+'. Inspected & Certified brand new cars on motorsdoha.com." />';
-                } else { //Car Model (New)
-                    title = titleObj["year"] +" "+titleObj['make']+" "+titleObj['model']+ " Prices, Cars for Sale in Qatar | MotorsDoha";
-                    desc = '<meta name="description" content="New '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
-                }
-            } else if(titleObj["condition"] == "used-cars") {
-                //Car Make (Used) 
-                if(titleObj["model"]  ==""){
-                    title = titleObj["make"]+" Used Cars for Sale in Qatar | MotorsDoha";
-                    desc = '<meta name="description" content="Shop used '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on used '+titleObj["make"]+'. Inspected & Certified second hand cars on motorsdoha.com." />';
+                // //Car Make (New)
+                // if(titleObj["model"] == ""){
+                // title = "New " + titleObj["make"] + " Cars for Sale in Qatar | MotorsDoha";
+                // desc = '<meta name="description" content="Shop new '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on new '+titleObj["make"]+'. Inspected & Certified brand new cars on motorsdoha.com." />';
+                // } else { //Car Model (New)
+                //     title = titleObj["year"] +" "+titleObj['make']+" "+titleObj['model']+ " Prices, Cars for Sale in Qatar | MotorsDoha";
+                //     desc = '<meta name="description" content="New '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
+                // }
+                title ="New Cars in Qatar, Reviews and Prices, Buy New Car | MotorsDoha"
+                desc = '<meta name="description" content="Research new cars for sale in Qatar. View the latest new car offers, get the price from dealers. Compare cars, read latest news and reviews." />'
 
-                } else { //Car Model (Used)
-                    title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars for Sale in Qatar | MotorsDoha";
-                    desc = '<meta name="description" content="Used '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on used '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
-                }
+            } else if(titleObj["condition"] == "used-cars") {
+                // //Car Make (Used) 
+                // if(titleObj["model"]  ==""){
+                //     title = titleObj["make"]+" Used Cars for Sale in Qatar | MotorsDoha";
+                //     desc = '<meta name="description" content="Shop used '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on used '+titleObj["make"]+'. Inspected & Certified second hand cars on motorsdoha.com." />';
+
+                // } else { //Car Model (Used)
+                //     title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars for Sale in Qatar | MotorsDoha";
+                //     desc = '<meta name="description" content="Used '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on used '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
+                // }
+                title ="Used Cars for Sale in Qatar, Buy Second Hand Car | MotorsDoha"
+                desc = '<meta name="description" content="Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners." />'
 
             } else {
                 if(titleObj["make"] !=="" || titleObj["model"] !==""){
