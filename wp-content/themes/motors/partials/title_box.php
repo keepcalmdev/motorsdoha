@@ -179,12 +179,19 @@ if ( $show_title_box ) {
 				        }
 				    }
 
-            		
+
 			        $top_title = "Inventory";
 			        if($condition == "New"){
 			            $top_title = "New ".$car_make." ". $car_model." Cars in Qatar";
 			        } elseif($condition == "Used") {
 			                $top_title = "Used ".$car_make." ".$car_model." Cars in Qatar";
+			        } else {
+			        		if($car_make !== "" || $car_model !== "") {
+				        		$top_title =  $car_make. " ".$car_model . " in Qatar";
+			        		}
+			        		else {
+			        			$top_title = "Inventory";
+			        		}
 			        }
 
 			     ?>   

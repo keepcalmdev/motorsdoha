@@ -101,8 +101,10 @@ if( is_page( 639 ) ) {
         }
 
     } else {
-        $title = "Inventory | MotorsDoha";
-        $desc = '<meta name="description" content="inventory,  MotorsDoha" />';
+        if($car_make !== "" || $car_model !=="" ){
+            $title = $car_make . " ". $car_model. " Cars for Sale, Price in Qatar | MotorsDoha";
+            $desc = '<meta name="description" content="New & used '. $car_make.' ' . $car_model.' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '.$car_make.' ' .$car_model.' in Qatar." />';
+        } 
     }
     
     echo "<title>".$title."</title>";

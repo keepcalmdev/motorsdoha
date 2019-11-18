@@ -592,7 +592,13 @@ function invMapScript() {
                 top_title = "New "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";
             } else if(titleObj["condition"] == "used-cars") {
                 top_title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";  
-            } 
+            } else {
+                if(titleObj["make"] !=="" || titleObj["model"] !== ""){
+                    top_title = titleObj["make"]+" "+titleObj["model"]+" in Qatar"; 
+                } else {
+                    top_title = "Inventory";
+                }
+            }
 
             $("h1.title").html(top_title);
         }
@@ -633,8 +639,10 @@ function invMapScript() {
                 }
 
             } else {
-                title = "Inventory | MotorsDoha";
-                desc = '<meta name="description" content="inventory,  MotorsDoha" />';
+                if(titleObj["make"] !=="" || titleObj["model"] !==""){
+                    title = titleObj["make"] + " "+ titleObj["model"] + " Cars for Sale, Price in Qatar | MotorsDoha";
+                    desc = '<meta name="description" content="New & used '+titleObj["make"] +' ' + titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '+titleObj["make"] +' ' + titleObj["model"]+' in Qatar." />';
+                }
             }
 
            $("title").html(title);
