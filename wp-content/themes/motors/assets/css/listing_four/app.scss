@@ -9272,6 +9272,155 @@
     direction: ltr;
 }
 
+body.error404 #wrapper {
+    position: relative;
+    max-height: 100vh;
+    background-image: url("../../images/404.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body.error404 #wrapper #main {
+    min-height: 250px;
+    position: absolute;
+    top: 201px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 15
+}
+
+body.error404 #wrapper #main .stm-error-page-unit {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+body.error404 #wrapper #main .stm-error-page-unit h2 {
+    max-width: 100%;
+    margin: 50vh auto 95px;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form {
+    display: none;
+    position: relative;
+    margin: 0 auto 35px;
+    max-width: 360px;
+    height: 47px;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    top: 8px;
+    right: 15px;
+    background-image: url("../../images/search.svg");
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form .search-field {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid #7F92A3;
+    background-color: transparent;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form .search-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    color: transparent !important;
+    box-shadow: none;
+    background-color: transparent;
+    z-index: 3;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=search]::-webkit-input-placeholder {
+    color: #7F92A3;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=search]:-ms-input-placeholder {
+    color: #7F92A3;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=search]::placeholder {
+    color: #7F92A3;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=submit]::-webkit-input-placeholder {
+    color: transparent;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=submit]:-ms-input-placeholder {
+    color: transparent;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=submit]::placeholder {
+    color: transparent;
+}
+
+@media screen and (max-width: 1024px) {
+
+    body.error404 #wrapper #main .stm-error-page-unit h2 {
+        margin-bottom: 40px;
+    }
+
+}
+
+@media screen and (max-width: 414px) {
+    body.error404 #wrapper {
+        background-image: url("../../images/404_mobile.png");
+    }
+
+    body.error404 #wrapper #main .stm-error-page-unit h2 {
+        margin-top: 40vh;
+        padding: 0 8%;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29px;
+    }
+
+    body.error404 #wrapper #main .stm-error-page-unit .search-form {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    body.error404 #wrapper #main .stm-error-page-unit h2 {
+        margin-top: 33vh;
+    }
+
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .button.back-button {
+    margin-right: 15px;
+}
+
+body.error404 #wrapper #main .stm-error-page-unit .button {
+    display: inline-block;
+    padding: 12px 23px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    background-color: #CA0000;
+    border-radius: 24px;
+    box-shadow: none;
+}
 
 
 
