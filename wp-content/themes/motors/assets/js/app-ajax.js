@@ -382,7 +382,7 @@
 				.addClass('active')
 				.tooltip('destroy')
 				.attr('title', stm_i18n.remove_from_favorites)
-				.tooltip({placement: 'auto'})
+				.tooltip({placement: 'left'})
 			;
 		});
 	};

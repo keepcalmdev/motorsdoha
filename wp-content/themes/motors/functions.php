@@ -378,3 +378,14 @@ function wpse8170_activate_user() {
         }
     }
 }
+
+add_filter( 'get_search_form', 'custom_html5_search_form' );
+function custom_html5_search_form(){
+    if( is_404() ) {
+        $form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '">
+            <input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search our website', 'placeholder' ) . '" value="' . get_search_query() . '" name="s" />
+            <input type="submit" class="search-submit" value="' . esc_attr_x( 'Search', 'submit button' ) . '" />
+        </form>';
+        return $form;
+    }
+}

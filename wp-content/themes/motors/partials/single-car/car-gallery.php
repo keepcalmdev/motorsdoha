@@ -31,6 +31,7 @@ $badge_style = '';
 if(!empty($badge_bg_color)) {
     $badge_style = 'style=background-color:'.$badge_bg_color.';';
 }
+$show_favorite = get_theme_mod('enable_favorite_items', true);
 
 ?>
 
@@ -87,6 +88,16 @@ if(!empty($badge_bg_color)) {
 			$full_src = wp_get_attachment_image_src(get_post_thumbnail_id($post_id),'full');
 			//Post thumbnail first ?>
 			<div class="stm-single-image" data-id="big-image-<?php echo esc_attr(get_post_thumbnail_id($post_id)); ?>">
+                <!--Favorite-->
+                <?php if(!empty($show_favorite) and $show_favorite): ?>
+                    <div
+                            class="stm-listing-favorite"
+                            data-id="<?php echo esc_attr(get_the_id()); ?>"
+                            data-toggle="tooltip" data-placement="left" title="<?php esc_attr_e('Add to favorites', 'motors') ?>"
+                    >
+                        <i class="stm-service-icon-staricon"></i>
+                    </div>
+                <?php endif; ?>
 				<a href="<?php echo esc_url($full_src[0]); ?>" class="stm_fancybox" rel="stm-car-gallery">
 					<?php the_post_thumbnail('stm-img-796-466', array('class'=>'img-responsive', 'alt'=>$img_alt)); ?>
 				</a>
