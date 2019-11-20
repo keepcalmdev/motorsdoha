@@ -663,17 +663,22 @@ if (!function_exists('stm_custom_register')) {
 
                 add_filter('wp_mail_content_type', 'stm_set_html_content_type_mail');
 
+                //headers
+                $headers = array(
+                    'From: Motorsdoha <Motorsdoha@motorsdoha.com>'
+                );
+
                 /*Mail admin*/
                 $to = get_bloginfo('admin_email');
                 $subject = generateSubjectView('new_user', array('user_login' => $user_login));
                 $body = generateTemplateView('new_user', array('user_login' => $user_login));
 
-                wp_mail($to, $subject, $body);
+                wp_mail($to, $subject, $body, $headers);
 
 				/*Mail user*/
 				$subjectUser = generateSubjectView('welcome', array('user_login' => $user_login));
 				$bodyUser = generateTemplateView('welcome', array('user_login' => $user_login, 'activation_link'=>$activation_link));
-				wp_mail($user_mail, $subjectUser, $bodyUser);
+				wp_mail($user_mail, $subjectUser, $bodyUser, $headers);
 
                 remove_filter('wp_mail_content_type', 'stm_set_html_content_type_mail');
 

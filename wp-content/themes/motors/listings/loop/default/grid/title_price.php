@@ -18,12 +18,12 @@
     <div class="car-title">
         <?php
         if(!stm_is_listing_three()) {
-            echo esc_attr(trim(preg_replace('/\s+/', ' ', mb_substr(stm_generate_title_from_slugs(get_the_id()), 0, 20))));
+            echo esc_attr(trim(preg_replace('/\s+/', ' ', mb_substr(stm_generate_title_from_slugs(get_the_id()), 0, 15))));
         } else {
             echo trim(stm_generate_title_from_slugs(get_the_id(), true));
         }
         ?>
-        <?php if(strlen(stm_generate_title_from_slugs(get_the_id())) > 20){
+        <?php if(strlen(stm_generate_title_from_slugs(get_the_id())) > 15){
             echo esc_attr('...');
         } ?>
     </div>

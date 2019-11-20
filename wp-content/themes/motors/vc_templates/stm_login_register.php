@@ -40,8 +40,8 @@ if(!empty($link)) {
 				<form method="post">
 					<?php do_action( 'stm_before_signin_form' ) ?>
                     <div class="form-group">
-						<h4><?php esc_html_e('Login or E-mail', 'motors'); ?></h4>
-						<input type="text" name="stm_user_login" placeholder="<?php esc_attr_e('Enter login or E-mail', 'motors') ?>"/>
+						<h4><?php esc_html_e('Username or email', 'motors'); ?></h4>
+						<input type="text" name="stm_user_login" placeholder="<?php esc_attr_e('Enter username or email', 'motors') ?>"/>
 					</div>
 					<div class="form-group">
 						<h4><?php esc_html_e('Password', 'motors'); ?></h4>
@@ -66,9 +66,9 @@ if(!empty($link)) {
 				</form>
 				<form method="post" class="stm_forgot_password_send">
 					<div class="form-group">
-						<h4><?php esc_html_e('Login or E-mail', 'motors'); ?></h4>
+						<h4><?php esc_html_e('Username or email', 'motors'); ?></h4>
 						<input type="hidden" name="stm_link_send_to" value="<?php echo stm_do_lmth(apply_filters('stm_get_global_server_val', "HTTP_HOST") . apply_filters('stm_get_global_server_val', "REQUEST_URI")); ?>" readonly/>
-						<input type="text" name="stm_user_login" placeholder="<?php esc_attr_e('Enter login or E-mail', 'motors') ?>"/>
+						<input type="text" name="stm_user_login" placeholder="<?php esc_attr_e('Enter username or email', 'motors') ?>"/>
 						<input type="submit" value="<?php esc_attr_e('Send password', 'motors'); ?>"/>
 						<span class="stm-listing-loader"><i class="stm-icon-load1"></i></span>
 						<div class="stm-validation-message"></div>

@@ -2205,6 +2205,9 @@ if ( !function_exists( 'stm_get_dealer_logo_placeholder' ) ) {
     }
 }
 
+
+
+
 if ( !function_exists( 'stm_filter_post_limits' ) ) {
     function stm_filter_post_limits( $restrictions, $user_id, $type )
     {

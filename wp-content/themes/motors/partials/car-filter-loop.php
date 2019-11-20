@@ -76,8 +76,8 @@ if(stm_is_boats()) {
 					<?php endif; ?>
 				<?php endif; ?>
 				<div class="car-title">
-					<?php echo esc_attr(trim(preg_replace( '/\s+/', ' ', substr(stm_generate_title_from_slugs(get_the_id()), 0, 20) ))); ?>
-					<?php if(strlen(stm_generate_title_from_slugs(get_the_id())) > 20){
+					<?php echo esc_attr(trim(preg_replace( '/\s+/', ' ', substr(stm_generate_title_from_slugs(get_the_id()), 0, 15) ))); ?>
+					<?php if(strlen(stm_generate_title_from_slugs(get_the_id())) > 15){
 						echo esc_attr('...');
 					} ?>
 				</div>

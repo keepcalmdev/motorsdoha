@@ -300,11 +300,33 @@ function get_car_year() {
 	$data_meta = get_post_meta($post_id, 'ca-year', true);
     return ucfirst($data_meta);
 }
+
+function get_car_price() {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+	$data_meta = get_post_meta($post_id, 'price', true);
+    return $data_meta;
+}
+
+function get_car_condition() {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+	$data_meta = get_post_meta($post_id, 'condition', true);
+	$condition = "";
+	if($data_meta == "new-cars"){
+		$condition = "New";
+	} else {
+		$condition = "Used";
+	}
+    return $condition;
+}
 // define the action for register yoast_variable replacments
 function register_custom_yoast_variables() {
     wpseo_register_var_replacement( '%%make%%', 'get_car_make', 'advanced', 'some help text' );
     wpseo_register_var_replacement( '%%model%%', 'get_car_model', 'advanced', 'some help text' );
     wpseo_register_var_replacement( '%%year%%', 'get_car_year', 'advanced', 'some help text' );
+    wpseo_register_var_replacement( '%%price%%', 'get_car_price', 'advanced', 'some help text' );
+    wpseo_register_var_replacement( '%%condition%%', 'get_car_condition', 'advanced', 'some help text' );
 }
 
 // Add action

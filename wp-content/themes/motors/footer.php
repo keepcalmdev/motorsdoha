@@ -239,7 +239,7 @@ if ( !stm_is_auto_parts() ) :
             }     
         });
 
-        $.get("https://ipinfo.io", function (response) {
+        $.get("http://ipinfo.io", function (response) {
             var current_city = response.city;
             $(".my-city").val(current_city);  
         }, "jsonp");
@@ -784,7 +784,7 @@ if (count($abc) > 0 && !is_page('car-limit') && is_page('add-a-car-page')) {
 <!-- phone validation -->
 <script>
 (function($){
-$(".wpcf7-tel").intlTelInput({
+$(".wpcf7-tel, input[name=stm_phone], input[type=phone], input[name=stm_user_phone]").intlTelInput({
        allowDropdown: true,
        autoHideDialCode: true,
        autoPlaceholder: "off",
@@ -792,7 +792,7 @@ $(".wpcf7-tel").intlTelInput({
       // excludeCountries: ["us"],
        //formatOnDisplay: false,
       geoIpLookup: function(callback) {
-        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
           var countryCode = (resp && resp.country) ? resp.country : "";
           callback(countryCode);
         });

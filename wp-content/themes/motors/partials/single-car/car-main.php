@@ -24,7 +24,6 @@ if($car_title === ""){ //custom title prefix
 
             <!--Car Gurus if is style BANNER-->
             <?php if ( strpos( get_theme_mod( "carguru_style", "STYLE1" ), "BANNER" ) !== false ) get_template_part( 'partials/single-car/car', 'gurus' ); ?>
-
             <?php //the_content(); ?>
 
             <?php //echo "<pre>"; print_r(get_post_meta(get_the_ID())); echo "</pre>"; ?>
@@ -510,7 +509,7 @@ if($car_title === ""){ //custom title prefix
                                             </div>
                                         </div>
 
-                                        <div class="icon-box vc_custom_1448604655830 icon_box_54380 stm-layout-box-car_dealer location_dealer " style="color:#232628">
+                                        <div class="icon-box vc_custom_1448604655830 icon_box_54380 stm-layout-box-car_dealer  " style="color:#232628">
                                             <div class="boat-line"></div>
                                             <div class="icon vc_custom_1448604655827 boat-third-color" style="font-size:30px;color:#cc621a; ">
                                                 <i class="stm-icon-pin"></i>
@@ -522,19 +521,13 @@ if($car_title === ""){ //custom title prefix
 
                                                             if(empty(get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true))){
 
-                                                                echo "Hello my name is Muhammad"; 
-                                                        ?>
-                                                        <style type="text/css">
-                                                            .location_dealer{
-                                                                display:none;
+                                                                echo "Hello my name is Muhammad";
                                                             }
-                                                        </style>
-                                                        <?php
-                                                        }
-                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
-                                                        ?>
 
-                                                         </h5>
+
+                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
+
+                                                         ?></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -554,33 +547,17 @@ if($car_title === ""){ //custom title prefix
                                         }
                                         </style>
 
-                                        <div class="icon-box vc_custom_1448604661449 icon_box_73050 stm-layout-box-car_dealer phone_dealer" style="color:#232628">
+                                        <div class="icon-box vc_custom_1448604661449 icon_box_73050 stm-layout-box-car_dealer  " style="color:#232628">
                                             <div class="boat-line"></div>
                                             <div class="icon vc_custom_1448604661446 boat-third-color" style="font-size:30px;color:#cc621a; ">
                                                 <i class="stm-icon-phone"></i>
                                             </div>
                                             <div class="icon-text">
                                                 <div class="content">
-
-                                                     <?php
-
-                                                     if(empty(get_user_meta(get_current_user_id(), 'stm_phone' ,true))){
-
-                                                                echo "Hello my name is Muhammad"; 
-                                                        ?>
-                                                        <style type="text/css">
-                                                            .phone_dealer{
-                                                                display: none;
-                                                            }
-                                                        </style>
-                                                       <?php } ?>
-
-                                                        
-
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">PHONE:</span></h6>
-                                                    <a href="tel:<?php echo get_user_meta(get_current_user_id(), 'stm_phone' ,true); ?>">
+                                                    <a href="tel:<?php echo get_user_meta(get_current_user_id(), stm_phone ,true); ?>">
                                                         <h5>
-                                                            <?php echo get_user_meta(get_current_user_id(), 'stm_phone' ,true); ?>
+                                                            <?php echo get_user_meta(get_current_user_id(), stm_phone ,true); ?>
                                                         </h5>
                                                     </a> 
                                                     
@@ -603,30 +580,16 @@ if($car_title === ""){ //custom title prefix
                                         }
                                         </style>
 
-                                        <div class="icon-box vc_custom_1448604718190 icon_box_93931 stm-layout-box-car_dealer email_dealer" style="color:#232628">
+                                        <div class="icon-box vc_custom_1448604718190 icon_box_93931 stm-layout-box-car_dealer  " style="color:#232628">
                                             <div class="boat-line"></div>
                                             <div class="icon vc_custom_1448604718188 boat-third-color" style="font-size:30px;color:#cc621a; ">
                                                 <i class="stm-icon-mail"></i>
                                             </div>
                                             <div class="icon-text">
                                                 <div class="content">
-
-                                                        <?php
-
-                                                     if(empty(get_user_meta(get_current_user_id(), 'billing_email' ,true))){
-
-                                                                echo "Hello my name is Muhammad"; 
-                                                        ?>
-                                                        <style type="text/css">
-                                                            .email_dealer{
-                                                                display: none;
-                                                            }
-                                                        </style>
-                                                       <?php } ?>
-
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">EMAIL:</span></h6>
-                                                    <h5><a href="mailto:<?php echo get_user_meta(get_current_user_id(), 'billing_email' ,true); ?>">
-                                                            <?php echo get_user_meta(get_current_user_id(), 'billing_email' ,true); ?>
+                                                    <h5><a href="mailto:<?php echo get_user_meta(get_current_user_id(), billing_email ,true); ?>">
+                                                            <?php echo get_user_meta(get_current_user_id(), billing_email ,true); ?>
                                                         </a>
                                                     </h5>
                                                     
