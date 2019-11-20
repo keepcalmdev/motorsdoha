@@ -104,10 +104,13 @@ if( is_page( 639 ) ) {
         $title = "Used Cars for Sale in Qatar, Buy Second Hand Car | MotorsDoha";
         $desc = '<meta name="description" content="Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners." />';
 
-    } else {
+    } else { //condition
         if($car_make !== "" || $car_model !=="" ){
             $title = $car_make . " ". $car_model. " Cars for Sale, Price in Qatar | MotorsDoha";
             $desc = '<meta name="description" content="New & used '. $car_make.' ' . $car_model.' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '.$car_make.' ' .$car_model.' in Qatar." />';
+        } else { //inventory default
+            $title = "Qatar Car Sale, Buy New & Used Vehicles | MotorsDoha";
+            $desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />';
         } 
     }
     

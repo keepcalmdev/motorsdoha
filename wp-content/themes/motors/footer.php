@@ -786,7 +786,7 @@ if (count($abc) > 0 && !is_page('car-limit') && is_page('add-a-car-page')) {
 <!-- phone validation -->
 <script>
 (function($){
-$(".wpcf7-tel, input[name=stm_phone]").intlTelInput({
+$(".wpcf7-tel, input[name=stm_phone], input[type=phone], input[name=stm_user_phone]").intlTelInput({
        allowDropdown: true,
        autoHideDialCode: true,
        autoPlaceholder: "off",

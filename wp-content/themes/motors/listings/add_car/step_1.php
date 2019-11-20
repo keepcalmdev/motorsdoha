@@ -81,9 +81,9 @@ $terms_args = array(
 			<?php endforeach; ?>
 		</style>
 	<?php endif; ?>
-
 	<div class="stm-form-1-end-unit clearfix">
 		<?php if ( ! empty( $data ) ): ?>
+
 			<?php foreach ( $data as $data_key => $data_unit ): ?>
 			<?php
             //var_dump($data_unit);

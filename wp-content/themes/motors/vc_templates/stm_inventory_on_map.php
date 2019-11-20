@@ -611,8 +611,8 @@ function invMapScript() {
                var desc = "";
                var make=capitalizeFL($("select[name=make]").val());
                //var model=$("select[name=serie]").val();
-               var model = $("select[name=serie] option:selected").html()
-               console.log("model: " + model);
+               var modelVal = $("select[name=serie] option:selected").html()
+               var model = ($("select[name=serie]").val() === "")? "": modelVal
                var year=$("select[name=ca-year]").val();
                var condition = $("select[name=condition]").val()
 
@@ -647,6 +647,9 @@ function invMapScript() {
                 if(titleObj["make"] !=="" || titleObj["model"] !==""){
                     title = titleObj["make"] + " "+ titleObj["model"] + " Cars for Sale, Price in Qatar | MotorsDoha";
                     desc = '<meta name="description" content="New & used '+titleObj["make"] +' ' + titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '+titleObj["make"] +' ' + titleObj["model"]+' in Qatar." />';
+                } else { //inventory default
+                    title = "Qatar Car Sale, Buy New & Used Vehicles | MotorsDoha"
+                    desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />'
                 }
             }
 

@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
                 <form method="post">
 
                     <div class="form-group">
-                        <h4><?php esc_html_e('Login or E-mail', 'stm_vehicles_listing'); ?></h4>
+                        <h4><?php esc_html_e('Username or email', 'stm_vehicles_listing'); ?></h4>
                         <input type="text" class="form-control" name="stm_user_login"
-                               placeholder="<?php esc_html_e('Enter login or E-mail', 'stm_vehicles_listing') ?>"/>
+                               placeholder="<?php esc_html_e('Enter username or email', 'stm_vehicles_listing') ?>"/>
                     </div>
 
                     <div class="form-group">
