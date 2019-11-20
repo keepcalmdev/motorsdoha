@@ -4,8 +4,8 @@
 			<form method="post">
 
 				<div class="form-group">
-					<h4><?php esc_html_e('Login or E-mail', 'motors'); ?></h4>
-					<input type="text" name="stm_user_login" placeholder="<?php esc_attr_e('Enter login or E-mail', 'motors') ?>"/>
+					<h4><?php esc_html_e('Username or email', 'motors'); ?></h4>
+					<input type="text" name="stm_user_login" placeholder="<?php esc_attr_e('Enter username or email', 'motors') ?>"/>
 				</div>
 
 				<div class="form-group">
