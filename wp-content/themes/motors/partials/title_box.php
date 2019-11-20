@@ -149,64 +149,6 @@ if ( $show_title_box ) {
     <div class="entry-header <?php echo esc_attr($alignment.$additional_classes.$disable_overlay); ?>" style="<?php echo stm_do_lmth($title_style); ?>">
 	    <div class="container">
             <div class="entry-title">
-            	<?php if(is_page(639)) { 
-				    $filter = stm_listings_filter();
-				    $condition ="";
-				    $car_make ="";
-				    $car_model ="";
-
-				    while(list($key, $value) = each($filter["options"]["condition"])){
-
-				        if($value["selected"] && $value["label"]){
-				            $condition = $value["label"];
-				            break;
-				        }
-				    }
-
-				    while(list($key, $value) = each($filter["options"]["make"])){
-
-				        if($value["selected"] && $value["label"] !== "Make"){
-				            $car_make = $value["label"];
-				            break;
-				        }
-				    }
-
-				    while(list($key, $value) = each($filter["options"]["serie"])){
-
-				        if($value["selected"] && $value["label"] !== "Model"){
-				            $car_model = $value["label"];
-				            break;
-				        }
-				    }
-
-
-			        $top_title = "Inventory";
-			        if($condition == "New"){
-			            $top_title = "New ".$car_make." ". $car_model." Cars in Qatar";
-			        } elseif($condition == "Used") {
-			                $top_title = "Used ".$car_make." ".$car_model." Cars in Qatar";
-			        } else {
-			        		if($car_make !== "" || $car_model !== "") {
-				        		$top_title =  $car_make. " ".$car_model . " in Qatar";
-			        		}
-			        		else {
-			        			$top_title = "Inventory";
-			        		}
-			        }
-
-			     ?>   
-   
-            			<h1 class="title h2">
-            				<?php
-				                // if(!empty($sub_title_instead) and stm_is_motorcycle()) {
-					               //  echo apply_filters( 'stm_balance_tags', $sub_title_instead );
-				                // } else {
-					               //  echo apply_filters( 'stm_balance_tags', $title );
-				                // }
-	            				echo $top_title;
-				            ?>
-            			</h1>
-            	<?php } else {?>
                 <<?php echo esc_attr($title_tag); ?> class="h1" style="<?php echo implode( ' ', $title_style_h1 ); ?>">
 	                <?php
 		                if(!empty($sub_title_instead) and stm_is_motorcycle()) {
@@ -224,7 +166,7 @@ if ( $show_title_box ) {
 	            <?php endif; ?>
                 <?php if( $sub_title && ! is_search() ){ ?>
                     <div class="sub-title h5" style="<?php echo implode( ' ', $title_style_subtitle ); ?>"><?php echo apply_filters( 'stm_balance_tags', $sub_title ); ?></div>
-                <?php } }?>
+                <?php } ?>
             </div>
 	    </div>
     </div>

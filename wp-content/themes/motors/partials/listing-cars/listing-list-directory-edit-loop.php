@@ -28,16 +28,7 @@ if (!empty($asSold)) {
 }
 ?>
 
-<?php 
-	$curr_lang = get_locale();
-	$sold_unmark = "Unmark as sold";
-	$sold_mark = "Mark as sold"; 
-		if($curr_lang != "en_US"){
-			$sold_unmark = "غير مباع";
-			$sold_mark = "مباع";
-		}
 
-?>
 
 
 <?php stm_listings_load_template('loop/start', array('modern' => true, 'listing_classes' => $classes));
@@ -127,11 +118,11 @@ if (!empty($asSold)) {
                     <div>
 					<?php if($asSold == 'on'): ?>
 						<a href="<?php echo esc_url(add_query_arg(array('stm_unmark_as_sold_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="as_sold">
-							<?php esc_html_e($sold_unmark, 'motors'); ?><i class="fa fa-check-square-o" aria-hidden="true"></i>
+							<?php esc_html_e('Unmark as sold', 'motors'); ?><i class="fa fa-check-square-o" aria-hidden="true"></i>
 						</a>
 					<?php else : ?>
 						<a href="<?php echo esc_url(add_query_arg(array('stm_mark_as_sold_car' => get_the_ID()), stm_get_author_link(''))); ?>">
-							<?php esc_html_e($sold_mark, 'motors'); ?><i class="fa fa-check-square-o" aria-hidden="true"></i>
+							<?php esc_html_e('Mark as sold', 'motors'); ?><i class="fa fa-check-square-o" aria-hidden="true"></i>
 						</a>
 					<?php endif; ?>
                     </div>
@@ -223,45 +214,44 @@ if (!empty($asSold)) {
 				<div class="delete-btn-wrap">
 					<a class="btn-icon btn-delete-item btn-with-icon btn-left-icon" href="<?php echo esc_url(add_query_arg(array('stm_move_trash_car' => get_the_ID()), stm_get_author_link(''))); ?>" data-title="<?php the_title(); ?>">
 						<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/delete-icon.png'); ?>" alt="" />
-						<p>DELETE</p>
+						DELETE
 					</a>
 				</div>
 				<?php endif; ?>	
 				<?php if(get_post_status(get_the_id()) != 'pending'): ?>
-
 					<!-- Mark sold/unsold-->
 					<?php if($asSold == 'on'): ?>
 						<a href="<?php echo esc_url(add_query_arg(array('stm_unmark_as_sold_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-success btn-with-icon btn-success-active">
-									<p><?php esc_html_e($sold_unmark, 'motors'); ?></p>
+									<?php esc_html_e('Unmark as sold', 'motors'); ?>
 									<span class="icon"></span>
 						</a>
 					<?php else : ?>						
 						<a href="<?php echo esc_url(add_query_arg(array('stm_mark_as_sold_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-success btn-with-icon">
-									<p><?php esc_html_e($sold_mark, 'motors'); ?></p>
+									<?php esc_html_e('Mark as sold', 'motors'); ?>
 									<span class="icon"></span>
 						</a>
 					<?php endif; ?>
 					<!-- Enable/Disable btn-->
 					<?php if(get_post_status(get_the_id()) == 'draft'): ?>
 					<a href="<?php echo esc_url(add_query_arg(array('stm_enable_user_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-disabled btn-with-icon btn-left-icon btn-disabled-active">
-								<p><?php esc_html_e('Enable', 'motors'); ?></p>
+								<?php esc_html_e('Enable', 'motors'); ?>
 								<span class="icon"></span>
 					</a>
 					<?php else: ?>
 					<a href="<?php echo esc_url(add_query_arg(array('stm_disable_user_car' => get_the_ID()), stm_get_author_link(''))); ?>" class="btn-icon btn-disabled btn-with-icon btn-left-icon" data-id="<?php esc_attr(get_the_ID()); ?>">
-								<p><?php esc_html_e('Disable', 'motors'); ?></p>
+								<?php esc_html_e('Disable', 'motors'); ?>
 								<span class="icon"></span>
 					</a>	
 					<?php endif; ?>
 					<!-- Edit btn-->
 					<a href="<?php echo get_permalink(1735).'?edit_car=1&item_id='.get_the_ID(); ?>" class="btn-icon btn-edit btn-with-icon btn-left-icon">
-						<p><?php esc_html_e('Edit', 'motors'); ?></p>
+						<?php esc_html_e('Edit', 'motors'); ?>
 						<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/btn-edit-icon.png'); ?>" alt="" />
 					</a>
 				<?php else: ?>
 					<!-- Edit btn -->
 					<a href="<?php echo get_permalink(1735).'?edit_car=1&item_id='.get_the_ID(); ?>" class="btn-icon btn-edit btn-with-icon btn-left-icon">
-						<p><?php esc_html_e('Edit', 'motors'); ?></p>
+						<?php esc_html_e('Edit', 'motors'); ?>
 						<img src="<?php echo esc_url(get_stylesheet_directory_uri().'/assets/images/btn-edit-icon.png'); ?>" alt="" />
 					</a>
 					<!-- Delete btn -->

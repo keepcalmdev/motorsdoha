@@ -9025,23 +9025,6 @@
     margin-right: 20px !important;
 }
 
-.btn-icon p { margin-bottom: 0; }
-
-.btn-delete-item img {
-    position: relative;
-    top: -1px;
-}
-
-@media (max-width: 470px) {
-    .btn-icon p {
-        display: none;
-    }
-    .btn-icon img, .btn-icon span {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-    }
-}
-
 @media (min-width: 992px) {
     .main-mob-btn-wrapper .button-row {
         display: none;
@@ -9136,6 +9119,11 @@
 }
 
 
+.rtl .list-unstyled li a {
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
 .rtl .list-unstyled  .stock-num {
   display: flex;
 }
@@ -9157,7 +9145,7 @@
 .rtl  .car-action-unit > i {
     position: relative;
     transform: none;
-    top: 1px;
+    top: 10px;
 }
 
 .stm-template-listing_four .stm-single-car-page > .container > .row > .col-md-9 {
@@ -9235,11 +9223,3 @@
 
 .stm-register-form .iti--separate-dial-code,
 .stm_save_user_settings_ajax .iti--separate-dial-code {display: block;}
-
-
-
-
-
-
-
-

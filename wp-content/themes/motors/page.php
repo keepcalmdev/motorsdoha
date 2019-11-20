@@ -1,16 +1,4 @@
 <?php
-
-//activation user page
-$activation_text = "Please <a href='/login-register'>sign up</a>";
-if(is_page(3533)){
-    if(isset($_GET["user"]) && !empty($_GET["user"])){
-        $user_id = $_GET["user"];
-        $user       = get_userdata($user_id);
-        $username   = $user->user_login;
-        $activation_text = "Thank you <b>".$username. "</b> your account has been activated";
-    }
-}
-
 if(stm_is_rental()) {
     if(is_checkout() or is_cart()) {
         get_template_part('partials/rental/reservation', 'archive');
@@ -43,12 +31,6 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
 
 
     <div class="container">
-
-        <?php //activation page
-            if(is_page(3533)) {
-                echo $activation_text;
-            }
-        ?>
 
         <?php if (have_posts()) :
             while (have_posts()) : the_post();
