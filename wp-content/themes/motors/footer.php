@@ -254,7 +254,7 @@ if ( !stm_is_auto_parts() ) :
             }     
         });
 
-        $.get("http://ipinfo.io", function (response) {
+        $.get("https://ipinfo.io", function (response) {
             var current_city = response.city;
             $(".my-city").val(current_city);  
         }, "jsonp");
