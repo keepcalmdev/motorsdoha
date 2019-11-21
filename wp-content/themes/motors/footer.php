@@ -89,8 +89,23 @@ if ( !stm_is_auto_parts() ) :
         });
 
         function make_model_year(make, model, year){
+            console.log(make);
+            console.log(model);
+            console.log(year);
             if (make != '' && model != '' && year != '') {
                 $.get("<?php echo get_bloginfo('url'); ?>/wp-json/car/v1/getcardetails/?model="+model+"&year="+year+"&make="+make, function(data, status){
+                    $('input[name="stm_s_s_countryOfOrigin"]').val('');
+                    $('input[name="stm_s_s_class"]').val('');
+                    $('input[name="stm_s_s_bodyStyle"]').val('');
+                    $('input[name="stm_s_s_weight"]').val('');
+                    $('input[name="stm_s_s_engine_type"]').val('');
+                    $('input[name="stm_s_s_gearBox"]').val('');
+                    $('input[name="stm_s_s_power"]').val('');
+                    $('input[name="stm_s_s_torque"]').val('');
+                    $('input[name="stm_s_s_fuelEconomy100KMPL"]').val('');
+                    $('input[name="stm_s_s_fuelEconomyKMPL"]').val('');
+                    $('input[name="stm_s_s_zeroToHundred"]').val('');
+                    $('input[name="stm_s_s_topSpeed"]').val('');
                     if (data.length) {
                         $('input[name="stm_s_s_countryOfOrigin"]').val(data[0].countryOfOrigin);
                         $('input[name="stm_s_s_class"]').val(data[0].class);
