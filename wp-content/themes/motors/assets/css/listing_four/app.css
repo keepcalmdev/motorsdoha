@@ -9241,6 +9241,11 @@
   display: block;
 }
 
+@media (max-width: 767px) {
+  .rtl .stm-sort-private-my-cars {
+    display: flex;
+  }
+}
 body.error404 #wrapper {
   position: relative;
   max-height: 100vh;
