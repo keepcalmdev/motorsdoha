@@ -794,7 +794,7 @@ $(".wpcf7-tel, input[name=stm_phone], input[type=phone], input[name=stm_user_pho
       // excludeCountries: ["us"],
        //formatOnDisplay: false,
       geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
           var countryCode = (resp && resp.country) ? resp.country : "";
           callback(countryCode);
         });
