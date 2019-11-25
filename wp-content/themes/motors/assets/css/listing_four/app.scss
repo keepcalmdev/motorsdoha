@@ -9552,6 +9552,9 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 .rtl .wpb_column { width: 100%; }
 .rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
 .rtl .wpb_column .icon-box {display: flex;}
+.rtl .wpb_wrapper {text-align: right;}
+.rtl .stm-border-right {width: 30%;}
+.rtl .stm-col-pad-left {width: 70%;}
 
 /*forgot password link*/
 .stm-login-form-unregistered a.forgot-url {

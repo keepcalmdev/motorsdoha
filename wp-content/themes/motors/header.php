@@ -90,7 +90,7 @@ if( is_page( 639 ) ) {
         //     $desc = '<meta name="description" content="New '.$car_make.' '.$car_model.' for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on '.$car_make.' '.$car_model.' in Qatar." />';
         // }
         $title ="New Cars in Qatar, Reviews and Prices, Buy New Car | MotorsDoha ";
-        $desc = '<meta name="description" content="Research new cars for sale in Qatar. View the latest new car offers, get the price from dealers. Compare cars, read latest news and reviews." />';
+        $desc = 'Research new cars for sale in Qatar. View the latest new car offers, get the price from dealers. Compare cars, read latest news and reviews.';
     } elseif($condition == "Used") {
         // //Car Make (Used) 
         // if($car_model === ""){
@@ -102,29 +102,57 @@ if( is_page( 639 ) ) {
         //     $desc = '<meta name="description" content="Used '.$car_make.' '.$car_model .' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on used '.$car_make.' '.$car_model.' in Qatar." />';
         // }
         $title = "Used Cars for Sale in Qatar, Buy Second Hand Car | MotorsDoha";
-        $desc = '<meta name="description" content="Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners." />';
+        $desc = 'Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners.';
 
     } else { //condition
         if($car_make !== "" || $car_model !=="" ){
             $title = trim($car_make . " " .$car_model . " Cars for Sale, Price in Qatar | MotorsDoha");
             $title = str_replace('  ', " ", $title);
             if ($car_model === "") { //car make description
-                $desc = '<meta name="description" content="Shop new & used '.$car_make.' vehicles for sale in Doha, Qatar. Find great deal on '.$car_make.'. New & certified second hand cars on motorsdoha.com." />';
+                $desc = 'Shop new & used '.$car_make.' vehicles for sale in Doha, Qatar. Find great deal on '.$car_make.'. New & certified second hand cars on motorsdoha.com.';
             } else { //car model descripiron
-                $desc = '<meta name="description" content="New & used '. $car_make.' ' . $car_model.' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '.$car_make.' ' .$car_model.' in Qatar." />';
+                $desc = 'New & used '. $car_make.' ' . $car_model.' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '.$car_make.' ' .$car_model.' in Qatar.';
             }
         } else { //inventory default
             $title = "Qatar Car Sale, Buy New & Used Vehicles | MotorsDoha";
             if(get_locale() != "en_US"){
-                $title = "قطر لبيع السيارات، شراء سيارات جديدة ومستعملة | MotorsDoha";
+                //$title = "قطر لبيع السيارات، شراء سيارات جديدة ومستعملة | MotorsDoha";
+                $title = "Qatar car Sale, Buy New & Used Vehicles | MotorsDoha";
             }
-            $desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />';
+            $desc = 'Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar.';
         } 
     }
-    echo "<title>".$title."</title>"."\n";
-    echo $desc;
-    
-    
+
+    if( get_locale() != "en_US") {
+        $apiKey = "AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0";    
+        $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q='.rawurlencode($title).'&source=en&target=ar';
+
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($handle);                 
+        $responseDecoded = json_decode($response, true);
+        curl_close($handle);
+
+        echo "<title>".$responseDecoded['data']['translations'][0]['translatedText']."</title>"."\n";
+    }  else {
+        echo "<title>".$title."</title>"."\n";
+    }
+
+    if( get_locale() != "en_US") {
+        $apiKey = "AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0";    
+        $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q='.rawurlencode($desc).'&source=en&target=ar';
+
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($handle);                 
+        $responseDecoded = json_decode($response, true);
+        curl_close($handle);
+
+        echo '<meta name="description" content="'. $responseDecoded['data']['translations'][0]['translatedText'] .'" />';
+    }  else {
+         echo '<meta name="description" content="'. $desc .'" />';
+    }
+
 
 
 }
