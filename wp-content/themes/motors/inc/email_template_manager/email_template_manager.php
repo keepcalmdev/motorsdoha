@@ -36,6 +36,8 @@ function getDefaultSubject($templateName) {
 
     $new_user = 'New user';
 
+    $change_pass = "Change password";
+
     return ${''.$templateName};
 }
 
@@ -260,6 +262,13 @@ function getDefaultTemplate($templateName) {
         <tr>
             <td>New user Registered. Nickname: </td>
             <td>[user_login]</td>
+        </tr>
+    </table>';
+
+    $change_pass = '<table>
+        <tr>
+            <td>Hi, [user_login]</td>
+            <td>You recently requested to reset your password. Click <a href="[link]">here</a> to reset your password.</td>
         </tr>
     </table>';
 

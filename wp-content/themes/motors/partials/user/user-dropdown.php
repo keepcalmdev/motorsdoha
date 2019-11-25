@@ -58,6 +58,7 @@
 				<label>
 					<input type="checkbox" name="stm_remember_me" />
 					<span><?php esc_html_e('Remember me', 'motors'); ?></span>
+					<a href="/forgot-pass" class="forgot-url"><?php esc_html_e('Forgot password?', 'motors'); ?></a>
 				</label>
 			</div>
             <?php if(class_exists('PMXI_Plugin')) : ?><input type="hidden" name="current_lang" value="<?php echo ICL_LANGUAGE_CODE; ?>"/><?php endif; ?>

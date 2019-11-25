@@ -97,3 +97,40 @@ $data_meta = get_post_meta($post_id, 'car_title', true);
         </table>
     </div>
 <?php endif; ?>
+
+
+
+<!-- <script>
+    jQuery(function(){
+        function getTrans(q, type){
+            jQuery.ajax({  
+            url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
+            dataType: 'jsonp',
+            data: { q: q,  // text to translate
+                    v: '1.0',
+                    'target': 'ar',
+                    langpair: 'en|es' },   // '|es' for auto-detect
+            success: function(result) {
+                //alert(result.responseData.translatedText);
+                //console.table(result.responseDetails)
+                console.log("translation")
+                console.log(result)
+                if(type == "title"){
+                    $("title").html(result.data.translations[0].translatedText)
+                    
+                }
+            },  
+            error: function(XMLHttpRequest, errorMsg, errorThrown) {
+                //alert(errorMsg);
+            }  
+        });
+        }
+        console.log(jQuery("title").html())
+
+        var title = $("title").html()
+       // console.log(desc)
+        getTrans(title, "title");
+        //getTrans(desc, "desc");
+
+    })
+</script> -->

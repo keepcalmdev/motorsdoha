@@ -7,6 +7,7 @@ foreach ($socials_list as $key => $val) {
 	$socials[$key] = (isset($socials[$key]))?$socials[$key]:'';
 }
 $wsl = get_user_meta($user['user_id'], 'wsl_current_provider', true);
+
 ?>
 
 <div class="stm-user-private-settings-wrapper">
@@ -108,6 +109,18 @@ $wsl = get_user_meta($user['user_id'], 'wsl_current_provider', true);
                             </div>
                         </div>
                     </div>
+                    <!-- Start WhatsApp number -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <div class="stm-label h4"><?php esc_html_e('WhatsApp phone', 'motors'); ?></div>
+                                <input class="form-control" type="text" name="stm_whatsapp_phone"
+                                       value="<?php echo esc_attr($user['stm_whatsapp_phone']); ?>"
+                                       placeholder="<?php esc_attr_e('Enter WhatsApp phone', 'motors'); ?>"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End WhatsApp number -->
                 </div>
             </div>
 

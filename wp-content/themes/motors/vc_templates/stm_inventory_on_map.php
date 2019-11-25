@@ -593,14 +593,37 @@ function invMapScript() {
             } else if(titleObj["condition"] == "used-cars") {
                 top_title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";  
             } else {
-                if(titleObj["make"] !=="" || titleObj["model"] !== ""){
-                    top_title = titleObj["make"]+" "+titleObj["model"]+" in Qatar"; 
+                if(titleObj["make"] !=="" || titleObj["model"] !== ""){//title without condition
+                    if(titleObj["model"] === "") {
+                        top_title = titleObj["make"]+" Cars for Sale in Qatar";                         
+
+                    } else {
+                        top_title = titleObj["make"]+" "+titleObj["model"]+" in Qatar";                         
+                    }
                 } else {
                     top_title = "Inventory";
                 }
             }
 
-            $("h1.title").html(top_title);
+            var lang = jQuery('html').attr("lang")
+            if(lang !== "en-US") {
+                jQuery.ajax({  
+                    url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
+                    dataType: 'jsonp',
+                    data: { q: top_title,  // text to translate
+                            v: '1.0',
+                            'target': 'ar',
+                            langpair: 'en|es' },   // '|es' for auto-detect
+                    success: function(result) {
+                        $("h1.title").html(result.data.translations[0].translatedText)
+                    },  
+                    error: function(XMLHttpRequest, errorMsg, errorThrown) {
+                        //alert(errorMsg);
+                    }  
+                });
+            } else {
+                $("h1.title").html(top_title);                
+            }
         }
 
        function capitalizeFL(name){
@@ -644,16 +667,38 @@ function invMapScript() {
                 desc = '<meta name="description" content="Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners." />'
 
             } else {
-                if(titleObj["make"] !=="" || titleObj["model"] !==""){
+                if(titleObj["make"] !=="" || titleObj["model"] !==""){ //condition without
                     title = titleObj["make"] + " "+ titleObj["model"] + " Cars for Sale, Price in Qatar | MotorsDoha";
-                    desc = '<meta name="description" content="New & used '+titleObj["make"] +' ' + titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '+titleObj["make"] +' ' + titleObj["model"]+' in Qatar." />';
+                    title = title.replace("  ", " ")
+                    if(titleObj["model"] ===""){
+                        desc = '<meta name="description" content="Shop new & used '+titleObj["make"]+' vehicles for sale in Doha, Qatar. Find great deal on '+titleObj["make"]+'. New & certified second hand cars on motorsdoha.com." />';
+                    } else {
+                        desc = '<meta name="description" content="New & used '+titleObj["make"] +' ' + titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '+titleObj["make"] +' ' + titleObj["model"]+' in Qatar." />';
+                    }
                 } else { //inventory default
                     title = "Qatar Car Sale, Buy New & Used Vehicles | MotorsDoha"
                     desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />'
                 }
             }
-
-           $("title").html(title);
+            var lang = jQuery('html').attr("lang")
+            if(lang !== "en-US") {
+                jQuery.ajax({  
+                    url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
+                    dataType: 'jsonp',
+                    data: { q: title,  // text to translate
+                            v: '1.0',
+                            'target': 'ar',
+                            langpair: 'en|es' },   // '|es' for auto-detect
+                    success: function(result) {
+                        $("title").html(result.data.translations[0].translatedText)
+                    },  
+                    error: function(XMLHttpRequest, errorMsg, errorThrown) {
+                        //alert(errorMsg);
+                    }  
+                });
+            } else {
+                $("title").html(title);             
+            }
            $("meta[name=description]").remove();
            $("head").append(desc);
 
@@ -664,6 +709,11 @@ function invMapScript() {
 
 
    </script>
+
+
+
+
+
 <?php
 }
 add_action('wp_footer', 'invMapScript');

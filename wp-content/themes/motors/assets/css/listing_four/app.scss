@@ -1149,6 +1149,7 @@
 
     }
 
+
     .listing-list-loop.stm-listing-directory-list-loop .stm-listing-favorite:hover,
     .stm-car-carousels .stm-listing-favorite:hover {
         background: rgba(0, 0, 0, 0.6);
@@ -3128,6 +3129,7 @@
                 }
 
                 .mail {
+
                     a {
                         font-size: 12px;
                         font-weight: 400;
@@ -3166,6 +3168,7 @@
             }
 
             .show-motorsdoha-contacts {
+
                 img {
                     margin: 30px auto;
                     max-width: 150px;
@@ -3178,12 +3181,14 @@
                 }
 
                 .social-links {
+
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
 
                     a {
                         display: inline-block;
+
                         color: rgba(255,255,255,0.5);
                         font-size: 20px;
                         font-weight: 700;
@@ -3202,6 +3207,7 @@
                         &.number {
                             color: #fff;
                         }
+
                     }
 
                 }
@@ -9441,6 +9447,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
 }
 
+
 @media screen and (max-width: 1600px) {
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9487,6 +9494,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
     body.error404 #wrapper {
         background-image: url("../../images/404_mobile.jpg");
+
     }
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9529,6 +9537,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         }
     }
 
+
 }
 
 @media screen and (max-width: 375px) {
@@ -9537,6 +9546,41 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         margin-top: 33vh;
     }
 
+}
+
+
+.rtl .wpb_column { width: 100%; }
+.rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
+.rtl .wpb_column .icon-box {display: flex;}
+
+/*forgot password link*/
+.stm-login-form-unregistered a.forgot-url {
+    padding-left: 0;
+    margin-top: 10px;
+}
+.forgot-pass-wrapper form, .reset-pass-form {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+.reset-pass-form label { width: 100%; } 
+.forgot-pass-wrapper input {
+    margin-bottom: 15px;
+}
+.forgot-pass-wrapper input[type=submit] {
+    display: inline-block;
+}
+
+.pass-reset-msg {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.pass-reset-succc {
+    color: green;
+}
+.pass-reset-error, .pass-reset-error-msg {
+    color: red;
 }
 
 
