@@ -9293,6 +9293,10 @@
 .stm-register-form .iti--separate-dial-code,
 .stm_save_user_settings_ajax .iti--separate-dial-code,
 .stm-my-profile-settings .iti--separate-dial-code {display: block;}
+@media (max-width: 767px) {
+    .rtl .stm-sort-private-my-cars {display: flex;}
+}
+
 
 body.error404 #wrapper {
     position: relative;
