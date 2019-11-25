@@ -54,7 +54,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
             }
         ?>
 
-        <?php if(is_page(3213)){ ?>
+        <?php if(is_page(3877)){ ?>
         <!--forgot password-->
         <div class="forgot-pass-wrapper">
             <form action="" class="forgot-check-email-form">
@@ -79,7 +79,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                         $(".pass-reset-msg ").hide()
                         if(data["result"]){
                             jQuery('.forgot-check-email-form .pass-reset-succc').show()
-                            sessionStorage.setItem("u_email", email)
+                            localStorage.setItem("u_email", email)
                         } else {
                             jQuery('.forgot-check-email-form .pass-reset-error').show()
                         }
@@ -92,7 +92,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
         </script>
         <?php }?>
 
-        <?php if(is_page(3216)){ //change pass 
+        <?php if(is_page(3879)){ //change pass 
 
             if( isset( $_GET["email"]) && !empty($_GET["email"]) ) {
                 echo "<input type='hidden' class='check_pss' name='get_pass' value=". $_GET["email"] ." />";
@@ -104,10 +104,10 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
         <div class="forgot-pass-wrapper">
             <form action="" class="reset-pass-form">
                 <label for="">
-                    <input type="text" name="u_pss" placeholder="Enter password" required="">
+                    <input type="password" name="u_pss" placeholder="Enter password" required="">
                 </label>
                 <label for="">
-                    <input type="text" name="u_pss_rep" placeholder="Repeat password"  required="">
+                    <input type="password" name="u_pss_rep" placeholder="Repeat password"  required="">
                 </label>
                 <div class="pass-reset-msg pass-reset-error">Password doesn't match</div>
                  <div class="pass-reset-msg pass-reset-error-msg">Password change error</div>
@@ -122,7 +122,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                 var pss = $("input[name=u_pss]").val()
                 var pss_rep = $("input[name=u_pss_rep]").val()
                 var check_email = $('.check_pss').val()
-                var loc_email = sessionStorage.getItem("u_email")
+                var loc_email = localStorage.getItem("u_email")
 
                 if(pss !== pss_rep) {
                     jQuery('.reset-pass-form .pass-reset-error').show()
