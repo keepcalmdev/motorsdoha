@@ -240,7 +240,7 @@ function getDefaultTemplate($templateName) {
     $password_recovery = '<table>
         <tr>
             <td>Please, follow the link, to set new password:</td>
-            <td>[password_content]</td>
+            <td><a href="[password_content]">Change password</a></td>
         </tr>
     </table>';
 
@@ -265,12 +265,14 @@ function getDefaultTemplate($templateName) {
         </tr>
     </table>';
 
-    $change_pass = '<table>
+    $change_pass = '
+    <table>
         <tr>
             <td>Hi, [user_login]</td>
             <td>You recently requested to reset your password. Click <a href="[link]">here</a> to reset your password.</td>
         </tr>
-    </table>';
+    </table>
+        ';
 
     return ${''.$templateName};
 }
@@ -369,6 +371,8 @@ function getTemplateShortcodes($templateName) {
     $newUser = array (
         'user_login' => '[user_login]',
     );
+
+    $change_pass = array('link' => '[link]', "user_login"=>'[user_login]');
 
     return ${''.$templateName};
 }

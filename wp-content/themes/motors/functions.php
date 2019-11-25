@@ -445,16 +445,17 @@ function check_user_email_func(){
 		$email = $_GET["email"]; //aalsalahi@gmail.com
 		 if ( email_exists($email) ){
 			$result["result"] = true;
-		 }
-		$user = get_user_by('email', $email);
-		$user_login = $user["user_login"];
-		//headers
+		 
+		$user = get_user_by( 'email', $email );
+		$user_login = $user->user_login;
+		add_filter('wp_mail_content_type', 'stm_set_html_content_type_mail');
         $headers = array('From: Motorsdoha <admin@motorsdoha.com>');
-        $link = "<?php bloginfo('url'); ?>/change-password/?email=".$email;
+        $link = site_url()."/change-password/?email=".$email; 
         $to = $email;
-        $subject = generateSubjectView('change_pass', array('link' => $link, "user_login"=>$user_login));
-        $body = generateTemplateView('change_pass', array('link' => $link, "user_login"=>$user_login));
-        wp_mail($to, $subject, $body, $headers);   
+        $subject = generateSubjectView('password_recovery', array('password_content' => $link, "user_login"=>$user_login));
+        $body = generateTemplateView('password_recovery', array('password_content' => $link, "user_login"=>$user_login));
+        wp_mail($to, $subject, $body, $headers); 
+	  }  
 	}
 	echo json_encode($result);
 	wp_die();	
