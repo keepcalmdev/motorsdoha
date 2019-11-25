@@ -386,7 +386,7 @@ function wpse8170_activate_user() {
 
 add_filter('wpseo_title', 'filter_product_wpseo_title');
 function filter_product_wpseo_title($title) {
-	if( get_the_ID() == 1181 && get_locale() != "en_US") {
+	if( get_locale() != "en_US") {
 		$apiKey = "AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0";	
 		$url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q='.rawurlencode($title).'&source=en&target=ar';
 
@@ -408,7 +408,7 @@ function filter_product_wpseo_title($title) {
 // add the filter 
 add_filter( 'wpseo_metadesc', 'filter_wpseo_metadesc'); 
 function filter_wpseo_metadesc( $wpseo_replace_vars ) { 
-    if( get_the_ID() == 1181 && get_locale() != "en_US") {
+    if( get_locale() != "en_US") {
 		$apiKey = "AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0";	
 		$url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q='.rawurlencode($wpseo_replace_vars).'&source=en&target=ar';
 
