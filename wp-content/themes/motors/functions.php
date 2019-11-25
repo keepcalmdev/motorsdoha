@@ -1,5 +1,8 @@
 <?php
 
+	// error_reporting(E_ALL);
+	// ini_set("display_errors", 1);
+
     if(is_admin()) {
         require_once get_template_directory() . '/admin/admin.php';
 		/* Phone Number Patch */
@@ -389,7 +392,7 @@ function custom_html5_search_form(){
         </form>';
         return $form;
     }
-
+}
 
 
 add_filter('wpseo_title', 'filter_product_wpseo_title');
