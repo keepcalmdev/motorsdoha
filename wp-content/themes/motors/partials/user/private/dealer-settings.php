@@ -28,6 +28,11 @@
 		$sales_hours  = ( ! empty( $_POST['stm_sales_hours'] ) ) ? $_POST['stm_sales_hours'] : $user['stm_sales_hours'];
 		$notes        = ( ! empty( $_POST['stm_notes'] ) ) ? $_POST['stm_notes'] : $user['stm_seller_notes'];
 
+	    //change WhatsApp telephone number
+	    if (isset($_POST["stm_whatsapp_phone"])) {
+	        update_user_meta($user_id, "stm_whatsapp_phone", $_POST["stm_whatsapp_phone"]);
+	    }
+
 
 		/*Socials*/
 		$socs = array('facebook', 'twitter', 'linkedin', 'youtube');
@@ -464,6 +469,18 @@
 								<input type="text" name="stm_website_url" value="<?php echo esc_attr($stm_website_url); ?>" placeholder="<?php esc_attr_e('Enter Website URL', 'motors') ?>" />
 							</div>
 						</div>
+	                    <!-- Start WhatsApp number -->
+	                    <div class="row">
+	                        <div class="col-md-6 col-sm-6">
+	                            <div class="form-group">
+	                                <div class="stm-label h4"><?php esc_html_e('WhatsApp phone', 'motors'); ?></div>
+	                                <input class="form-control" type="text" name="stm_whatsapp_phone"
+	                                       value="<?php echo esc_attr($user['stm_whatsapp_phone']); ?>"
+	                                       placeholder="<?php esc_attr_e('Enter WhatsApp phone', 'motors'); ?>"/>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!-- End WhatsApp number -->
 					</div>
 					<div class="row">
 						<div class="col-md-6 col-sm-6">

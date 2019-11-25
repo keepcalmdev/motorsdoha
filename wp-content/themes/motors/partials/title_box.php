@@ -187,7 +187,12 @@ if ( $show_title_box ) {
 			                $top_title = "Used ".$car_make." ".$car_model." Cars in Qatar";
 			        } else {
 			        		if($car_make !== "" || $car_model !== "") {
-				        		$top_title =  $car_make. " ".$car_model . " in Qatar";
+			        			if ($car_model === "") { //condition without make title
+					        		$top_title =  $car_make." Cars for Sale in Qatar";
+
+			        			} else { //condition without model title
+					        		$top_title =  $car_make. " ".$car_model . " in Qatar";
+			        			}
 			        		}
 			        		else {
 			        			$top_title = "Inventory";

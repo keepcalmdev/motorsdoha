@@ -106,16 +106,26 @@ if( is_page( 639 ) ) {
 
     } else { //condition
         if($car_make !== "" || $car_model !=="" ){
-            $title = $car_make . " ". $car_model. " Cars for Sale, Price in Qatar | MotorsDoha";
-            $desc = '<meta name="description" content="New & used '. $car_make.' ' . $car_model.' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '.$car_make.' ' .$car_model.' in Qatar." />';
+            $title = trim($car_make . " " .$car_model . " Cars for Sale, Price in Qatar | MotorsDoha");
+            $title = str_replace('  ', " ", $title);
+            if ($car_model === "") { //car make description
+                $desc = '<meta name="description" content="Shop new & used '.$car_make.' vehicles for sale in Doha, Qatar. Find great deal on '.$car_make.'. New & certified second hand cars on motorsdoha.com." />';
+            } else { //car model descripiron
+                $desc = '<meta name="description" content="New & used '. $car_make.' ' . $car_model.' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '.$car_make.' ' .$car_model.' in Qatar." />';
+            }
         } else { //inventory default
             $title = "Qatar Car Sale, Buy New & Used Vehicles | MotorsDoha";
+            if(get_locale() != "en_US"){
+                $title = "قطر لبيع السيارات، شراء سيارات جديدة ومستعملة | MotorsDoha";
+            }
             $desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />';
         } 
     }
-    
-    echo "<title>".$title."</title>";
+    echo "<title>".$title."</title>"."\n";
     echo $desc;
+    
+    
+
 
 }
 
@@ -157,6 +167,13 @@ if( is_page( 639 ) ) {
 <style>
     .listing-list-loop .main-mob-btn-wrapper a.btn-icon > img {width: auto !important;}
 </style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NQ2MHQK');</script>
+<!-- End Google Tag Manager -->
 </head>
 
 <?php
@@ -186,7 +203,11 @@ if( is_page( 639 ) ) {
 
 
 <body <?php body_class('stm-template-listing_four'); ?> <?php if(!empty($body_custom_image)): ?> style="background-image: url('<?php echo esc_url($body_custom_image); ?>')" <?php endif; ?> ontouchstart="">
-
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQ2MHQK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 	<?php do_action('motors_before_header'); ?>
 	<div id="wrapper">

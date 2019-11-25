@@ -4,7 +4,7 @@
     var Places = STMListings.Places = {};
 
     Places.autocompleteConfig = function () {
-    	return {types: ['geocode'], componentRestrictions: {country: "qa"} };
+    	return {types: [], componentRestrictions: {country: "qa"} }; //geocode '(cities)' '(regions)' establishment
 	};
 
 	Places.addGoogleAutocomplete = function (location_id) {
