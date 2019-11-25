@@ -297,12 +297,12 @@ $socials = array(
     'reddit' => esc_html__('Reddit', 'motors'),
     'soundcloud' => esc_html__('Soundcloud', 'motors'),
     'google' => esc_html__('Google', 'motors'),
-    'google-plus' => esc_html__('Google +', 'motors'),
     'skype' => esc_html__('Skype', 'motors'),
     'youtube' => esc_html__('Youtube', 'motors'),
     'youtube-play' => esc_html__('Youtube Play', 'motors'),
     'tumblr' => esc_html__('Tumblr', 'motors'),
     'whatsapp' => esc_html__('Whatsapp', 'motors'),
+	'phone' => esc_html__('Phone number', 'motors'),
 );
 
 $positions = array(
@@ -1160,9 +1160,14 @@ STM_Customizer::setSection('footer_layout', array(
         ),
         'footer_copyright_text' => array(
             'label' => esc_html__('Copyright', 'motors'),
-            'default' => esc_html__('&copy; 2015 <a target="_blank" href="http://www.stylemixthemes.com/">Stylemix Themes</a><span class="divider"></span>Trademarks and brands are the property of their respective owners.', 'motors'),
+            'default' => '',
             'type' => 'text'
         ),
+	    'footer_phone_number' => array(
+		    'label' => esc_html__('Phone number', 'motors'),
+		    'default' => '',
+		    'type' => 'text'
+	    ),
         'footer_socials_enable' => array(
             'label' => esc_html__('Copyright Socials', 'motors'),
             'type' => 'stm-multiple-checkbox',
