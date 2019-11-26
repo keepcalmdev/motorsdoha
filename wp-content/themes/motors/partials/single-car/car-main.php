@@ -503,7 +503,7 @@ if($car_title === ""){ //custom title prefix
                                         <div class="wpb_text_column wpb_content_element  vc_custom_1445945228480">
                                             <div class="wpb_wrapper">
                                                 <p style="line-height: 18px;"><span style="color: #888888; font-size: 13px;">
-                                                     <?php echo get_user_meta(get_current_user_id(), stm_seller_notes ,true); ?>
+                                                     <?php echo get_user_meta(get_current_user_id(), 'stm_seller_notes' ,true); ?>
                                                 </span></p>
 
                                             </div>
@@ -516,18 +516,12 @@ if($car_title === ""){ //custom title prefix
                                             </div>
                                             <div class="icon-text">
                                                 <div class="content">
-                                                    <h5>
-                                                        <?php 
-
-                                                            if(empty(get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true))){
-
-                                                                echo "Hello my name is Muhammad";
-                                                            }
-
-
-                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
-
-                                                         ?></h5>
+                                                    <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">LOCATION:</span></h6>
+                                                    <a href="https://maps.google.com/?q=<?php echo get_user_meta(get_post_meta(get_the_ID(), 'stm_car_user', true), 'stm_dealer_location' ,true); ?>">
+                                                        <h5>
+                                                            <?php echo get_user_meta(get_post_meta(get_the_ID(), 'stm_car_user', true), 'stm_dealer_location' ,true); ?>
+                                                        </h5>
+                                                    </a> 
                                                 </div>
                                             </div>
                                         </div>
@@ -555,9 +549,9 @@ if($car_title === ""){ //custom title prefix
                                             <div class="icon-text">
                                                 <div class="content">
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">PHONE:</span></h6>
-                                                    <a href="tel:<?php echo get_user_meta(get_current_user_id(), stm_phone ,true); ?>">
+                                                    <a href="tel:<?php echo get_user_meta(get_post_meta(get_the_ID(), 'stm_car_user', true), 'stm_phone' ,true); ?>">
                                                         <h5>
-                                                            <?php echo get_user_meta(get_current_user_id(), stm_phone ,true); ?>
+                                                            <?php echo get_user_meta(get_post_meta(get_the_ID(), 'stm_car_user', true), 'stm_phone' ,true); ?>
                                                         </h5>
                                                     </a> 
                                                     
@@ -588,8 +582,8 @@ if($car_title === ""){ //custom title prefix
                                             <div class="icon-text">
                                                 <div class="content">
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">EMAIL:</span></h6>
-                                                    <h5><a href="mailto:<?php echo get_user_meta(get_current_user_id(), billing_email ,true); ?>">
-                                                            <?php echo get_user_meta(get_current_user_id(), billing_email ,true); ?>
+                                                    <h5><a href="mailto:<?php echo get_user_meta(get_post_meta(get_the_ID(), 'stm_car_user', true), 'billing_email' ,true); ?>">
+                                                            <?php echo get_user_meta(get_post_meta(get_the_ID(), 'stm_car_user', true), 'billing_email' ,true); ?>
                                                         </a>
                                                     </h5>
                                                     
