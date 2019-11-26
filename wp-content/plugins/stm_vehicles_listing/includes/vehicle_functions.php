@@ -265,6 +265,13 @@ if (!function_exists('stm_get_user_custom_fields')) {
         $user_phone = '';
         $user_phone = get_the_author_meta('stm_phone', $user_id);
 
+        //add WhatsApp phone meta
+        $whatsapp_number = get_user_meta($user_id, 'stm_whatsapp_phone', true);
+        if(!$whatsapp_number) {
+            add_user_meta($user_id, "stm_whatsapp_phone", $user_phone , true);
+            $whatsapp_number = $user_phone;
+        }
+
         $user_mail = '';
         $user_mail = get_the_author_meta('email', $user_id);
 
@@ -300,6 +307,7 @@ if (!function_exists('stm_get_user_custom_fields')) {
         $response['socials'] = $user_socials;
         $response['email'] = $user_mail;
         $response['show_mail'] = $user_show_mail;
+        $response["stm_whatsapp_phone"] =  $whatsapp_number;
 
         /*Dealer fields*/
         $logo = '';
@@ -665,7 +673,7 @@ if (!function_exists('stm_custom_register')) {
 
                 //headers
                 $headers = array(
-                    'From: Motorsdoha <Motorsdoha@motorsdoha.com>'
+                    'From: Motorsdoha <admin@motorsdoha.com>'
                 );
 
                 /*Mail admin*/
@@ -1419,7 +1427,6 @@ if (!function_exists('stm_user_listings_query')) {
 
         $args = array(
             'post_type' => 'listings',
-            'post_status' => $status,
             'posts_per_page' => $per_page,
             'offset' => $offset,
             'meta_query' => array(
@@ -1432,6 +1439,10 @@ if (!function_exists('stm_user_listings_query')) {
                 $ppl
             )
         );
+
+        if ($status != 'all') {
+            $args['post_status'] = $status;
+        }
 
         if ($popular) {
             $args['order'] = 'ASC';

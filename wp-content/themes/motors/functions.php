@@ -1,5 +1,8 @@
 <?php
 
+	// error_reporting(E_ALL);
+	// ini_set("display_errors", 1);
+
     if(is_admin()) {
         require_once get_template_directory() . '/admin/admin.php';
 		/* Phone Number Patch */
@@ -379,6 +382,7 @@ function wpse8170_activate_user() {
     }
 }
 
+
 add_filter( 'get_search_form', 'custom_html5_search_form' );
 function custom_html5_search_form(){
     if( is_404() ) {
@@ -388,4 +392,88 @@ function custom_html5_search_form(){
         </form>';
         return $form;
     }
+}
+
+
+add_filter('wpseo_title', 'filter_product_wpseo_title');
+function filter_product_wpseo_title($title) {
+	if( get_locale() != "en_US") {
+		$apiKey = "AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0";	
+		$url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q='.rawurlencode($title).'&source=en&target=ar';
+
+		$handle = curl_init($url);
+		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($handle);                 
+		$responseDecoded = json_decode($response, true);
+		curl_close($handle);
+
+		//var_dump($responseDecoded['data']['translations'][0]['translatedText']);
+
+		return $responseDecoded['data']['translations'][0]['translatedText'];
+	}  else {
+		return $title;
+	}
+}
+
+// define the wpseo_metadesc callback 
+// add the filter 
+add_filter( 'wpseo_metadesc', 'filter_wpseo_metadesc'); 
+function filter_wpseo_metadesc( $wpseo_replace_vars ) { 
+    if( get_locale() != "en_US") {
+		$apiKey = "AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0";	
+		$url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q='.rawurlencode($wpseo_replace_vars).'&source=en&target=ar';
+
+		$handle = curl_init($url);
+		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($handle);                 
+		$responseDecoded = json_decode($response, true);
+		curl_close($handle);
+
+		//var_dump($responseDecoded['data']['translations'][0]['translatedText']);
+		return $responseDecoded['data']['translations'][0]['translatedText'];
+	}  else {
+		return $wpseo_replace_vars;
+	}
+}; 
+
+//check if user email exist
+add_action( 'wp_ajax_check_user_email', 'check_user_email_func' );
+add_action( 'wp_ajax_nopriv_check_user_email', 'check_user_email_func' );
+function check_user_email_func(){
+	$result = array('result' => false);
+  	if(isset($_GET["email"]) && !empty($_GET["email"])) {
+		$email = $_GET["email"]; //aalsalahi@gmail.com
+		 if ( email_exists($email) ){
+			$result["result"] = true;
+		 
+		$user = get_user_by( 'email', $email );
+		$user_login = $user->user_login;
+		add_filter('wp_mail_content_type', 'stm_set_html_content_type_mail');
+        $headers = array('From: Motorsdoha <admin@motorsdoha.com>');
+        $link = site_url()."/change-password/?email=".$email; 
+        $to = $email;
+        $subject = generateSubjectView('password_recovery', array('password_content' => $link, "user_login"=>$user_login));
+        $body = generateTemplateView('password_recovery', array('password_content' => $link, "user_login"=>$user_login));
+        wp_mail($to, $subject, $body, $headers); 
+	  }  
+	}
+	echo json_encode($result);
+	wp_die();	
+}
+
+//change password
+add_action( 'wp_ajax_change_user_pass', 'change_user_pass_func' );
+add_action( 'wp_ajax_nopriv_change_user_pass', 'change_user_pass_func' );
+function change_user_pass_func(){
+	$result = array('result' => false);
+  	if(isset($_GET["pass"]) && !empty($_GET["pass"]) && isset($_GET["email"]) && !empty($_GET["email"]) ) {
+
+		$user = get_user_by('email', $_GET["email"]);
+		$user_id = $user->ID; //get user id
+		wp_set_password( $_GET["pass"], $user_id );
+		$result["result"] = true;
+		
+	}
+	echo json_encode($result);
+	wp_die();	
 }

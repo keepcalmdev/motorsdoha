@@ -17,7 +17,11 @@ if(stm_is_rental()) {
         return false;
     }
 }
+?>
 
+
+
+<?php
 get_header();
 
 if(!stm_is_auto_parts() && !is_front_page()) {
@@ -49,6 +53,113 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                 echo $activation_text;
             }
         ?>
+
+        <?php if(is_page(3877)){ ?>
+        <!--forgot password-->
+        <div class="forgot-pass-wrapper">
+            <form action="" class="forgot-check-email-form">
+                <p>Enter your email address to receive a link to reset your password.</p>
+                <input class="forgot-u-email" type="text" placeholder="Enter your email"  required="">
+                <div class="pass-reset-msg pass-reset-error">Wrong email address</div>
+                <div class="pass-reset-msg pass-reset-succc">Mail with instruction has been sent successfully</div>
+                <input type="submit">
+            </form>
+        </div>
+        <script>
+            jQuery(document).on("submit", ".forgot-check-email-form", function(e){
+                e.preventDefault();
+                var email = $(".forgot-u-email").val()
+                var data = { action: "check_user_email", "email": email }
+                jQuery.ajax({
+                    "type": "GET",
+                    "url": ajaxurl,
+                    "data": data,
+                    success: function(data){
+                        var data = JSON.parse(data);
+                        $(".pass-reset-msg ").hide()
+                        if(data["result"]){
+                            jQuery('.forgot-check-email-form .pass-reset-succc').show()
+                            localStorage.setItem("u_email", email)
+                        } else {
+                            jQuery('.forgot-check-email-form .pass-reset-error').show()
+                        }
+                        setTimeout(function(){
+                            $('.pass-reset-msg').hide()
+                        }, 3000)
+                    }
+                })
+            })
+        </script>
+        <?php }?>
+
+        <?php if(is_page(3879)){ //change pass 
+
+            if( isset( $_GET["email"]) && !empty($_GET["email"]) ) {
+                echo "<input type='hidden' class='check_pss' name='get_pass' value=". $_GET["email"] ." />";
+            }
+
+        ?>
+
+        <!--forgot password-->
+        <div class="forgot-pass-wrapper">
+            <form action="" class="reset-pass-form">
+                <label for="">
+                    <input type="password" name="u_pss" placeholder="Enter password" required="">
+                </label>
+                <label for="">
+                    <input type="password" name="u_pss_rep" placeholder="Repeat password"  required="">
+                </label>
+                <div class="pass-reset-msg pass-reset-error">Password doesn't match</div>
+                 <div class="pass-reset-msg pass-reset-error-msg">Password change error</div>
+                <div class="pass-reset-msg pass-reset-succc">Your password has been changed successfully!</div>
+                <input type="submit">
+            </form>
+        </div>
+        <script>
+            jQuery(document).on("submit", ".reset-pass-form", function(e){
+                e.preventDefault();
+
+                var pss = $("input[name=u_pss]").val()
+                var pss_rep = $("input[name=u_pss_rep]").val()
+                var check_email = $('.check_pss').val()
+                var loc_email = localStorage.getItem("u_email")
+
+                if(pss !== pss_rep) {
+                    jQuery('.reset-pass-form .pass-reset-error').show()
+                    setTimeout(function(){
+                        $('.pass-reset-msg').hide()
+                    }, 3000)
+                    return
+                }
+
+                if( check_email === loc_email ){
+                    var data = { action: "change_user_pass", "email": check_email, "pass": pss }
+                    jQuery.ajax({
+                        "type": "GET",
+                        "url": ajaxurl,
+                        "data": data,
+                        success: function(data){
+                            var data = JSON.parse(data);
+                            $(".pass-reset-msg ").hide()
+                            if(data["result"]){
+                                jQuery('.reset-pass-form .pass-reset-succc').show()
+                            } else {
+                                jQuery('.reset-pass-form .pass-reset-error-msg').show()
+                            }
+                            setTimeout(function(){
+                                $('.pass-reset-msg').hide()
+                            }, 3000)
+                        }
+                    })
+                } else {
+                    jQuery('.pass-reset-error-msg').show()
+                     setTimeout(function(){
+                                $('.pass-reset-msg').hide()
+                            }, 3000)
+                }
+            })
+        </script>
+        <?php }?>       
 
         <?php if (have_posts()) :
             while (have_posts()) : the_post();

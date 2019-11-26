@@ -1646,3 +1646,13 @@ span.wpcf7-form-control-wrap.checkbox-919 {
 }
 
 
+input[name="stm_vin"],
+input[name="stm_registered"] {
+    background: #fff !important;
+}
+
+.stm-template-car_dealer .stm-listing-directory-checkboxes.stm-two_cols .stm-accordion-content .stm-accordion-content-padded .stm-option-label {
+    padding: 0px 0px 5px 20px  !important;
+    margin: 0px !important;
+    width: 100% !important;
+}

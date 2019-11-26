@@ -3166,6 +3166,7 @@
             }
 
             .show-motorsdoha-contacts {
+
                 img {
                     margin: 30px auto;
                     max-width: 150px;
@@ -3202,6 +3203,7 @@
                         &.number {
                             color: #fff;
                         }
+
                     }
 
                 }
@@ -9590,3 +9592,48 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
 
 }
+
+
+.rtl .wpb_column { width: 100%; }
+.rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
+.rtl .wpb_column .icon-box {display: flex;}
+.rtl .wpb_wrapper {text-align: right;}
+.rtl .stm-border-right {width: 30%;}
+.rtl .stm-col-pad-left {width: 70%;}
+
+/*forgot password link*/
+.stm-login-form-unregistered a.forgot-url {
+    padding-left: 0;
+    margin-top: 10px;
+}
+.forgot-pass-wrapper form, .reset-pass-form {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+.reset-pass-form label { width: 100%; }
+.forgot-pass-wrapper input {
+    margin-bottom: 15px;
+}
+.forgot-pass-wrapper input[type=submit] {
+    display: inline-block;
+}
+
+.pass-reset-msg {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.pass-reset-succc {
+    color: green;
+}
+.pass-reset-error, .pass-reset-error-msg {
+    color: red;
+}
+
+
+
+
+
+
+
