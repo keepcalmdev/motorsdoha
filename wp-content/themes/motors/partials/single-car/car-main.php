@@ -503,7 +503,7 @@ if($car_title === ""){ //custom title prefix
                                         <div class="wpb_text_column wpb_content_element  vc_custom_1445945228480">
                                             <div class="wpb_wrapper">
                                                 <p style="line-height: 18px;"><span style="color: #888888; font-size: 13px;">
-                                                     <?php echo get_user_meta(get_current_user_id(), stm_seller_notes ,true); ?>
+                                                     <?php echo get_user_meta(get_current_user_id(), 'stm_seller_notes',true); ?>
                                                 </span></p>
 
                                             </div>
@@ -517,17 +517,13 @@ if($car_title === ""){ //custom title prefix
                                             <div class="icon-text">
                                                 <div class="content">
                                                     <h5>
-                                                        <?php 
-
-                                                            if(empty(get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true))){
-
-                                                                echo "Hello my name is Muhammad";
+                                                        <?php
+                                                            $dealer_location = get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
+                                                            if( $dealer_location ) {
+	                                                            echo $dealer_location;
                                                             }
-
-
-                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
-
-                                                         ?></h5>
+                                                        ?>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
