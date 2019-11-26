@@ -1428,6 +1428,7 @@ if (!function_exists('stm_user_listings_query')) {
         $args = array(
             'post_type' => 'listings',
             'posts_per_page' => $per_page,
+            'post_status' => $status,
             'offset' => $offset,
             'meta_query' => array(
                 'relation' => 'AND',
@@ -1439,10 +1440,6 @@ if (!function_exists('stm_user_listings_query')) {
                 $ppl
             )
         );
-
-        if ($status != 'all') {
-            $args['post_status'] = $status;
-        }
 
         if ($popular) {
             $args['order'] = 'ASC';
