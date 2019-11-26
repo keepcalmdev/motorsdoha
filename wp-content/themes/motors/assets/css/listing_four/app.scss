@@ -9441,6 +9441,14 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
 }
 
+@media screen and (min-width: 1200px) {
+
+    .home .questions .content {
+        min-height: 120px;
+    }
+
+}
+
 @media screen and (max-width: 1600px) {
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9538,10 +9546,3 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
 
 }
-
-
-
-
-
-
-
