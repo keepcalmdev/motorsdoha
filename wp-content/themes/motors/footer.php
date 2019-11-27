@@ -843,9 +843,12 @@ jQuery('.wpcf7-submit').on('click',function(){
 });
 
 //account btn click - show dropdown list (menu for mobile)
-$(document).on("click", ".lOffer-account-unit", function(e){
-    e.preventDefault()
+$(document).on("click", ".lOffer-account-unit", function(){
     $(this).find('.lOffer-account-dropdown').toggleClass("lOffer-account-dropdown-open");
+})
+
+$(document).on("click", ".stm-login-form-unregistered-close", function(e){
+    $(this).closest(".lOffer-account-dropdown").removeClass("lOffer-account-dropdown-open")
 })
 
 })(jQuery)

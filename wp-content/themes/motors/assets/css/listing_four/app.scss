@@ -9650,7 +9650,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 }
 
 @media (max-width: 992px){
-  .stm-login-form-unregistered-close {display:block;}
+  .stm-login-form-unregistered-close {display:block !important;}
   .lOffer-account-dropdown  h4 {margin-bottom: 20px;} 
   .lOffer-account-dropdown {
         position: fixed !important;
