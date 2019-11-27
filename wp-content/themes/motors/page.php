@@ -112,7 +112,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                 <div class="pass-reset-msg pass-reset-error">Password doesn't match</div>
                  <div class="pass-reset-msg pass-reset-error-msg">Password change error</div>
                 <div class="pass-reset-msg pass-reset-succc">Your password has been changed successfully!</div>
-                <input type="submit">
+                <input type="submit" value="Submit">
             </form>
         </div>
         <script>
