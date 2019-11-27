@@ -62,7 +62,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                 <input class="forgot-u-email" type="text" placeholder="Enter your email"  required="">
                 <div class="pass-reset-msg pass-reset-error">Wrong email address</div>
                 <div class="pass-reset-msg pass-reset-succc">Mail with instruction has been sent successfully</div>
-                <input type="submit">
+                <input type="submit" value="Submit">
             </form>
         </div>
         <script>
