@@ -21,23 +21,24 @@
 		}
 
 	?>
-
-	<div class="lOffer-account-dropdown login">
-		<button class="stm-login-form-unregistered-close">&times;</button>
-		<a href="<?php echo esc_url(add_query_arg(array('page' => 'settings'), stm_get_author_link(''))); ?>" class="settings">
-			<i class="stm-settings-icon stm-service-icon-cog"></i>
-		</a>
-		<div class="name">
-			<a href="<?php echo esc_url(stm_get_author_link('')); ?>"><?php echo esc_attr(stm_display_user_name($user->ID)); ?></a>
+	<div class="dropdown-menu-wrapper">
+		<div class="lOffer-account-dropdown login">
+			<button class="stm-login-form-unregistered-close">&times;</button>
+			<a href="<?php echo esc_url(add_query_arg(array('page' => 'settings'), stm_get_author_link(''))); ?>" class="settings">
+				<i class="stm-settings-icon stm-service-icon-cog"></i>
+			</a>
+			<div class="name">
+				<a href="<?php echo esc_url(stm_get_author_link('')); ?>"><?php echo esc_attr(stm_display_user_name($user->ID)); ?></a>
+			</div>
+			<ul class="account-list">
+				<li><a href="<?php echo esc_url(stm_get_author_link('')); ?>"><?php esc_html_e('My items', 'motors'); ?> (<span><?php echo esc_attr($my_offers); ?></span>)</a></li>
+				<li class="stm-my-favourites"><a href="<?php echo esc_url(add_query_arg(array('page' => 'favourite'), stm_get_author_link(''))); ?>"><?php esc_html_e('Favorites', 'motors'); ?> (<span><?php echo esc_attr($my_fav); ?></span>)</a></li>
+			</ul>
+			<a href="<?php echo esc_url(wp_logout_url(home_url())); ?>" class="logout">
+				<i class="fa fa-power-off"></i><?php esc_html_e('Logout', 'motors'); ?>
+			</a>
 		</div>
-		<ul class="account-list">
-			<li><a href="<?php echo esc_url(stm_get_author_link('')); ?>"><?php esc_html_e('My items', 'motors'); ?> (<span><?php echo esc_attr($my_offers); ?></span>)</a></li>
-			<li class="stm-my-favourites"><a href="<?php echo esc_url(add_query_arg(array('page' => 'favourite'), stm_get_author_link(''))); ?>"><?php esc_html_e('Favorites', 'motors'); ?> (<span><?php echo esc_attr($my_fav); ?></span>)</a></li>
-		</ul>
-		<a href="<?php echo esc_url(wp_logout_url(home_url())); ?>" class="logout">
-			<i class="fa fa-power-off"></i><?php esc_html_e('Logout', 'motors'); ?>
-		</a>
-	</div>
+	</div>	
 
 	<?php endif; ?>
 
