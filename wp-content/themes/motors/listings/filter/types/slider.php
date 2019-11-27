@@ -88,5 +88,5 @@ $vars['label'] = stripslashes($label_affix);
     </div>
 
     <!--Init slider-->
-    <?php //stm_listings_load_template('filter/types/slider-js', $vars); ?>
+    <?php stm_listings_load_template('filter/types/slider-js', $vars); ?>
 </div>
