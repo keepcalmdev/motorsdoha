@@ -9448,6 +9448,17 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
 }
 
+.stm-icon-box-adaptive-style-three.without-paddings {
+    .vc_col-lg-3:nth-child(2),
+    .vc_col-lg-3:nth-child(3) {
+        .icon-box {
+            .icon {
+                margin-right: 24px;
+                margin-left: 0;
+            }
+        }
+    }
+}
 
 @media screen and (min-width: 1200px) {
 
@@ -9457,7 +9468,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
 
     .stm-icon-box-adaptive-style-three.without-paddings {
         .icon-box {
@@ -9466,24 +9477,12 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
                 width: 65px;
             }
         }
-        .vc_col-sm-3:first-child {
+        .vc_col-lg-3:nth-child(2),
+        .vc_col-lg-3:nth-child(3) {
             .icon-box {
                 .icon {
-                    width: 80px;
-                }
-            }
-        }
-        .vc_col-sm-3:nth-child(2) {
-            .icon-box {
-                .icon {
-                    margin-right: 10px;
-                }
-            }
-        }
-        .vc_col-sm-3:nth-child(3) {
-            .icon-box {
-                .icon {
-                    margin-right: 0;
+                    margin-right: 0px;
+                    margin-left: 24px;
                 }
             }
         }
@@ -9508,6 +9507,15 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             .icon {
                 margin-right: 0;
                 width: 100px;
+            }
+        }
+        .vc_col-lg-3:nth-child(2),
+        .vc_col-lg-3:nth-child(3) {
+            .icon-box {
+                .icon {
+                    margin-right: 0;
+                    margin-left: 0;
+                }
             }
         }
     }
@@ -9655,7 +9663,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
 @media (max-width: 992px){
   .stm-login-form-unregistered-close {display:block !important;}
-  .lOffer-account-dropdown  h4 {margin-bottom: 20px;} 
+  .lOffer-account-dropdown  h4 {margin-bottom: 20px;}
   .lOffer-account-dropdown {
         position: fixed !important;
         top: 0 !important;
@@ -9710,8 +9718,8 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         top: 100%;
         opacity: 0;
         visibility: hidden;
-    }  
-    
+    }
+
 }
 
 
