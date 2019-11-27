@@ -1,7 +1,7 @@
 <?php
 
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+	// error_reporting(E_ALL);
+	// ini_set("display_errors", 1);
 
     if(is_admin()) {
         require_once get_template_directory() . '/admin/admin.php';
@@ -382,6 +382,17 @@ function wpse8170_activate_user() {
     }
 }
 
+
+add_filter( 'get_search_form', 'custom_html5_search_form' );
+function custom_html5_search_form(){
+    if( is_404() ) {
+        $form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '">
+            <input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search our website', 'placeholder' ) . '" value="' . get_search_query() . '" name="s" />
+            <input type="submit" class="search-submit" value="' . esc_attr_x( 'Search', 'submit button' ) . '" />
+        </form>';
+        return $form;
+    }
+}
 
 
 add_filter('wpseo_title', 'filter_product_wpseo_title');

@@ -41,32 +41,35 @@
 	<?php endif; ?>
 
 <?php else :?>
-	<div class="lOffer-account-dropdown stm-login-form-unregistered">
-		<form method="post">
-			<?php do_action( 'stm_before_signin_form' ) ?>
-			<div class="form-group">
-				<h4><?php esc_html_e('Username or email', 'motors'); ?></h4>
-				<input type="text" name="stm_user_login" autocomplete="off" placeholder="<?php esc_attr_e('Enter username or email', 'motors') ?>"/>
-			</div>
+	<div class="dropdown-menu-wrapper">
+		<div class="lOffer-account-dropdown stm-login-form-unregistered">
+			<button class="stm-login-form-unregistered-close">&times;</button>
+			<form method="post">
+				<?php do_action( 'stm_before_signin_form' ) ?>
+				<div class="form-group">
+					<h4><?php esc_html_e('Username or email', 'motors'); ?></h4>
+					<input type="text" name="stm_user_login" autocomplete="off" placeholder="<?php esc_attr_e('Enter username or email', 'motors') ?>"/>
+				</div>
 
-			<div class="form-group">
-				<h4><?php esc_html_e('Password', 'motors'); ?></h4>
-				<input type="password" name="stm_user_password" autocomplete="off" placeholder="<?php esc_attr_e('Enter password', 'motors') ?>"/>
-			</div>
+				<div class="form-group">
+					<h4><?php esc_html_e('Password', 'motors'); ?></h4>
+					<input type="password" name="stm_user_password" autocomplete="off" placeholder="<?php esc_attr_e('Enter password', 'motors') ?>"/>
+				</div>
 
-			<div class="form-group form-checker">
-				<label>
-					<input type="checkbox" name="stm_remember_me" />
-					<span><?php esc_html_e('Remember me', 'motors'); ?></span>
-					<a href="/forgot-pass" class="forgot-url"><?php esc_html_e('Forgot password?', 'motors'); ?></a>
-				</label>
-			</div>
-            <?php if(class_exists('PMXI_Plugin')) : ?><input type="hidden" name="current_lang" value="<?php echo ICL_LANGUAGE_CODE; ?>"/><?php endif; ?>
-			<input type="submit" value="<?php esc_attr_e('Login', 'motors'); ?>"/>
-			<span class="stm-listing-loader"><i class="stm-icon-load1"></i></span>
-			<a href="<?php echo esc_url(stm_get_author_link('register')); ?>" class="stm_label"><?php esc_html_e('Sign Up', 'motors'); ?></a>
-			<div class="stm-validation-message"></div>
-			<?php do_action( 'stm_after_signin_form' ) ?>
-		</form>
+				<div class="form-group form-checker">
+					<label>
+						<input type="checkbox" name="stm_remember_me" />
+						<span><?php esc_html_e('Remember me', 'motors'); ?></span>
+						<a href="/forgot-pass" class="forgot-url"><?php esc_html_e('Forgot password?', 'motors'); ?></a>
+					</label>
+				</div>
+	            <?php if(class_exists('PMXI_Plugin')) : ?><input type="hidden" name="current_lang" value="<?php echo ICL_LANGUAGE_CODE; ?>"/><?php endif; ?>
+				<input type="submit" value="<?php esc_attr_e('Login', 'motors'); ?>"/>
+				<span class="stm-listing-loader"><i class="stm-icon-load1"></i></span>
+				<a href="<?php echo esc_url(stm_get_author_link('register')); ?>" class="stm_label"><?php esc_html_e('Sign Up', 'motors'); ?></a>
+				<div class="stm-validation-message"></div>
+				<?php do_action( 'stm_after_signin_form' ) ?>
+			</form>
+		</div>
 	</div>
 <?php endif; ?>
