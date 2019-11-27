@@ -848,7 +848,8 @@ $(document).on("click", ".lOffer-account-unit", function(){
 })
 
 $(document).on("click", ".stm-login-form-unregistered-close", function(e){
-    $(this).closest(".lOffer-account-dropdown").removeClass("lOffer-account-dropdown-open")
+    e.stopPropagation()
+    $(this).parent().removeClass("lOffer-account-dropdown-open")
 })
 
 })(jQuery)
