@@ -1,4 +1,7 @@
 <?php
+$user_id = get_post_meta(get_the_ID(), 'stm_car_user', true);
+$user_email = get_userdata($user_id)->user_email;
+$show_email = get_user_meta($user_id, 'stm_show_email', true);
 $post_id = get_the_ID();
 $car_title = get_post_meta($post_id, 'car_title', true);
 $car_condition = get_post_meta($post_id, 'condition', true);
@@ -503,34 +506,31 @@ if($car_title === ""){ //custom title prefix
                                         <div class="wpb_text_column wpb_content_element  vc_custom_1445945228480">
                                             <div class="wpb_wrapper">
                                                 <p style="line-height: 18px;"><span style="color: #888888; font-size: 13px;">
-                                                     <?php echo get_user_meta(get_current_user_id(), stm_seller_notes ,true); ?>
+                                                     <?php echo get_user_meta(get_current_user_id(), 'stm_seller_notes',true); ?>
                                                 </span></p>
 
                                             </div>
                                         </div>
 
-                                        <div class="icon-box vc_custom_1448604655830 icon_box_54380 stm-layout-box-car_dealer  " style="color:#232628">
-                                            <div class="boat-line"></div>
-                                            <div class="icon vc_custom_1448604655827 boat-third-color" style="font-size:30px;color:#cc621a; ">
-                                                <i class="stm-icon-pin"></i>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="content">
-                                                    <h5>
-                                                        <?php 
+	                                    <?php
+                                            $dealer_location = get_user_meta($user_id, 'stm_dealer_location', true);
+                                            if( $dealer_location ) : ?>
 
-                                                            if(empty(get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true))){
-
-                                                                echo "Hello my name is Muhammad";
-                                                            }
-
-
-                                                        echo get_user_meta(get_current_user_id(), 'stm_dealer_location' ,true);
-
-                                                         ?></h5>
+                                                <div class="icon-box vc_custom_1448604655830 icon_box_54380 stm-layout-box-car_dealer  " style="color:#232628">
+                                                    <div class="boat-line"></div>
+                                                    <div class="icon vc_custom_1448604655827 boat-third-color" style="font-size:30px;color:#cc621a; ">
+                                                        <i class="stm-icon-pin"></i>
+                                                    </div>
+                                                    <div class="icon-text">
+                                                        <div class="content">
+                                                            <h5>
+                                                                <?php echo $dealer_location; ?>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+
+                                        <?php endif; ?>
 
                                         <style>
                                         .icon_box_54380:after,
@@ -555,9 +555,9 @@ if($car_title === ""){ //custom title prefix
                                             <div class="icon-text">
                                                 <div class="content">
                                                     <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">PHONE:</span></h6>
-                                                    <a href="tel:<?php echo get_user_meta(get_current_user_id(), stm_phone ,true); ?>">
+                                                    <a href="tel:<?php echo get_user_meta($user_id, 'stm_phone',true); ?>">
                                                         <h5>
-                                                            <?php echo get_user_meta(get_current_user_id(), stm_phone ,true); ?>
+                                                            <?php echo get_user_meta($user_id, 'stm_phone' ,true); ?>
                                                         </h5>
                                                     </a> 
                                                     
@@ -580,22 +580,25 @@ if($car_title === ""){ //custom title prefix
                                         }
                                         </style>
 
-                                        <div class="icon-box vc_custom_1448604718190 icon_box_93931 stm-layout-box-car_dealer  " style="color:#232628">
-                                            <div class="boat-line"></div>
-                                            <div class="icon vc_custom_1448604718188 boat-third-color" style="font-size:30px;color:#cc621a; ">
-                                                <i class="stm-icon-mail"></i>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="content">
-                                                    <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">EMAIL:</span></h6>
-                                                    <h5><a href="mailto:<?php echo get_user_meta(get_current_user_id(), billing_email ,true); ?>">
-                                                            <?php echo get_user_meta(get_current_user_id(), billing_email ,true); ?>
-                                                        </a>
-                                                    </h5>
-                                                    
+                                        <?php if ( $user_email && $show_email === 'show' ) : ?>
+                                            <div class="icon-box vc_custom_1448604718190 icon_box_93931 stm-layout-box-car_dealer  " style="color:#232628">
+                                                <div class="boat-line"></div>
+                                                <div class="icon vc_custom_1448604718188 boat-third-color" style="font-size:30px;color:#cc621a; ">
+                                                    <i class="stm-icon-mail"></i>
+                                                </div>
+                                                <div class="icon-text">
+                                                    <div class="content">
+                                                        <h6 style="margin-bottom: 0; font-weight: 400;"><span style="color: #888888; font-size: 13px;">EMAIL:</span></h6>
+                                                        <h5><a href="mailto:<?php echo $user_email; ?>">
+                                                                <?php echo $user_email; ?>
+                                                            </a>
+                                                        </h5>
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+
+                                        <?php endif; ?>
 
                                         <style>
                                         .icon_box_93931:after,

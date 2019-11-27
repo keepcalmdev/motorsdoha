@@ -3129,7 +3129,6 @@
                 }
 
                 .mail {
-
                     a {
                         font-size: 12px;
                         font-weight: 400;
@@ -3181,14 +3180,12 @@
                 }
 
                 .social-links {
-
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
 
                     a {
                         display: inline-block;
-
                         color: rgba(255,255,255,0.5);
                         font-size: 20px;
                         font-weight: 700;
@@ -9448,6 +9445,49 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 }
 
 
+@media screen and (min-width: 1200px) {
+
+    .home .questions .content {
+        min-height: 120px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .stm-icon-box-adaptive-style-three.without-paddings {
+        .icon-box {
+            padding-left: 0;
+            .icon {
+                width: 65px;
+            }
+        }
+        .vc_col-sm-3:first-child {
+            .icon-box {
+                .icon {
+                    width: 80px;
+                }
+            }
+        }
+        .vc_col-sm-3:nth-child(2) {
+            .icon-box {
+                .icon {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .vc_col-sm-3:nth-child(3) {
+            .icon-box {
+                .icon {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+}
+
+
 @media screen and (max-width: 1600px) {
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9457,6 +9497,16 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 }
 
 @media screen and (max-width: 767px) {
+
+    .stm-icon-box-adaptive-style-three.without-paddings {
+        .icon-box {
+            padding-left: 0;
+            .icon {
+                margin-right: 0;
+                width: 100px;
+            }
+        }
+    }
 
     footer {
         .footer-copyright {
@@ -9494,7 +9544,6 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
     body.error404 #wrapper {
         background-image: url("../../images/404_mobile.jpg");
-
     }
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9536,8 +9585,6 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             }
         }
     }
-
-
 }
 
 @media screen and (max-width: 375px) {
@@ -9566,7 +9613,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     margin: 0 auto;
     text-align: center;
 }
-.reset-pass-form label { width: 100%; } 
+.reset-pass-form label { width: 100%; }
 .forgot-pass-wrapper input {
     margin-bottom: 15px;
 }

@@ -117,7 +117,11 @@ $user_fields = stm_get_user_custom_fields( $user->ID );
 						<div class="show-my-profile">
 							<a href="<?php echo esc_url(stm_get_author_link('myself-view')); ?>" target="_blank"><i class="fa fa-external-link"></i><?php esc_html_e('Show my Public Profile', 'motors'); ?></a>
 						</div>
-					<?php endif; ?>
+					<?php endif;
+
+					get_template_part('partials/user/private/motorsdoha', 'contacts');
+
+					?>
 
 				</div>
 			</div>

@@ -436,6 +436,7 @@ function stm_ma_get_listing_obj( $query )
                 'imgUrl' => $featureImg,
                 'sold_status' => (get_post_meta( get_the_ID(), 'car_mark_as_sold', true )) ? get_post_meta( get_the_ID(), 'car_mark_as_sold', true ) : 'off',
                 'views' => get_post_meta( get_the_ID(), 'stm_car_views', true ),
+                'post_status' => get_post_status( get_the_ID() ),
                 'gallery' => $gallery,
                 'imgCount' => count( $gallery ),
                 'price' => ( !empty( $price ) ) ? str_replace( '   ', ' ', stm_listing_price_view( trim( $price ) ) ) : 'No Price',

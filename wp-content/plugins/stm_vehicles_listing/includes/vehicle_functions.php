@@ -1427,8 +1427,8 @@ if (!function_exists('stm_user_listings_query')) {
 
         $args = array(
             'post_type' => 'listings',
-            'post_status' => $status,
             'posts_per_page' => $per_page,
+            'post_status' => $status,
             'offset' => $offset,
             'meta_query' => array(
                 'relation' => 'AND',

@@ -139,6 +139,9 @@ if(stm_is_boats()) {
 						<?php endif; ?>
 						
 					<?php endforeach; ?>
+		            <?php if (get_post_meta(get_the_ID(), 'fuel', true)): ?>
+		                <li><i class="stm-icon-fuel"></i><span><?php echo ucwords(get_post_meta(get_the_ID(), 'fuel', true)); ?></span></li>
+		            <?php endif ?>
 				</ul>
 			</div>
 			<?php endif; ?>

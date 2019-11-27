@@ -124,7 +124,11 @@ $link = add_query_arg(array('page_admin' => 'settings'), stm_get_author_link('')
 						<div class="show-my-profile">
 							<a href="<?php echo esc_url(stm_get_author_link('myself-view')); ?>" target="_blank"><i class="fa fa-external-link"></i><?php esc_html_e('Show my Public Profile', 'motors'); ?></a>
 						</div>
-					<?php endif; ?>
+					<?php endif;
+
+                    get_template_part('partials/user/private/motorsdoha', 'contacts');
+
+                    ?>
 
                     <div class="show-motorsdoha-contacts">
                         <img src="<?php echo get_template_directory_uri() . '/assets/images/Motorsdoha-Logo.png'; ?>" alt="Motors Doha logo">
