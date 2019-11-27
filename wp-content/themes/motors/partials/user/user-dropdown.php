@@ -23,6 +23,7 @@
 	?>
 
 	<div class="lOffer-account-dropdown login">
+		<button class="stm-login-form-unregistered-close">&times;</button>
 		<a href="<?php echo esc_url(add_query_arg(array('page' => 'settings'), stm_get_author_link(''))); ?>" class="settings">
 			<i class="stm-settings-icon stm-service-icon-cog"></i>
 		</a>
