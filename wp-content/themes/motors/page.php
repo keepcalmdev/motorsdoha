@@ -54,7 +54,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
             }
         ?>
 
-        <?php if(is_page(3877)){ ?>
+        <?php if(is_page(3877) || is_page(3965)){ ?>
         <!--forgot password-->
         <div class="forgot-pass-wrapper">
             <form action="" class="forgot-check-email-form">
@@ -92,7 +92,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
         </script>
         <?php }?>
 
-        <?php if(is_page(3879)){ //change pass 
+        <?php if(is_page(3879) || is_page(3967)){ //change pass 
 
             if( isset( $_GET["email"]) && !empty($_GET["email"]) ) {
                 echo "<input type='hidden' class='check_pss' name='get_pass' value=". $_GET["email"] ." />";
