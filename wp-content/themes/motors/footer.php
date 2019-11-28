@@ -94,6 +94,7 @@ if ( !stm_is_auto_parts() ) :
             console.log(year);
             if (make != '' && model != '' && year != '') {
                 $.get("<?php echo get_bloginfo('url'); ?>/wp-json/car/v1/getcardetails/?model="+model+"&year="+year+"&make="+make, function(data, status){
+                    $('input[name="stm_s_s_countryOfOrigin"], input[name="stm_s_s_class"], input[name="stm_s_s_bodyStyle"], input[name="stm_s_s_weight"], input[name="stm_s_s_engine_type"], input[name="stm_s_s_gearBox"], input[name="stm_s_s_power"], input[name="stm_s_s_torque"], input[name="stm_s_s_fuelEconomy100KMPL"], input[name="stm_s_s_fuelEconomyKMPL"], input[name="stm_s_s_zeroToHundred"], input[name="stm_s_s_topSpeed"]').removeClass('stm_has_value');
                     $('input[name="stm_s_s_countryOfOrigin"]').val('');
                     $('input[name="stm_s_s_class"]').val('');
                     $('input[name="stm_s_s_bodyStyle"]').val('');
@@ -108,17 +109,53 @@ if ( !stm_is_auto_parts() ) :
                     $('input[name="stm_s_s_topSpeed"]').val('');
                     if (data.length) {
                         $('input[name="stm_s_s_countryOfOrigin"]').val(data[0].countryOfOrigin);
+                        if (data[0].countryOfOrigin != '') {
+                            $('input[name="stm_s_s_countryOfOrigin"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_class"]').val(data[0].class);
+                        if (data[0].class != '') {
+                            $('input[name="stm_s_s_class"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_bodyStyle"]').val(data[0].bodyStyle);
+                        if (data[0].bodyStyle != '') {
+                            $('input[name="stm_s_s_bodyStyle"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_weight"]').val(data[0].weight);
+                        if (data[0].weight != '') {
+                            $('input[name="stm_s_s_weight"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_engine_type"]').val(data[0].engine);
+                        if (data[0].engine != '') {
+                            $('input[name="stm_s_s_engine_type"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_gearBox"]').val(data[0].gearBox);
+                        if (data[0].gearBox != '') {
+                            $('input[name="stm_s_s_gearBox"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_power"]').val(data[0].power);
+                        if (data[0].power != '') {
+                            $('input[name="stm_s_s_power"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_torque"]').val(data[0].torque);
+                        if (data[0].torque != '') {
+                            $('input[name="stm_s_s_torque"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_fuelEconomy100KMPL"]').val(data[0].fuelEconomy100KMPL);
-                        $('input[name="stm_s_s_fuelEconomyKMPL"]').val(data[0].fuelEconomyKMPL);
+                        if (data[0].fuelEconomy100KMPL != '') {
+                            $('input[name="stm_s_s_fuelEconomy100KMPL"]').addClass('stm_has_value');
+                        }
+                        $('input[name="stm_s_s_countryOfOrigin"]').val(data[0].fuelEconomyKMPL);
+                        if (data[0].fuelEconomyKMPL != '') {
+                            $('input[name="stm_s_s_countryOfOrigin"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_zeroToHundred"]').val(data[0].zeroToHundred);
+                        if (data[0].zeroToHundred != '') {
+                            $('input[name="stm_s_s_zeroToHundred"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_topSpeed"]').val(data[0].topSpeed);
+                        if (data[0].topSpeed != '') {
+                            $('input[name="stm_s_s_topSpeed"]').addClass('stm_has_value');
+                        }
                     }
                 });
             }
