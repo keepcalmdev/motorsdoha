@@ -1648,7 +1648,7 @@ span.wpcf7-form-control-wrap.checkbox-919 {
 
 input[name="stm_vin"],
 input[name="stm_registered"] {
-    background: #fff !important;
+    /*background: #fff !important;*/
 }
 
 .stm-template-car_dealer .stm-listing-directory-checkboxes.stm-two_cols .stm-accordion-content .stm-accordion-content-padded .stm-option-label {
