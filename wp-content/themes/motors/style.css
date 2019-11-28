@@ -1656,3 +1656,7 @@ input[name="stm_registered"] {
     margin: 0px !important;
     width: 100% !important;
 }
+
+.stm-deleted-adds {
+    display: none !important;
+}
