@@ -314,6 +314,9 @@ if ( !stm_is_auto_parts() ) :
                         // });
 
                     number += (parseInt($(this).text(), 10));
+                    if (number == 0) {
+                        number = 80;
+                    }
                     $('.car-first-form .col-lg-12 h2 i').text(number);
                 });
             }
@@ -352,6 +355,9 @@ if ( !stm_is_auto_parts() ) :
                     $(".car-first-form .checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
                     $('.car-first-form .update-prices .col-lg-6.text-right.text-dark p span').each(function(){
                         number += (parseInt($(this).text(), 10));
+                        if (number == 0) {
+                            number = 80;
+                        }
                         $('.car-first-form .col-lg-12 h2 i').text(number);
                     });
                  }, 700);
@@ -377,6 +383,9 @@ if ( !stm_is_auto_parts() ) :
                     $(".car-first-form .checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
                     $('.car-first-form .update-prices .col-lg-6.text-right.text-dark p span').each(function(){
                         number += (parseInt($(this).text(), 10));
+                        if (number == 0) {
+                            number = 80;
+                        }
                         $('.col-lg-12 h2 i').text(number);
                     });
                 } else {
@@ -386,6 +395,9 @@ if ( !stm_is_auto_parts() ) :
                     $(".car-first-form .checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
                     $('.car-first-form .update-prices .col-lg-6.text-right.text-dark p span').each(function(){
                         number += (parseInt($(this).text(), 10));
+                        if (number == 0) {
+                            number = 80;
+                        }
                         $('.col-lg-12 h2 i').text(number);
                     });
                 }
