@@ -1670,7 +1670,7 @@ input[name="stm_registered"] {
 }
 
 
-i.fa.fa-instagram {
+.instagram-icon i.fa.fa-instagram {
     background: #7e7e7e;
     color: #fff !important;
     padding: 2px 3px;
