@@ -277,7 +277,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <?php endif; ?>
         <?php } else {
             do_action('stm_hb', array('header' => 'stm_hb_settings'));
-        } ?>
+        }
+
+        if(is_404()) : ?>
+            <a  class="back-button" href="javascript:history.go(-1)">
+                <img src="<?php echo get_template_directory_uri() . '/assets/images/left-arrow.svg'; ?>" alt="left arrow">
+                <span><?php esc_html_e('Back', 'motors'); ?></span>
+            </a>
+        <?php endif; ?>
+
 		<div id="main" <?php if(stm_is_magazine()) echo 'style="margin-top: -80px;"'; ?>>
 
 

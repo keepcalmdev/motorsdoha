@@ -178,13 +178,15 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
         ));
         ?>
 
-        <div class="clearfix">
-            <?php
-            if (comments_open() || get_comments_number()) {
-                comments_template();
-            }
-            ?>
-        </div>
+	    <?php if( ! is_page( 156 ) ) : ?>
+            <div class="clearfix">
+                <?php
+                if (comments_open() || get_comments_number()) {
+                    comments_template();
+                }
+                ?>
+            </div>
+	    <?php endif; ?>
     </div>
 <?php endif; ?>
 <?php
