@@ -299,7 +299,7 @@ function get_car_make() {
 
 function get_car_model() {
 	global $wp_query;
-    $post_id = $wp_query->get_queried_object_id();
+    $post_id = $wp_query->get_queried_object_id();    
 	$data_meta = get_post_meta($post_id, 'serie', true);
 	$car_model = "";
 	$filter = stm_listings_filter();
