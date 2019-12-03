@@ -8975,6 +8975,22 @@
         }
     }
 
+    .stm-car-listing-sort-units .stm-view-by {
+        .view-type {
+            [class^="stm-icon-"], [class*=" stm-icon-"] {
+                line-height: 34px;
+            }
+            &.view-grid {
+                text-indent: 0;
+            }
+        }
+    }
+    .stm-blog-pagination .page-numbers {
+        .fa {
+            line-height: 32px;
+        }
+    }
+
     @import "sass/responsive";
 }
 
@@ -9981,7 +9997,5 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         }
     }
 }
-
-
 
 
