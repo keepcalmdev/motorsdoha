@@ -1048,7 +1048,10 @@ function stm_add_a_car()
             $status = 'pending';
         }
 
-        if (get_user_meta(get_current_user_id(), 'stm_dealer_location', true) == '') {
+        $user_meta = get_userdata(get_current_user_id());
+
+        if (!in_array('stm_dealer', $user_meta->roles)) {
+        // if (get_user_meta(get_current_user_id(), 'stm_dealer_location', true) == '') {
             $status = 'pending';
         }
 
