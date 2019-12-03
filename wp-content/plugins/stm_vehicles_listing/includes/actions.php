@@ -36,6 +36,7 @@ function stm_listings_template_actions() {
  */
 function stm_listings_ajax_results($source = null, $type = null) {
 
+
     $r = stm_listings_filter($source);
 
     $fragments = false;
@@ -47,6 +48,7 @@ function stm_listings_ajax_results($source = null, $type = null) {
         ob_start();
         stm_listings_load_results($source, $type);
         $r['html'] = ob_get_clean();
+
     }
 
     $r['filter_links']  = stm_get_car_filter_links();
