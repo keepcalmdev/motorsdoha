@@ -3,11 +3,19 @@ if(empty($affix)) {$affix = "";}
 if(empty($start_value)) {$start_value = 0;}
 if(empty($end_value)) {$end_value = 0;}
 ?>
-
 <script type="text/javascript">
     var stmOptions_<?php echo esc_attr($js_slug); ?>;
     (function ($) {
         $(document).ready(function () {
+
+            var minTxt = "Min";
+            var maxTxt = "Max";
+            var lang = $('html').attr("lang")
+            if(lang !== "en-US") {
+                minTxt = "الحد الأدنى";
+                maxTxt = "أقصى";
+            }
+
             var affix = "<?php echo esc_js($affix); ?>";
             var stmMinValue = <?php echo esc_js($start_value); ?>;
             var stmMaxValue = <?php echo esc_js($end_value); ?>;
@@ -18,8 +26,21 @@ if(empty($end_value)) {$end_value = 0;}
                 values: [<?php echo esc_js($min_value); ?>, <?php echo esc_js($max_value); ?>],
                 step: 1,
                 slide: function (event, ui) {
-                    $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(ui.values[0]);
-                    $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(ui.values[1]);
+                    var max = $( ".stm-price-range" ).slider( "option", "max" );
+                    var min = $( ".stm-price-range" ).slider( "option", "min" );
+                    //set min
+                    if(ui.values[0] == min) {
+                        $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(minTxt);
+                    } else {
+                        $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(ui.values[0]);                        
+                    }
+                    //set max
+                    if(ui.values[1] == max) {
+                        $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(maxTxt);
+                    } else {
+                        $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(ui.values[1]);
+                    }
+
                     <?php if($slug == 'price'): ?>
                     var stmCurrency = "<?php echo esc_js(stm_get_price_currency()); ?>";
                     var stmPriceDel = "<?php echo esc_js(get_theme_mod('price_delimeter',' ')); ?>";
@@ -38,6 +59,9 @@ if(empty($end_value)) {$end_value = 0;}
             $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val($(".stm-<?php echo esc_attr($slug); ?>-range").slider("values", 0));
             $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val($(".stm-<?php echo esc_attr($slug); ?>-range").slider("values", 1));
 
+            $("#stm_filter_min_price").val(minTxt);
+            $("#stm_filter_max_price").val(maxTxt);
+
             $("#stm_filter_min_<?php echo esc_attr($slug); ?>").keyup(function () {
                 $(".stm-<?php echo esc_attr($slug); ?>-range").slider("values", 0, $(this).val());
             });
@@ -47,6 +71,7 @@ if(empty($end_value)) {$end_value = 0;}
                     $(".stm-<?php echo esc_attr($slug); ?>-range").slider("values", 0, stmMinValue);
                     $(this).val(stmMinValue);
                 }
+                if($(this).val() == stmMinValue) {$(this).val(minTxt)}
             });
 
             $("#stm_filter_max_<?php echo esc_attr($slug); ?>").keyup(function () {
@@ -58,6 +83,7 @@ if(empty($end_value)) {$end_value = 0;}
                     $(".stm-<?php echo esc_attr($slug); ?>-range").slider("values", 1, stmMaxValue);
                     $(this).val(stmMaxValue);
                 }
+                if($(this).val() == stmMaxValue) {$(this).val(maxTxt)}
             });
         })
     })(jQuery);
