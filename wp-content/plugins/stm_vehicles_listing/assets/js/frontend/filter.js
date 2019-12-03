@@ -33,6 +33,9 @@ if (typeof (STMListings) == 'undefined') {
 
         url = url + sign + data.join('&');
 
+        url = url.replace("min_price=Min", "min_price=0");
+        url = url.replace("max_price=Max", "max_price=2000000");
+
         this.performAjax(url);
     };
 

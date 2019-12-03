@@ -4,6 +4,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
+
 <script type="text/javascript">
     var stmOptions_<?php echo esc_attr($js_slug); ?>;
     (function ($) {

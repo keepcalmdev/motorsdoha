@@ -28,23 +28,6 @@ if(empty($end_value)) {$end_value = 0;}
                 slide: function (event, ui) {
                     var max = $( ".stm-price-range" ).slider( "option", "max" );
                     var min = $( ".stm-price-range" ).slider( "option", "min" );
-                    //set min
-                    if(ui.values[0] == min) {
-                        setTimeout(function(){
-                            $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(minTxt);
-                        }, 1000)
-                    } else {
-                        $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(ui.values[0]);                        
-                    }
-                    //set max
-                    if(ui.values[1] == max) {
-                        setTimeout(function(){
-                            $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(maxTxt);                            
-                        }, 1000)
-                    } else {
-                        $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(ui.values[1]);
-                    }
-
                     <?php if($slug == 'price'): ?>
                     var stmCurrency = "<?php echo esc_js(stm_get_price_currency()); ?>";
                     var stmPriceDel = "<?php echo esc_js(get_theme_mod('price_delimeter',' ')); ?>";
@@ -55,6 +38,19 @@ if(empty($end_value)) {$end_value = 0;}
                     <?php endif; ?>
 
                     $('.filter-<?php echo esc_attr($slug); ?> .stm-current-slider-labels').html(stmText);
+
+                    //set min
+                    if(ui.values[0] == min) {
+                            $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(minTxt);
+                    } else {
+                        $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(ui.values[0]);                        
+                    }
+                    //set max
+                    if(ui.values[1] == max) {
+                            $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(maxTxt);                            
+                    } else {
+                        $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(ui.values[1]);
+                    }
                 }
             };
             $(".stm-<?php echo esc_attr($slug); ?>-range").slider(stmOptions_<?php echo esc_attr($js_slug); ?>);
@@ -75,7 +71,7 @@ if(empty($end_value)) {$end_value = 0;}
                     $(".stm-<?php echo esc_attr($slug); ?>-range").slider("values", 0, stmMinValue);
                     $(this).val(stmMinValue);
                 }
-                if($(this).val() == stmMinValue) {$(this).val(minTxt)}
+               if($(this).val() == stmMinValue) {$(this).val(minTxt)}
             });
 
             $("#stm_filter_max_<?php echo esc_attr($slug); ?>").keyup(function () {
