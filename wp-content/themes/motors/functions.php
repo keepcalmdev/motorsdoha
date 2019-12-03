@@ -283,19 +283,28 @@ if(strpos($actual_link , 'http://qprcar01.kinsta.cloud/ar/qprlogin/?action=logou
 
 }
 
+// $filter = stm_listings_filter();
+// echo var_export($filter, true);
+
 //SEO snippets
 function get_car_make() {
 	global $wp_query;
     $post_id = $wp_query->get_queried_object_id();
 	$data_meta = get_post_meta($post_id, 'make', true);
-    return ucfirst($data_meta);
+	$car_make = "";
+	$filter = stm_listings_filter();
+	$car_make = $filter["options"]["make"][$data_meta]["label"];
+    return $car_make;
 }
 
 function get_car_model() {
 	global $wp_query;
-    $post_id = $wp_query->get_queried_object_id();
+    $post_id = $wp_query->get_queried_object_id();    
 	$data_meta = get_post_meta($post_id, 'serie', true);
-    return ucfirst($data_meta);
+	$car_model = "";
+	$filter = stm_listings_filter();
+	$car_model = $filter["options"]["serie"][$data_meta]["label"];
+    return $car_model;
 }
 function get_car_year() {
 	global $wp_query;

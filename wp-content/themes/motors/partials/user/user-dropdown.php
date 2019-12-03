@@ -66,9 +66,11 @@
 					</label>
 				</div>
 	            <?php if(class_exists('PMXI_Plugin')) : ?><input type="hidden" name="current_lang" value="<?php echo ICL_LANGUAGE_CODE; ?>"/><?php endif; ?>
-				<input type="submit" value="<?php esc_attr_e('Login', 'motors'); ?>"/>
-				<span class="stm-listing-loader"><i class="stm-icon-load1"></i></span>
-				<a href="<?php echo esc_url(stm_get_author_link('register')); ?>" class="stm_label"><?php esc_html_e('Sign Up', 'motors'); ?></a>
+	            <div class="row-drop">
+					<input type="submit" value="<?php esc_attr_e('Login', 'motors'); ?>"/>
+					<span class="stm-listing-loader"><i class="stm-icon-load1"></i></span>
+					<a href="<?php echo esc_url(stm_get_author_link('register')); ?>" class="stm_label"><?php esc_html_e('Sign Up', 'motors'); ?></a>
+				</div>
 				<div class="stm-validation-message"></div>
 				<?php do_action( 'stm_after_signin_form' ) ?>
 			</form>

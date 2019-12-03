@@ -9859,7 +9859,35 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         opacity: 0;
         visibility: hidden;
     }
+    //arabic
+    .rtl .lOffer-account-dropdown  h4 {text-align: right;}
+    .rtl .lOffer-account-dropdown .form-checker {text-align: right;}
+    .rtl .stm-login-form-unregistered-close {right: auto; left: 0;}
+    .rtl .row-drop {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+    .rtl .lOffer-account-dropdown .account-list li {text-align: right;}
+    .rtl .lOffer-account-dropdown .settings {
+        float: right;
+        margin-right: 0;
+        text-align: right !important;
+    }
+    .rtl .lOffer-account-dropdown .name {
+        float: right;
+    }
 
+}
+
+#stm_filter_max_price,
+#stm_filter_min_price {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media (min-width: 993px) {
+    .single-add-to-compare-visible { top: 52px !important; }
 }
 
 @media screen and (min-width: 651px) and (max-width: 768px) {

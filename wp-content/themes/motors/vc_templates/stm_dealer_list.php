@@ -23,7 +23,7 @@ $filters = array(
 	'alphabet' => esc_html__('Alphabet', 'motors'),
 	'reviews' => esc_html__('Reviews', 'motors'),
 	'date' => esc_html__('Date', 'motors'),
-	'cars' => esc_html__('Cars number', 'motors'),
+	'cars' => esc_html__('Number of Cars', 'motors'),
 	'watches' => esc_html__('Popularity', 'motors')
 );
 

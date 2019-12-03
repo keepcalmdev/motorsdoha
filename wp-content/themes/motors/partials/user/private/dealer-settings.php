@@ -470,16 +470,14 @@
 							</div>
 						</div>
 	                    <!-- Start WhatsApp number -->
-	                    <div class="row">
-	                        <div class="col-md-6 col-sm-6">
-	                            <div class="form-group">
-	                                <div class="stm-label h4"><?php esc_html_e('WhatsApp phone', 'motors'); ?></div>
-	                                <input class="form-control" type="text" name="stm_whatsapp_phone"
-	                                       value="<?php echo esc_attr($user['stm_whatsapp_phone']); ?>"
-	                                       placeholder="<?php esc_attr_e('Enter WhatsApp phone', 'motors'); ?>"/>
-	                            </div>
-	                        </div>
-	                    </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <div class="stm-label h4"><?php esc_html_e('WhatsApp phone', 'motors'); ?></div>
+                                <input class="form-control" type="text" name="stm_whatsapp_phone"
+                                       value="<?php echo esc_attr($user['stm_whatsapp_phone']); ?>"
+                                       placeholder="<?php esc_attr_e('Enter WhatsApp phone', 'motors'); ?>"/>
+                            </div>
+                        </div>
 	                    <!-- End WhatsApp number -->
 					</div>
 					<div class="row">
