@@ -964,7 +964,7 @@
 
     .listing-list-loop.stm-listing-directory-list-loop .content .meta-top .price,
     .listing-list-loop.stm-listing-directory-list-loop .content .meta-top .price:before {
-        background-color: $blue-ap;
+        background-color: #c4862b;
     }
 
     .listing-list-loop.stm-listing-directory-list-loop .content .meta-top {
@@ -1515,39 +1515,85 @@
         margin-top: 8px;
     }
 
-    .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price:before {
-        -moz-transform: skew(-17deg, 0deg);
-        -o-transform: skew(-17deg, 0deg);
-        -ms-transform: skew(-17deg, 0deg);
-        -webkit-transform: skew(-17deg, 0deg);
-        transform: skew(-17deg, 0deg);
-    }
-
     .listing-list-loop {
         .content {
             .meta-top {
                 .price {
 
+                    background-color: #c4862b;
+
                     &:before {
-                        bottom: 0;
-                        height: inherit;
-                        transform: skew(-23deg,0deg) translateZ(0);
+                        left: -17px;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 0 0 44px 17px;
+                        border-color: transparent transparent #c4862b transparent;
+                        transform: none;
+                        background-color: transparent!important;
                     }
 
                     .normal-price {
-                        min-height: 49px;
-                        padding: 13px 8px 11px 4px;
+                        height: 44px;
+                        padding: 11px 8px 11px 4px;
+
+                        .heading-font {
+                            margin-left: 15px;
+                        }
                     }
                 }
             }
         }
     }
 
+    .car-listing-row {
+        .listing-car-item-meta {
+            .price {
+                height: 35px;
+                &:before {
+                    left: -17px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 0 35px 17px;
+                    border-color: transparent transparent #c4862b transparent;
+                    transform: none;
+                    background-color: transparent !important;
+                }
+                .normal-price {
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+
+    .listing-car-items .listing-car-item .price {
+        height: 46px;
+        &:before {
+            left: -17px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 46px 17px;
+            border-color: transparent transparent #c4862b transparent;
+            transform: none;
+            background-color: transparent !important;
+        }
+    }
+
+    .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price:before {
+        border-bottom-width: 40px;
+    }
+
     .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price .normal-price {
         padding: 8px 16px 8px 0;
+        height: 40px;
         font-size: 20px;
         word-spacing: 2px;
         letter-spacing: -2px;
+        .heading-font {
+            margin-left: 5px;
+        }
     }
 
     .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price .normal-price .label-price {
@@ -1597,15 +1643,15 @@
         content: '';
         display: block;
         top: 0;
-        left: -11px;
-        height: 100%;
-        width: 32px;
         background-color: $listing_green;
-        -moz-transform: skew(-23deg, 0deg);
-        -o-transform: skew(-23deg, 0deg);
-        -ms-transform: skew(-23deg, 0deg);
-        -webkit-transform: skew(-23deg, 0deg);
-        transform: skew(-23deg, 0deg);
+        left: -17px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 40px 17px;
+        border-color: transparent transparent #c4862b transparent;
+        transform: none!important;
+        background-color: transparent!important;
         z-index: -1;
     }
 
@@ -3297,6 +3343,9 @@
 
     .stm-directory-grid-loop .image {
         position: relative;
+        img {
+            width: 100%;
+        }
     }
 
     .stm-directory-grid-loop .image .stm-listing-compare {
@@ -9283,6 +9332,7 @@
     .header-menu ul.sub-menu {
         list-style-type: none !important;
         padding-right: 0;
+        padding-left: 0;
     }
     .rtl .main-mob-btn-wrapper .btn-left-icon img {
         margin-right: 0;
@@ -9444,11 +9494,15 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         font-size: 14px;
     }
     .phone-number {
-        display: block;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
         color: #888;
         cursor: pointer;
         transition: all 0.3s ease;
+        i {
+            margin-right: 5px;
+        }
         &:hover {
             color: #fff;
         }
@@ -9477,6 +9531,16 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         }
     }
     .rtl & {
+        .phone-number {
+            flex-direction: row-reverse;
+            direction: ltr;
+            span {
+                margin-right: 5px;
+            }
+            i {
+                margin-right: 0;
+            }
+        }
         .socials ul {
             li {
                 &:first-child {
@@ -9685,7 +9749,6 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 }
 
 
-.rtl .wpb_column { width: 100%; }
 .rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
 .rtl .wpb_column .icon-box {display: flex;}
 .rtl .wpb_wrapper {text-align: right;}
@@ -9820,10 +9883,13 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             }
 
             .stm-dealer-phone .phone {
-                direction: rtl;
                 text-align: right;
             }
         }
+    }
+
+    .contacts .icon-box:nth-child(3) .icon-text .content {
+        direction: ltr;
     }
 
     @media screen and (max-width: 1024px) {
