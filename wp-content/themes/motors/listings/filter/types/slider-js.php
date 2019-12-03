@@ -30,13 +30,17 @@ if(empty($end_value)) {$end_value = 0;}
                     var min = $( ".stm-price-range" ).slider( "option", "min" );
                     //set min
                     if(ui.values[0] == min) {
-                        $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(minTxt);
+                        setTimeout(function(){
+                            $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(minTxt);
+                        }, 1000)
                     } else {
                         $("#stm_filter_min_<?php echo esc_attr($slug); ?>").val(ui.values[0]);                        
                     }
                     //set max
                     if(ui.values[1] == max) {
-                        $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(maxTxt);
+                        setTimeout(function(){
+                            $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(maxTxt);                            
+                        }, 1000)
                     } else {
                         $("#stm_filter_max_<?php echo esc_attr($slug); ?>").val(ui.values[1]);
                     }
