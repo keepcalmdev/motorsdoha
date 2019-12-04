@@ -344,6 +344,24 @@ function register_custom_yoast_variables() {
 // Add action
 add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables');
 
+//Delete metatags
+add_filter("wpseo_metadesc", "remove_yoast_og");
+add_filter("wpseo_title", "remove_yoast_og");
+add_filter("wpseo_opengraph_desc", "remove_yoast_og");
+add_filter("wpseo_opengraph_title", "remove_yoast_og");
+add_filter("wpseo_twitter_description", "remove_yoast_og");
+add_filter("wpseo_twitter_title", "remove_yoast_og");
+
+function remove_yoast_og($description) {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+    $categories = get_post_type( $post_id );
+
+    if ( is_page( 639 ) || $categories === "listings" ) {
+        return false;
+    }
+}
+//end delete metatags
 
 
 
