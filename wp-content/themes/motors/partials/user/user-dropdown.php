@@ -15,7 +15,14 @@
 		$my_fav = get_the_author_meta('stm_user_favourites', $user->ID);
 
 		if(!empty($my_fav)) {
-			$my_fav = count(array_filter(explode(',', $my_fav)));
+			$arrayFav = array_filter(explode(',', $my_fav));
+			$countArr = 0;
+			foreach ($arrayFav as $key => $value) {
+				if (get_post_status($value) == 'publish') {
+					$countArr++;
+				}
+			}
+			$my_fav = $countArr;
 		} else {
 			$my_fav = 0;
 		}
