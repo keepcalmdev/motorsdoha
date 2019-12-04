@@ -230,6 +230,8 @@ if( is_page( 639 ) ) {
     //}
 
     //additional metatags
+    $title = str_replace("،",",",$title);
+    $desc = str_replace("،",",",$desc);     
     $ogtitle = '<meta property="og:title" content="'.$title.'" />';
     $ogdesc = '<meta property="og:description" content="'.$desc.'" />';
     $twtitle = '<meta name="twitter:title" content="'.$title.'" />';
@@ -312,6 +314,8 @@ if ($categories === "listings") {
     echo "<title>".str_replace("،",",",$title)."</title>"."\n";
     echo '<meta name="description" content="'. str_replace("،",",",$desc).'" />'."\n";
     //additional metatags
+    $title = str_replace("،",",",$title);
+    $desc = str_replace("،",",",$desc);  
     $ogtitle = '<meta property="og:title" content="'.$title.'" />';
     $ogdesc = '<meta property="og:description" content="'.$desc.'" />';
     $twtitle = '<meta name="twitter:title" content="'.$title.'" />';
