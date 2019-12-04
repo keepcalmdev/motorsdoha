@@ -226,9 +226,17 @@ if( is_page( 639 ) ) {
 
     //     echo '<meta name="description" content="'. $responseDecoded['data']['translations'][0]['translatedText'] .'" />';
     //}  else {
-         echo '<meta name="description" content="'. str_replace("،",",",$desc) .'" />';
+         echo '<meta name="description" content="'. str_replace("،",",",$desc) .'" />'."\n";
     //}
 
+    //additional metatags
+    $ogtitle = '<meta property="og:title" content="'.$title.'" />';
+    $ogdesc = '<meta property="og:description" content="'.$desc.'" />';
+    $twtitle = '<meta name="twitter:title" content="'.$title.'" />';
+    $twdes = '<meta name="twitter:description" content="'.$desc.'" />';
+    $metatags = $ogtitle . "\n" . $ogdesc . "\n" . $twtitle . "\n" . $twdes . "\n";
+    echo $metatags;
+    //end additional metatags     
 
 
 }
@@ -302,8 +310,15 @@ if ($categories === "listings") {
         }        
     }
     echo "<title>".str_replace("،",",",$title)."</title>"."\n";
-    echo '<meta name="description" content="'. str_replace("،",",",$desc).'" />';
-
+    echo '<meta name="description" content="'. str_replace("،",",",$desc).'" />'."\n";
+    //additional metatags
+    $ogtitle = '<meta property="og:title" content="'.$title.'" />';
+    $ogdesc = '<meta property="og:description" content="'.$desc.'" />';
+    $twtitle = '<meta name="twitter:title" content="'.$title.'" />';
+    $twdes = '<meta name="twitter:description" content="'.$desc.'" />';
+    $metatags = $ogtitle . "\n" . $ogdesc . "\n" . $twtitle . "\n" . $twdes . "\n";
+    echo $metatags;
+    //end additional metatags  
 
 
 }
