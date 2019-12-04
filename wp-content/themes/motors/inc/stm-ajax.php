@@ -394,7 +394,14 @@ function stm_ajax_add_to_favourites()
 
             $user_added_fav = get_the_author_meta('stm_user_favourites', $user_id);
             $user_added_fav = count(array_filter(explode(',', $user_added_fav)));
-            $response['count'] = intval($user_added_fav);
+            $user_added_fav_count = array_filter(explode(',', get_user_meta($user_id, 'stm_user_favourites', true)));
+            $count2=0;
+            foreach ($user_added_fav_count as $key => $user_added_fav_count_z) {
+                if (get_post_status($user_added_fav_count_z) == 'publish') {
+                    $count2++;
+                }
+            }
+            $response['count'] = $count2;
         }
     }
 
@@ -410,9 +417,9 @@ function stm_ajax_get_favourites()
 {
     check_ajax_referer('stm_ajax_get_favourites', 'security');
 
-	$ids = array_filter(
-		explode(',', get_the_author_meta('stm_user_favourites', get_current_user_id() ) )
-	);
+    $ids = array_filter(
+        explode(',', get_the_author_meta('stm_user_favourites', get_current_user_id() ) )
+    );
 
     wp_send_json( $ids );
     exit;
@@ -621,10 +628,10 @@ if (!function_exists('stm_submit_review')) {
 
         if (!$error) {
 
-	        if( get_theme_mod('dealer_review_moderation', false) )
-		        $post_status = 'pending';
-		    else
-			    $post_status = 'publish';
+            if( get_theme_mod('dealer_review_moderation', false) )
+                $post_status = 'pending';
+            else
+                $post_status = 'publish';
 
             $post_data = array(
                 'post_type' => 'dealer_review',
@@ -1224,7 +1231,7 @@ function stm_ajax_get_cars_for_inventory_map()
         'posts_per_page' => -1
     )));
 
-	$mapLocationCar = array();
+    $mapLocationCar = array();
     $carsData = array();
     $markers = array();
     $i = 0;
@@ -1244,14 +1251,14 @@ function stm_ajax_get_cars_for_inventory_map()
             $carMeta = get_post_meta($val->ID, "");
             $img = "<img src='" . get_template_directory_uri() . "/assets/images/plchldr255.png" . "'/>";
             if(has_post_thumbnail($val->ID)) {
-	            $img = (!empty(get_the_post_thumbnail($val->ID, 'full'))) ? get_the_post_thumbnail($val->ID, 'full') : '';
-	        }
+                $img = (!empty(get_the_post_thumbnail($val->ID, 'full'))) ? get_the_post_thumbnail($val->ID, 'full') : '';
+            }
 
             $price = (isset($carMeta["price"])) ? stm_listing_price_view($carMeta["price"][0]) : 0 .' '.  stm_get_price_currency();
             if(isset($carMeta["sale_price"]) && $carMeta["sale_price"][0] != null && !empty($carMeta["sale_price"][0])) $price = stm_listing_price_view($carMeta["sale_price"][0]);
 
-			$car_price_form_label = get_post_meta($val->ID, 'car_price_form_label', true);
-			if(!empty($car_price_form_label)) $price = $car_price_form_label;
+            $car_price_form_label = get_post_meta($val->ID, 'car_price_form_label', true);
+            if(!empty($car_price_form_label)) $price = $car_price_form_label;
 
             $carsData[$i]["id"]             = $val->ID;
             $carsData[$i]["link"]           = get_the_permalink($val->ID);
@@ -1270,16 +1277,16 @@ function stm_ajax_get_cars_for_inventory_map()
             $markers[$i]["lat"] = (double) $carMeta["stm_lat_car_admin"][0];
             $markers[$i]["lng"] = (double) $carMeta["stm_lng_car_admin"][0];
 
-			$mapLocationCar[(string) $markers[$i]["lat"]][] = $i;
+            $mapLocationCar[(string) $markers[$i]["lat"]][] = $i;
             $i++;
         }
     }
 
     wp_reset_query();
 
-	$GLOBALS['listings_query'] = $response;
+    $GLOBALS['listings_query'] = $response;
     $data = apply_filters( 'stm_ajax_cars_for_map', array( "carsData" => $carsData, "markers" => $markers, "mapLocationCar" => $mapLocationCar ) );
-	echo json_encode( $data );
+    echo json_encode( $data );
     exit;
 }
 
@@ -1303,13 +1310,13 @@ function stm_ajax_rental_check_car_in_current_office() {
 
     check_ajax_referer('stm_ajax_rental_check_car_in_current_office', 'security');
 
-	$cart_items = stm_get_cart_items();
-	$car_rent = $cart_items['car_class'];
-	$id = $car_rent['id'];
+    $cart_items = stm_get_cart_items();
+    $car_rent = $cart_items['car_class'];
+    $id = $car_rent['id'];
 
-	$pickUpLocationMeta = explode(',', get_post_meta($id, 'stm_rental_office', true));
+    $pickUpLocationMeta = explode(',', get_post_meta($id, 'stm_rental_office', true));
 
-	wp_send_json((array_search($_GET['rental_office_id'], $pickUpLocationMeta) === false && !empty($id)) ? $responce['responce'] = "EMPTY" : $responce['responce'] = "INSTOCK");
+    wp_send_json((array_search($_GET['rental_office_id'], $pickUpLocationMeta) === false && !empty($id)) ? $responce['responce'] = "EMPTY" : $responce['responce'] = "INSTOCK");
     exit;
 }
 
@@ -1320,21 +1327,21 @@ function stm_ajax_check_is_available_car_date() {
 
     check_ajax_referer('stm_ajax_check_is_available_car_date', 'security');
 
-	$startDate = $_GET['startDate'];
-	$endDate = $_GET['endDate'];
+    $startDate = $_GET['startDate'];
+    $endDate = $_GET['endDate'];
 
-	$cart_items = stm_get_cart_items();
-	$car_rent = $cart_items['car_class'];
-	$id = $car_rent['id'];
+    $cart_items = stm_get_cart_items();
+    $car_rent = $cart_items['car_class'];
+    $id = $car_rent['id'];
 
-	$checkOrderAvailable = stm_checkOrderAvailable($id, $startDate, $endDate);
+    $checkOrderAvailable = stm_checkOrderAvailable($id, $startDate, $endDate);
 
-	$formatedDates = array();
-	foreach ($checkOrderAvailable as $val){
-		$formatedDates[] = stm_get_formated_date($val, 'd M');
-	}
+    $formatedDates = array();
+    foreach ($checkOrderAvailable as $val){
+        $formatedDates[] = stm_get_formated_date($val, 'd M');
+    }
 
-	wp_send_json((count($checkOrderAvailable) > 0) ? $responce['responce'] = esc_html__('This Class is already booked in: ', 'motors') . "<span>" . implode(', ', $formatedDates) . "</span>." : $responce['responce'] = '');
+    wp_send_json((count($checkOrderAvailable) > 0) ? $responce['responce'] = esc_html__('This Class is already booked in: ', 'motors') . "<span>" . implode(', ', $formatedDates) . "</span>." : $responce['responce'] = '');
     exit;
 }
 
@@ -1345,7 +1352,7 @@ function stm_ajax_get_recent_posts_magazine() {
 
     check_ajax_referer('stm_ajax_get_recent_posts_magazine', 'security');
 
-	$posts_per_page = $_GET['posts_per_page'];
+    $posts_per_page = $_GET['posts_per_page'];
 
     $args = array(
         'post_type'      => 'post',
@@ -1376,7 +1383,7 @@ function stm_ajax_get_recent_posts_magazine() {
 
     $result['html'] = ob_get_clean();
 
-	wp_send_json($result);
+    wp_send_json($result);
     exit;
 }
 
@@ -1388,7 +1395,7 @@ function stm_ajax_sticky_posts_magazine() {
     check_ajax_referer('stm_ajax_sticky_posts_magazine', 'security');
 
     $sticky = get_option('sticky_posts');
-	//$posts_per_page = $_GET['posts_per_page'];
+    //$posts_per_page = $_GET['posts_per_page'];
 
     $args = array(
         'post_type' => 'any',
@@ -1445,7 +1452,7 @@ function stm_ajax_sticky_posts_magazine() {
     $result['html'] = ob_get_clean();
 
     wp_reset_postdata();
-	wp_send_json($result);
+    wp_send_json($result);
     exit;
 }
 
