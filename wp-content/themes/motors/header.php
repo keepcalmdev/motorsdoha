@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 
 
 
@@ -327,6 +327,52 @@ if ($categories === "listings") {
 
 }
 
+// echo "sraka";
+// echo get_locale(); 
+// echo  is_page( 707 );
+// global $post;
+// echo $post->ID;
+//seperate pages arabic metatags
+global $post;
+if(
+    is_page( 5 ) || //home
+    is_page( 1806 ) || //Delears
+    $post->ID == 748 || //Blog/Newsroom
+    is_page( 370 ) || //About us
+    is_page( 712 )  //Contacts
+){
+    if(get_locale() != "en_US"){ //ar
+        remove_action( 'wp_head', '_wp_render_title_tag', 1 );
+
+        $title = "";
+        $desc = "";
+       
+
+        if( is_page( 5 ) ){ //home
+            $title = "سيارات للبيع في قطر، اشترِ سيارة جديدة ومستعملة | مواتر الدوحة";
+            $desc = "اعثر على السيارات الجديدة والمستعملة من التجار الموثوقين. احصل على أفضل الأسعار للسيارات المعروضة للبيع في الدوحة، قطر. قم بشراء سيارة أو بيع سيارتك المستعملة بسهولة.";
+        }
+        if( is_page( 1806 ) ){ //Delears
+            $title = "تجار ووكلاء السيارات في قطر، وكالات السيارات الجديدة والمستعملة | مواتر الدوحة";
+            $desc = "اعثر على تاجر سيارات في الدوحة، قطر. اختر السيارة المناسبة من بين آلاف العروض واشتريها مباشرةً. وكالات السيارات الجديدة والمستعملة القريبة منك.";
+        }
+        if( $post->ID == 748 ){ //Blog/Newsroom
+            $title = "مقالات وتقارير، إرشادات ونصائح لشراء سيارة | مواتر الدوحة";
+            $desc = "إرشادات للبحث عن سيارة وشرائها. كل ما تحتاج لمعرفته حول شراء سيارة جديدة أو مستعملة. اقرأ مقالات الخبراء وآخر أخبار السيارات.";
+        }
+        if( is_page( 370 ) ){ //About us
+            $title = "عن MotorsDoha.com | سيارات للبيع في قطر ";
+            $desc = "اعرف أكثر عن MotorsDoha.com. اعثر على السيارات الجديدة أو المستعملة من التجار الموثوقين في قطر.";
+        }
+        if( is_page( 712 ) ){ //Contacts
+            $title = "اتصل بنا | MotorsDoha.com";
+            $desc = "اتصل بنا إذا كان لديك أي سؤال يتعلق بشراء أو بيع سيارة على موقع MotorsDoha.com. ويمكنك ترك تعليقاتك حول الموقع أو تقديم مقترح أو شكوى.";
+        }
+        
+        echo "<title>".str_replace("،",",",$title)."</title>"."\n";
+        echo '<meta name="description" content="'. str_replace("،",",",$desc) .'" />'."\n";
+    }
+}
 
 ?>
 
