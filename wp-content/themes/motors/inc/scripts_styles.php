@@ -222,6 +222,7 @@ function stm_load_theme_ss()
         'remove_from_compare' => __( 'Remove from compare', 'motors' ),
         'remove_from_favorites' => __( 'Remove from favorites', 'motors' ),
     ) );
+    wp_enqueue_style( 'sep', get_theme_file_uri( '/assets/css/sep.css' ) );
 }
 
 // Admin styles
