@@ -138,8 +138,7 @@ if( is_page( 639 ) ) {
         if( $car_make === "" && $car_model === "" ) {
             if(get_locale() != "en_US"){ //ar
                 $title = "سيارات مستعمله للبيع في قطر، اشترِ سيارة مستعملة | مواتر الدوحة";
-                $desc = 'متجر للسيارات المستعملة عبر الإنترنت. اعثر علي أفضل العروض المحلية في قطر. تشكيلة كبيرة من السيارات المستعملة
-                        والمملوكة مُسبقًا من المالكين المعتمدين.';
+                $desc = 'متجر للسيارات المستعملة عبر الإنترنت. اعثر علي أفضل العروض المحلية في قطر. تشكيلة كبيرة من السيارات المستعملة والمملوكة مُسبقًا من المالكين المعتمدين.';
             } else {
                 $title = "Used Cars for Sale in Qatar, Buy Second Hand Car | MotorsDoha";
                 $desc = 'Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners.';
