@@ -9750,6 +9750,17 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     .single-add-to-compare-visible { top: 52px !important; }
 }
 
+@media (max-width: 992px){
+    .special-offers .listing-car-item-meta .car-meta-top {
+        height: auto !important;
+    }
+
+    .special-offers .listing-car-item-meta .car-meta-top .car-title {
+        display: block !important;
+    }
+}
+
+
 
 
 
