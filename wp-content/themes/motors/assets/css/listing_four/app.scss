@@ -9915,12 +9915,16 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
 }
 @media (max-width: 992px){
-    .special-offers .listing-car-item-meta .car-meta-top {
+    .listing-car-items .listing-car-item .listing-car-item-meta div.car-meta-top {
         height: auto !important;
     }
 
     .special-offers .listing-car-item-meta .car-meta-top .car-title {
         display: block !important;
+    }
+
+    .special-offers .listing-car-item-meta .car-meta-top .stm-base-color {
+        display: block;
     }
 }
 
