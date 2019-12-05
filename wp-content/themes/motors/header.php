@@ -107,8 +107,7 @@ if( is_page( 639 ) ) {
         if( $car_make === "" && $car_model === "" ) { //new default
             if(get_locale() != "en_US"){ //ar
                 $title = "سيارات جديدة في قطر، مقالات وأسعار، اشترِ سيارة جديدة | مواتر الدوحة";
-                $desc = 'ابحث عن سيارات جديدة للبيع فى قطر. شاهد أحدث عروض السيارات الجديدة واحصل على السعر من التُجار والوكلاء
-                        مباشرةً. قارن السيارات وأقرأ آخر الأخبار والمقالات.';
+                $desc = 'ابحث عن سيارات جديدة للبيع فى قطر. شاهد أحدث عروض السيارات الجديدة واحصل على السعر من التُجار والوكلاء مباشرةً. قارن السيارات وأقرأ آخر الأخبار والمقالات.';
             } else { //en
                 $title ="New Cars in Qatar, Reviews and Prices, Buy New Car | MotorsDoha "; //en
                 $desc = 'Research new cars for sale in Qatar. View the latest new car offers, get the price from dealers. Compare cars, read latest news and reviews.';
