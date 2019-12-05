@@ -211,7 +211,7 @@ if( is_page( 639 ) ) {
 
     //     echo "<title>".$responseDecoded['data']['translations'][0]['translatedText']."</title>"."\n";
     // }  else {
-        echo "<title>".str_replace("،",",",$title)."</title>"."\n";
+        echo "<title>".preg_replace('/\s\s+/', ' ', str_replace("،",",",$title) ) ."</title>"."\n";
     //}
 
     // if( get_locale() != "en_US") {
@@ -226,7 +226,7 @@ if( is_page( 639 ) ) {
 
     //     echo '<meta name="description" content="'. $responseDecoded['data']['translations'][0]['translatedText'] .'" />';
     //}  else {
-         echo '<meta name="description" content="'. str_replace("،",",",$desc) .'" />'."\n";
+         echo '<meta name="description" content="'.preg_replace('/\s\s+/', ' ', str_replace("،",",",$desc) )  .'" />'."\n";
     //}
 
     //additional metatags
@@ -311,11 +311,11 @@ if ($categories === "listings") {
 
         }        
     }
-    echo "<title>".str_replace("،",",",$title)."</title>"."\n";
-    echo '<meta name="description" content="'. str_replace("،",",",$desc).'" />'."\n";
+    echo "<title>".preg_replace('/\s\s+/', ' ', str_replace("،",",",$title) ) ."</title>"."\n";
+    echo '<meta name="description" content="'.preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) ) .'" />'."\n";
     //additional metatags
-    $title = str_replace("،",",",$title);
-    $desc = str_replace("،",",",$desc);  
+    $title = preg_replace('/\s\s+/', ' ',str_replace("،",",",$title) ) ;
+    $desc = preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) ) ;  
     $ogtitle = '<meta property="og:title" content="'.$title.'" />';
     $ogdesc = '<meta property="og:description" content="'.$desc.'" />';
     $twtitle = '<meta name="twitter:title" content="'.$title.'" />';
@@ -369,8 +369,8 @@ if(
             $desc = "اتصل بنا إذا كان لديك أي سؤال يتعلق بشراء أو بيع سيارة على موقع MotorsDoha.com. ويمكنك ترك تعليقاتك حول الموقع أو تقديم مقترح أو شكوى.";
         }
         
-        echo "<title>".str_replace("،",",",$title)."</title>"."\n";
-        echo '<meta name="description" content="'. str_replace("،",",",$desc) .'" />'."\n";
+        echo "<title>". preg_replace('/\s\s+/', ' ',str_replace("،",",",$title) ) ."</title>"."\n";
+        echo '<meta name="description" content="'. preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) )  .'" />'."\n";
     }
 }
 
