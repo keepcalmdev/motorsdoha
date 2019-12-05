@@ -36,6 +36,9 @@ if (typeof (STMListings) == 'undefined') {
         url = url.replace("min_price=Min", "min_price=0");
         url = url.replace("max_price=Max", "max_price=2000000");
 
+        url = url.replace("min_price=الحد الأدنى", "min_price=0");
+        url = url.replace("max_price=أقصى", "max_price=2000000");
+
         this.performAjax(url);
     };
 
