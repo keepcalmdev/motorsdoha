@@ -146,8 +146,7 @@ if( is_page( 639 ) ) {
             if($car_model === ""){ //Car Make (Used)
                 if(get_locale() != "en_US"){ //ar
                     $title = "سيارات ".$car_make." مستعملة للبيع في قطر | مواتر الدوحة";
-                    $desc = $car_make." مستعملة للبيع في قطر. اعثر على عرض رائع على ".$car_make."
-                            المستعملة. سيارات مستعملة مفحوصة ومضمونة على موقع motorsdoha.com.";
+                    $desc = $car_make." مستعملة للبيع في قطر. اعثر على عرض رائع على ".$car_make." المستعملة. سيارات مستعملة مفحوصة ومضمونة على موقع motorsdoha.com.";
                 } else {
                     $title = $car_make. " Used Cars for Sale in Qatar | MotorsDoha";
                     $desc = "Shop used ".$car_make." vehicles for sale in Qatar. Find great deal on used ".$car_make.". Inspected &amp; Certified second hand cars on motorsdoha.com.";
@@ -155,8 +154,7 @@ if( is_page( 639 ) ) {
             } else { //Car Model (Used)
                 if(get_locale() != "en_US"){ //ar
                     $title = "سيارات ".$car_make." ".$car_model." مستعملة للبيع في قطر | مواتر الدوحة";
-                    $desc = $car_make." ".$car_model." مستعملة للبيع على موقع motorsdoha.com. استكشف العروض والخصومات الرائعة. اعثر على عرض رائع على ".$car_make." ".$car_model." المستعملة في قطر.
-                        سيارات ".$car_make." ".$car_model." مستعملة في قطر";
+                    $desc = $car_make." ".$car_model." مستعملة للبيع على موقع motorsdoha.com. استكشف العروض والخصومات الرائعة. اعثر على عرض رائع على ".$car_make." ".$car_model." المستعملة في قطر. سيارات ".$car_make." ".$car_model." مستعملة في قطر";
                 } else {
                     $title = "Used ".$car_make." ".$car_model." Cars for Sale in Qatar | MotorsDoha";
                     $desc = "Used ".$car_make." ".$car_model." for sale on motorsdoha.com. Explore exiting offers and
