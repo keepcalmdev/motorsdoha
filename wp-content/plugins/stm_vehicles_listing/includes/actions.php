@@ -3,6 +3,12 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+
+//comments 
+
+
+
+
 add_action('wp', 'stm_listings_template_actions');
 
 function stm_listings_template_actions() {
