@@ -145,8 +145,8 @@ function stm_listings_ajax_save_user_data()
     $user = stm_get_user_custom_fields($user_id);
 
     //change WhatsApp telephone number
-    if (isset($_POST["stm_whatsapp_phone"])) {
-        update_user_meta($user_id, "stm_whatsapp_phone", $_POST["stm_whatsapp_phone"]);
+    if (isset($_POST["stm_whatsapp_phone_full"])) {
+        update_user_meta($user_id, "stm_whatsapp_phone", $_POST["stm_whatsapp_phone_full"]);
     }
 
     /*Get current editing values*/
@@ -318,7 +318,7 @@ function stm_listings_ajax_save_user_data()
         $changed_info = array(
             'stm_first_name' => 'first_name',
             'stm_last_name' => 'last_name',
-            'stm_phone' => 'stm_phone',
+            'stm_phone_full' => 'stm_phone',
             'stm_user_facebook' => 'stm_user_facebook',
             'stm_user_twitter' => 'stm_user_twitter',
             'stm_user_linkedin' => 'stm_user_linkedin',
