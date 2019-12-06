@@ -115,7 +115,7 @@ $wsl = get_user_meta($user['user_id'], 'wsl_current_provider', true);
                             <div class="form-group">
                                 <div class="stm-label h4"><?php esc_html_e('WhatsApp phone', 'motors'); ?></div>
                                 <input class="form-control" type="text" name="stm_whatsapp_phone"
-                                       value="<?php echo esc_attr($user['stm_whatsapp_phone']); ?>"
+                                       value="<?php echo  esc_attr($user['stm_whatsapp_phone']); ?>"
                                        placeholder="<?php esc_attr_e('Enter WhatsApp phone', 'motors'); ?>"/>
                             </div>
                         </div>

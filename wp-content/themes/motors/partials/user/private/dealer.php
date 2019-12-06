@@ -40,9 +40,7 @@ $user_fields = stm_get_user_custom_fields( $user->ID );
 						</div>
 
 					</div>
-
 					<?php get_template_part( 'partials/user/private/navigation' ) ?>
-
 					<?php if(!empty($user_fields['phone'])): ?>
 						<div class="stm-dealer-phone">
 							<i class="stm-service-icon-phone"></i>
@@ -135,3 +133,4 @@ $user_fields = stm_get_user_custom_fields( $user->ID );
 		</div>
 	</div>
 </div>
+
