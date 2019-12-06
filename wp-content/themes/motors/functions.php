@@ -504,3 +504,20 @@ function change_user_pass_func(){
 	echo json_encode($result);
 	wp_die();	
 }
+
+
+function login_page_styles() {
+	wp_enqueue_style( 'admin-login', get_stylesheet_directory_uri() . '/assets/css/admin-login.css', '', '', '' );
+	wp_enqueue_script( 'admin-login', get_stylesheet_directory_uri() . '/assets/js/admin-login.js', 'jquery', '', true );
+}
+add_action( 'login_enqueue_scripts', 'login_page_styles' );
+
+function logo_link_to_home() {
+	return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', 'logo_link_to_home' );
+
+function logo_title() {
+	return get_bloginfo('name');
+}
+add_filter( 'login_headertitle', 'logo_title' );

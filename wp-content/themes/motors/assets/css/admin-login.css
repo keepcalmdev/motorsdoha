@@ -1,0 +1,248 @@
+body.login {
+    background: url("../images/login-page.jpg") no-repeat;
+    background-size: cover;
+}
+
+body.login #login a {
+    transition: all 0.25s ease;
+}
+
+body.login #login a:hover,
+body.login #login a:active {
+    color: #b90202;
+}
+
+body #login {
+    position: relative;
+    top: calc(50vh - 275px);
+    padding: 30px 25px 25px;
+    width: 100%;
+    max-width: 394px;
+    background-color: #fff;
+    border-radius: 17px;
+    box-sizing: border-box;
+    box-shadow: 0 0 44px rgba(0, 0, 0, 0.17);
+}
+
+body.login h1 a {
+    margin-bottom: 20px;
+    width: 74.35%;
+    height: auto;
+    min-height: 60px;
+    background-image: url("../images/motorsdoha-logo.svg");
+    background-size: 100%;
+}
+
+body.login .message,
+body.login #login_error {
+    padding: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 17px;
+    text-align: center;
+    color: #930202;
+    border: none;
+    box-shadow: none;
+}
+
+body.login form {
+    margin-top: 30px;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+body.login form label:not([for="rememberme"]) {
+    display: none;
+}
+
+body.login form .input,
+body.login input[type=password],
+body.login input[type=text] {
+    margin: 0 0 20px;
+    padding: 0.8rem .9375rem;
+    font-size: 14px;
+    line-height: 17px;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #ECEFF4;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+}
+
+body.login .button.wp-hide-pw {
+    min-height: 46px;
+}
+
+body.login .button.wp-hide-pw span:before {
+    color: #94a9bc;
+}
+
+body.login form input[type=checkbox] {
+    border-radius: 2px;
+    border: 1px solid #7F92A3;
+    box-shadow: none;
+    transition: all 0.25s ease;
+}
+
+body.login form input[type=checkbox]:focus {
+    box-shadow: none;
+}
+
+body.login form .input::placeholder {
+    color: #7F92A3;
+}
+
+body.login form .input::-webkit-input-placeholder {
+    color: #7F92A3;
+}
+
+body.login form .input::-moz-placeholder {
+    color: #7F92A3;
+}
+
+body.login #user_pass {
+    margin-bottom: 15px;
+}
+
+body.login form .input:focus,
+body.login input[type=password]:focus,
+body.login input[type=text]:focus {
+    border: 1px solid #c38535;
+    box-shadow: none;
+    outline: none;
+}
+
+body.login form .forgetmenot {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+    line-height: 17px;
+    color: #7F92A3;
+}
+
+body.login form .forgetmenot #rememberme {
+    margin: 0 0 0 5px;
+}
+
+body.login #nav {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+body.login #nav a {
+    font-size: 14px;
+    line-height: 17px;
+    color: #7F92A3;
+}
+
+body.login-action-lostpassword #nav {
+    margin: 0 auto 25px;
+    display: block;
+    text-align: center;
+}
+
+body.login-action-lostpassword #nav a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #930202;
+}
+
+body.login .car-image {
+    margin: -15px auto -2px;
+    width: 100%;
+    max-width: 240px;
+    height: 154px;
+    background-image: url("../images/car-for-login-form.png");
+    background-size: cover;
+}
+
+body.login #login .button-primary {
+    float: none;
+    margin: 0 auto 30px;
+    padding: 6px 12px;
+    display: block;
+    width: 100%;
+    max-width: 271px;
+    height: 47px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #930202;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 19px rgba(0, 0, 0, 0.25);
+    -webkit-appearance: none;
+    transition: all 0.25s ease;
+}
+
+body.login-action-lostpassword #login .button-primary {
+    margin-bottom: 10px;
+}
+
+body.login #login .button-primary:hover,
+body.login #login .button-primary:focus,
+body.login #login .button-primary:active {
+    border-color: #fff;
+    background-color: #b90202;
+}
+
+body.login .middle-wrapper,
+body.login .bottom-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.login #backtoblog {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+}
+
+body.login #backtoblog a {
+    color: #930202;
+}
+
+body.login #backtoblog:before {
+    content: url("../images/left-angle.svg");
+    margin-right: 10px;
+    width: 6px;
+    height: 14px;
+}
+
+body.login .privacy-policy-page-link {
+    display: inline-flex;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    justify-content: flex-end;
+}
+
+body.login .privacy-policy-page-link .privacy-policy-link {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    color: #C38535;
+}
+
+body.login #login .privacy-policy-page-link .privacy-policy-link:hover {
+    color: #eba244;
+}
+
+@media screen and (max-width: 375px) {
+    body #login {
+        width: calc(100% - 10px);
+    }
+}
