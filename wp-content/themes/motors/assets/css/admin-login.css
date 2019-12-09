@@ -14,7 +14,7 @@ body.login #login a:active {
 
 body #login {
     position: relative;
-    top: calc(50vh - 275px);
+    top: calc(50vh - 262px);
     padding: 30px 25px 25px;
     width: 100%;
     max-width: 394px;
@@ -72,7 +72,7 @@ body.login input[type=text] {
 }
 
 body.login .button.wp-hide-pw {
-    min-height: 46px;
+    min-height: 44px;
 }
 
 body.login .button.wp-hide-pw span:before {
@@ -239,6 +239,13 @@ body.login .privacy-policy-page-link .privacy-policy-link {
 
 body.login #login .privacy-policy-page-link .privacy-policy-link:hover {
     color: #eba244;
+}
+
+@media screen and (max-width: 782px) {
+    body.login form input[type=checkbox] {
+        width: 12px;
+        height: 16px;
+    }
 }
 
 @media screen and (max-width: 375px) {
