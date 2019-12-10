@@ -1027,7 +1027,7 @@ function stm_mra_get_user_by_id( $params )
 function stm_mra_get_private_user_by_id( $params )
 {
     $userId = $params->get_param( 'id' );
-    $query = ( function_exists( 'stm_user_listings_query' ) ) ? stm_user_listings_query( $userId, 'any', 3, false ) : '';
+    $query = ( function_exists( 'stm_user_listings_query' ) ) ? stm_user_listings_query( $userId, 'any', -1, false ) : '';
 
     $user_fields = stm_get_user_custom_fields( $userId );
 

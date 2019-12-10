@@ -35,7 +35,7 @@
 
             <?php stm_listings_load_template('filter/actions'); ?>
 
-            <?php echo do_shortcode('[stm_inventory_on_map]'); ?>
+            <?php //echo do_shortcode('[stm_inventory_on_map]'); ?>
             <div id="listings-result">
                 <?php stm_listings_load_results(); ?>
             </div>

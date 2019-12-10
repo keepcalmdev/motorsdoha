@@ -283,19 +283,28 @@ if(strpos($actual_link , 'http://qprcar01.kinsta.cloud/ar/qprlogin/?action=logou
 
 }
 
+// $filter = stm_listings_filter();
+// echo var_export($filter, true);
+
 //SEO snippets
 function get_car_make() {
 	global $wp_query;
     $post_id = $wp_query->get_queried_object_id();
 	$data_meta = get_post_meta($post_id, 'make', true);
-    return ucfirst($data_meta);
+	$car_make = "";
+	$filter = stm_listings_filter();
+	$car_make = $filter["options"]["make"][$data_meta]["label"];
+    return $car_make;
 }
 
 function get_car_model() {
 	global $wp_query;
-    $post_id = $wp_query->get_queried_object_id();
+    $post_id = $wp_query->get_queried_object_id();    
 	$data_meta = get_post_meta($post_id, 'serie', true);
-    return ucfirst($data_meta);
+	$car_model = "";
+	$filter = stm_listings_filter();
+	$car_model = $filter["options"]["serie"][$data_meta]["label"];
+    return $car_model;
 }
 function get_car_year() {
 	global $wp_query;
@@ -335,6 +344,36 @@ function register_custom_yoast_variables() {
 // Add action
 add_action('wpseo_register_extra_replacements', 'register_custom_yoast_variables');
 
+//Delete metatags
+add_filter("wpseo_metadesc", "remove_yoast_og");
+add_filter("wpseo_title", "remove_yoast_og");
+add_filter("wpseo_opengraph_desc", "remove_yoast_og");
+add_filter("wpseo_opengraph_title", "remove_yoast_og");
+add_filter("wpseo_twitter_description", "remove_yoast_og");
+add_filter("wpseo_twitter_title", "remove_yoast_og");
+
+function remove_yoast_og($description) {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+    $categories = get_post_type( $post_id );
+
+    if ( is_page( 639 ) || $categories === "listings" ) {
+        return false;
+    }
+
+    if(
+    	is_page( 5 ) || //home
+    	is_page( 1806 ) || //Delears
+    	$post_id == 748  || //Blog/Newsroom
+    	is_page( 370 ) || //About us
+    	is_page( 712 )  //Contacts
+    ){
+    	if(get_locale() != "en_US"){ //ar
+    		return false;
+    	}
+    }
+}
+//end delete metatags
 
 
 

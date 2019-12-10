@@ -54,7 +54,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
             }
         ?>
 
-        <?php if(is_page(3877)){ ?>
+        <?php if(is_page('Forgot password')){ ?>
         <!--forgot password-->
         <div class="forgot-pass-wrapper">
             <form action="" class="forgot-check-email-form">
@@ -62,7 +62,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                 <input class="forgot-u-email" type="text" placeholder="Enter your email"  required="">
                 <div class="pass-reset-msg pass-reset-error">Wrong email address</div>
                 <div class="pass-reset-msg pass-reset-succc">Mail with instruction has been sent successfully</div>
-                <input type="submit">
+                <input type="submit" value="Submit">
             </form>
         </div>
         <script>
@@ -92,7 +92,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
         </script>
         <?php }?>
 
-        <?php if(is_page(3879)){ //change pass 
+        <?php if( is_page('Reset password') ){ //change pass 
 
             if( isset( $_GET["email"]) && !empty($_GET["email"]) ) {
                 echo "<input type='hidden' class='check_pss' name='get_pass' value=". $_GET["email"] ." />";
@@ -112,7 +112,7 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
                 <div class="pass-reset-msg pass-reset-error">Password doesn't match</div>
                  <div class="pass-reset-msg pass-reset-error-msg">Password change error</div>
                 <div class="pass-reset-msg pass-reset-succc">Your password has been changed successfully!</div>
-                <input type="submit">
+                <input type="submit" value="Submit">
             </form>
         </div>
         <script>
@@ -178,13 +178,15 @@ if (!empty($compare_page) and get_the_id() == $compare_page): ?>
         ));
         ?>
 
-        <div class="clearfix">
-            <?php
-            if (comments_open() || get_comments_number()) {
-                comments_template();
-            }
-            ?>
-        </div>
+	    <?php if( ! is_page( 156 ) ) : ?>
+            <div class="clearfix">
+                <?php
+                if (comments_open() || get_comments_number()) {
+                    comments_template();
+                }
+                ?>
+            </div>
+	    <?php endif; ?>
     </div>
 <?php endif; ?>
 <?php

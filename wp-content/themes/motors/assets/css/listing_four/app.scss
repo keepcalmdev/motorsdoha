@@ -92,13 +92,17 @@
         position: relative;
         margin: 0 0 0 10px;
 
-        &:hover {
+        @media(min-width: 993px) {
+            &:hover {
             .lOffer-account-dropdown {
                 top: 100%;
                 opacity: 1;
                 visibility: visible;
             }
+            }
         }
+
+
 
         .lOffer-account {
             &:hover {
@@ -960,7 +964,7 @@
 
     .listing-list-loop.stm-listing-directory-list-loop .content .meta-top .price,
     .listing-list-loop.stm-listing-directory-list-loop .content .meta-top .price:before {
-        background-color: $blue-ap;
+        background-color: #c4862b;
     }
 
     .listing-list-loop.stm-listing-directory-list-loop .content .meta-top {
@@ -1148,6 +1152,7 @@
         opacity: 1;
 
     }
+
 
     .listing-list-loop.stm-listing-directory-list-loop .stm-listing-favorite:hover,
     .stm-car-carousels .stm-listing-favorite:hover {
@@ -1510,39 +1515,85 @@
         margin-top: 8px;
     }
 
-    .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price:before {
-        -moz-transform: skew(-17deg, 0deg);
-        -o-transform: skew(-17deg, 0deg);
-        -ms-transform: skew(-17deg, 0deg);
-        -webkit-transform: skew(-17deg, 0deg);
-        transform: skew(-17deg, 0deg);
-    }
-
     .listing-list-loop {
         .content {
             .meta-top {
                 .price {
 
+                    background-color: #c4862b;
+
                     &:before {
-                        bottom: 0;
-                        height: inherit;
-                        transform: skew(-23deg,0deg) translateZ(0);
+                        left: -17px;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 0 0 44px 17px;
+                        border-color: transparent transparent #c4862b transparent;
+                        transform: none;
+                        background-color: transparent!important;
                     }
 
                     .normal-price {
-                        min-height: 49px;
-                        padding: 13px 8px 11px 4px;
+                        height: 44px;
+                        padding: 11px 8px 11px 4px;
+
+                        .heading-font {
+                            margin-left: 15px;
+                        }
                     }
                 }
             }
         }
     }
 
+    .car-listing-row {
+        .listing-car-item-meta {
+            .price {
+                height: 35px;
+                &:before {
+                    left: -17px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 0 35px 17px;
+                    border-color: transparent transparent #c4862b transparent;
+                    transform: none;
+                    background-color: transparent !important;
+                }
+                .normal-price {
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+
+    .listing-car-items .listing-car-item .price {
+        height: 46px;
+        &:before {
+            left: -17px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 46px 17px;
+            border-color: transparent transparent #c4862b transparent;
+            transform: none;
+            background-color: transparent !important;
+        }
+    }
+
+    .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price:before {
+        border-bottom-width: 40px;
+    }
+
     .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price .normal-price {
         padding: 8px 16px 8px 0;
+        height: 40px;
         font-size: 20px;
         word-spacing: 2px;
         letter-spacing: -2px;
+        .heading-font {
+            margin-left: 5px;
+        }
     }
 
     .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price .normal-price .label-price {
@@ -1592,15 +1643,15 @@
         content: '';
         display: block;
         top: 0;
-        left: -11px;
-        height: 100%;
-        width: 32px;
         background-color: $listing_green;
-        -moz-transform: skew(-23deg, 0deg);
-        -o-transform: skew(-23deg, 0deg);
-        -ms-transform: skew(-23deg, 0deg);
-        -webkit-transform: skew(-23deg, 0deg);
-        transform: skew(-23deg, 0deg);
+        left: -17px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 40px 17px;
+        border-color: transparent transparent #c4862b transparent;
+        transform: none!important;
+        background-color: transparent!important;
         z-index: -1;
     }
 
@@ -3292,6 +3343,9 @@
 
     .stm-directory-grid-loop .image {
         position: relative;
+        img {
+            width: 100%;
+        }
     }
 
     .stm-directory-grid-loop .image .stm-listing-compare {
@@ -8921,6 +8975,22 @@
         }
     }
 
+    .stm-car-listing-sort-units .stm-view-by {
+        .view-type {
+            [class^="stm-icon-"], [class*=" stm-icon-"] {
+                line-height: 34px;
+            }
+            &.view-grid {
+                text-indent: 0;
+            }
+        }
+    }
+    .stm-blog-pagination .page-numbers {
+        .fa {
+            line-height: 32px;
+        }
+    }
+
     @import "sass/responsive";
 }
 
@@ -9278,6 +9348,7 @@
     .header-menu ul.sub-menu {
         list-style-type: none !important;
         padding-right: 0;
+        padding-left: 0;
     }
     .rtl .main-mob-btn-wrapper .btn-left-icon img {
         margin-right: 0;
@@ -9308,6 +9379,43 @@ body.error404 #wrapper {
     background-repeat: no-repeat;
     background-position: center;
 }
+body.rtl.error404 {
+    padding: 0;
+    #wrapper {
+        background-image: url("../../images/404_ar.jpg");
+    }
+}
+
+body.error404 #wrapper .back-button {
+    position: absolute;
+    top: 75px;
+    left: 65px;
+    display: inline-flex;
+    align-items: center;
+    img {
+        margin-right: 15px;
+    }
+    span {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+        text-decoration: underline;
+        text-transform: uppercase;
+        color: #CA0000;
+    }
+}
+
+body.rtl.error404 #wrapper .back-button {
+    right: 65px;
+    left: auto;
+    img {
+        margin-right: 0;
+        transform: rotate(180deg);
+    }
+    span {
+        margin-right: 15px;
+    }
+}
 
 body.error404 #wrapper #main {
     min-height: 250px;
@@ -9330,7 +9438,7 @@ body.error404 #wrapper #main .stm-error-page-unit {
 
 body.error404 #wrapper #main .stm-error-page-unit h2 {
     max-width: 100%;
-    margin: 50vh auto 95px;
+    margin: 50vh auto 25px;
     font-size: 36px;
     font-weight: 600;
     line-height: 44px;
@@ -9351,8 +9459,13 @@ body.error404 #wrapper #main .stm-error-page-unit .search-form::after {
     width: 30px;
     height: 30px;
     top: 8px;
-    right: 15px;
+    right: 17px;
     background-image: url("../../images/search.svg");
+}
+
+body.rtl.error404 #wrapper #main .stm-error-page-unit .search-form::after {
+    left: 17px;
+    right: auto;
 }
 
 body.error404 #wrapper #main .stm-error-page-unit .search-form .search-field {
@@ -9376,6 +9489,10 @@ body.error404 #wrapper #main .stm-error-page-unit .search-form .search-submit {
     background-color: transparent;
     z-index: 3;
 }
+body.rtl.error404 #wrapper #main .stm-error-page-unit .search-form .search-submit {
+    left: 0;
+    right: auto;
+}
 
 body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=submit]::-webkit-input-placeholder {
     color: transparent;
@@ -9389,13 +9506,9 @@ body.error404 #wrapper #main .stm-error-page-unit .search-form input[type=submit
     color: transparent;
 }
 
-body.error404 #wrapper #main .stm-error-page-unit .button.back-button {
-    margin-right: 15px;
-}
-
 body.error404 #wrapper #main .stm-error-page-unit .button {
     display: inline-block;
-    padding: 12px 23px 10px;
+    padding: 12px 70px 10px;
     font-size: 18px;
     font-weight: 600;
     line-height: 22px;
@@ -9409,11 +9522,15 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         font-size: 14px;
     }
     .phone-number {
-        display: block;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
         color: #888;
         cursor: pointer;
         transition: all 0.3s ease;
+        i {
+            margin-right: 5px;
+        }
         &:hover {
             color: #fff;
         }
@@ -9441,6 +9558,40 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             }
         }
     }
+    .rtl & {
+        .phone-number {
+            flex-direction: row-reverse;
+            direction: ltr;
+            span {
+                margin-right: 5px;
+            }
+            i {
+                margin-right: 0;
+            }
+        }
+        .socials ul {
+            li {
+                &:first-child {
+                    margin-right: 0;
+                }
+                &:last-child {
+                    margin-right: 30px;
+                }
+            }
+        }
+    }
+}
+
+.stm-icon-box-adaptive-style-three.without-paddings {
+    .vc_col-lg-3:nth-child(2),
+    .vc_col-lg-3:nth-child(3) {
+        .icon-box {
+            .icon {
+                margin-right: 24px;
+                margin-left: 0;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -9449,9 +9600,12 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         min-height: 120px;
     }
 
+    body.error404 #wrapper .back-button {
+        top: 125px;
+    }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
 
     .stm-icon-box-adaptive-style-three.without-paddings {
         .icon-box {
@@ -9460,35 +9614,15 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
                 width: 65px;
             }
         }
-        .vc_col-sm-3:first-child {
+        .vc_col-lg-3:nth-child(2),
+        .vc_col-lg-3:nth-child(3) {
             .icon-box {
                 .icon {
-                    width: 80px;
+                    margin-right: 0px;
+                    margin-left: 24px;
                 }
             }
         }
-        .vc_col-sm-3:nth-child(2) {
-            .icon-box {
-                .icon {
-                    margin-right: 10px;
-                }
-            }
-        }
-        .vc_col-sm-3:nth-child(3) {
-            .icon-box {
-                .icon {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-
-}
-
-@media screen and (max-width: 1600px) {
-
-    body.error404 #wrapper #main .stm-error-page-unit h2 {
-        margin-bottom: 40px;
     }
 
 }
@@ -9501,6 +9635,15 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             .icon {
                 margin-right: 0;
                 width: 100px;
+            }
+        }
+        .vc_col-lg-3:nth-child(2),
+        .vc_col-lg-3:nth-child(3) {
+            .icon-box {
+                .icon {
+                    margin-right: 0;
+                    margin-left: 0;
+                }
             }
         }
     }
@@ -9537,10 +9680,24 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 }
 
 
-@media screen and (max-width: 414px) {
+@media (orientation: portrait)  and (max-width: 650px) {
 
     body.error404 #wrapper {
         background-image: url("../../images/404_mobile.jpg");
+        .back-button {
+            top: 45px;
+            left: 25px;
+            span {
+                display: none;
+            }
+        }
+    }
+    body.rtl.error404 #wrapper {
+        background-image: url("../../images/404_mobile_ar.jpg");
+        .back-button {
+            top: 20px;
+            right: 25px;
+        }
     }
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9581,8 +9738,12 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
                 }
             }
         }
+        .rtl & .footer-copyright {
+            .copyright-text {
+                text-align: center!important;
+            }
+        }
     }
-
 }
 
 @media screen and (max-width: 375px) {
@@ -9593,8 +9754,33 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
 }
 
+@media screen and (max-width: 320px) {
 
-.rtl .wpb_column { width: 100%; }
+    body.error404 #wrapper {
+        .back-button {
+            top: 25px;
+        }
+        #main .stm-error-page-unit {
+            h2 {
+                margin-top: 30vh;
+                margin-bottom: 15px;
+                font-size: 22px;
+                line-height: 25px;
+            }
+
+            .search-form {
+                margin-bottom: 15px;
+            }
+
+            .button {
+                font-size: 13px;
+            }
+        }
+    }
+
+}
+
+
 .rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
 .rtl .wpb_column .icon-box {display: flex;}
 .rtl .wpb_wrapper {text-align: right;}
@@ -9631,9 +9817,216 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     color: red;
 }
 
+//close login btn
+.dropdown-menu-wrapper .stm-login-form-unregistered-close {
+    display: none;
+    margin-left: auto;
+    background: none;
+    color: #555555 !important;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px 20px 15px 20px;
+}
+
+@media (max-width: 992px){
+  .stm-login-form-unregistered-close {display:block !important;}
+  .lOffer-account-dropdown  h4 {margin-bottom: 20px;}
+  .lOffer-account-dropdown {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100% !important;
+        height: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        background: white;
+        z-index: 9999999999;
+    }
+    .lOffer-account-dropdown .account-list li {
+        margin-top: 10px;
+    }
+    .lOffer-account-dropdown .account-list li a {
+        font-size: 14px !important;
+    }
+    .lOffer-account-dropdown .logout {
+        top: 10px;
+        font-size: 14px !important;
+    }
+    .lOffer-account-dropdown .name {
+        display: inline-block;
+        margin-bottom: 0 !important;
+        vertical-align: middle;
+    }
+    .lOffer-account-dropdown .name a {
+        font-size: 14px !important;
+    }
+    .lOffer-account-dropdown .settings {
+        display: inline-block !important;
+        vertical-align: middle !important;
+        position: relative !important;
+        right: 0 !important;
+        top: 0 !important;
+        width: auto !important;
+        margin-left: -10px;
+        margin-right: 10px;
+    }
+    .header-nav-sticky {
+        -webkit-transform: none !important;
+        transform: none !important;
+    }
+    .lOffer-account-dropdown-open {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    //hover
+    .lOffer-account-unit:hover .lOffer-account-dropdown {
+        top: 100%;
+        opacity: 0;
+        visibility: hidden;
+    }
+    //arabic
+    .rtl .lOffer-account-dropdown  h4 {text-align: right;}
+    .rtl .lOffer-account-dropdown .form-checker {text-align: right;}
+    .rtl .stm-login-form-unregistered-close {right: auto; left: 0;}
+    .rtl .row-drop {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+    .rtl .lOffer-account-dropdown .account-list li {text-align: right;}
+    .rtl .lOffer-account-dropdown .settings {
+        float: right;
+        margin-right: 0;
+        text-align: right !important;
+    }
+    .rtl .lOffer-account-dropdown .name {
+        float: right;
+    }
+
+}
+
+#stm_filter_max_price,
+#stm_filter_min_price {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media (min-width: 993px) {
+    .single-add-to-compare-visible { top: 52px !important; }
+}
+
+@media screen and (min-width: 651px) and (max-width: 768px) {
+    body.rtl.error404 {
+        #wrapper {
+            background-position: 46% 0;
+            background-size: auto 90%;
+        }
+    }
+}
+@media (max-width: 992px){
+    .listing-car-items .listing-car-item .listing-car-item-meta div.car-meta-top {
+        height: auto !important;
+    }
+
+    .special-offers .listing-car-item-meta .car-meta-top .car-title {
+        display: block !important;
+    }
+
+    .special-offers .listing-car-item-meta .car-meta-top .stm-base-color {
+        display: block;
+    }
+}
 
 
 
+.rtl.stm-template-listing_four {
+    .stm-user-private {
+        .stm-user-private-sidebar {
+            margin-right: -30px;
+            padding: 45px 25px;
+            background-color: #232628;
 
+            .stm-user-avatar {
+                float: right;
+            }
+
+            .stm-dealer-phone .phone {
+                text-align: right;
+            }
+        }
+    }
+
+    .contacts .icon-box:nth-child(3) .icon-text .content {
+        direction: ltr;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .stm-user-private {
+            .stm-user-private-sidebar {
+                margin-right: -13px;
+                padding: 45px 20px;
+
+                .stm-dealer-phone {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-height: 480px) {
+    body.error404 #wrapper {
+        .back-button {
+            top: 45px;
+            left: 25px;
+            span {
+                display: none;
+            }
+        }
+        #main .stm-error-page-unit {
+            h2 {
+                margin-top: 10vh;
+                margin-bottom: 15px;
+                font-size: 22px;
+                line-height: 25px;
+            }
+
+            .search-form {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-height: 375px) {
+    body.error404 #wrapper #main .stm-error-page-unit {
+        h2 {
+            margin-top: 2vh;
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-height: 360px) {
+    body.error404 #wrapper #main .stm-error-page-unit {
+        h2 {
+            margin-top: -8vh;
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-height: 320px) {
+    body.error404 #wrapper #main .stm-error-page-unit {
+        h2 {
+            margin-top: -30vh;
+        }
+    }
+}
 
 

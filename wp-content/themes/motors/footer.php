@@ -94,6 +94,7 @@ if ( !stm_is_auto_parts() ) :
             console.log(year);
             if (make != '' && model != '' && year != '') {
                 $.get("<?php echo get_bloginfo('url'); ?>/wp-json/car/v1/getcardetails/?model="+model+"&year="+year+"&make="+make, function(data, status){
+                    $('input[name="stm_s_s_countryOfOrigin"], input[name="stm_s_s_class"], input[name="stm_s_s_bodyStyle"], input[name="stm_s_s_weight"], input[name="stm_s_s_engine_type"], input[name="stm_s_s_gearBox"], input[name="stm_s_s_power"], input[name="stm_s_s_torque"], input[name="stm_s_s_fuelEconomy100KMPL"], input[name="stm_s_s_fuelEconomyKMPL"], input[name="stm_s_s_zeroToHundred"], input[name="stm_s_s_topSpeed"]').removeClass('stm_has_value');
                     $('input[name="stm_s_s_countryOfOrigin"]').val('');
                     $('input[name="stm_s_s_class"]').val('');
                     $('input[name="stm_s_s_bodyStyle"]').val('');
@@ -108,17 +109,53 @@ if ( !stm_is_auto_parts() ) :
                     $('input[name="stm_s_s_topSpeed"]').val('');
                     if (data.length) {
                         $('input[name="stm_s_s_countryOfOrigin"]').val(data[0].countryOfOrigin);
+                        if (data[0].countryOfOrigin != '') {
+                            $('input[name="stm_s_s_countryOfOrigin"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_class"]').val(data[0].class);
+                        if (data[0].class != '') {
+                            $('input[name="stm_s_s_class"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_bodyStyle"]').val(data[0].bodyStyle);
+                        if (data[0].bodyStyle != '') {
+                            $('input[name="stm_s_s_bodyStyle"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_weight"]').val(data[0].weight);
+                        if (data[0].weight != '') {
+                            $('input[name="stm_s_s_weight"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_engine_type"]').val(data[0].engine);
+                        if (data[0].engine != '') {
+                            $('input[name="stm_s_s_engine_type"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_gearBox"]').val(data[0].gearBox);
+                        if (data[0].gearBox != '') {
+                            $('input[name="stm_s_s_gearBox"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_power"]').val(data[0].power);
+                        if (data[0].power != '') {
+                            $('input[name="stm_s_s_power"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_torque"]').val(data[0].torque);
+                        if (data[0].torque != '') {
+                            $('input[name="stm_s_s_torque"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_fuelEconomy100KMPL"]').val(data[0].fuelEconomy100KMPL);
+                        if (data[0].fuelEconomy100KMPL != '') {
+                            $('input[name="stm_s_s_fuelEconomy100KMPL"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_fuelEconomyKMPL"]').val(data[0].fuelEconomyKMPL);
+                        if (data[0].fuelEconomyKMPL != '') {
+                            $('input[name="stm_s_s_fuelEconomyKMPL"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_zeroToHundred"]').val(data[0].zeroToHundred);
+                        if (data[0].zeroToHundred != '') {
+                            $('input[name="stm_s_s_zeroToHundred"]').addClass('stm_has_value');
+                        }
                         $('input[name="stm_s_s_topSpeed"]').val(data[0].topSpeed);
+                        if (data[0].topSpeed != '') {
+                            $('input[name="stm_s_s_topSpeed"]').addClass('stm_has_value');
+                        }
                     }
                 });
             }
@@ -233,16 +270,16 @@ if ( !stm_is_auto_parts() ) :
             $(".car-first-form .form-container .packages-row .col-md-12:nth-child(3)").removeClass("border-radius-right");
         };
 
-        $(".stm-view-by").append('<a class="map-show-hide-button view-type"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px" class=""><g><g><g><path d="M256,0C153.755,0,70.573,83.182,70.573,185.426c0,126.888,165.939,313.167,173.004,321.035    c6.636,7.391,18.222,7.378,24.846,0c7.065-7.868,173.004-194.147,173.004-321.035C441.425,83.182,358.244,0,256,0z M256,278.719    c-51.442,0-93.292-41.851-93.292-93.293S204.559,92.134,256,92.134s93.291,41.851,93.291,93.293S307.441,278.719,256,278.719z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#888888"/></g></g></g></svg></a>');  
+        //$(".stm-view-by").append('<a class="map-show-hide-button view-type"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px" class=""><g><g><g><path d="M256,0C153.755,0,70.573,83.182,70.573,185.426c0,126.888,165.939,313.167,173.004,321.035    c6.636,7.391,18.222,7.378,24.846,0c7.065-7.868,173.004-194.147,173.004-321.035C441.425,83.182,358.244,0,256,0z M256,278.719    c-51.442,0-93.292-41.851-93.292-93.293S204.559,92.134,256,92.134s93.291,41.851,93.291,93.293S307.441,278.719,256,278.719z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#888888"/></g></g></g></svg></a>');
         
 
         $(".stm-inventory-map-wrap").css( "height", 0 );
         $(".stm-inventory-map-wrap").css( "overflow", 'hidden');
 
-        $(".map-show-hide-button").click(function(){
+        /*$(".map-show-hide-button").click(function(){
             $(".stm-inventory-map-wrap").toggleClass( "map-show" );
             $(  "#listings-result" ).toggle();
-        });
+        });*/
 
         $(".stm-shareble" ).hover(function() {
             $(".stm-a2a-popup" ).toggleClass( "stm-a2a-popup-active" );
@@ -314,6 +351,9 @@ if ( !stm_is_auto_parts() ) :
                         // });
 
                     number += (parseInt($(this).text(), 10));
+                    if (number == 0) {
+                        number = 80;
+                    }
                     $('.car-first-form .col-lg-12 h2 i').text(number);
                 });
             }
@@ -352,6 +392,9 @@ if ( !stm_is_auto_parts() ) :
                     $(".car-first-form .checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
                     $('.car-first-form .update-prices .col-lg-6.text-right.text-dark p span').each(function(){
                         number += (parseInt($(this).text(), 10));
+                        if (number == 0) {
+                            number = 80;
+                        }
                         $('.car-first-form .col-lg-12 h2 i').text(number);
                     });
                  }, 700);
@@ -377,6 +420,9 @@ if ( !stm_is_auto_parts() ) :
                     $(".car-first-form .checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
                     $('.car-first-form .update-prices .col-lg-6.text-right.text-dark p span').each(function(){
                         number += (parseInt($(this).text(), 10));
+                        if (number == 0) {
+                            number = 80;
+                        }
                         $('.col-lg-12 h2 i').text(number);
                     });
                 } else {
@@ -386,6 +432,9 @@ if ( !stm_is_auto_parts() ) :
                     $(".car-first-form .checked").parent().parent().parent().parent().parent().parent().parent().addClass('update-prices');
                     $('.car-first-form .update-prices .col-lg-6.text-right.text-dark p span').each(function(){
                         number += (parseInt($(this).text(), 10));
+                        if (number == 0) {
+                            number = 80;
+                        }
                         $('.col-lg-12 h2 i').text(number);
                     });
                 }
@@ -842,8 +891,57 @@ jQuery('.wpcf7-submit').on('click',function(){
   }
 });
 
+//account btn click - show dropdown list (menu for mobile)
+$(document).on("click", ".lOffer-account-unit", function(){
+    $(this).find('.lOffer-account-dropdown').toggleClass("lOffer-account-dropdown-open");
+})
+
+$(document).on("click", ".stm-login-form-unregistered-close", function(e){
+    e.stopPropagation()
+    $(this).parent().removeClass("lOffer-account-dropdown-open")
+})
+
 
 })(jQuery)
+</script>
+
+
+
+<script>
+    
+
+
+
+$(function(){
+
+$("input[name=stm_whatsapp_phone]").intlTelInput('destroy');
+$("input[name=stm_whatsapp_phone]").intlTelInput({
+       allowDropdown: true,
+       autoHideDialCode: true,
+       autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+       //formatOnDisplay: false,
+      geoIpLookup: function(callback) {
+        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "";
+          callback(countryCode);
+        });
+      },
+       hiddenInput: "full_number_what",
+       initialCountry: "qa", 
+      // localizedCountries: { 'de': 'Deutschland' },
+       nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true,
+      utilsScript: "<?php bloginfo('url'); ?>/wp-content/themes/motors/assets/js/utils.js",
+
+});
+
+
+})
 </script>
 
 

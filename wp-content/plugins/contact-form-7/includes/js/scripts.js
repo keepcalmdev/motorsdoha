@@ -338,6 +338,11 @@
 			} );
 		};
 
+		var tel_full = $("input[name=full_number]").val()
+		formData.set('tel', tel_full);
+		formData.set('phone', tel_full);
+
+
 		$.ajax( {
 			type: 'POST',
 			url: wpcf7.apiSettings.getRoute(
@@ -353,6 +358,8 @@
 			var $e = $( '<div class="ajax-error"></div>' ).text( error.message );
 			$form.after( $e );
 		} );
+
+
 	};
 
 	wpcf7.triggerEvent = function( target, name, detail ) {

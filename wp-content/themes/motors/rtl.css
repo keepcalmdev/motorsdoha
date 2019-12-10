@@ -3356,3 +3356,47 @@ body.rtl .main-menu .header-menu > li {
 .stm-template-listing_four .stm_add_car_form .stm-border-top-unit .step_number {
    text-align: left;
 }
+
+
+span.wpcf7-form-control-wrap.checkbox-914 {
+    display: none;
+}
+
+.checkbox.update-prices >*{
+    display: none!important;
+}
+
+.checkbox.update-prices .social-media-checkboxes{
+    display: block !important;
+}
+
+#wpcf7-f1979-p1735-o1 .checkbox.update-prices {
+    top: -67px!important;
+}
+
+.rtl .social-media-checkboxes > p {
+    width: 100px;
+    padding-left: 0 !important;
+    /*float: left !important;*/
+}
+
+
+
+.rtl .snapchat-icon {
+    left: 53px;
+}
+
+.rtl .instagram-icon {
+    left: 184px;
+}
+
+.rtl .social-media-checkboxes  .twitter-icon{
+   text-align: left;
+   padding-left: 28px !important;
+}
+
+
+.rtl span.wpcf7-form-control-wrap.checkbox-918 {
+    position: absolute;
+    left: 247px;
+}

@@ -1648,11 +1648,111 @@ span.wpcf7-form-control-wrap.checkbox-919 {
 
 input[name="stm_vin"],
 input[name="stm_registered"] {
-    background: #fff !important;
+    /*background: #fff !important;*/
 }
 
 .stm-template-car_dealer .stm-listing-directory-checkboxes.stm-two_cols .stm-accordion-content .stm-accordion-content-padded .stm-option-label {
     padding: 0px 0px 5px 20px  !important;
     margin: 0px !important;
     width: 100% !important;
+}
+
+.stm-deleted-adds {
+    display: none !important;
+}
+
+.social-media-checkboxes .fa {
+    display: inline;
+}
+
+.social-media-checkboxes p{
+    font-size: 17px !important;
+}
+
+
+.instagram-icon i.fa.fa-instagram {
+    background: #7e7e7e;
+    color: #fff !important;
+    padding: 2px 3px;
+    font-size: 11px !important;
+    border-radius: 4px;
+    position: absolute;
+    top: 6px;
+    left: 37px;
+
+}
+
+span.wpcf7-form-control-wrap.checkbox-917 {
+    position: absolute;
+    left: 148px;
+    top: -5px;
+}
+
+p.instagram-icon {
+    padding-left: 50px !important;
+}
+
+span.wpcf7-form-control-wrap.checkbox-920 {
+    
+    top: 81px;
+}
+
+span.wpcf7-form-control-wrap.checkbox-919 {
+    left: 357px;
+    top: -5px;
+}
+.social-media-checkboxes .fa {
+    display: inline;
+}
+
+.social-media-checkboxes p{
+    font-size: 17px !important;
+}
+
+
+i.fa.fa-instagram {
+    background: #7e7e7e;
+    color: #fff !important;
+    padding: 2px 3px;
+    font-size: 11px !important;
+    border-radius: 4px;
+    position: absolute;
+    top: 6px;
+    left: 37px;
+
+}
+
+span.wpcf7-form-control-wrap.checkbox-917 {
+    position: absolute;
+    left: 148px;
+    top: -5px;
+}
+
+p.instagram-icon {
+    padding-left: 50px !important;
+}
+
+span.wpcf7-form-control-wrap.checkbox-920 {
+    
+    top: 81px;
+}
+
+span.wpcf7-form-control-wrap.checkbox-919 {
+    left: 357px;
+    top: -5px;
+}
+span.wpcf7-form-control-wrap.checkbox-914 {
+    display: none;
+}
+
+.checkbox.update-prices >*{
+    display: none!important;
+}
+
+.checkbox.update-prices .social-media-checkboxes{
+    display: block !important;
+}
+
+#wpcf7-f1979-p1735-o1 .checkbox.update-prices {
+    top: -67px!important;
 }
