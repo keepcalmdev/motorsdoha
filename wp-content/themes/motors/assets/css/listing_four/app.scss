@@ -9783,7 +9783,8 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
 .rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
 .rtl .wpb_column .icon-box {display: flex;}
-.rtl .wpb_wrapper {text-align: right;}
+.rtl .wpb_wrapper,
+.rtl .stm-car-listing-sort-units {text-align: right;}
 .rtl .stm-border-right {width: 30%;}
 .rtl .stm-col-pad-left {width: 70%;}
 
@@ -9979,6 +9980,10 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             }
         }
     }
+    .stm-car-listing-sort-units .stm-sort-by-options > span {
+        margin-right: 0;
+        margin-left: 9px;
+    }
 }
 
 @media (orientation: landscape) and (max-height: 480px) {
@@ -10025,6 +10030,57 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     body.error404 #wrapper #main .stm-error-page-unit {
         h2 {
             margin-top: -30vh;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1600px) {
+    .tp-revslider-mainul {
+
+        li:nth-child(2) .tp-mask-wrap {
+
+            left: 300px;
+
+            .rtl & {
+                left: -200px;
+            }
+        }
+
+        li:nth-child(3) .tp-mask-wrap {
+            left: 200px;
+
+            .rtl & {
+                left: -300px;
+            }
+        }
+
+        li:nth-child(4) {
+            .tp-parallax-wrap {
+                .tp-mask-wrap {
+                    left: -300px;
+                }
+
+                &:last-child {
+                    .tp-mask-wrap {
+                        left: 300px;
+                    }
+                }
+            }
+
+            .rtl & {
+                .tp-parallax-wrap {
+                    .tp-mask-wrap {
+                        left: -575px;
+                    }
+
+                    &:last-child {
+                        .tp-mask-wrap {
+                            left: -125px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
