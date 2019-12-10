@@ -438,7 +438,7 @@
                             jQuery('document').ready(function () {
                                 var $ = jQuery;
                                 $('.stm-my-profile-settings .stm-dealer-image-front .image .fa-remove').on('click', function () {
-                                    $(this).append('<input type="hidden" value="delete" id="stm_remove_dealer_img" name="stm_remove_dealer_img" />');
+                                    $(".stm-dealer-image-front").append('<input type="hidden" value="delete" id="stm_remove_dealer_img" name="stm_remove_dealer_img" />');
                                     $(this).parent().removeClass('no_empty').html('<div class="stm-empty-avatar-icon"><i class="stm-service-icon-user"></i></div>');
                                 });
                             });
