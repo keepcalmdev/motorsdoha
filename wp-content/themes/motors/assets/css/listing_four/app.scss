@@ -9405,6 +9405,18 @@ body.error404 #wrapper .back-button {
     }
 }
 
+body.rtl.error404 #wrapper .back-button {
+    right: 65px;
+    left: auto;
+    img {
+        margin-right: 0;
+        transform: rotate(180deg);
+    }
+    span {
+        margin-right: 15px;
+    }
+}
+
 body.error404 #wrapper #main {
     min-height: 250px;
     position: absolute;
@@ -9682,6 +9694,10 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
     }
     body.rtl.error404 #wrapper {
         background-image: url("../../images/404_mobile_ar.jpg");
+        .back-button {
+            top: 20px;
+            right: 25px;
+        }
     }
 
     body.error404 #wrapper #main .stm-error-page-unit h2 {
@@ -9914,6 +9930,21 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         }
     }
 }
+@media (max-width: 992px){
+    .listing-car-items .listing-car-item .listing-car-item-meta div.car-meta-top {
+        height: auto !important;
+    }
+
+    .special-offers .listing-car-item-meta .car-meta-top .car-title {
+        display: block !important;
+    }
+
+    .special-offers .listing-car-item-meta .car-meta-top .stm-base-color {
+        display: block;
+    }
+}
+
+
 
 .rtl.stm-template-listing_four {
     .stm-user-private {

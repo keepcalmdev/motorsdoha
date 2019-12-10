@@ -48,12 +48,11 @@ $link = add_query_arg(array('page_admin' => 'settings'), stm_get_author_link('')
 					<?php endif; ?>
 
 					<?php get_template_part( 'partials/user/private/navigation' ) ?>
-
 					<?php if(!empty($user_fields['phone'])): ?>
 						<div class="stm-dealer-phone">
 							<i class="stm-service-icon-phone"></i>
 							<div class="phone-label heading-font"><?php esc_html_e('Seller Contact Phone', 'motors'); ?></div>
-							<div class="phone">(+974) <?php echo esc_attr($user_fields['phone']); ?></div>
+							<div class="phone"><?php echo esc_attr($user_fields['phone']); ?></div>
 						</div>
 					<?php endif; ?>
 

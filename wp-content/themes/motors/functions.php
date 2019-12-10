@@ -360,6 +360,18 @@ function remove_yoast_og($description) {
     if ( is_page( 639 ) || $categories === "listings" ) {
         return false;
     }
+
+    if(
+    	is_page( 5 ) || //home
+    	is_page( 1806 ) || //Delears
+    	$post_id == 748  || //Blog/Newsroom
+    	is_page( 370 ) || //About us
+    	is_page( 712 )  //Contacts
+    ){
+    	if(get_locale() != "en_US"){ //ar
+    		return false;
+    	}
+    }
 }
 //end delete metatags
 

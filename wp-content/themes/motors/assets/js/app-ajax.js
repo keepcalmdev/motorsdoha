@@ -1189,6 +1189,10 @@
                     formData.append(formInputs[key]['name'], formInputs[key]['value']);
                 }
             }
+            //whatsapp full number
+            formData.append('stm_whatsapp_phone_full', $("input[name=stm_whatsapp_phone]").intlTelInput("getNumber") );
+            //full phone number
+            formData.append('stm_phone_full', $("input[name=stm_phone]").intlTelInput("getNumber") );
 
             formData.append('action', 'stm_listings_ajax_save_user_data');
 
@@ -1208,6 +1212,7 @@
                 },
                 success: STMListings.save_user_settings_success
             });
+
         })
     };
 
