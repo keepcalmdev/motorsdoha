@@ -144,9 +144,9 @@ if ( !stm_is_auto_parts() ) :
                         if (data[0].fuelEconomy100KMPL != '') {
                             $('input[name="stm_s_s_fuelEconomy100KMPL"]').addClass('stm_has_value');
                         }
-                        $('input[name="stm_s_s_countryOfOrigin"]').val(data[0].fuelEconomyKMPL);
+                        $('input[name="stm_s_s_fuelEconomyKMPL"]').val(data[0].fuelEconomyKMPL);
                         if (data[0].fuelEconomyKMPL != '') {
-                            $('input[name="stm_s_s_countryOfOrigin"]').addClass('stm_has_value');
+                            $('input[name="stm_s_s_fuelEconomyKMPL"]').addClass('stm_has_value');
                         }
                         $('input[name="stm_s_s_zeroToHundred"]').val(data[0].zeroToHundred);
                         if (data[0].zeroToHundred != '') {
