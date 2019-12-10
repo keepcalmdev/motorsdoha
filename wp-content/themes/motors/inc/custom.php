@@ -4200,45 +4200,70 @@ function stmCurrentUrl()
 
 
        });
+
+
       function chngTtl(titleObj){
+            var lang = jQuery('html').attr("lang")
             //top title
             var top_title = "";
             if(titleObj["condition"] == "new-cars"){
-                top_title = "New "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";
+                if(lang != "en-US"){//ar
+                    top_title = "الجديد "+titleObj["make"]+" "+titleObj["model"]+" سيارات في قطر";                    
+
+                } else {
+                    top_title = "New "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";                    
+                }
             } else if(titleObj["condition"] == "used-cars") {
-                top_title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";  
+                if(lang != "en-US"){ //ar
+                    top_title = "مستخدم "+titleObj["make"]+" "+titleObj["model"]+" سيارات في قطر";       
+                } else { //en
+                    top_title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";  
+                }
             } else {
                 if(titleObj["make"] !=="" || titleObj["model"] !== ""){//title without condition
-                    if(titleObj["model"] === "") {
-                        top_title = titleObj["make"]+" Cars for Sale in Qatar";                         
+                    if(lang != "en-US"){//ar
+                        if(titleObj["model"] === "") {
+                            top_title = titleObj["make"]+" سيارات للبيع في قطر";                         
 
-                    } else {
-                        top_title = titleObj["make"]+" "+titleObj["model"]+" in Qatar";                         
+                        } else {
+                            top_title = titleObj["make"]+" "+titleObj["model"]+" في قطر";                         
+                        }
+                    } else {//en
+                        if(titleObj["model"] === "") {
+                            top_title = titleObj["make"]+" Cars for Sale in Qatar";                         
+
+                        } else {
+                            top_title = titleObj["make"]+" "+titleObj["model"]+" in Qatar";                         
+                        }
                     }
-                } else {
-                    top_title = "Inventory";
+                } else {//ar
+                    if(lang != "en-US") {
+                        top_title = "قائمة السيارات";
+                    } else {
+                        top_title = "Inventory";                        
+                    }
                 }
             }
 
-            var lang = jQuery('html').attr("lang")
-            if(lang !== "en-US") {
-                jQuery.ajax({  
-                    url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
-                    dataType: 'jsonp',
-                    data: { q: top_title,  // text to translate
-                            v: '1.0',
-                            'target': 'ar',
-                            langpair: 'en|es' },   // '|es' for auto-detect
-                    success: function(result) {
-                        $("h1.title").html(result.data.translations[0].translatedText)
-                    },  
-                    error: function(XMLHttpRequest, errorMsg, errorThrown) {
-                        //alert(errorMsg);
-                    }  
-                });
-            } else {
+            // var lang = jQuery('html').attr("lang")
+            // if(lang !== "en-US") {
+            //     jQuery.ajax({  
+            //         url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
+            //         dataType: 'jsonp',
+            //         data: { q: top_title,  // text to translate
+            //                 v: '1.0',
+            //                 'target': 'ar',
+            //                 langpair: 'en|es' },   // '|es' for auto-detect
+            //         success: function(result) {
+            //             $("h1.title").html(result.data.translations[0].translatedText)
+            //         },  
+            //         error: function(XMLHttpRequest, errorMsg, errorThrown) {
+            //             //alert(errorMsg);
+            //         }  
+            //     });
+            // } else {
                 $("h1.title").html(top_title);                
-            }
+           // }
         }
 
        function capitalizeFL(name){
@@ -4248,7 +4273,8 @@ function stmCurrentUrl()
          var lang = jQuery('html').attr("lang")
          var title = "";
                var desc = "";
-               var make=capitalizeFL($("select[name=make]").val());
+               var makelVal = $("select[name=make] option:selected").html();
+               var make=($("select[name=make]").val() === "")? "": capitalizeFL(makelVal);
                //var model=$("select[name=serie]").val();
                var modelVal = $("select[name=serie] option:selected").html()
                var model = ($("select[name=serie]").val() === "")? "": modelVal
@@ -4353,24 +4379,7 @@ function stmCurrentUrl()
                     desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />'
                 }
             }
-            if(lang !== "en-US") {
-                jQuery.ajax({  
-                    url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
-                    dataType: 'jsonp',
-                    data: { q: title,  // text to translate
-                            v: '1.0',
-                            'target': 'ar',
-                            langpair: 'en|es' },   // '|es' for auto-detect
-                    success: function(result) {
-                        $("title").html(result.data.translations[0].translatedText)
-                    },  
-                    error: function(XMLHttpRequest, errorMsg, errorThrown) {
-                        //alert(errorMsg);
-                    }  
-                });
-            } else {
-                $("title").html(title);             
-            }
+           $("title").html(title);             
            $("meta[name=description]").remove();
            $("head").append(desc);
 
@@ -4403,6 +4412,9 @@ function stmCurrentUrl()
             
 
         }
+
+
+
      </script>   
     <?php
 }
