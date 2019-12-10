@@ -1,4 +1,5 @@
 <?php
+
 	if(!is_user_logged_in()){
 		die('You are not logged in');
 	} else {
@@ -11,10 +12,11 @@
 		$user = stm_get_user_custom_fields($user_id);
         $wsl = get_user_meta($user_id, 'wsl_current_provider', true);
 
+
 		/*Get current editing values*/
 		$user_first_name = (isset($_POST['stm_first_name'])) ? $_POST['stm_first_name'] : $user['name'];
 		$user_last_name = (isset($_POST['stm_first_name'])) ? $_POST['stm_last_name'] : $user['last_name'];
-		$user_phone = (!empty($_POST['stm_phone'])) ? $_POST['stm_phone'] : $user['phone'];
+		$user_phone = (!empty($_POST['full_number'])) ? $_POST['full_number'] : $user['phone']; //stm_phone
 		$user_mail = (!empty($_POST['stm_email'])) ? $_POST['stm_email'] : $user['email'];
 		$user_mail = sanitize_email($user_mail);
 
@@ -28,9 +30,11 @@
 		$sales_hours  = ( ! empty( $_POST['stm_sales_hours'] ) ) ? $_POST['stm_sales_hours'] : $user['stm_sales_hours'];
 		$notes        = ( ! empty( $_POST['stm_notes'] ) ) ? $_POST['stm_notes'] : $user['stm_seller_notes'];
 
+
+
 	    //change WhatsApp telephone number
-	    if (isset($_POST["stm_whatsapp_phone"])) {
-	        update_user_meta($user_id, "stm_whatsapp_phone", $_POST["stm_whatsapp_phone"]);
+	    if (isset($_POST["full_number_what"])) {
+	        update_user_meta($user_id, "stm_whatsapp_phone", $_POST["full_number_what"]);
 	    }
 
 
@@ -297,7 +301,7 @@
 			$changed_info = array(
 				'stm_first_name'    => 'first_name',
 				'stm_last_name'     => 'last_name',
-				'stm_phone'         => 'stm_phone',
+				'full_number'         => 'stm_phone',
 				'stm_user_facebook' => 'stm_user_facebook',
 				'stm_user_twitter'  => 'stm_user_twitter',
 				'stm_user_linkedin' => 'stm_user_linkedin',
@@ -434,7 +438,7 @@
                             jQuery('document').ready(function () {
                                 var $ = jQuery;
                                 $('.stm-my-profile-settings .stm-dealer-image-front .image .fa-remove').on('click', function () {
-                                    $(this).append('<input type="hidden" value="delete" id="stm_remove_dealer_img" name="stm_remove_dealer_img" />');
+                                    $(".stm-dealer-image-front").append('<input type="hidden" value="delete" id="stm_remove_dealer_img" name="stm_remove_dealer_img" />');
                                     $(this).parent().removeClass('no_empty').html('<div class="stm-empty-avatar-icon"><i class="stm-service-icon-user"></i></div>');
                                 });
                             });
@@ -698,3 +702,8 @@
         });
 	})
 </script>
+
+
+
+
+

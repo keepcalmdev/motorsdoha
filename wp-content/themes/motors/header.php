@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 
 
 
@@ -107,8 +107,7 @@ if( is_page( 639 ) ) {
         if( $car_make === "" && $car_model === "" ) { //new default
             if(get_locale() != "en_US"){ //ar
                 $title = "سيارات جديدة في قطر، مقالات وأسعار، اشترِ سيارة جديدة | مواتر الدوحة";
-                $desc = 'ابحث عن سيارات جديدة للبيع فى قطر. شاهد أحدث عروض السيارات الجديدة واحصل على السعر من التُجار والوكلاء
-                        مباشرةً. قارن السيارات وأقرأ آخر الأخبار والمقالات.';
+                $desc = 'ابحث عن سيارات جديدة للبيع فى قطر. شاهد أحدث عروض السيارات الجديدة واحصل على السعر من التُجار والوكلاء مباشرةً. قارن السيارات وأقرأ آخر الأخبار والمقالات.';
             } else { //en
                 $title ="New Cars in Qatar, Reviews and Prices, Buy New Car | MotorsDoha "; //en
                 $desc = 'Research new cars for sale in Qatar. View the latest new car offers, get the price from dealers. Compare cars, read latest news and reviews.';
@@ -138,8 +137,7 @@ if( is_page( 639 ) ) {
         if( $car_make === "" && $car_model === "" ) {
             if(get_locale() != "en_US"){ //ar
                 $title = "سيارات مستعمله للبيع في قطر، اشترِ سيارة مستعملة | مواتر الدوحة";
-                $desc = 'متجر للسيارات المستعملة عبر الإنترنت. اعثر علي أفضل العروض المحلية في قطر. تشكيلة كبيرة من السيارات المستعملة
-                        والمملوكة مُسبقًا من المالكين المعتمدين.';
+                $desc = 'متجر للسيارات المستعملة عبر الإنترنت. اعثر علي أفضل العروض المحلية في قطر. تشكيلة كبيرة من السيارات المستعملة والمملوكة مُسبقًا من المالكين المعتمدين.';
             } else {
                 $title = "Used Cars for Sale in Qatar, Buy Second Hand Car | MotorsDoha";
                 $desc = 'Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners.';
@@ -148,8 +146,7 @@ if( is_page( 639 ) ) {
             if($car_model === ""){ //Car Make (Used)
                 if(get_locale() != "en_US"){ //ar
                     $title = "سيارات ".$car_make." مستعملة للبيع في قطر | مواتر الدوحة";
-                    $desc = $car_make." مستعملة للبيع في قطر. اعثر على عرض رائع على ".$car_make."
-                            المستعملة. سيارات مستعملة مفحوصة ومضمونة على موقع motorsdoha.com.";
+                    $desc = $car_make." مستعملة للبيع في قطر. اعثر على عرض رائع على ".$car_make." المستعملة. سيارات مستعملة مفحوصة ومضمونة على موقع motorsdoha.com.";
                 } else {
                     $title = $car_make. " Used Cars for Sale in Qatar | MotorsDoha";
                     $desc = "Shop used ".$car_make." vehicles for sale in Qatar. Find great deal on used ".$car_make.". Inspected &amp; Certified second hand cars on motorsdoha.com.";
@@ -157,8 +154,7 @@ if( is_page( 639 ) ) {
             } else { //Car Model (Used)
                 if(get_locale() != "en_US"){ //ar
                     $title = "سيارات ".$car_make." ".$car_model." مستعملة للبيع في قطر | مواتر الدوحة";
-                    $desc = $car_make." ".$car_model." مستعملة للبيع على موقع motorsdoha.com. استكشف العروض والخصومات الرائعة. اعثر على عرض رائع على ".$car_make." ".$car_model." المستعملة في قطر.
-                        سيارات ".$car_make." ".$car_model." مستعملة في قطر";
+                    $desc = $car_make." ".$car_model." مستعملة للبيع على موقع motorsdoha.com. استكشف العروض والخصومات الرائعة. اعثر على عرض رائع على ".$car_make." ".$car_model." المستعملة في قطر. سيارات ".$car_make." ".$car_model." مستعملة في قطر";
                 } else {
                     $title = "Used ".$car_make." ".$car_model." Cars for Sale in Qatar | MotorsDoha";
                     $desc = "Used ".$car_make." ".$car_model." for sale on motorsdoha.com. Explore exiting offers and
@@ -211,7 +207,7 @@ if( is_page( 639 ) ) {
 
     //     echo "<title>".$responseDecoded['data']['translations'][0]['translatedText']."</title>"."\n";
     // }  else {
-        echo "<title>".str_replace("،",",",$title)."</title>"."\n";
+        echo "<title>".preg_replace('/\s\s+/', ' ', str_replace("،",",",$title) ) ."</title>"."\n";
     //}
 
     // if( get_locale() != "en_US") {
@@ -226,7 +222,7 @@ if( is_page( 639 ) ) {
 
     //     echo '<meta name="description" content="'. $responseDecoded['data']['translations'][0]['translatedText'] .'" />';
     //}  else {
-         echo '<meta name="description" content="'. str_replace("،",",",$desc) .'" />'."\n";
+         echo '<meta name="description" content="'.preg_replace('/\s\s+/', ' ', str_replace("،",",",$desc) )  .'" />'."\n";
     //}
 
     //additional metatags
@@ -311,11 +307,11 @@ if ($categories === "listings") {
 
         }        
     }
-    echo "<title>".str_replace("،",",",$title)."</title>"."\n";
-    echo '<meta name="description" content="'. str_replace("،",",",$desc).'" />'."\n";
+    echo "<title>".preg_replace('/\s\s+/', ' ', str_replace("،",",",$title) ) ."</title>"."\n";
+    echo '<meta name="description" content="'.preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) ) .'" />'."\n";
     //additional metatags
-    $title = str_replace("،",",",$title);
-    $desc = str_replace("،",",",$desc);  
+    $title = preg_replace('/\s\s+/', ' ',str_replace("،",",",$title) ) ;
+    $desc = preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) ) ;  
     $ogtitle = '<meta property="og:title" content="'.$title.'" />';
     $ogdesc = '<meta property="og:description" content="'.$desc.'" />';
     $twtitle = '<meta name="twitter:title" content="'.$title.'" />';
@@ -327,6 +323,52 @@ if ($categories === "listings") {
 
 }
 
+// echo "sraka";
+// echo get_locale(); 
+// echo  is_page( 707 );
+// global $post;
+// echo $post->ID;
+//seperate pages arabic metatags
+global $post;
+if(
+    is_page( 5 ) || //home
+    is_page( 1806 ) || //Delears
+    $post->ID == 748 || //Blog/Newsroom
+    is_page( 370 ) || //About us
+    is_page( 712 )  //Contacts
+){
+    if(get_locale() != "en_US"){ //ar
+        remove_action( 'wp_head', '_wp_render_title_tag', 1 );
+
+        $title = "";
+        $desc = "";
+       
+
+        if( is_page( 5 ) ){ //home
+            $title = "سيارات للبيع في قطر، اشترِ سيارة جديدة ومستعملة | مواتر الدوحة";
+            $desc = "اعثر على السيارات الجديدة والمستعملة من التجار الموثوقين. احصل على أفضل الأسعار للسيارات المعروضة للبيع في الدوحة، قطر. قم بشراء سيارة أو بيع سيارتك المستعملة بسهولة.";
+        }
+        if( is_page( 1806 ) ){ //Delears
+            $title = "تجار ووكلاء السيارات في قطر، وكالات السيارات الجديدة والمستعملة | مواتر الدوحة";
+            $desc = "اعثر على تاجر سيارات في الدوحة، قطر. اختر السيارة المناسبة من بين آلاف العروض واشتريها مباشرةً. وكالات السيارات الجديدة والمستعملة القريبة منك.";
+        }
+        if( $post->ID == 748 ){ //Blog/Newsroom
+            $title = "مقالات وتقارير، إرشادات ونصائح لشراء سيارة | مواتر الدوحة";
+            $desc = "إرشادات للبحث عن سيارة وشرائها. كل ما تحتاج لمعرفته حول شراء سيارة جديدة أو مستعملة. اقرأ مقالات الخبراء وآخر أخبار السيارات.";
+        }
+        if( is_page( 370 ) ){ //About us
+            $title = "عن MotorsDoha.com | سيارات للبيع في قطر ";
+            $desc = "اعرف أكثر عن MotorsDoha.com. اعثر على السيارات الجديدة أو المستعملة من التجار الموثوقين في قطر.";
+        }
+        if( is_page( 712 ) ){ //Contacts
+            $title = "اتصل بنا | MotorsDoha.com";
+            $desc = "اتصل بنا إذا كان لديك أي سؤال يتعلق بشراء أو بيع سيارة على موقع MotorsDoha.com. ويمكنك ترك تعليقاتك حول الموقع أو تقديم مقترح أو شكوى.";
+        }
+        
+        echo "<title>". preg_replace('/\s\s+/', ' ',str_replace("،",",",$title) ) ."</title>"."\n";
+        echo '<meta name="description" content="'. preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) )  .'" />'."\n";
+    }
+}
 
 ?>
 

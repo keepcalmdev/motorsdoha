@@ -144,9 +144,9 @@ if ( !stm_is_auto_parts() ) :
                         if (data[0].fuelEconomy100KMPL != '') {
                             $('input[name="stm_s_s_fuelEconomy100KMPL"]').addClass('stm_has_value');
                         }
-                        $('input[name="stm_s_s_countryOfOrigin"]').val(data[0].fuelEconomyKMPL);
+                        $('input[name="stm_s_s_fuelEconomyKMPL"]').val(data[0].fuelEconomyKMPL);
                         if (data[0].fuelEconomyKMPL != '') {
-                            $('input[name="stm_s_s_countryOfOrigin"]').addClass('stm_has_value');
+                            $('input[name="stm_s_s_fuelEconomyKMPL"]').addClass('stm_has_value');
                         }
                         $('input[name="stm_s_s_zeroToHundred"]').val(data[0].zeroToHundred);
                         if (data[0].zeroToHundred != '') {
@@ -903,6 +903,45 @@ $(document).on("click", ".stm-login-form-unregistered-close", function(e){
 
 
 })(jQuery)
+</script>
+
+
+
+<script>
+    
+
+
+
+$(function(){
+
+$("input[name=stm_whatsapp_phone]").intlTelInput('destroy');
+$("input[name=stm_whatsapp_phone]").intlTelInput({
+       allowDropdown: true,
+       autoHideDialCode: true,
+       autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+       //formatOnDisplay: false,
+      geoIpLookup: function(callback) {
+        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "";
+          callback(countryCode);
+        });
+      },
+       hiddenInput: "full_number_what",
+       initialCountry: "qa", 
+      // localizedCountries: { 'de': 'Deutschland' },
+       nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true,
+      utilsScript: "<?php bloginfo('url'); ?>/wp-content/themes/motors/assets/js/utils.js",
+
+});
+
+
+})
 </script>
 
 
