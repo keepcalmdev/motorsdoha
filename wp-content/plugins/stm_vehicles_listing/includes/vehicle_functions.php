@@ -562,12 +562,12 @@ if (!function_exists('stm_custom_register')) {
             }
         }
 
-        if (empty($_POST['stm_user_phone'])) {
+        if (empty($_POST['full_number'])) {
             $user_phone = '';
-        } elseif (empty($_POST['stm_user_phone'])) {
-            $errors['stm_user_phone'] = true;
+        } elseif (empty($_POST['full_number'])) {
+            $errors['full_number'] = true;
         } else {
-            $user_phone = sanitize_text_field($_POST['stm_user_phone']);
+            $user_phone = sanitize_text_field($_POST['full_number']);
         }
 
         if (!is_email($_POST['stm_user_mail'])) {
