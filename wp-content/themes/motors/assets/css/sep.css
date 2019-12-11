@@ -4,14 +4,4 @@
     align-items: center;
 }
 
-.rtl .dealer-search-results table.stm_dealer_list_table tr.stm-single-dealer td.dealer-phone .phone {
-	direction: ltr;
-}
-.rtl .phone a, .rtl .phone {
-	display: inline-block;
-	direction: ltr;
-}
-
-.rtl .dealer-search-results table.stm_dealer_list_table tr.stm-single-dealer td.dealer-phone .inner .phone {
-	direction: ltr;
-}
+.rtl .dealer-search-results table.stm_dealer_list_table tr.stm-single-dealer td.dealer-phone .phone {direction: ltr;}
