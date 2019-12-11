@@ -7,7 +7,7 @@
 .rtl .dealer-search-results table.stm_dealer_list_table tr.stm-single-dealer td.dealer-phone .phone {
 	direction: ltr;
 }
-.rtl .phone a {
+.rtl .phone a, .rtl .phone {
 	display: inline-block;
 	direction: ltr;
 }
