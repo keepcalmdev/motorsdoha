@@ -14,3 +14,10 @@
         ?>
     </div>
 </div>
+<?php 
+//SPECIALS val   
+    if ( isset($_GET["featured_top"]) & !empty($_GET["featured_top"]) ) {
+        $featured_top = $_GET["featured_top"];
+        echo "<input type='hidden' name='featured_top_hidden' value=".$featured_top.">";
+    }
+?>  

@@ -35,7 +35,6 @@ if(is_listing()) {
 $query = new WP_Query($args);
 
 ?>
-
 <div class="stm-inventory-no-filter-wrap">
     <div class="stm-isotope-sorting stm-isotope-sorting-list" data-per-page="<?php echo esc_attr($posts_per_page); ?>">
     <?php
