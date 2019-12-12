@@ -520,7 +520,7 @@ function change_user_pass_func(){
 
 function login_page_styles() {
 	wp_enqueue_style( 'admin-login', get_stylesheet_directory_uri() . '/assets/css/admin-login.css', '', '', '' );
-	wp_enqueue_script( 'admin-login', get_stylesheet_directory_uri() . '/assets/js/admin-login.js', 'jquery', '', true );
+	wp_enqueue_script( 'admin-login', get_stylesheet_directory_uri() . '/assets/js/admin-login.js', array('jquery'), '', true );
 }
 add_action( 'login_enqueue_scripts', 'login_page_styles' );
 
