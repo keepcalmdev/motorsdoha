@@ -902,6 +902,10 @@ $(document).on("click", ".stm-login-form-unregistered-close", function(e){
 })
 
 
+
+
+
+
 })(jQuery)
 </script>
 
@@ -942,6 +946,13 @@ $("input[name=stm_whatsapp_phone]").intlTelInput({
 
 
 })
+
+
+
+
+
+
+
 </script>
 
 

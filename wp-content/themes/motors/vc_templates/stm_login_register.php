@@ -90,18 +90,18 @@ if(!empty($link)) {
                     <div class="row form-group">
 						<div class="col-md-6">
 							<h4><?php esc_html_e('First Name', 'motors'); ?></h4>
-							<input class="user_validated_field" type="text" name="stm_user_first_name" placeholder="<?php esc_attr_e('Enter First name', 'motors') ?>"/>
+							<input class="user_validated_field" type="text" name="stm_user_first_name" placeholder="<?php esc_attr_e('Enter First name', 'motors') ?>" required/>
 						</div>
 						<div class="col-md-6">
 							<h4><?php esc_html_e('Last Name', 'motors'); ?></h4>
-							<input class="user_validated_field" type="text" name="stm_user_last_name" placeholder="<?php esc_attr_e('Enter Last name', 'motors') ?>"/>
+							<input class="user_validated_field" type="text" name="stm_user_last_name" placeholder="<?php esc_attr_e('Enter Last name', 'motors') ?>" required/>
 						</div>
 					</div>
 
 					<div class="row form-group">
 						<div class="col-md-6">
 							<h4><?php esc_html_e('Phone number', 'motors'); ?></h4>
-							<input class="user_validated_field" type="tel" name="stm_user_phone" placeholder="<?php esc_attr_e('Enter Phone', 'motors') ?>"/>
+							<input class="user_validated_field" type="tel" name="stm_user_phone" placeholder="<?php esc_attr_e('Enter Phone', 'motors') ?>" required />
 						</div>
 						<div class="col-md-6">
 							<h4><?php esc_html_e('Email *', 'motors'); ?></h4>
