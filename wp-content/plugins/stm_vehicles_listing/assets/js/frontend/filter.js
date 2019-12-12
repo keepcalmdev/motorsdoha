@@ -39,6 +39,14 @@ if (typeof (STMListings) == 'undefined') {
         url = url.replace("min_price=الحد الأدنى", "min_price=0");
         url = url.replace("max_price=أقصى", "max_price=2000000");
 
+        //specials order change
+        var specials = $("input[name=featured_top_hidden]").val()
+        if(specials){
+            var loc = window.location.href
+            var order = $(".stm-select-sorting select").val()
+           url = loc+'&sort_order='+order
+        }
+
         this.performAjax(url);
     };
 
@@ -58,7 +66,7 @@ if (typeof (STMListings) == 'undefined') {
             if(filterUrl.indexOf(prop) == -1)
             data.push(prop + '=' + urlObj[prop])
         }
-        url = $("form[data-trigger=filter]").attr('action')
+        url = $("form[data-trigger=filter-map]").attr('action')
         var sign = url.indexOf('?') < 0 ? '?' : '&';
         url = url + sign + data.join('&');
         window.history.pushState('', '', decodeURI(url));
