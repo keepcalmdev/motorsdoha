@@ -10036,28 +10036,31 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
 .tp-revslider-mainul {
 
+    .rtl & {
+        li:not(:first-child) {
+            .tp-mask-wrap {
+                .tp-caption {
+                    display: inline-flex;
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+    }
+
     li:nth-child(2) .tp-mask-wrap {
         padding: 25px;
         left: 80px;
         top: -25px;
         background: rgba(255,255,255,0.5);
         .rtl & {
-            left: -600px;
+            left: -330px;
         }
     }
 
     li:nth-child(3) .tp-mask-wrap {
-        left: 100px;
-
+        left: 200px;
         .rtl & {
-            padding: 25px;
-            top: -25px;
-            left: -625px;
-            background: rgba(192,134,43,0.5);
-        }
-        .tp-caption {
-            font-size: 96px!important;
-            line-height: 117px!important;
+            left: -350px;
         }
     }
 
@@ -10073,6 +10076,11 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             &:last-child {
                 .tp-mask-wrap {
                     background: rgba(147,27,61,0.5);
+                    .tp-caption {
+                        span {
+                            display: none;
+                        }
+                    }
                 }
             }
         }
@@ -10080,11 +10088,30 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         .rtl & {
             .tp-parallax-wrap {
                 .tp-mask-wrap {
-                    left: -360px;
+                    left: -580px;
+                    .tp-caption {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+                &:last-child {
+                    .tp-mask-wrap {
+                        left: -320px;
+                    }
                 }
             }
         }
     }
+
+    .rtl & {
+        li .tp-mask-wrap {
+            .tp-caption {
+                direction: ltr;
+            }
+        }
+    }
+
 }
 @media screen and (min-width: 1600px) {
     .tp-revslider-mainul {
@@ -10092,9 +10119,10 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         li:nth-child(2) .tp-mask-wrap {
 
             left: 300px;
+            background: none;
 
             .rtl & {
-                left: -200px;
+                left: -100px;
             }
         }
 
@@ -10103,7 +10131,12 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 
             .rtl & {
                 left: -300px;
+                .tp-caption {
+                    min-width: 650px!important;
+                    max-width: 650px!important;
+                }
             }
+
         }
 
         li:nth-child(4) {
@@ -10122,12 +10155,13 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             .rtl & {
                 .tp-parallax-wrap {
                     .tp-mask-wrap {
-                        left: -575px;
+                        left: -780px;
                     }
 
                     &:last-child {
                         .tp-mask-wrap {
                             left: -125px;
+                            background: none;
                         }
                     }
                 }
@@ -10135,31 +10169,181 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         }
     }
 }
-@media screen and (max-width: 1024px) {
+
+@media screen and (min-width: 2559px) {
     .tp-revslider-mainul {
 
         li:nth-child(2) .tp-mask-wrap {
-            left: -150px;
+
+            left: 500px;
+
             .rtl & {
-                left: -570px;
+                left: 70px;
+            }
+        }
+
+        li:nth-child(3) .tp-mask-wrap {
+            left: 370px;
+
+            .rtl & {
+                left: -175px;
+            }
+
+        }
+
+        li:nth-child(4) {
+            .tp-parallax-wrap {
+                .tp-mask-wrap {
+                    left: -550px;
+                }
+
+                &:last-child {
+                    .tp-mask-wrap {
+                        left: 510px;
+                    }
+                }
+            }
+
+            .rtl & {
+                .tp-parallax-wrap {
+                    .tp-mask-wrap {
+                        left: -970px;
+                    }
+
+                    &:last-child {
+                        .tp-mask-wrap {
+                            left: -25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .tp-revslider-mainul {
+
+        li:nth-child(3) .tp-mask-wrap {
+            .tp-caption {
+                font-size: 96px !important;
+                line-height: 117px !important;
+                span {
+                    font-size: 96px !important;
+                    line-height: 117px!important;
+                    sup {
+                        i {
+                            font-size: 30px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .tp-revslider-mainul {
+
+        li:nth-child(2) .tp-mask-wrap {
+
+            .rtl & {
+                left: -343px;
             }
         }
 
         li:nth-child(3) .tp-mask-wrap {
             padding: 25px;
             top: -25px;
-            left: -150px;
+            left: 155px;
             background: rgba(192,134,43,0.5);
+            .rtl & {
+                left: -340px;
+                .tp-caption {
+                    min-width: 400px!important;
+                }
+            }
+        }
+
+        li:nth-child(4) {
+            .tp-parallax-wrap {
+                .tp-mask-wrap {
+                    //left: -525px;
+                }
+
+                &:last-child {
+                    .tp-mask-wrap {
+                        //left: 300px;
+                    }
+                }
+            }
+
+            .rtl & {
+                .tp-parallax-wrap {
+                    .tp-mask-wrap {
+                        left: -525px;
+                    }
+
+                    &:last-child {
+                        .tp-mask-wrap {
+                            left: -276px;
+                            .tp-caption {
+                                min-width: 335px!important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .tp-revslider-mainul {
+
+        li:nth-child(2) .tp-mask-wrap {
+            left: -150px;
+            .rtl & {
+                left: -415px;
+            }
+        }
+
+        li:nth-child(3) .tp-mask-wrap {
+            left: -150px;
 
             .rtl & {
                 padding: 25px;
                 top: -25px;
-                left: -630px;
+                left: -480px;
                 background: rgba(192,134,43,0.5);
             }
             .tp-caption {
                 font-size: 96px!important;
                 line-height: 117px!important;
+            }
+        }
+
+        li:nth-child(2),
+        li:nth-child(3) {
+            .tp-mask-wrap {
+                .tp-caption {
+                    sup {
+                        top: -40px !important;
+                        i {
+                            font-size: 20px !important;
+                        }
+                    }
+                    .rtl & {
+                        sup {
+                            top: -35px !important;
+
+                            i {
+                                font-size: 22px !important;
+                            }
+                        }
+                    }
+                }
+
             }
         }
 
@@ -10175,7 +10359,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
                 &:last-child {
                     .tp-mask-wrap {
                         top: -25px;
-                        left: -55px;
+                        left: -40px;
                         background: rgba(147,27,61,0.5);
                     }
                 }
@@ -10184,11 +10368,80 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
             .rtl & {
                 .tp-parallax-wrap {
                     .tp-mask-wrap {
-                        left: -285px;
+                        left: -370px;
                     }
                     &:last-child {
                         .tp-mask-wrap {
+                            width: 355px;
                             left: -360px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tp-revslider-mainul {
+
+        li:first-child .tp-mask-wrap {
+            .tp-caption {
+                sup {
+                    top: -40px !important;
+                }
+            }
+        }
+
+        li:nth-child(2) .tp-mask-wrap {
+            left: -50px;
+            .rtl & {
+                left: -325px;
+            }
+        }
+
+        li:nth-child(3) .tp-mask-wrap {
+            left: 2px;
+            .tp-caption {
+                font-size: 65px !important;
+                line-height: 79px !important;
+            }
+            .rtl & {
+                left: -380px;
+            }
+        }
+
+        li:nth-child(2),
+        li:nth-child(3) {
+            .tp-mask-wrap {
+                .tp-caption {
+                    span {
+                        font-size: 65px!important;
+                        line-height: 79px!important;
+                        .rtl & {
+                            sup {
+                                top: -30px !important;
+
+                                i {
+                                    font-size: 16px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        li:nth-child(4) {
+            .rtl & {
+                .tp-parallax-wrap {
+                    .tp-mask-wrap {
+                        left: -280px;
+                    }
+                    &:last-child {
+                        .tp-mask-wrap {
+                            width: 275px;
+                            left: -280px;
                         }
                     }
                 }
