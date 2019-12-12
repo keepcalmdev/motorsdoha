@@ -66,7 +66,7 @@ if (typeof (STMListings) == 'undefined') {
             if(filterUrl.indexOf(prop) == -1)
             data.push(prop + '=' + urlObj[prop])
         }
-        url = $("form[data-trigger=filter-map]").attr('action')
+        url = $("form[data-trigger=filter]").attr('action')
         var sign = url.indexOf('?') < 0 ? '?' : '&';
         url = url + sign + data.join('&');
         window.history.pushState('', '', decodeURI(url));
