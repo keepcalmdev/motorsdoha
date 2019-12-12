@@ -19,7 +19,6 @@
 
 	wp_enqueue_style( 'phonevalid', get_template_directory_uri() . '/assets/css/intlTelInput.css', array(), '1.1', 'all');
 
-	wp_enqueue_script( 'phonevalidscript', get_template_directory_uri() . '/assets/js/intlTelInput-jquery.min.js', array ( 'jquery' ), 1.1, true);
 
 
 	//	Include path
@@ -516,3 +515,5 @@ function change_user_pass_func(){
 	echo json_encode($result);
 	wp_die();	
 }
+
+

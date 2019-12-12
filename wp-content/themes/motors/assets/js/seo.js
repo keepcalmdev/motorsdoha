@@ -66,7 +66,7 @@ function changeSeo(){
             } else {//NEW MODEL CARS
 
                 if(lang != "en-US") title = "الأسعار، سيارات "+titleObj["year"]+" "+titleObj["make"]+" "+titleObj["model"]+" للبيع في قطر | مواتر الدوحة"
-                    else title = titleObj["year"]+ " " +titleObj["make"]+" "+titleObj["model"]+ "Prices, Cars for Sale in Qatar | MotorsDoha"
+                    else title = titleObj["year"]+ " " +titleObj["make"]+" "+titleObj["model"]+ " Prices, Cars for Sale in Qatar | MotorsDoha"
 
             }
         }
