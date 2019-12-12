@@ -33,6 +33,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
+
 <?php
 global $post;
 $post_type = get_post_type( $post->ID );
@@ -127,8 +128,8 @@ if( is_page( 639 ) ) {
                     $title = "الأسعار، سيارات ".$car_year." ".$car_make." ".$car_model." للبيع في قطر | مواتر الدوحة";
                     $desc = $car_make. " ".$car_model." مستعملة للبيع على موقع motorsdoha.com. تسوق واشترِ السيارات الجديدة الأعلى تصنيفًا. اعثر على عرض رائع على ".$car_make." ".$car_model." في قطر.";
                 } else {
-                    $title = $car_year. " " .$car_make." ".$car_model. "Prices, Cars for Sale in Qatar | MotorsDoha";
-                    $desc = "New ".$car_make." ".$car_model." for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on ".$car_make." " .$car_model ."in Qatar.";
+                    $title = $car_year. " " .$car_make." ".$car_model. " Prices, Cars for Sale in Qatar | MotorsDoha";
+                    $desc = "New ".$car_make." ".$car_model." for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on ".$car_make." " .$car_model ." in Qatar.";
                 }
 
             }

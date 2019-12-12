@@ -223,6 +223,12 @@ function stm_load_theme_ss()
         'remove_from_favorites' => __( 'Remove from favorites', 'motors' ),
     ) );
     wp_enqueue_style( 'sep', get_theme_file_uri( '/assets/css/sep.css' ) );
+    //SEO js
+    if ( is_page(639) ) {
+        wp_enqueue_script( 'seo', get_theme_file_uri( '/assets/js/seo.js' ), array(), STM_THEME_VERSION, true );
+    }
+    //intelinput JS Library
+    wp_enqueue_script( 'phonevalidscript', get_template_directory_uri() . '/assets/js/intlTelInput-jquery.min.js', array ( 'jquery' ), 1.1, false);
 }
 
 // Admin styles
