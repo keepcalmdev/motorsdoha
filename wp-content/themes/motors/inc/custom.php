@@ -4185,8 +4185,14 @@ function stmCurrentUrl()
                }, 1000)
               changeSeo()
 
-
            });
+           //removed specials, set false
+           $(document).on("change", '.ajax-filter select', function(){
+                var specialField = $('input[name=featured_top_hidden]');
+                if(specialField.length > 0 ){
+                    $('input[name=featured_top_hidden]').remove()
+                }
+           })
 
            $(document).on('slidestop', '.ajax-filter .stm-filter-type-slider', function (event, ui) {
                $("form[data-trigger=filter]").submit(function (e) { e.preventDefault(); });

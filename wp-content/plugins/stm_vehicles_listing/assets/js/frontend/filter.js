@@ -39,6 +39,14 @@ if (typeof (STMListings) == 'undefined') {
         url = url.replace("min_price=الحد الأدنى", "min_price=0");
         url = url.replace("max_price=أقصى", "max_price=2000000");
 
+        //specials order change
+        var specials = $("input[name=featured_top_hidden]").val()
+        if(specials){
+            var loc = window.location.href
+            var order = $(".stm-select-sorting select").val()
+           url = loc+'&sort_order='+order
+        }
+
         this.performAjax(url);
     };
 

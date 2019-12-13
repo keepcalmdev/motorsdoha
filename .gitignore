@@ -4,3 +4,4 @@
 /.htaccess
 /wp-content/uploads/*
 /wp-content/debug.log
+/.bash_profile
