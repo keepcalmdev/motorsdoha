@@ -12,6 +12,7 @@ $car_price_form = get_post_meta(get_the_ID(), 'car_price_form', true);
 $car_price_form_label = get_post_meta(get_the_ID(), 'car_price_form_label', true);
 
 
+
 $show_price = true;
 $show_sale_price = true;
 
@@ -39,17 +40,14 @@ if (empty($price) and !empty($sale_price)) {
     $show_sale_price = false;
 }
 ?>
-
 <?php //SINGLE REGULAR PRICE ?>
 <?php if ($show_price and !$show_sale_price){ ?>
 
     <?php if (!empty($car_price_form) and $car_price_form == 'on'): ?>
         <a href="#" class="rmv_txt_drctn" data-toggle="modal" data-target="#get-car-price">
     <?php endif; ?>
-
     <div class="single-car-prices">
         <div class="single-regular-price text-center">
-
             <?php if (!empty($car_price_form_label)): ?>
                 <span class="h3"><?php echo esc_attr($car_price_form_label); ?></span>
             <?php else: ?>
@@ -130,7 +128,6 @@ if (empty($price) and !empty($sale_price)) {
 	<?php if (!empty($car_price_form) and $car_price_form == 'on'): ?>
 		<a href="#" class="rmv_txt_drctn" data-toggle="modal" data-target="#get-car-price">
 	<?php endif; ?>
-
 	<div class="single-car-prices">
 		<div class="single-regular-price text-center">
 			<span class="h3"><?php echo esc_attr($car_price_form_label); ?></span>

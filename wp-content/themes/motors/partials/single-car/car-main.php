@@ -5,19 +5,42 @@ $show_email = get_user_meta($user_id, 'stm_show_email', true);
 $post_id = get_the_ID();
 $car_title = get_post_meta($post_id, 'car_title', true);
 $car_condition = get_post_meta($post_id, 'condition', true);
-$car_title_prefix = "";
-if($car_title === ""){ //custom title prefix
-   if($car_condition === "new-cars"){
-        $car_title_prefix = "New";
-    } else if ($car_condition === "used-cars") {
-        $car_title_prefix = "Used";
+
+//data
+$filter = stm_listings_filter();
+//make
+$car_make = get_post_meta($post_id, 'make', true);
+$car_make = $filter["options"]["make"][$car_make]["label"];
+//model
+$car_model = get_post_meta($post_id, 'serie', true);
+$car_model = $filter["options"]["serie"][$car_model]["label"];
+//year
+$car_year = get_post_meta($post_id, 'ca-year', true);
+//car name
+$car_name = $car_make." ".$car_model." ".$car_year;
+//lang
+$lang = get_locale();
+$custom_car_title = "";
+if($car_title === ""){
+   if($car_condition === "new-cars"){//Specific Car Page (New)
+        if($lang !== "en_US"){
+            $custom_car_title = "سيارة ".$car_name;
+        } else {
+            $custom_car_title = $car_name;
+        }
+    } else if ($car_condition === "used-cars"){//Specific Car Page (Used)
+        if($lang !== "en_US"){
+            $custom_car_title = "سيارة ".$car_name;
+        } else {
+            $custom_car_title = "Used ".$car_name;
+        }
     } 
 }
 ?>
 <div class="row">
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="stm-single-car-content">
-            <h1 class="title h2"><?php echo $car_title_prefix . " ";?><?php echo ($car_title === "")? the_title() :  $car_title; ?></h1>
+            <h1 class="title h2"><?php echo ($car_title === "")? $custom_car_title : $car_title; ?></h1>
 
             <!--Actions-->
             <?php get_template_part( 'partials/single-car/car', 'actions' ); ?>
