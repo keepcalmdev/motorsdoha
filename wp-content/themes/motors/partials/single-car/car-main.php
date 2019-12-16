@@ -292,7 +292,7 @@ if($car_title === ""){
 
                     <div id="tab-1446536246604-2-8" class="wpb_tab ui-tabs-panel wpb_ui-tabs-hide vc_clearfix ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="true" style="display: none;">
                         <div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1445931891055">
-                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
                                 <div class="vc_column-inner">
                                     <div class="wpb_wrapper">
                                         <h4 style="color: #252628;text-align: left;font-family:Montserrat;font-weight:400;font-style:normal" class="vc_custom_heading vc_custom_1561380831678">Features</h4>

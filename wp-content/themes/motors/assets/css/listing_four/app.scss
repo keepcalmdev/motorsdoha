@@ -1512,7 +1512,7 @@
     .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price {
         min-width: inherit;
         padding-left: 10px;
-        margin-top: 8px;
+        margin-top: 9px;
     }
 
     .listing-list-loop {
@@ -1582,6 +1582,7 @@
     }
 
     .stm-listing-no-price-labels.listing-list-loop .content .meta-top .price:before {
+        height: 40px;
         border-bottom-width: 40px;
     }
 
@@ -9784,6 +9785,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 .rtl .wpb_wrapper h4.vc_custom_heading { text-align: right !important; }
 .rtl .wpb_column .icon-box {display: flex;}
 .rtl .wpb_wrapper,
+.rtl .stm-sort-private-my-cars,
 .rtl .stm-car-listing-sort-units {text-align: right;}
 .rtl .stm-border-right {width: 30%;}
 .rtl .stm-col-pad-left {width: 70%;}
@@ -9835,7 +9837,7 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
 }
 
 @media (max-width: 992px){
-  .stm-login-form-unregistered-close {display:block !important;}
+  .lOffer-account-dropdown-open .stm-login-form-unregistered-close {display:block;}
   .lOffer-account-dropdown  h4 {margin-bottom: 20px;}
   .lOffer-account-dropdown {
         position: fixed !important;
@@ -9984,6 +9986,44 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
         margin-right: 0;
         margin-left: 9px;
     }
+
+    .listing-list-loop {
+        .content {
+            .meta-top {
+                .price {
+                    .normal-price {
+                        display: inline-flex;
+                        flex-direction: row-reverse;
+
+                        .heading-font {
+                            margin-left: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .stm-directory-grid-loop {
+        .price {
+            .normal-price {
+                display: inline-flex;
+                flex-direction: row-reverse;
+
+                span {
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+    .stm-tech-infos .stm-tech-title {
+        padding-right: 50px;
+        padding-left: 0;
+        i {
+            left: auto;
+            right: 0;
+        }
+    }
+
 }
 
 @media (orientation: landscape) and (max-height: 480px) {
@@ -10414,6 +10454,10 @@ body.error404 #wrapper #main .stm-error-page-unit .button {
                 }
             }
         }
+    }
+    body .car-listing-tabs-unit img {
+        width: 100%;
+        height: auto;
     }
 }
 

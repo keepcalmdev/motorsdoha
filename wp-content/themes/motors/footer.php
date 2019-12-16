@@ -165,7 +165,7 @@ if ( !stm_is_auto_parts() ) :
             $('.normal-price').each(function(){
                 var abc = $(this).html().replace('ريال قطري', '').replace('ر.ق', '');
                 // $(this).html($(this).html().replace('ريال قطري', 'ر.ق'));
-                $(this).html(abc+'<span style="float: left; padding-right: 2px;">'+'ر.ق'+'</span>');
+                $(this).html(abc+'<span>'+'ر.ق'+'</span>');
             });
             $('.trp-wrap').each(function(){
                 $(this).html(
