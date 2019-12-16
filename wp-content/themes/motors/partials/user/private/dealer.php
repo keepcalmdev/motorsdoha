@@ -16,6 +16,12 @@ $user_fields = stm_get_user_custom_fields( $user->ID );
 							<?php if(!empty($user_fields['socials'])): ?>
 								<div class="socials clearfix">
 									<?php foreach($user_fields['socials'] as $social_key => $social): ?>
+                                        <?php
+                                            //youtube channel
+                                            $user_data = get_userdata($user->ID);
+                                            $user_login = $user_data->user_login;
+                                            if($social_key === "youtube" && $social === $user_login) continue;
+                                        ?>
 										<a href="<?php echo esc_url($social); ?>">
 											<?php
 											if($social_key == 'youtube') {
