@@ -10,7 +10,7 @@ $car_media = stm_get_car_medias(get_the_id());
 $asSold = get_post_meta(get_the_ID(), 'car_mark_as_sold', true);
 
 $img_size = (!stm_is_listing_two()) ? 'stm-img-255-160' : 'stm-img-255-135';
-$placeholder = 'plchldr255.png';
+$placeholder = 'plchldr255_160.jpg';
 
 if(is_listing(array('listing_three'))) {
     $img_size = 'stm-img-350-205';
@@ -31,7 +31,7 @@ $dynamicClassVideo = 'stm-car-videos-' . get_the_id() . '-' . rand();
 <div class="image">
 	<?php
 	$img = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), $imgSize);
-    $plchldr = (stm_is_dealer_two()) ? "plchldr-398.jpg" : 'plchldr255.png';
+    $plchldr = (stm_is_dealer_two()) ? "plchldr-398.jpg" : 'plchldr255_160.jpg';
 
 	if(has_post_thumbnail()): ?>
 		<img
