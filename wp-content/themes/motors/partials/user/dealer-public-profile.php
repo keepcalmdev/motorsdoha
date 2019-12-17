@@ -112,7 +112,7 @@ $inline_list = 'stm-inline-icons';
                                             //youtube channel
                                             $user_data = get_userdata($user_id);
                                             $user_login = $user_data->user_login; 
-                                            if($social_key === "youtube" && $social === $user_login) continue;
+                                            if($social === $user_login) continue;
                                         ?>
                                         <a href="<?php echo esc_url($social); ?>">
                                             <?php
