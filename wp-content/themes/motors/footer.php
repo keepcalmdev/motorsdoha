@@ -162,11 +162,6 @@ if ( !stm_is_auto_parts() ) :
         }
 
         if ($('body').hasClass('rtl')) {
-            $('.normal-price').each(function(){
-                var abc = $(this).html().replace('ريال قطري', '').replace('ر.ق', '');
-                // $(this).html($(this).html().replace('ريال قطري', 'ر.ق'));
-                $(this).html(abc+'<span>'+'ر.ق'+'</span>');
-            });
             $('.trp-wrap').each(function(){
                 $(this).html(
                     $(this).html()
@@ -179,9 +174,6 @@ if ( !stm_is_auto_parts() ) :
                     .replace('Fuel type', 'نوع الوقود')
                 );
             });
-            setTimeout(function(){
-            $('.found-cars.heading-font .blue-lt').html($('.found-cars.heading-font .blue-lt').html().replace('سيارات', 'سيارة'));
-            }, 1500);
         }
 
         $('.mynewtabs ul li a').click(function(){
