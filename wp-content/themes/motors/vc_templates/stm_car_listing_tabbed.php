@@ -152,12 +152,13 @@ $tab_unique = 'listing-cars-id-' . rand( 0, 99999 );
                             'field' => 'slug',
                             'terms' => array( $filter_cat[0] )
                         );
+                        $total_listing_cars = new WP_Query( $args );
                         $args['meta_query'][] = array(
-                            'relation' => 'AND',
+                            'relation' => 'OR',
                             array(
-                                'key'     => 'show_till',
-                                'value'   => date('Y-m-d'),
-                                'type'    => 'DATE',
+                                'key' => 'show_till',
+                                'value' => date('Y-m-d'),
+                                'type' => 'DATE',
                                 'compare' => '>='
                             )
                         );
@@ -169,7 +170,7 @@ $tab_unique = 'listing-cars-id-' . rand( 0, 99999 );
                             <div class="found-cars-clone">
                                 <div class="found-cars heading-font"><i
                                             class="stm-icon-car"></i><?php esc_html_e( 'available', 'motors' ); ?> <span
-                                            class="blue-lt"><?php echo esc_attr( $listing_cars->found_posts ); ?><?php echo esc_html( $atts["found_cars_prefix"] ); ?></span>
+                                            class="blue-lt"><?php echo esc_attr( $total_listing_cars->found_posts ); ?><?php echo esc_html( $atts["found_cars_prefix"] ); ?></span>
                                 </div>
                             </div>
                             <?php if ( $listing_cars->have_posts() ): ?>

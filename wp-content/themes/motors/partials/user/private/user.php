@@ -26,6 +26,12 @@ $link = add_query_arg(array('page_admin' => 'settings'), stm_get_author_link('')
 							<?php if(!empty($user_fields['socials'])): ?>
 								<div class="socials clearfix">
 									<?php foreach($user_fields['socials'] as $social_key => $social): ?>
+                                        <?php
+                                            //youtube channel
+                                            $user_data = get_userdata($user->ID);
+                                            $user_login = $user_data->user_login;
+                                            if($social === $user_login) continue;
+                                        ?>
 										<a href="<?php echo esc_url($social); ?>">
 											<?php
 												if($social_key == 'youtube') {

@@ -5,19 +5,42 @@ $show_email = get_user_meta($user_id, 'stm_show_email', true);
 $post_id = get_the_ID();
 $car_title = get_post_meta($post_id, 'car_title', true);
 $car_condition = get_post_meta($post_id, 'condition', true);
-$car_title_prefix = "";
-if($car_title === ""){ //custom title prefix
-   if($car_condition === "new-cars"){
-        $car_title_prefix = "New";
-    } else if ($car_condition === "used-cars") {
-        $car_title_prefix = "Used";
+
+//data
+$filter = stm_listings_filter();
+//make
+$car_make = get_post_meta($post_id, 'make', true);
+$car_make = $filter["options"]["make"][$car_make]["label"];
+//model
+$car_model = get_post_meta($post_id, 'serie', true);
+$car_model = $filter["options"]["serie"][$car_model]["label"];
+//year
+$car_year = get_post_meta($post_id, 'ca-year', true);
+//car name
+$car_name = $car_make." ".$car_model." ".$car_year;
+//lang
+$lang = get_locale();
+$custom_car_title = "";
+if($car_title === ""){
+   if($car_condition === "new-cars"){//Specific Car Page (New)
+        if($lang !== "en_US"){
+            $custom_car_title = "سيارة ".$car_name;
+        } else {
+            $custom_car_title = $car_name;
+        }
+    } else if ($car_condition === "used-cars"){//Specific Car Page (Used)
+        if($lang !== "en_US"){
+            $custom_car_title = "سيارة ".$car_name;
+        } else {
+            $custom_car_title = "Used ".$car_name;
+        }
     } 
 }
 ?>
 <div class="row">
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="stm-single-car-content">
-            <h1 class="title h2"><?php echo $car_title_prefix . " ";?><?php echo ($car_title === "")? the_title() :  $car_title; ?></h1>
+            <h1 class="title h2"><?php echo ($car_title === "")? $custom_car_title : $car_title; ?></h1>
 
             <!--Actions-->
             <?php get_template_part( 'partials/single-car/car', 'actions' ); ?>
@@ -269,7 +292,7 @@ if($car_title === ""){ //custom title prefix
 
                     <div id="tab-1446536246604-2-8" class="wpb_tab ui-tabs-panel wpb_ui-tabs-hide vc_clearfix ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="true" style="display: none;">
                         <div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1445931891055">
-                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
                                 <div class="vc_column-inner">
                                     <div class="wpb_wrapper">
                                         <h4 style="color: #252628;text-align: left;font-family:Montserrat;font-weight:400;font-style:normal" class="vc_custom_heading vc_custom_1561380831678">Features</h4>

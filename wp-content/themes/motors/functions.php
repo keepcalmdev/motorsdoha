@@ -19,7 +19,6 @@
 
 	wp_enqueue_style( 'phonevalid', get_template_directory_uri() . '/assets/css/intlTelInput.css', array(), '1.1', 'all');
 
-	wp_enqueue_script( 'phonevalidscript', get_template_directory_uri() . '/assets/js/intlTelInput-jquery.min.js', array ( 'jquery' ), 1.1, true);
 
 
 	//	Include path
@@ -370,12 +369,10 @@ function remove_yoast_og($description) {
     ){
     	if(get_locale() != "en_US"){ //ar
     		return false;
-    	}
+    	} 
     }
 }
 //end delete metatags
-
-
 
 
 // override core function
@@ -516,3 +513,90 @@ function change_user_pass_func(){
 	echo json_encode($result);
 	wp_die();	
 }
+
+//get yoast title/desc for seperate pages
+add_filter('wpseo_title', 'return_title');
+add_filter('wpseo_metadesc', 'return_metadesc');
+function return_title(){
+    if(
+    	is_page( 5 ) || //home
+    	is_page( 1806 ) || //Delears
+    	$post_id == 748  || //Blog/Newsroom
+    	is_page( 370 ) || //About us
+    	is_page( 712 )  //Contacts
+    ){
+    	if(get_locale() === "en_US"){ //en
+			global $wp_query;
+			$post_id = $wp_query->get_queried_object_id();
+			$title = yoastVariableToTitle($post_id);
+			return $title;
+    	} 
+    }
+}
+
+function return_metadesc(){
+    if(
+    	is_page( 5 ) || //home
+    	is_page( 1806 ) || //Delears
+    	$post_id == 748  || //Blog/Newsroom
+    	is_page( 370 ) || //About us
+    	is_page( 712 )  //Contacts
+    ){
+    	if(get_locale() === "en_US"){ //en
+			global $wp_query;
+			$post_id = $wp_query->get_queried_object_id();
+			$desc = get_post_description();
+			return $desc;
+    	} 
+    }
+}
+
+function yoastVariableToTitle($post_id) {
+
+    $yoast_title = get_post_meta($post_id, '_yoast_wpseo_title', true);
+    $title = strstr($yoast_title, '%%', true);
+    if (empty($title)) {
+        $title = get_the_title($post_id);
+    }
+    $wpseo_titles = get_option('wpseo_titles');
+
+    $sep_options = WPSEO_Option_Titles::get_instance()->get_separator_options();
+    if (isset($wpseo_titles['separator']) && isset($sep_options[$wpseo_titles['separator']])) {
+        $sep = $sep_options[$wpseo_titles['separator']];
+    } else {
+        $sep = '-'; //setting default separator if Admin didn't set it from backed
+    }
+
+    $site_title = get_bloginfo('name');
+
+    $meta_title = $title . ' ' . $sep . ' ' . $site_title;
+
+    return $meta_title;
+}
+
+function get_post_description(): string {
+	global $post;
+    $yoast_post_description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+    if ( empty( $yoast_post_description ) ) {
+        $wpseo_titles           = get_option( 'wpseo_titles', [] );
+        $yoast_post_description = isset( $wpseo_titles[ 'metadesc-' . $post->post_type ] ) ? $wpseo_titles[ 'metadesc-' . $post->post_type ] : '';
+    }
+    return wpseo_replace_vars( $yoast_post_description, $post );
+}
+
+function login_page_styles() {
+	wp_enqueue_style( 'admin-login', get_stylesheet_directory_uri() . '/assets/css/admin-login.css', '', '', '' );
+	wp_enqueue_script( 'admin-login', get_stylesheet_directory_uri() . '/assets/js/admin-login.js', array('jquery'), '', true );
+}
+add_action( 'login_enqueue_scripts', 'login_page_styles' );
+
+function logo_link_to_home() {
+	return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', 'logo_link_to_home' );
+
+function logo_title() {
+	return get_bloginfo('name');
+}
+add_filter( 'login_headertitle', 'logo_title' );
+

@@ -3,3 +3,5 @@
     justify-content: center;
     align-items: center;
 }
+
+.rtl .dealer-search-results table.stm_dealer_list_table tr.stm-single-dealer td.dealer-phone .phone {direction: ltr;}

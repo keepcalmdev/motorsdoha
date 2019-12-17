@@ -585,129 +585,17 @@ function invMapScript() {
 
 
        });
-      function chngTtl(titleObj){
-            //top title
-            var top_title = "";
-            if(titleObj["condition"] == "new-cars"){
-                top_title = "New "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";
-            } else if(titleObj["condition"] == "used-cars") {
-                top_title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars in Qatar";  
-            } else {
-                if(titleObj["make"] !=="" || titleObj["model"] !== ""){//title without condition
-                    if(titleObj["model"] === "") {
-                        top_title = titleObj["make"]+" Cars for Sale in Qatar";                         
-
-                    } else {
-                        top_title = titleObj["make"]+" "+titleObj["model"]+" in Qatar";                         
-                    }
-                } else {
-                    top_title = "Inventory";
-                }
-            }
-
-            var lang = jQuery('html').attr("lang")
-            if(lang !== "en-US") {
-                jQuery.ajax({  
-                    url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
-                    dataType: 'jsonp',
-                    data: { q: top_title,  // text to translate
-                            v: '1.0',
-                            'target': 'ar',
-                            langpair: 'en|es' },   // '|es' for auto-detect
-                    success: function(result) {
-                        $("h1.title").html(result.data.translations[0].translatedText)
-                    },  
-                    error: function(XMLHttpRequest, errorMsg, errorThrown) {
-                        //alert(errorMsg);
-                    }  
-                });
-            } else {
-                $("h1.title").html(top_title);                
-            }
+        function buildUrl() {
+            var data = [],
+            url = $("form[data-trigger=filter]").attr('action'),
+            sign = url.indexOf('?') < 0 ? '?' : '&';
+            var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order" ]  
+            $.each($("form[data-trigger=filter]").serializeArray(), function (i, field) {                    
+                if (field.value != '') data.push(field.name + '=' + field.value)
+            });
+            url = url + sign + data.join('&');
+            //window.history.pushState('', '', decodeURI(url));
         }
-
-       function capitalizeFL(name){
-        return name.charAt(0).toUpperCase() + name.slice(1)
-       }
-       function changeSeo(){
-         var title = "";
-               var desc = "";
-               var make=capitalizeFL($("select[name=make]").val());
-               //var model=$("select[name=serie]").val();
-               var modelVal = $("select[name=serie] option:selected").html()
-               var model = ($("select[name=serie]").val() === "")? "": modelVal
-               var year=$("select[name=ca-year]").val();
-               var condition = $("select[name=condition]").val()
-
-               var titleObj = {"make": make, "model": model, "year": year, "condition": condition }
-           //console.table(titleObj)    
-           if(titleObj["condition"] == "new-cars"){
-                // //Car Make (New)
-                // if(titleObj["model"] == ""){
-                // title = "New " + titleObj["make"] + " Cars for Sale in Qatar | MotorsDoha";
-                // desc = '<meta name="description" content="Shop new '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on new '+titleObj["make"]+'. Inspected & Certified brand new cars on motorsdoha.com." />';
-                // } else { //Car Model (New)
-                //     title = titleObj["year"] +" "+titleObj['make']+" "+titleObj['model']+ " Prices, Cars for Sale in Qatar | MotorsDoha";
-                //     desc = '<meta name="description" content="New '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Shop and buy top-rated new cars. Find a great deal on '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
-                // }
-                title ="New Cars in Qatar, Reviews and Prices, Buy New Car | MotorsDoha"
-                desc = '<meta name="description" content="Research new cars for sale in Qatar. View the latest new car offers, get the price from dealers. Compare cars, read latest news and reviews." />'
-
-            } else if(titleObj["condition"] == "used-cars") {
-                // //Car Make (Used) 
-                // if(titleObj["model"]  ==""){
-                //     title = titleObj["make"]+" Used Cars for Sale in Qatar | MotorsDoha";
-                //     desc = '<meta name="description" content="Shop used '+titleObj["make"]+' vehicles for sale in Qatar. Find great deal on used '+titleObj["make"]+'. Inspected & Certified second hand cars on motorsdoha.com." />';
-
-                // } else { //Car Model (Used)
-                //     title = "Used "+titleObj["make"]+" "+titleObj["model"]+" Cars for Sale in Qatar | MotorsDoha";
-                //     desc = '<meta name="description" content="Used '+titleObj["make"]+' '+titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on used '+titleObj["make"]+' '+titleObj["model"]+' in Qatar." />';
-                // }
-                title ="Used Cars for Sale in Qatar, Buy Second Hand Car | MotorsDoha"
-                desc = '<meta name="description" content="Shop for used cars online. Find the best local deals in Qatar. A wide selection of quality second hand & pre-owned cars from verified owners." />'
-
-            } else {
-                if(titleObj["make"] !=="" || titleObj["model"] !==""){ //condition without
-                    title = titleObj["make"] + " "+ titleObj["model"] + " Cars for Sale, Price in Qatar | MotorsDoha";
-                    title = title.replace("  ", " ")
-                    if(titleObj["model"] ===""){
-                        desc = '<meta name="description" content="Shop new & used '+titleObj["make"]+' vehicles for sale in Doha, Qatar. Find great deal on '+titleObj["make"]+'. New & certified second hand cars on motorsdoha.com." />';
-                    } else {
-                        desc = '<meta name="description" content="New & used '+titleObj["make"] +' ' + titleObj["model"]+' for sale on motorsdoha.com. Explore exiting offers and discounts. Find a great deal on '+titleObj["make"] +' ' + titleObj["model"]+' in Qatar." />';
-                    }
-                } else { //inventory default
-                    title = "Qatar Car Sale, Buy New & Used Vehicles | MotorsDoha"
-                    desc = '<meta name="description" content="Wide range of cars from trusted dealers. Browse MotorsDoha inventory to find your next new or used car. Research, compare models and prices in Qatar." />'
-                }
-            }
-            var lang = jQuery('html').attr("lang")
-            if(lang !== "en-US") {
-                jQuery.ajax({  
-                    url: 'https://translation.googleapis.com/language/translate/v2/?key=AIzaSyDcyyYqhqGyd65gSP1CMYPV_hRsTSAGWN0',  
-                    dataType: 'jsonp',
-                    data: { q: title,  // text to translate
-                            v: '1.0',
-                            'target': 'ar',
-                            langpair: 'en|es' },   // '|es' for auto-detect
-                    success: function(result) {
-                        $("title").html(result.data.translations[0].translatedText)
-                    },  
-                    error: function(XMLHttpRequest, errorMsg, errorThrown) {
-                        //alert(errorMsg);
-                    }  
-                });
-            } else {
-                $("title").html(title);             
-            }
-           $("meta[name=description]").remove();
-           $("head").append(desc);
-
-            chngTtl(titleObj)
-
-      
-       }
-
-
    </script>
 
 

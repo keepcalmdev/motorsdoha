@@ -108,6 +108,12 @@ $inline_list = 'stm-inline-icons';
                             <?php if (!empty($user['socials'])): ?>
                                 <div class="socials clearfix">
                                     <?php foreach ($user['socials'] as $social_key => $social): ?>
+                                        <?php
+                                            //youtube channel
+                                            $user_data = get_userdata($user_id);
+                                            $user_login = $user_data->user_login; 
+                                            if($social === $user_login) continue;
+                                        ?>
                                         <a href="<?php echo esc_url($social); ?>">
                                             <?php
                                             if ($social_key == 'youtube') {
