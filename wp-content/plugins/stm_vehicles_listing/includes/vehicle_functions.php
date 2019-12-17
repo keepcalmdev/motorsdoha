@@ -90,6 +90,9 @@ if (!function_exists('stm_listing_price_view')) {
     {
         if ($price !== '') {
             $price_label = stm_get_price_currency();
+	        if( is_rtl() ) {
+		        $price_label = 'ر.ق';
+            }
             $price_label_position = get_theme_mod('price_currency_position', 'left');
             $price_delimeter = get_theme_mod('price_delimeter', ' ');
 
