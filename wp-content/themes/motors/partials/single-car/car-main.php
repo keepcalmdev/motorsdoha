@@ -295,18 +295,23 @@ if($car_title === ""){
                             <div class="wpb_column vc_column_container vc_col-sm-12">
                                 <div class="vc_column-inner">
                                     <div class="wpb_wrapper">
-                                        <h4 style="color: #252628;text-align: left;font-family:Montserrat;font-weight:400;font-style:normal" class="vc_custom_heading vc_custom_1561380831678">Features</h4>
-                                        <div class="wpb_text_column wpb_content_element ">
-                                            <div class="wpb_wrapper">
-                                                <ul class="list-style-1" style="-webkit-column-count: 3; -moz-column-count: 3; column-count: 3;">
-                                                    <?php $features = explode(',', get_post_meta(get_the_ID(), 'additional_features', true)); ?>
-                                                    <?php foreach ($features as $key => $feature): ?>
-                                                        <li><?php echo $feature; ?></li>
-                                                    <?php endforeach ?>
-                                                </ul>
+	                                    <?php
+                                            $features = get_post_meta(get_the_ID(), 'additional_features', true);
+                                            if( $features !== '' ) :
+                                                $features_array = explode( ',', $features );
+                                            ?>
+                                                <h4 style="color: #252628;text-align: left;font-family:Montserrat;font-weight:400;font-style:normal" class="vc_custom_heading vc_custom_1561380831678">Features</h4>
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <ul class="list-style-1" style="-webkit-column-count: 3; -moz-column-count: 3; column-count: 3;">
+                                                            <?php foreach ($features_array as $key => $feature): ?>
+                                                                <li><?php echo $feature; ?></li>
+                                                            <?php endforeach ?>
+                                                        </ul>
 
-                                            </div>
-                                        </div>
+                                                    </div>
+                                                </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
