@@ -374,6 +374,26 @@ function remove_yoast_og($description) {
 }
 //end delete metatags
 
+/*---------------- Yoast og:locale remove ----------------*/
+add_action( 'template_redirect', function () {
+global $wpseo_og;
+
+if ( isset( $wpseo_og ) ) {
+remove_action( 'wpseo_opengraph', [ $wpseo_og, 'locale' ], 1 );
+}
+}, 1000 );
+
+add_action("print_locale", "show_locale");
+
+function show_locale(){ echo print_locale(); }
+
+function print_locale() {
+    if(is_locale_en()) return '<meta property="og:locale" content="en" />';
+    return '<meta property="og:locale" content="ar" />';
+}
+
+function is_locale_en() { return get_locale() === "en_US"; }
+
 
 // override core function
 if ( !function_exists('wp_authenticate') ) :

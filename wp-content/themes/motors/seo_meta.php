@@ -307,4 +307,8 @@ if(
         echo '<meta name="description" content="'. preg_replace('/\s\s+/', ' ',str_replace("،",",",$desc) )  .'" />'."\n";
     }
 }
+
+/*---------------- Yoast og:locale----------------*/
+do_action("print_locale");
+
 ?>
