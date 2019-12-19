@@ -604,3 +604,16 @@ function get_post_description(): string {
     return wpseo_replace_vars( $yoast_post_description, $post );
 }
 
+/*---------------- Get current URL ----------------*/
+function get_current_link() {
+    $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
+    return $base_url . $_SERVER["REQUEST_URI"];
+}
+/*---------------- Print canonical filter page ----------------*/
+add_action("print_canonical", "print_canonical");
+function print_canonical() { if(is_filter_page()) echo get_meta_canonical(); }
+function is_filter_page() { return is_page(639); }
+function get_meta_canonical() { return "\n".'<link rel="canonical" href="'.get_current_link().'" />'; }
+add_filter("wpseo_canonical", "remove_yoast_canonical");
+function remove_yoast_canonical() { if(is_filter_page()) return; }
+

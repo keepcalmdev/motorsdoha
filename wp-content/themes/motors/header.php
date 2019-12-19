@@ -20,7 +20,6 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
             exit();
         }
     }
-
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
