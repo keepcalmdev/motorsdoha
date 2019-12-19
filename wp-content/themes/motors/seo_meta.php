@@ -311,4 +311,6 @@ if(
 /*---------------- Yoast og:locale----------------*/
 do_action("print_locale");
 
+/*---------------- print canonical (filter page) ----------------*/
+do_action("print_canonical");
 ?>
