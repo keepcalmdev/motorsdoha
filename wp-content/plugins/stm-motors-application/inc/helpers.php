@@ -721,7 +721,7 @@ function stm_ma_add_a_car($update = false)
 
     /*Get first step*/
 
-    $stepOne = explode( ',', get_option( 'add_car_step_one', "add_media,make,serie,ca-year" ) );
+    $stepOne = explode( ',', get_option( 'add_car_step_one', "make,serie,ca-year" ) );
 
     foreach ( $stepOne as $k ) {
         if ( $k == 'add_media' ) continue;
