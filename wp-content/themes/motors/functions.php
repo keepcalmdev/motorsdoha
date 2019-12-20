@@ -374,6 +374,26 @@ function remove_yoast_og($description) {
 }
 //end delete metatags
 
+/*---------------- Yoast og:locale remove ----------------*/
+add_action( 'template_redirect', function () {
+global $wpseo_og;
+
+if ( isset( $wpseo_og ) ) {
+remove_action( 'wpseo_opengraph', [ $wpseo_og, 'locale' ], 1 );
+}
+}, 1000 );
+
+add_action("print_locale", "show_locale");
+
+function show_locale(){ echo print_locale(); }
+
+function print_locale() {
+    if(is_locale_en()) return '<meta property="og:locale" content="en" />';
+    return '<meta property="og:locale" content="ar" />';
+}
+
+function is_locale_en() { return get_locale() === "en_US"; }
+
 
 // override core function
 if ( !function_exists('wp_authenticate') ) :
@@ -584,6 +604,7 @@ function get_post_description(): string {
     return wpseo_replace_vars( $yoast_post_description, $post );
 }
 
+
 function login_page_styles() {
 	wp_enqueue_style( 'admin-login', get_stylesheet_directory_uri() . '/assets/css/admin-login.css', '', '', '' );
 	wp_enqueue_script( 'admin-login', get_stylesheet_directory_uri() . '/assets/js/admin-login.js', array('jquery'), '', true );
@@ -600,3 +621,15 @@ function logo_title() {
 }
 add_filter( 'login_headertitle', 'logo_title' );
 
+/*---------------- Get current URL ----------------*/
+function get_current_link() {
+    $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
+    return $base_url . $_SERVER["REQUEST_URI"];
+}
+/*---------------- Print canonical filter page ----------------*/
+add_action("print_canonical", "print_canonical");
+function print_canonical() { if(is_filter_page()) echo get_meta_canonical(); }
+function is_filter_page() { return is_page(639); }
+function get_meta_canonical() { return "\n".'<link rel="canonical" href="'.get_current_link().'" />'; }
+add_filter("wpseo_canonical", "remove_yoast_canonical");
+function remove_yoast_canonical() { if(is_filter_page()) return; }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class TRP_Url_Converter
  *
@@ -128,10 +127,19 @@ class TRP_Url_Converter {
 
         foreach ( $languages as $language ) {
             // hreflang should have - instead of _ . For example: en-EN, not en_EN like the locale
-            $hreflang = str_replace('_', '-', $language);
-            $hreflang = apply_filters('trp_hreflang', $hreflang, $language);
+            $lang = str_replace('_', '-', $language);
+            $lang = apply_filters('trp_hreflang', $lang, $language);
+            if ($this->is_en_lang($lang)) { $hreflang = $this->get_hreflang($lang); }
+                else $hreflang = $lang;
             echo '<link rel="alternate" hreflang="' . esc_attr( $hreflang ). '" href="' . esc_url( $this->get_url_for_language( $language ) ) . '"/>';
         }
+    }
+
+    public function is_en_lang($lang) { return $lang === "en-US"; }
+
+    public function get_hreflang($lang) {
+        $hreflang = array("en-US" => "en");
+        return $hreflang[$lang];
     }
 
     /**
