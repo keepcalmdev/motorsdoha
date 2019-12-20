@@ -29,7 +29,8 @@ $link = add_query_arg(array('page_admin' => 'settings'), stm_get_author_link('')
                                         <?php
                                             //youtube channel
                                             $user_data = get_userdata($user->ID);
-                                            $user_login = $user_data->user_login;
+                                            $user_login = strtolower($user_data->user_login);
+                                            $social = strtolower($social);
                                             if($social === $user_login) continue;
                                         ?>
 										<a href="<?php echo esc_url($social); ?>">

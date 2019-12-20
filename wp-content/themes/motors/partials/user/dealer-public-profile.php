@@ -111,7 +111,8 @@ $inline_list = 'stm-inline-icons';
                                         <?php
                                             //youtube channel
                                             $user_data = get_userdata($user_id);
-                                            $user_login = $user_data->user_login; 
+                                            $user_login = strtolower($user_data->user_login);
+                                            $social = strtolower($social);
                                             if($social === $user_login) continue;
                                         ?>
                                         <a href="<?php echo esc_url($social); ?>">
