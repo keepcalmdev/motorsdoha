@@ -33,7 +33,7 @@
 							<div class="form-group">
 								<div class="form-modal-label"><?php esc_html_e('Best time', 'motors'); ?></div>
 								<div class="stm-datepicker-input-icon">
-									<input name="date" class="stm-date-timepicker" type="text" />
+									<input name="date" class="stm-date-timepicker" readonly="readonly" type="text" />
 								</div>
 							</div>
 						</div>

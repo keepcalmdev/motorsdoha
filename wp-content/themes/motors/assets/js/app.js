@@ -311,7 +311,34 @@
 
         $.datetimepicker.setLocale(currentLocale);
 
-        $('.stm-date-timepicker').datetimepicker({minDate: 0, lang: stm_lang_code});
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const permittedYear = currentYear + 1;
+        const dateCorrector = function(dp,$input){
+
+            let currentDateInMilliseconds = currentDate.getTime();
+
+            let chosenDate = new Date( $input.val() );
+            let chosenDateInMilliseconds = chosenDate.getTime();
+
+            let currentMonth = currentDate.getMonth() + 1;
+            let currentDay = currentDate.getDate();
+            let currentHours = currentDate.getHours();
+
+            if(chosenDateInMilliseconds < currentDateInMilliseconds) {
+                $input.val(currentYear + '/' + currentMonth + '/' + currentDay + ' ' + (currentHours + 1) +':00');
+            }
+
+        };
+
+        $('.stm-date-timepicker').datetimepicker({
+            yearStart: currentYear,
+            yearEnd: permittedYear,
+            minDate: 0,
+            lang: stm_lang_code,
+            onChangeDateTime: dateCorrector,
+            onShow: dateCorrector,
+        });
 
         $('.stm-years-datepicker').datetimepicker({
             timepicker:false,
