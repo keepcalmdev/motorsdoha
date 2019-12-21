@@ -589,12 +589,14 @@ function invMapScript() {
             var data = [],
             url = $("form[data-trigger=filter]").attr('action'),
             sign = url.indexOf('?') < 0 ? '?' : '&';
-            var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order" ]  
-            $.each($("form[data-trigger=filter]").serializeArray(), function (i, field) {                    
-                if (field.value != '') data.push(field.name + '=' + field.value)
+            var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order", "trp-form-language" ]  
+            $.each($("form[data-trigger=filter]").serializeArray(), function (i, field) {  
+                if(filterUrl.indexOf(field.name) === -1){                  
+                    if (field.value != '') data.push(field.name + '=' + field.value)
+                }
             });
             url = url + sign + data.join('&');
-            //window.history.pushState('', '', decodeURI(url));
+            window.history.pushState('', '', decodeURI(url));
         }
    </script>
 
