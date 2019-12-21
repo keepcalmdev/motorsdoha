@@ -622,14 +622,51 @@ function logo_title() {
 add_filter( 'login_headertitle', 'logo_title' );
 
 /*---------------- Get current URL ----------------*/
-function get_current_link() {
+function get_current_link($type) {
     $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
+    if($type === "domain") return $base_url;
     return $base_url . $_SERVER["REQUEST_URI"];
 }
 /*---------------- Print canonical filter page ----------------*/
 add_action("print_canonical", "print_canonical");
+
 function print_canonical() { if(is_filter_page()) echo get_meta_canonical(); }
+
 function is_filter_page() { return is_page(639); }
-function get_meta_canonical() { return "\n".'<link rel="canonical" href="'.get_current_link().'" />'; }
+
+function get_meta_canonical() {
+	if( is_default_canonical() ) return "\n".'<link rel="canonical" href="'.get_default_canonical_url().'" />'; 
+	return "\n".'<link rel="canonical" href="'.get_current_link("").'" />'; 
+}
+
+function is_default_canonical() {
+	$car_main_params = get_main_params();
+	$car_all_params = get_all_params();
+	return ( $car_main_params === null
+			|| ( $car_main_params["serie"] && !$car_main_params["make"] ) 
+			|| !car_allowed_params($car_all_params, $car_main_params) );
+}
+
+function get_default_canonical_url() {
+	if(get_locale() !== "en_US") return get_current_link("domain")."/".get_locale()."/inventory";
+	return get_current_link("domain")."/inventory";
+}
+
+function get_main_params() {
+	if ( isset($_GET["condition"]) && !empty($_GET["condition"]) ) $main_params["condition"] = $_GET["condition"];
+	if ( isset($_GET["make"]) && !empty($_GET["make"]) )           $main_params["make"] = $_GET["make"];
+	if ( isset($_GET["serie"]) && !empty($_GET["serie"]) )         $main_params["serie"] = $_GET["serie"];
+	return $main_params;
+}
+
+function get_all_params() {
+	$parts = parse_url(get_current_link(""));
+	parse_str($parts['query'], $query);
+	return $query;
+}
+
+function car_allowed_params($myArr, $allowedElements) { return count(array_intersect($myArr, $allowedElements)) == count($myArr); }
+
 add_filter("wpseo_canonical", "remove_yoast_canonical");
+
 function remove_yoast_canonical() { if(is_filter_page()) return; }
