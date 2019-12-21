@@ -613,11 +613,19 @@ function get_current_link($type) {
 /*---------------- Print canonical filter page ----------------*/
 add_action("print_canonical", "print_canonical");
 
-function print_canonical() { if(is_filter_page()) echo get_meta_canonical(); }
+function print_canonical() { if(is_filter_page() || is_car_page()) echo get_meta_canonical(); }
 
 function is_filter_page() { return is_page(639); }
 
+function is_car_page() {
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
+    $categories = get_post_type($post_id);
+    return $categories === "listings";
+}
+
 function get_meta_canonical() {
+	if(is_car_page()) return "\n".'<link rel="canonical" href="'.get_current_link("").'" />';
 	if( is_default_canonical() ) return "\n".'<link rel="canonical" href="'.get_default_canonical_url().'" />'; 
 	return "\n".'<link rel="canonical" href="'.get_current_link("").'" />'; 
 }
@@ -653,4 +661,4 @@ function car_allowed_params($myArr, $allowedElements) { return count(array_inter
 
 add_filter("wpseo_canonical", "remove_yoast_canonical");
 
-function remove_yoast_canonical() { if(is_filter_page()) return; }
+function remove_yoast_canonical() { if(is_filter_page() || is_car_page()) return; }
