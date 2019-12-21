@@ -636,9 +636,10 @@ function get_default_canonical_url() {
 }
 
 function get_main_params() {
-	if ( isset($_GET["condition"]) && !empty($_GET["condition"]) ) $main_params["condition"] = $_GET["condition"];
-	if ( isset($_GET["make"]) && !empty($_GET["make"]) )           $main_params["make"] = $_GET["make"];
-	if ( isset($_GET["serie"]) && !empty($_GET["serie"]) )         $main_params["serie"] = $_GET["serie"];
+	if ( isset($_GET["condition"]) && !empty($_GET["condition"]) )                         $main_params["condition"] = $_GET["condition"];
+	if ( isset($_GET["make"]) && !empty($_GET["make"]) )                                   $main_params["make"] = $_GET["make"];
+	if ( isset($_GET["serie"]) && !empty($_GET["serie"]) )                                 $main_params["serie"] = $_GET["serie"];
+	if ( isset($_GET["trp-form-language"]) && !empty($_GET["trp-form-language"]) )         $main_params["trp-form-language"] = $_GET["trp-form-language"];
 	return $main_params;
 }
 
