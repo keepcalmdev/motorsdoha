@@ -861,7 +861,7 @@ $(".wpcf7-tel, input[name=stm_phone], input[type=phone], input[name=stm_user_pho
       // placeholderNumberType: "MOBILE",
       // preferredCountries: ['cn', 'jp'],
       separateDialCode: true,
-      utilsScript: "<?php bloginfo('url'); ?>/wp-content/themes/motors/assets/js/utils.js",
+      utilsScript: "<?php echo get_template_directory_uri(); ?>/assets/js/utils.js",
 
 });
 $(document).on("focus", ".wpcf7-tel", function(){
@@ -932,7 +932,7 @@ $("input[name=stm_whatsapp_phone]").intlTelInput({
       // placeholderNumberType: "MOBILE",
       // preferredCountries: ['cn', 'jp'],
       separateDialCode: true,
-      utilsScript: "<?php bloginfo('url'); ?>/wp-content/themes/motors/assets/js/utils.js",
+      utilsScript: "<?php echo get_template_directory_uri(); ?>/assets/js/utils.js",
 
 });
 

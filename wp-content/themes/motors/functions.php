@@ -374,6 +374,26 @@ function remove_yoast_og($description) {
 }
 //end delete metatags
 
+/*---------------- Yoast og:locale remove ----------------*/
+add_action( 'template_redirect', function () {
+global $wpseo_og;
+
+if ( isset( $wpseo_og ) ) {
+remove_action( 'wpseo_opengraph', [ $wpseo_og, 'locale' ], 1 );
+}
+}, 1000 );
+
+add_action("print_locale", "show_locale");
+
+function show_locale(){ echo print_locale(); }
+
+function print_locale() {
+    if(is_locale_en()) return '<meta property="og:locale" content="en" />';
+    return '<meta property="og:locale" content="ar" />';
+}
+
+function is_locale_en() { return get_locale() === "en_US"; }
+
 
 // override core function
 if ( !function_exists('wp_authenticate') ) :
@@ -584,6 +604,7 @@ function get_post_description(): string {
     return wpseo_replace_vars( $yoast_post_description, $post );
 }
 
+
 function login_page_styles() {
 	wp_enqueue_style( 'admin-login', get_stylesheet_directory_uri() . '/assets/css/admin-login.css', '', '', '' );
 	wp_enqueue_script( 'admin-login', get_stylesheet_directory_uri() . '/assets/js/admin-login.js', array('jquery'), '', true );
@@ -600,3 +621,58 @@ function logo_title() {
 }
 add_filter( 'login_headertitle', 'logo_title' );
 
+/*---------------- Get current URL ----------------*/
+function get_current_link($type) {
+    $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
+    if($type === "domain") return $base_url;
+    return $base_url . $_SERVER["REQUEST_URI"];
+}
+/*---------------- Print canonical filter page ----------------*/
+add_action("print_canonical", "print_canonical");
+
+function print_canonical() { if(is_filter_page()) echo get_meta_canonical(); }
+
+function is_filter_page() { return is_page(639); }
+
+function get_meta_canonical() {
+	if( is_default_canonical() ) return "\n".'<link rel="canonical" href="'.get_default_canonical_url().'" />'
+									   ."\n".'<meta property="og:url" content="'.get_default_canonical_url().'" />'; 
+	return "\n".'<link rel="canonical" href="'.get_current_link("").'" />'
+	      ."\n".'<meta property="og:url" content="'.get_current_link("").'" />'; 
+}
+
+function is_default_canonical() {
+	$car_main_params = get_main_params();
+	$car_all_params = get_all_params();
+	return ( $car_main_params === null
+			|| ( $car_main_params["serie"] && !$car_main_params["make"] ) 
+			|| !car_allowed_params($car_all_params, $car_main_params) );
+}
+
+function get_default_canonical_url() {
+	if(get_locale() !== "en_US") return get_current_link("domain")."/".get_locale()."/inventory";
+	return get_current_link("domain")."/inventory";
+}
+
+function get_main_params() {
+	if ( isset($_GET["condition"]) && !empty($_GET["condition"]) )                         $main_params["condition"] = $_GET["condition"];
+	if ( isset($_GET["make"]) && !empty($_GET["make"]) )                                   $main_params["make"] = $_GET["make"];
+	if ( isset($_GET["serie"]) && !empty($_GET["serie"]) )                                 $main_params["serie"] = $_GET["serie"];
+	if ( isset($_GET["trp-form-language"]) && !empty($_GET["trp-form-language"]) )         $main_params["trp-form-language"] = $_GET["trp-form-language"];
+	return $main_params;
+}
+
+function get_all_params() {
+	$parts = parse_url(get_current_link(""));
+	parse_str($parts['query'], $query);
+	return $query;
+}
+
+function car_allowed_params($myArr, $allowedElements) { return count(array_intersect($myArr, $allowedElements)) == count($myArr); }
+
+add_filter("wpseo_canonical", "remove_yoast_canonical");
+
+function remove_yoast_canonical($canonical) { 
+	if(is_filter_page()) return; 
+	return $canonical;
+}
