@@ -59,7 +59,7 @@ if (typeof (STMListings) == 'undefined') {
     Filter.prototype.pushState = function (url) {
 		//window.history.pushState('', '', decodeURI(url));
         var data = []
-        var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order" ]  
+        var filterUrl = ["min_price", "max_price", "ca_location" ,"stm_lat", "stm_lng", "max_search_radius", "sort_order", "trp-form-language" ]  
         var urlObj = URLToArray(url);
         for(var prop in urlObj){
             //console.log(prop)
