@@ -135,7 +135,10 @@ function stm_ajax_add_test_drive()
             //Sending Mail to admin
             stm_me_set_html_content_type();
 
-            $to = get_bloginfo('admin_email');
+            $admin_email = get_bloginfo('admin_email');
+	        $car_owner = get_post_meta($vehicle_id, 'stm_car_user', true);
+	        $car_owner_fields = stm_get_user_custom_fields($car_owner);
+	        $to = get_userdata($car_owner)->user_email;
 
             $args = array(
                 'car' => $title,
@@ -145,21 +148,20 @@ function stm_ajax_add_test_drive()
                 'best_time' => $_POST['date'],
             );
 
+            $headers = array(
+	            'From: MotorsDoha <' . $args['email'] . '>',
+	            'content-type: text/html',
+	            'Cc: ' . $admin_email,
+	            'reply-to: ' . $args['email'],
+            );
             $subject = generateSubjectView('test_drive', $args);
             $body = generateTemplateView('test_drive', $args);
 
-            do_action('stm_wp_mail', $to, $subject, $body, '');
-
-            if (stm_is_listing()) {
-                $car_owner = get_post_meta($vehicle_id, 'stm_car_user', true);
-                if (!empty($car_owner)) {
-                    $user_fields = stm_get_user_custom_fields($car_owner);
-                    if (!empty($user_fields) and !empty($user_fields['email'])) {
-                        do_action('stm_wp_mail', $user_fields['email'], $subject, $body, '');
-                    }
+	        if (!empty($car_owner)) {
+		        if (!empty($car_owner_fields) && !empty($car_owner_fields['email'])) {
+                    do_action('stm_wp_mail', $to, $subject, $body, $headers, '');
                 }
             }
-
             do_action('stm_remove_mail_content_type_filter');
 
         } else {
