@@ -75,12 +75,6 @@ class WPSEO_Sitemaps_Renderer {
 
 		$xml = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 
-
-		$links[] = array(
-				  'loc' => 'http://localhost:8888/wordpress/inventory-sitemap.xml',
-				  'lastmod' => '2019-06-04 12:32:22',
-				);
-
 		foreach ( $links as $link ) {
 			$xml .= $this->sitemap_index_url( $link );
 		}
