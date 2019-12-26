@@ -14,6 +14,8 @@ function emailTemplateView() {
 function getDefaultSubject($templateName) {
     $test_drive = 'Request Test Drive [car]';
 
+    $test_drive_client_notification = 'Client Request Test Drive [car]';
+
     $request_price = 'Request car price [car]';
 
     $trade_offer = 'Trade offer [car]';
@@ -58,6 +60,27 @@ function getDefaultTemplate($templateName) {
         <tr>
             <td>Date - </td>
             <td>[best_time]</td>
+        </tr>
+    </table>';
+
+	$test_drive_client_notification = '<table>
+        <tr>
+            <td>Hi <Name>,</td>
+        </tr>
+        <tr>
+            <td>You have requested for a test drive of [car] from [seller]. Your details:</td>
+        </tr>
+        <tr>
+            <td>Email: [email]</td>
+        </tr>
+        <tr>
+            <td>Phone number: [phone]</td>
+        </tr>
+        <tr>
+            <td>Preferred time: [best_time]</td>
+        </tr>
+        <tr>
+            <td>Thank you!</td>
         </tr>
     </table>';
 
@@ -286,6 +309,15 @@ function getTemplateShortcodes($templateName) {
         'best_time' => '[best_time]',
     );
 
+    $testDriveClientNotification = array (
+        'car' => '[car]',
+        'seller' => '[seller]',
+        'f_name' => '[name]',
+        'email' => '[email]',
+        'phone' => '[phone]',
+        'best_time' => '[best_time]',
+    );
+
     $requestPrice = array (
         'car' => '[car]',
         'f_name' => '[name]',
@@ -378,7 +410,7 @@ function getTemplateShortcodes($templateName) {
 }
 
 function updateTemplates () {
-    $opt = array ('add_a_car_', 'update_a_car_ppl_', 'trade_in_', 'trade_offer_', 'request_price_', 'test_drive_', 'update_a_car_', 'report_review_', 'password_recovery_', 'request_for_a_dealer_', 'welcome_', 'new_user_', 'pay_per_listing_', 'value_my_car_');
+    $opt = array ('add_a_car_', 'update_a_car_ppl_', 'trade_in_', 'trade_offer_', 'request_price_', 'test_drive_', 'test_drive_client_notification_', 'update_a_car_', 'report_review_', 'password_recovery_', 'request_for_a_dealer_', 'welcome_', 'new_user_', 'pay_per_listing_', 'value_my_car_');
 
     foreach ($opt as $key) {
         update_option($key . 'template', $_POST[$key . 'template']);

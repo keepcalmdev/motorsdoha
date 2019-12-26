@@ -138,10 +138,13 @@ function stm_ajax_add_test_drive()
             $admin_email = get_bloginfo('admin_email');
 	        $car_owner = get_post_meta($vehicle_id, 'stm_car_user', true);
 	        $car_owner_fields = stm_get_user_custom_fields($car_owner);
-	        $to = get_userdata($car_owner)->user_email;
+	        $seller_name = $car_owner_fields['name'];
+	        $seller_email = $car_owner_fields['email'];
+	        $client_email = $_POST['email'];
 
             $args = array(
                 'car' => $title,
+                'seller' => $seller_name,
                 'name' => $_POST['name'],
                 'email' => $_POST['email'],
                 'phone' => $_POST['phone'],
@@ -149,17 +152,26 @@ function stm_ajax_add_test_drive()
             );
 
             $headers = array(
-	            'From: MotorsDoha <' . $args['email'] . '>',
+	            'From: MotorsDoha <noreply@motorsdoha.com>',
 	            'content-type: text/html',
 	            'Cc: ' . $admin_email,
 	            'reply-to: ' . $args['email'],
             );
+
+	        $client_headers = array(
+		        'From: MotorsDoha <noreply@motorsdoha.com>',
+		        'content-type: text/html',
+		        'reply-to: ' . $seller_email,
+	        );
             $subject = generateSubjectView('test_drive', $args);
             $body = generateTemplateView('test_drive', $args);
+	        $client_subject = generateSubjectView('test_drive_client_notification', $args);
+	        $client_body = generateTemplateView('test_drive_client_notification', $args);
 
 	        if (!empty($car_owner)) {
 		        if (!empty($car_owner_fields) && !empty($car_owner_fields['email'])) {
-                    do_action('stm_wp_mail', $to, $subject, $body, $headers, '');
+                    do_action('stm_wp_mail', $seller_email, $subject, $body, $headers, '');
+                    do_action('stm_wp_mail', $client_email, $client_subject, $client_body, $client_headers, '');
                 }
             }
             do_action('stm_remove_mail_content_type_filter');

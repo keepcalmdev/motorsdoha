@@ -23,6 +23,7 @@ $templatePart = 'inc/email_template_manager/templates';
                 <a class="nav-link" id="v-pills-password_recovery-tab" data-toggle="pill" href="#v-pills-password_recovery" role="tab" aria-controls="v-pills-password_recovery" aria-selected="false">Password Recovery</a>
                 <a class="nav-link" id="v-pills-request_for_a_dealer-tab" data-toggle="pill" href="#v-pills-request_for_a_dealer" role="tab" aria-controls="v-pills-request_for_a_dealer" aria-selected="false">Request For a Dealer</a>
                 <a class="nav-link" id="v-pills-test_drive-tab" data-toggle="pill" href="#v-pills-test_drive" role="tab" aria-controls="v-pills-test_drive" aria-selected="false">Test Drive</a>
+                <a class="nav-link" id="v-pills-test_drive_client_notification-tab" data-toggle="pill" href="#v-pills-test_drive_client_notification" role="tab" aria-controls="v-pills-td_client_notification" aria-selected="false">Test Drive For a Client</a>
                 <a class="nav-link" id="v-pills-request_price-tab" data-toggle="pill" href="#v-pills-request_price" role="tab" aria-controls="v-pills-request_price" aria-selected="false">Request Price</a>
                 <a class="nav-link" id="v-pills-trade_in-tab" data-toggle="pill" href="#v-pills-trade_in" role="tab" aria-controls="v-pills-trade_in" aria-selected="false">Trade In</a>
                 <a class="nav-link" id="v-pills-trade_offer-tab" data-toggle="pill" href="#v-pills-trade_offer" role="tab" aria-controls="v-pills-trade_offer" aria-selected="false">Trade Offer</a>
@@ -48,6 +49,9 @@ $templatePart = 'inc/email_template_manager/templates';
                 </div>
                 <div class="tab-pane fade" id="v-pills-test_drive" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <?php get_template_part($templatePart . '/test_drive_form'); ?>
+                </div>
+                <div class="tab-pane fade" id="v-pills-test_drive_client_notification" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+		            <?php get_template_part($templatePart . '/test_drive_client_notification_form'); ?>
                 </div>
                 <div class="tab-pane fade" id="v-pills-request_price" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <?php get_template_part($templatePart . '/request_price_form'); ?>
