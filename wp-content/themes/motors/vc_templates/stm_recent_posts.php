@@ -54,7 +54,11 @@ if($use_category_tabs) {
 		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
             <?php if(!stm_is_magazine()) : ?>
 			<div class="stm-last-post-widget">
-				<?php echo wp_trim_words( get_the_excerpt(), 13, '...' ); ?>
+                <a href="<?php the_permalink();?>"><?php the_post_thumbnail();?></a>
+                <h5 class="last-post-title">
+                    <a href="<?php the_permalink();?>"><?php the_title();?></a>
+                </h5>
+				<p class="last-post-description"><?php echo wp_trim_words( get_the_excerpt(), 13, '...' ); ?></p>
 				<?php $com_num = get_comments_number( get_the_id() ); ?>
 				<?php if ( ! empty( $com_num ) ) { ?>
 					<div class="comments-number">
