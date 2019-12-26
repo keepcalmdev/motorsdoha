@@ -50,6 +50,7 @@
 		$dealer_category_labels = array_unique($dealer_category_labels);
 
 		?>
+
 			<tr class="stm-single-dealer animated fadeIn">
 
 				<td class="image">

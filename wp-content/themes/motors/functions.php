@@ -363,7 +363,7 @@ function remove_yoast_og($description) {
     if(
     	is_page( 5 ) || //home
     	is_page( 1806 ) || //Delears
-    	$post_id == 748  || //Blog/Newsroom
+    	$post_id == 707  || //Blog/Newsroom
     	is_page( 370 ) || //About us
     	is_page( 712 )  //Contacts
     ){
@@ -538,10 +538,12 @@ function change_user_pass_func(){
 add_filter('wpseo_title', 'return_title');
 add_filter('wpseo_metadesc', 'return_metadesc');
 function return_title(){
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
     if(
     	is_page( 5 ) || //home
     	is_page( 1806 ) || //Delears
-    	$post_id == 748  || //Blog/Newsroom
+    	$post_id == 707  || //Blog/Newsroom
     	is_page( 370 ) || //About us
     	is_page( 712 )  //Contacts
     ){
@@ -555,10 +557,12 @@ function return_title(){
 }
 
 function return_metadesc(){
+	global $wp_query;
+    $post_id = $wp_query->get_queried_object_id();
     if(
     	is_page( 5 ) || //home
     	is_page( 1806 ) || //Delears
-    	$post_id == 748  || //Blog/Newsroom
+    	$post_id == 707  || //Blog/Newsroom
     	is_page( 370 ) || //About us
     	is_page( 712 )  //Contacts
     ){
