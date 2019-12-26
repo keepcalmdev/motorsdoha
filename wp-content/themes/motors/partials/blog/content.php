@@ -42,7 +42,7 @@
 		<?php echo stm_do_lmth($stm_sidebar_layout_mode['content_before']); ?>
 
 			<!--Title-->
-			<h2 class="post-title"><?php the_title(); ?></h2>
+			<h1 class="post-title"><?php the_title(); ?></h1>
 
 			<!--Post thumbnail-->
 			<?php if ( has_post_thumbnail() ): ?>
