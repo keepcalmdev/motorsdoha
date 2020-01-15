@@ -9,8 +9,10 @@
 	}
 
     if(empty($badge_text)) {
-        $badge_text = 'Special';
+    	if(get_locale() != "en_US") $badge_text = 'خاص';
+	    	else $badge_text = 'Special';
     }
+
 
 	if(!empty($special_car) and $special_car == 'on'): ?>
 		<div class="stm-badge-directory heading-font <?php if(stm_is_car_dealer()) echo "stm-badge-dealer"?>" <?php echo sanitize_text_field($badge_bg_color); ?>>

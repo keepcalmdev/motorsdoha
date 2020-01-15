@@ -99,10 +99,7 @@ class WPSEO_Sitemaps_Renderer {
 	 */
 	public function get_sitemap( $links, $type, $current_page ) {
 
-		$urlset = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" '
-			. 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd '
-			. 'http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" '
-			. 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="https://www.w3.org/1999/xhtml">' . "\n";
+		$urlset = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
 
 		/**
 		 * Filters the `urlset` for a sitemap by type.
@@ -380,7 +377,8 @@ class WPSEO_Sitemaps_Renderer {
 						  "listings" => 0.8,
 						  "author"   =>	0.7,
 						  "make"     => 0.9,
-						  "serie"    => 0.9
+						  "serie"    => 0.9,
+						  "condition" => 0.9
 		);
 		return $priority[$type];
 	}
@@ -389,8 +387,8 @@ class WPSEO_Sitemaps_Renderer {
 		$host = $this->get_current_link("domain");
 		$clean_link = str_replace($host, "", $url);
 
-		$lang_links = "\t\t<xhtml:link rel='alternate' hreflang='en' href='".$host.$clean_link."' />\n";
-		$lang_links .= "\t\t<xhtml:link rel='alternate' hreflang='ar' href='".$host."/ar".$clean_link."' />\n";
+		$lang_links = "\t\t<xhtml:link rel='alternate' hreflang='en' href='".$host.$clean_link."'/>\n";
+		$lang_links .= "\t\t<xhtml:link rel='alternate' hreflang='ar' href='".$host."/ar".$clean_link."'/>\n";
 		return $lang_links;
 	}
 

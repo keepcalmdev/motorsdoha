@@ -252,3 +252,9 @@ $imgSize = ($view_type == 'carousel') ? 'stm-img-350-205' : 'stm-img-350-216';
 	})(jQuery);
 </script>
 <?php endif; ?>
+<script>
+	$(function(){
+		$('a[title="بيع سيارة"]').find(".trp-wrap").html("أعرف أكثر")
+		$('a[title="شراء سيارة"]').find(".trp-wrap").html("أعرف أكثر")  
+	})
+</script>
