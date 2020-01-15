@@ -7,5 +7,5 @@ $css_class = (!empty($css)) ? apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 
 
 <div class="<?php echo esc_attr($css_class); ?>">
 	<!--Title-->
-	<h2 class="post-title"><?php the_title(); ?></h2>
+	<h1 class="post-title"><?php the_title(); ?></h1>
 </div>
