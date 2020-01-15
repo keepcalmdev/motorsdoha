@@ -2201,8 +2201,9 @@ if ( !function_exists( 'stm_get_user_reviews' ) ) {
 if ( !function_exists( 'stm_get_dealer_logo_placeholder' ) ) {
     function stm_get_dealer_logo_placeholder()
     {
-        echo esc_url( get_template_directory_uri() . '/assets/images/empty_dealer_logo.png' );
-    }
+        if(get_locale() != "en_US") echo esc_url( get_template_directory_uri() . '/assets/images/empty_dealer_logo_ar.png' );
+            else echo esc_url( get_template_directory_uri() . '/assets/images/empty_dealer_logo.png' );
+    }    
 }
 
 

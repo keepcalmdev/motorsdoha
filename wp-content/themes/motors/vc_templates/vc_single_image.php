@@ -234,7 +234,7 @@ if ( 'yes' === $add_caption && '' !== $caption ) {
 
 $output = '
 	<div class="' . esc_attr( trim( $css_class ) ) . '">
-		<div class="wpb_wrapper">
+		<div class="wpb_wrapper"> 
 			' . wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_singleimage_heading' ) ) . '
 			' . $html . '
 		</div>
